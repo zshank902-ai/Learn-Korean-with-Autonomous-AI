@@ -136,7 +136,11 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              onClick={() => router.push('/hangul')}
+              onClick={async () => {
+                // Automatically mark as complete so they can unlock the rest of the curriculum
+                await handleActivityComplete(100);
+                router.push('/hangul');
+              }}
               className="flex items-center gap-3 px-8 py-4 bg-[#00E5FF] text-[#0f0f0f] rounded-2xl border-4 border-[#1E1B4B] font-black text-lg"
               style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
             >
