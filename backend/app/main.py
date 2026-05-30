@@ -45,6 +45,21 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"Warm-up failed: {e}")
 
+    # Auto-seed database if empty
+    try:
+        from app.db.session import SessionLocal
+        from app.models.srs import VocabItem
+        from app.scripts.seed_vocab import generate_vocab
+        db = SessionLocal()
+        try:
+            if db.query(VocabItem).count() == 0:
+                print("Vocabulary database is empty. Auto-seeding now...")
+                generate_vocab(db)
+        finally:
+            db.close()
+    except Exception as e:
+        print(f"Auto-seed failed: {e}")
+
     # Start the periodic DB sync background task (Optimized Worker)
     task = asyncio.create_task(sync_worker.start_perpetual_sync())
 
