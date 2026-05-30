@@ -167,14 +167,17 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
     const allCompleted = lvl.modules.every((m) => moduleStatuses[m.id] === 'completed');
     if (allCompleted) return 'completed';
 
-    // Level 1 is always unlocked
+    // Level 1 is always active (unless completed)
     if (lvl.level_num === 1) return 'active';
 
-    // A level is locked if all its modules are locked or undefined in progress status
-    const allLocked = lvl.modules.every(
-      (m) => !moduleStatuses[m.id] || moduleStatuses[m.id] === 'locked'
-    );
-    if (allLocked) return 'locked';
+    // A level is locked if the PREVIOUS level is not completely finished
+    const previousLevel = roadmapLevels.find(l => l.level_num === lvl.level_num - 1);
+    if (previousLevel) {
+      const prevAllCompleted = previousLevel.modules.every(
+        (m) => moduleStatuses[m.id] === 'completed'
+      );
+      if (!prevAllCompleted) return 'locked';
+    }
 
     return 'active';
   }
