@@ -47,6 +47,36 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
 
   useEffect(() => {
     const fetchCards = async () => {
+      // Intercept 'hangul-basics' and supply the foundation alphabet
+      if (_moduleId === 'hangul-basics') {
+        const hangulDemo: FlashcardData[] = [
+          { id: 'h1', front: 'ㄱ', back: 'g/k', romanization: 'g' },
+          { id: 'h2', front: 'ㄴ', back: 'n', romanization: 'n' },
+          { id: 'h3', front: 'ㄷ', back: 'd/t', romanization: 'd' },
+          { id: 'h4', front: 'ㄹ', back: 'r/l', romanization: 'r/l' },
+          { id: 'h5', front: 'ㅁ', back: 'm', romanization: 'm' },
+          { id: 'h6', front: 'ㅂ', back: 'b/p', romanization: 'b' },
+          { id: 'h7', front: 'ㅅ', back: 's', romanization: 's' },
+          { id: 'h8', front: 'ㅇ', back: 'ng (silent at start)', romanization: 'ng' },
+          { id: 'h9', front: 'ㅈ', back: 'j/ch', romanization: 'j' },
+          { id: 'h10', front: 'ㅊ', back: 'ch', romanization: 'ch' },
+          { id: 'v1', front: 'ㅏ', back: 'a', romanization: 'a' },
+          { id: 'v2', front: 'ㅑ', back: 'ya', romanization: 'ya' },
+          { id: 'v3', front: 'ㅓ', back: 'eo', romanization: 'eo' },
+          { id: 'v4', front: 'ㅕ', back: 'yeo', romanization: 'yeo' },
+          { id: 'v5', front: 'ㅗ', back: 'o', romanization: 'o' },
+          { id: 'v6', front: 'ㅛ', back: 'yo', romanization: 'yo' },
+          { id: 'v7', front: 'ㅜ', back: 'u', romanization: 'u' },
+          { id: 'v8', front: 'ㅠ', back: 'yu', romanization: 'yu' },
+          { id: 'v9', front: 'ㅡ', back: 'eu', romanization: 'eu' },
+          { id: 'v10', front: 'ㅣ', back: 'i', romanization: 'i' }
+        ];
+        setCards(hangulDemo);
+        setQueue(hangulDemo);
+        setLoading(false);
+        return;
+      }
+
       try {
         const res = await fetch(`${API_ENDPOINTS.FLASHCARDS}?level=${level}&limit=20`);
         if (!res.ok) throw new Error('fetch failed');
@@ -82,7 +112,7 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
       }
     };
     fetchCards();
-  }, [level]);
+  }, [level, _moduleId]);
 
   const playAudio = async (e: React.MouseEvent, textToSpeak: string) => {
     e.preventDefault();
@@ -173,7 +203,17 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
   }
 
   const currentCard = queue[currentIndex];
-  if (!currentCard) return null;
+  if (!currentCard) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 gap-4 p-8 text-center">
+        <AlertTriangle className="w-12 h-12 text-[#EA580C]" />
+        <h3 className="text-xl font-black text-[#1E1B4B]">No Flashcards Found</h3>
+        <p className="text-gray-500 font-bold">
+          The vocabulary database for this level is currently empty. Check back later!
+        </p>
+      </div>
+    );
+  }
 
   const total = cards.length;
   const reviewed = total - queue.filter((_, i) => i >= currentIndex).length + (total - queue.length);
