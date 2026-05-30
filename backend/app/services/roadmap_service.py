@@ -33,7 +33,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "id": "hangul-basics",
                 "title": "한글 Basics",
                 "icon": "📝",
-                "type": "flashcard",
+                "type": "playground",
                 "xp": 100,
                 "description": "Master the 40 basic characters, pronunciation rules, and stroke order in the Playground.",
                 "prerequisite": None,

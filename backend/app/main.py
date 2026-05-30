@@ -29,7 +29,14 @@ async def lifespan(app: FastAPI):
     """
     print("Principal Architect: Warming up TensorFlow/Keras models...")
     try:
-        model_server.initialize()
+        import os
+        if os.getenv("RENDER"):
+            print("MLOps: Running on Render Free Tier. Bypassing TensorFlow init to prevent crash.")
+            model_server.is_mock = True
+            model_server.is_ready = True
+            model_server.model = "mock"
+        else:
+            model_server.initialize()
 
         # Corrector now uses Groq/Ollama — no warm-up needed
         print("Corrector: Groq/Phi-3 via Ollama (on-demand, no warm-up required)")
