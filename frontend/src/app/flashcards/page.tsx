@@ -300,7 +300,29 @@ export default function FlashcardsPage() {
                 </AnimatePresence>
               </div>
             </div>
-          ) : null}
+          ) : !isLoading ? (
+            <motion.div 
+              key="empty"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-12 text-center max-w-lg w-full"
+              style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
+            >
+              <div className="w-24 h-24 rounded-full border-4 border-[#1E1B4B] mx-auto mb-6 flex items-center justify-center bg-[#F97316]"
+                   style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
+                <Book size={48} className="text-white" />
+              </div>
+              <h2 className="text-4xl font-black text-[#1E1B4B] mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>No Cards Found</h2>
+              <p className="text-xl font-semibold text-[#1E1B4B]/60 mb-8">
+                There are no flashcards available for {selectedLevel === 'All' ? 'any level' : `TOPIK ${selectedLevel}`} yet. Check back later!
+              </p>
+            </motion.div>
+          ) : (
+            <motion.div key="loading" className="flex flex-col items-center justify-center h-64 gap-6">
+               <div className="w-16 h-16 border-4 border-[#1E1B4B] border-t-[#4F46E5] rounded-full animate-spin" />
+               <p className="font-black text-[#1E1B4B] text-2xl" style={{ fontFamily: 'Fredoka, cursive' }}>Loading Cards...</p>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
     </div>
