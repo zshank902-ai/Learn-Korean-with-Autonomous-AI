@@ -1,6 +1,5 @@
 import os
 import numpy as np
-from app.services.model_manager import model_manager
 from app.services.async_inference import run_async_inference
 
 class ProductionModelServer:
@@ -30,6 +29,7 @@ class ProductionModelServer:
             return
 
         import tensorflow as tf
+        from app.services.model_manager import model_manager
         
         # Load from path or use default scaffolding
         if model_path and os.path.exists(model_path):

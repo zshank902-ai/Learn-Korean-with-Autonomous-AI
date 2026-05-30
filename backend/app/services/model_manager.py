@@ -1,6 +1,16 @@
-import tensorflow as tf
 import os
-from typing import Union
+from typing import Union, Any
+
+if not os.environ.get("RENDER"):
+    import tensorflow as tf
+else:
+    # Dummy mock objects for type hinting on Render
+    class MockTF:
+        class keras:
+            class Model: pass
+        class lite:
+            class Interpreter: pass
+    tf = MockTF()
 
 class ModelManager:
     """
@@ -9,7 +19,7 @@ class ModelManager:
     """
     
     @staticmethod
-    def load_model(model_path: str) -> Union[tf.keras.Model, tf.lite.Interpreter]:
+    def load_model(model_path: str) -> Union[Any, Any]:
         if not os.path.exists(model_path):
             raise FileNotFoundError(f"Model file not found at: {model_path}")
 

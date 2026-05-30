@@ -1,7 +1,9 @@
-import tensorflow as tf
-from tensorflow.keras import layers, models
+import os
 
 def build_ocr_model(img_width=256, img_height=64, max_label_len=32, num_chars=1200):
+    if os.environ.get("RENDER"): return "mock"
+    import tensorflow as tf
+    from tensorflow.keras import layers, models
     """
     Principal Multimodal Engineer: Strict CRNN Architecture for Korean OCR.
     Backbone: CNN (Spatial) -> RNN (Sequential) -> CTC (Classification).

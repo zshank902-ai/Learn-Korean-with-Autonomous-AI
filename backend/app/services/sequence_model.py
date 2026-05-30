@@ -1,6 +1,4 @@
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
+import os
 
 class KoreanSequenceModel:
     """
@@ -10,9 +8,18 @@ class KoreanSequenceModel:
     def __init__(self, vocab_size=10000, max_length=50):
         self.vocab_size = vocab_size
         self.max_length = max_length
-        self.model = self._build_hybrid_architecture()
+        if not os.environ.get("RENDER"):
+            import tensorflow as tf
+            from tensorflow import keras
+            from tensorflow.keras import layers
+            self.model = self._build_hybrid_architecture()
+        else:
+            self.model = "mock"
 
     def _build_hybrid_architecture(self):
+        import tensorflow as tf
+        from tensorflow import keras
+        from tensorflow.keras import layers
         """
         Hybrid CNN-LSTM: CNN for local n-gram patterns, 
         LSTM for long-range grammatical dependencies.

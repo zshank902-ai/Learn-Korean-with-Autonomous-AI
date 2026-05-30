@@ -1,7 +1,10 @@
-import tensorflow as tf
-from tensorflow.keras import layers, models
+import os
 
 def build_audio_scorer_model(input_shape=(128, 128, 1)):
+    if os.environ.get("RENDER"): return "mock"
+    
+    import tensorflow as tf
+    from tensorflow.keras import layers, models
     """
     Principal Multimodal Engineer: Pronunciation Embedding Model.
     Designed to extract acoustic signatures from Mel-Spectrograms.
