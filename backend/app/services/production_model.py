@@ -1,6 +1,5 @@
-import tensorflow as tf
-import numpy as np
 import os
+import numpy as np
 from app.services.model_manager import model_manager
 from app.services.async_inference import run_async_inference
 
@@ -15,6 +14,7 @@ class ProductionModelServer:
         if cls._instance is None:
             cls._instance = super(ProductionModelServer, cls).__new__(cls)
             cls._instance.is_ready = False
+            cls._instance.is_mock = os.environ.get("RENDER") is not None
         return cls._instance
 
     def initialize(self, model_path: str = None):
@@ -22,6 +22,14 @@ class ProductionModelServer:
         Singleton initialization with model warm-up.
         """
         print(f"MLOps: Initializing Production Model Server...")
+        
+        if self.is_mock:
+            print("MLOps: Running in MOCK mode (Render Free Tier detected). TensorFlow bypassed to prevent memory crash.")
+            self.model = "mock"
+            self.is_ready = True
+            return
+
+        import tensorflow as tf
         
         # Load from path or use default scaffolding
         if model_path and os.path.exists(model_path):
@@ -48,6 +56,9 @@ class ProductionModelServer:
         """
         Fast synchronous inference.
         """
+        if self.is_mock:
+            return [[0.1, 0.9, 0.0]] # Mock classification output
+            
         # Ensure input is a numpy array with batch dimension
         input_data = np.array([tokenized_input])
         prediction = self.model.predict(input_data, verbose=0)
