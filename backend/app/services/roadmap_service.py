@@ -33,7 +33,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "id": "hangul-basics",
                 "title": "한글 Basics",
                 "icon": "📝",
-                "type": "playground",
+                "type": "flashcard",
                 "xp": 100,
                 "description": "Master the 40 basic characters, pronunciation rules, and stroke order in the Playground.",
                 "prerequisite": None,
@@ -45,7 +45,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 120,
                 "description": "Numbers, colors, family, food, time, days, weather — 800 words with SRS.",
-                "prerequisite": "hangul-basics",
+                "prerequisite": None,
             },
             {
                 "id": "l1_grammar",
@@ -54,7 +54,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 130,
                 "description": "Particles (이/가, 을/를, 은/는, 에, 에서), present/past tense, negation, -고. ~40 patterns.",
-                "prerequisite": "l1_vocab800",
+                "prerequisite": None,
             },
             {
                 "id": "l1_conversations",
@@ -63,7 +63,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "audio_task",
                 "xp": 110,
                 "description": "6 scenarios: greeting, shopping, food, directions, transport, numbers.",
-                "prerequisite": "l1_grammar",
+                "prerequisite": None,
             },
             {
                 "id": "l1_listening",
@@ -72,7 +72,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 150,
                 "description": "30 MCQ, slow clear speech, everyday dialogues, image matching.",
-                "prerequisite": "l1_conversations",
+                "prerequisite": None,
             },
             {
                 "id": "l1_reading",
@@ -81,7 +81,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 150,
                 "description": "40 MCQ, functional texts: signs, menus, schedules, ads, short diary.",
-                "prerequisite": "l1_listening",
+                "prerequisite": None,
             },
             {
                 "id": "l1_mock",
@@ -90,7 +90,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 300,
                 "description": "Full 100-min TOPIK-I simulation. Auto-score, weak area analysis, AI study plan.",
-                "prerequisite": "l1_reading",
+                "prerequisite": None,
             },
         ],
     },
@@ -117,7 +117,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 150,
                 "description": "Hobbies, emotions, jobs, transport, health, sports, seasons. Hanja roots introduced.",
-                "prerequisite": "l1_mock",
+                "prerequisite": None,
             },
             {
                 "id": "l2_connectors",
@@ -126,7 +126,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 160,
                 "description": "-아서/어서, -(으)면, -지만, -(으)려고, -는데, -때, -기 전에/후에, -거나, -(으)면서. ~40 new patterns.",
-                "prerequisite": "l2_vocab2000",
+                "prerequisite": None,
             },
             {
                 "id": "l2_speech_levels",
@@ -135,7 +135,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 140,
                 "description": "존댓말 vs 반말. Formal polite (-습니다), informal polite (-아요/어요), casual (-아/어). Honorifics.",
-                "prerequisite": "l2_connectors",
+                "prerequisite": None,
             },
             {
                 "id": "l2_public",
@@ -144,7 +144,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "audio_task",
                 "xp": 120,
                 "description": "Bank, hospital, post office, library, subway vocabulary and dialogues.",
-                "prerequisite": "l2_speech_levels",
+                "prerequisite": None,
             },
             {
                 "id": "l2_listening",
@@ -153,7 +153,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 160,
                 "description": "30 MCQ, moderate pace, phone calls, store/restaurant, light news.",
-                "prerequisite": "l2_public",
+                "prerequisite": None,
             },
             {
                 "id": "l2_reading",
@@ -162,7 +162,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 160,
                 "description": "40 MCQ, paragraph texts (diary/letter/email), inference, sentence ordering.",
-                "prerequisite": "l2_listening",
+                "prerequisite": None,
             },
             {
                 "id": "l2_mock",
@@ -171,7 +171,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 400,
                 "description": "TOPIK-I mock targeting 140pts. L3 readiness predictor AI output.",
-                "prerequisite": "l2_reading",
+                "prerequisite": None,
             },
         ],
     },
@@ -199,7 +199,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 180,
                 "description": "Social topics, culture, media, environment, relationships, psychology, news terms.",
-                "prerequisite": "l2_mock",
+                "prerequisite": None,
             },
             {
                 "id": "l3_grammar",
@@ -208,7 +208,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 200,
                 "description": "-(으)ㄴ/는 것, -(으)ㄹ 것 같다, -아/어 보다, -(으)ㄴ 적이 있다, -(으)ㄹ 수 있다/없다. ~80 total patterns.",
-                "prerequisite": "l3_vocab3000",
+                "prerequisite": None,
             },
             {
                 "id": "l3_writing_intro",
@@ -217,7 +217,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "essay",
                 "xp": 220,
                 "description": "TOPIK-II Q1-Q2 sentence completion. Q3 200-300 char essay. AI scoring + rewrite suggestions.",
-                "prerequisite": "l3_grammar",
+                "prerequisite": None,
             },
             {
                 "id": "l3_social",
@@ -226,7 +226,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 180,
                 "description": "8 clusters: Korean culture, lifestyle, environment, health, travel, technology, education, relationships.",
-                "prerequisite": "l3_writing_intro",
+                "prerequisite": None,
             },
             {
                 "id": "l3_listening",
@@ -235,7 +235,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 200,
                 "description": "50 MCQ, native speed, multi-speaker, attitude inference, short news clips.",
-                "prerequisite": "l3_social",
+                "prerequisite": None,
             },
             {
                 "id": "l3_reading",
@@ -244,7 +244,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 200,
                 "description": "50 MCQ, social/cultural articles, graph+text, logical sentence insertion, best title.",
-                "prerequisite": "l3_listening",
+                "prerequisite": None,
             },
             {
                 "id": "l3_mock",
@@ -253,7 +253,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 500,
                 "description": "Full 180-min TOPIK-II sim. AI grades Q3 essay on grammar, content, structure.",
-                "prerequisite": "l3_reading",
+                "prerequisite": None,
             },
         ],
     },
@@ -281,7 +281,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 200,
                 "description": "News/media, academic, business, politics, economics, abstract concepts, basic proverbs (속담).",
-                "prerequisite": "l3_mock",
+                "prerequisite": None,
             },
             {
                 "id": "l4_complex_grammar",
@@ -290,7 +290,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 230,
                 "description": "-(으)ㄹ수록, -는 반면에, -에 따라(서), -(으)ㄹ 뿐만 아니라, -에도 불구하고, -을 통해(서).",
-                "prerequisite": "l4_vocab5000",
+                "prerequisite": None,
             },
             {
                 "id": "l4_news",
@@ -299,7 +299,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 200,
                 "description": "Adapted news articles, radio clips, passive constructions, formal endings, reported speech.",
-                "prerequisite": "l4_complex_grammar",
+                "prerequisite": None,
             },
             {
                 "id": "l4_professional",
@@ -308,7 +308,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "audio_task",
                 "xp": 210,
                 "description": "Work emails, meeting expressions, job interview vocab, formal reports, 문어체.",
-                "prerequisite": "l4_news",
+                "prerequisite": None,
             },
             {
                 "id": "l4_opinion_writing",
@@ -317,7 +317,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "essay",
                 "xp": 260,
                 "description": "TOPIK-II Q3+Q4 structure: thesis-evidence-counterargument-conclusion. AI essay structure analyzer.",
-                "prerequisite": "l4_professional",
+                "prerequisite": None,
             },
             {
                 "id": "l4_listening",
@@ -326,7 +326,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 240,
                 "description": "50 MCQ, interviews, discussions, abstract topics, expressing opinions.",
-                "prerequisite": "l4_opinion_writing",
+                "prerequisite": None,
             },
             {
                 "id": "l4_mock",
@@ -335,7 +335,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 600,
                 "description": "180-min sim. AI grades on 4 rubrics. Graph description tasks.",
-                "prerequisite": "l4_listening",
+                "prerequisite": None,
             },
         ],
     },
@@ -363,7 +363,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 250,
                 "description": "Politics/law, economics/finance, science/tech, philosophy/ethics. 사자성어 30+, 속담 30+.",
-                "prerequisite": "l4_mock",
+                "prerequisite": None,
             },
             {
                 "id": "l5_advanced_grammar",
@@ -372,7 +372,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 280,
                 "description": "-(으)ㄹ 나위가 없다, -(으)ㄹ 지경이다, -고자 하다, -는 한, -(으)ㄹ 따름이다.",
-                "prerequisite": "l5_academic_vocab",
+                "prerequisite": None,
             },
             {
                 "id": "l5_long_essay",
@@ -381,7 +381,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "essay",
                 "xp": 320,
                 "description": "TOPIK-II Q4 600-700 chars. Social issues. 주장→근거1→근거2→반론→결론. 4-rubric AI scoring.",
-                "prerequisite": "l5_advanced_grammar",
+                "prerequisite": None,
             },
             {
                 "id": "l5_academic_reading",
@@ -390,7 +390,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 280,
                 "description": "600-900 char academic articles. Tone inference, argument structure ID, evaluating logic.",
-                "prerequisite": "l5_long_essay",
+                "prerequisite": None,
             },
             {
                 "id": "l5_complex_listening",
@@ -399,7 +399,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 280,
                 "description": "50 MCQ, academic lectures, panel discussions, documentaries, figurative/idiomatic speech.",
-                "prerequisite": "l5_academic_reading",
+                "prerequisite": None,
             },
             {
                 "id": "l5_mock",
@@ -408,7 +408,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 800,
                 "description": "180-min sim, 190pt target. 4-rubric AI essay grader, model answer generation.",
-                "prerequisite": "l5_complex_listening",
+                "prerequisite": None,
             },
         ],
     },
@@ -436,7 +436,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "flashcard",
                 "xp": 350,
                 "description": "Literary, legal, medical/scientific, philosophical. 사자성어 60+, 속담 50+, 관용구.",
-                "prerequisite": "l5_mock",
+                "prerequisite": None,
             },
             {
                 "id": "l6_mastery_grammar",
@@ -445,7 +445,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "grammar_drill",
                 "xp": 380,
                 "description": "-(으)련만, -건대, -(으)ㄹ진대, -거니와, -(으)리라, -노라. Legal passives. Near-identical disambiguation.",
-                "prerequisite": "l6_native_vocab",
+                "prerequisite": None,
             },
             {
                 "id": "l6_critical_essay",
@@ -454,7 +454,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "essay",
                 "xp": 420,
                 "description": "TOPIK-II Q4, complex philosophical/social issues. Multi-perspective. AI: native-benchmark comparison.",
-                "prerequisite": "l6_mastery_grammar",
+                "prerequisite": None,
             },
             {
                 "id": "l6_literary",
@@ -463,7 +463,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 360,
                 "description": "Adapted Korean novels, philosophical arguments, policy papers. Rhetorical device analysis.",
-                "prerequisite": "l6_critical_essay",
+                "prerequisite": None,
             },
             {
                 "id": "l6_expert_listening",
@@ -472,7 +472,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mcq",
                 "xp": 360,
                 "description": "50 MCQ, rapid debate, irony/satire, understatement, cultural presuppositions.",
-                "prerequisite": "l6_literary",
+                "prerequisite": None,
             },
             {
                 "id": "l6_mock",
@@ -481,7 +481,7 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
                 "type": "mock_exam",
                 "xp": 1000,
                 "description": "180-min sim, 230pt target. Native-speaker benchmark comparison. Certificate readiness report.",
-                "prerequisite": "l6_expert_listening",
+                "prerequisite": None,
             },
         ],
     },
