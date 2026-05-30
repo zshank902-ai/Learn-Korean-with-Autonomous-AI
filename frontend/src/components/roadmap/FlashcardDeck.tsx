@@ -208,9 +208,15 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
       <div className="flex flex-col items-center justify-center h-64 gap-4 p-8 text-center">
         <AlertTriangle className="w-12 h-12 text-[#EA580C]" />
         <h3 className="text-xl font-black text-[#1E1B4B]">No Flashcards Found</h3>
-        <p className="text-gray-500 font-bold">
+        <p className="text-gray-500 font-bold mb-2">
           The vocabulary database for this level is currently empty. Check back later!
         </p>
+        <button
+          onClick={() => onComplete(100)}
+          className="px-6 py-2 bg-[#1E1B4B] text-white font-bold rounded-xl hover:bg-[#3730A3] transition-colors"
+        >
+          Mark as Complete Anyway
+        </button>
       </div>
     );
   }

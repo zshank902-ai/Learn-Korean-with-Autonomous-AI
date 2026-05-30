@@ -87,7 +87,19 @@ export default function SmartCorrector() {
       />
 
       <AnimatePresence mode="wait">
-        {aiFeedback ? (
+        {isAiLoading ? (
+          <motion.div 
+            key="loading"
+            layout
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="flex items-center gap-3 text-[#4F46E5] justify-center py-8 border-4 border-dashed border-[#4F46E5] rounded-2xl bg-[#EEF2FF]"
+          >
+            <Sparkles className="animate-spin" size={24} />
+            <span className="font-bold">Analyzing your grammar...</span>
+          </motion.div>
+        ) : aiFeedback ? (
           <motion.div
             key="feedback"
             layout
@@ -113,8 +125,9 @@ export default function SmartCorrector() {
           <motion.div 
             key="placeholder"
             layout
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             className="flex items-center gap-3 text-[#1E1B4B]/40 justify-center py-8 border-4 border-dashed border-[#1E1B4B]/20 rounded-2xl bg-[#EEF2FF]"
           >
             <AlertCircle size={24} />

@@ -329,9 +329,10 @@ export default function MockExamRunner({
 
         <button
           onClick={onClose}
-          className="w-10 h-10 flex items-center justify-center rounded-xl border-2 border-[#1E1B4B] bg-white hover:bg-red-50 transition-colors"
+          className="px-4 py-2 flex items-center gap-2 rounded-xl border-2 border-red-500 bg-red-50 hover:bg-red-100 text-red-600 transition-colors font-bold"
         >
-          <X size={20} className="text-[#1E1B4B]" />
+          <X size={18} />
+          <span className="hidden sm:inline">Quit Exam</span>
         </button>
       </div>
 
