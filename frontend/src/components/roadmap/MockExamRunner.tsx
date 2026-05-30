@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Timer, AlertTriangle, CheckCircle2, X, ChevronRight, Coffee } from 'lucide-react';
+import { Timer, AlertTriangle, CheckCircle2, X, ChevronRight, Coffee, Volume2 } from 'lucide-react';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
 import type {
   MockExamConfig,
@@ -63,6 +63,22 @@ export default function MockExamRunner({
   >({});
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const playingRef = useRef(false);
+
+  const speakText = useCallback((textToSpeak: string) => {
+    if (playingRef.current) return;
+    playingRef.current = true;
+    setPlaying(true);
+    
+    const url = `${API_ENDPOINTS.ROADMAP}/tts?text=${encodeURIComponent(textToSpeak)}`;
+    const audio = new Audio(url);
+    audio.playbackRate = 0.8;
+    
+    audio.onended = () => { playingRef.current = false; setPlaying(false); };
+    audio.onerror = () => { playingRef.current = false; setPlaying(false); };
+    audio.play().catch(() => { playingRef.current = false; setPlaying(false); });
+  }, []);
 
   // Writing essay state
   const [essayText, setEssayText] = useState('');
@@ -456,8 +472,24 @@ export default function MockExamRunner({
                   className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-8"
                   style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
                 >
+                  {currentSection === 'listening' && (
+                    <div className="flex items-center gap-4 mb-4">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => speakText(currentQ.question)}
+                        disabled={playing}
+                        className="w-14 h-14 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center shadow-sm"
+                      >
+                        <Volume2 size={24} className={playing ? 'text-[#6366F1]' : 'text-[#1E1B4B]'} />
+                      </motion.button>
+                      <p className="text-sm font-bold text-[#1E1B4B]/60 uppercase tracking-widest">
+                        {playing ? 'Playing Audio...' : 'Tap to Listen'}
+                      </p>
+                    </div>
+                  )}
                   <p className="font-bold text-[#1E1B4B] text-lg mb-6 leading-relaxed">
-                    {currentQ.question}
+                    {currentSection === 'listening' && selectedOption === null ? 'Listen to the audio and choose the correct option.' : currentQ.question}
                   </p>
 
                   <div className="space-y-3 mb-6">

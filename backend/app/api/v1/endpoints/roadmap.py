@@ -252,15 +252,42 @@ def generate_mock_exam(level_id: int) -> dict[str, Any]:
     # Cache exam for 3 hours
     redis.setex(f"roadmap:mock:{exam_id}", 10800, json.dumps(config))
 
-    # Generate or fetch sample questions for listening/reading sections
+    # Fetch exactly the required questions from local bank for listening/reading sections
     questions: dict[str, Any] = {}
+    
+    import random
+    import os
+    
     for section in level["sections"]:
         section_type = section["name"].lower()
         if section_type in ("listening", "reading"):
             module_id = f"l{level_id}_{section_type}"
-            questions[section_type] = _generate_questions_with_ai(
-                module_id, section_type, level_id, min(section["questions"], 10)
-            )
+            required_count = section["questions"]
+            
+            # Fetch from local bank
+            bank_path = f"app/data/topik_{1 if level_id <= 2 else 2}_bank.json"
+            if os.path.exists(bank_path):
+                with open(bank_path, "r", encoding="utf-8") as f:
+                    bank = json.load(f)
+                    pool = bank.get(section_type, [])
+                    if pool:
+                        # Get exact required_count or max available
+                        selected = random.sample(pool, min(required_count, len(pool)))
+                        mapped = []
+                        for q in selected:
+                            mapped.append({
+                                "question": q.get("questionText", ""),
+                                "options": q.get("options", ["보기1", "보기2", "보기3", "보기4"]),
+                                "correct": q.get("correctAnswer", 0),
+                                "explanation": q.get("explanation", ""),
+                            })
+                        questions[section_type] = mapped
+            
+            # Fallback to AI if local bank failed or doesn't have enough
+            if section_type not in questions or not questions[section_type]:
+                questions[section_type] = _generate_questions_with_ai(
+                    module_id, section_type, level_id, required_count
+                )
 
     return {"examId": exam_id, "config": config, "questions": questions}
 
