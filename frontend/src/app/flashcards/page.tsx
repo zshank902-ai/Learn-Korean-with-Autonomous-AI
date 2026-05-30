@@ -29,7 +29,7 @@ export default function FlashcardsPage() {
       if (selectedLevel !== 'All') {
         url.searchParams.append('level', selectedLevel);
       }
-      url.searchParams.append('limit', '20');
+      url.searchParams.append('limit', '800');
 
       const response = await fetch(url.toString());
       if (!response.ok) throw new Error("API Error");

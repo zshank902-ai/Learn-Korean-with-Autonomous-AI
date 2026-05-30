@@ -45,6 +45,7 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
   const [fetchError, setFetchError] = useState(false);
   const [score, setScore] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [phase, setPhase] = useState<'theory' | 'drill'>('theory');
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -150,6 +151,36 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
     return (
       <div className="flex items-center justify-center h-40">
         <p className="font-bold text-gray-400">No questions available.</p>
+      </div>
+    );
+  }
+
+  if (phase === 'theory') {
+    return (
+      <div className="flex flex-col gap-6 items-center justify-center py-2">
+        <div className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-8 w-full" style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
+          <h3 className="text-2xl font-black text-[#1E1B4B] mb-4">Grammar Concept</h3>
+          <p className="text-lg font-bold text-[#1E1B4B]/80 mb-6 leading-relaxed">
+            In this module, you will practice using essential grammar particles and sentence structures. Pay close attention to the context hints!
+          </p>
+          <div className="bg-[#F5F3FF] border-4 border-[#6366F1] rounded-2xl p-5 mb-8">
+            <h4 className="font-black text-[#6366F1] uppercase tracking-widest text-sm mb-2">Tip</h4>
+            <p className="font-bold text-[#1E1B4B]">
+              Look at the noun ending before the blank. If it ends in a consonant, use 이/은/을. If it ends in a vowel, use 가/는/를.
+            </p>
+          </div>
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              setPhase('drill');
+              setTimeout(() => inputRef.current?.focus(), 100);
+            }}
+            className="w-full bg-[#6366F1] text-white font-black py-4 rounded-2xl border-4 border-[#1E1B4B] text-lg shadow-[4px_4px_0px_#1E1B4B]"
+          >
+            Start Drill
+          </motion.button>
+        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2, ChevronRight, AlertTriangle } from 'lucide-react';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
@@ -33,6 +33,7 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
   const [fetchError, setFetchError] = useState(false);
   const [speechSupported, setSpeechSupported] = useState(true);
   const [playing, setPlaying] = useState(false);
+  const playingRef = useRef(false);
 
   useEffect(() => {
     setSpeechSupported(true);
@@ -69,27 +70,33 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
 
   const speakText = useCallback((textToSpeak: string) => {
     const playAudio = () => {
-      if (playing) return;
+      if (playingRef.current) return;
+      playingRef.current = true;
       setPlaying(true);
       
       const url = `${API_ENDPOINTS.ROADMAP}/tts?text=${encodeURIComponent(textToSpeak)}`;
       const audio = new Audio(url);
       audio.playbackRate = 0.8;
       
-      audio.onended = () => setPlaying(false);
+      audio.onended = () => {
+        playingRef.current = false;
+        setPlaying(false);
+      };
       audio.onerror = () => {
         console.error("Audio playback failed");
+        playingRef.current = false;
         setPlaying(false);
       };
       
       audio.play().catch(e => {
         console.error("Audio play error:", e);
+        playingRef.current = false;
         setPlaying(false);
       });
     };
 
     playAudio();
-  }, [playing]);
+  }, []);
 
   // Auto-play when question changes
   useEffect(() => {

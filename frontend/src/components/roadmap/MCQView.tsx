@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronRight, Clock, AlertTriangle } from 'lucide-react';
+import { ChevronRight, Clock, AlertTriangle, Volume2 } from 'lucide-react';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
 import type { MCQQuestion } from '@/lib/roadmapTypes';
 
@@ -34,7 +34,23 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(false);
   const [xpFlash, setXpFlash] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const playingRef = useRef(false);
+
+  const speakText = useCallback((textToSpeak: string) => {
+    if (playingRef.current) return;
+    playingRef.current = true;
+    setPlaying(true);
+    
+    const url = `${API_ENDPOINTS.ROADMAP}/tts?text=${encodeURIComponent(textToSpeak)}`;
+    const audio = new Audio(url);
+    audio.playbackRate = 0.8;
+    
+    audio.onended = () => { playingRef.current = false; setPlaying(false); };
+    audio.onerror = () => { playingRef.current = false; setPlaying(false); };
+    audio.play().catch(() => { playingRef.current = false; setPlaying(false); });
+  }, []);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -214,7 +230,25 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
             className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-6"
             style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
           >
-            <p className="text-xl font-black text-[#1E1B4B] leading-relaxed">{q.question}</p>
+            {moduleId.includes('listening') && (
+              <div className="flex items-center gap-4 mb-4">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => speakText(q.question)}
+                  disabled={playing}
+                  className="w-14 h-14 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center shadow-sm"
+                >
+                  <Volume2 size={24} className={playing ? 'text-[#6366F1]' : 'text-[#1E1B4B]'} />
+                </motion.button>
+                <p className="text-sm font-bold text-[#1E1B4B]/60 uppercase tracking-widest">
+                  {playing ? 'Playing Audio...' : 'Tap to Listen'}
+                </p>
+              </div>
+            )}
+            <p className="text-xl font-black text-[#1E1B4B] leading-relaxed">
+              {moduleId.includes('listening') && !revealed ? 'Listen to the audio and choose the correct option.' : q.question}
+            </p>
           </div>
 
           {/* Options */}

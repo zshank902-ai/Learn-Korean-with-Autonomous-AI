@@ -23,6 +23,19 @@ class MockRedis:
         self.data[key] = str(value)
         return True
 
+    def setex(self, key: str, time: int, value: str) -> bool:
+        """Mock setex. Ignores time in mock."""
+        self.data[key] = str(value)
+        return True
+
+    def delete(self, *names: str) -> int:
+        count = 0
+        for name in names:
+            if name in self.data:
+                del self.data[name]
+                count += 1
+        return count
+
     # Hash commands
     def hset(self, name: str, key: str, value) -> int:
         if name not in self.data:
