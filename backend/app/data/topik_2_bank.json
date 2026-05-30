@@ -1,0 +1,3206 @@
+{
+  "listening": [
+    {
+      "id": "l2_1",
+      "section": "listening",
+      "questionNumber": 1,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "혼자 밥을 먹었습니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "집값이 너무 비쌉니다.",
+        "가족과 함께 사는 것이 좋습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_2",
+      "section": "listening",
+      "questionNumber": 2,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "스트레스는 몸에 해롭습니다.",
+        "규칙적인 운동과 명상입니다.",
+        "병원에 자주 갑니다.",
+        "어제 친구와 다투었습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_3",
+      "section": "listening",
+      "questionNumber": 3,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "새로운 일자리가 창출될 것입니다.",
+        "컴퓨터를 샀습니다.",
+        "책을 많이 읽어야 합니다.",
+        "내일 비가 올 것입니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_4",
+      "section": "listening",
+      "questionNumber": 4,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 비가 올 것입니다.",
+        "책을 많이 읽어야 합니다.",
+        "컴퓨터를 샀습니다.",
+        "새로운 일자리가 창출될 것입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_5",
+      "section": "listening",
+      "questionNumber": 5,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "컴퓨터를 샀습니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다.",
+        "내일 비가 올 것입니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_6",
+      "section": "listening",
+      "questionNumber": 6,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "세미나가 취소되었다.",
+        "장소가 변경되었다.",
+        "일정이 연기되었다.",
+        "목요일 오후에 열린다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_7",
+      "section": "listening",
+      "questionNumber": 7,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "쓰레기를 버렸습니다.",
+        "심각한 문제라고 생각합니다.",
+        "날씨가 맑습니다.",
+        "버스를 타는 것이 좋습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_8",
+      "section": "listening",
+      "questionNumber": 8,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "찬성하는 입장입니다.",
+        "학교에 지각했습니다.",
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_9",
+      "section": "listening",
+      "questionNumber": 9,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "책을 많이 읽어야 합니다.",
+        "내일 비가 올 것입니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "컴퓨터를 샀습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_10",
+      "section": "listening",
+      "questionNumber": 10,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "심각한 문제라고 생각합니다.",
+        "버스를 타는 것이 좋습니다.",
+        "날씨가 맑습니다.",
+        "쓰레기를 버렸습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_11",
+      "section": "listening",
+      "questionNumber": 11,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "혼자 밥을 먹었습니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "가족과 함께 사는 것이 좋습니다.",
+        "집값이 너무 비쌉니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_12",
+      "section": "listening",
+      "questionNumber": 12,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "가족애의 소중함입니다.",
+        "내일 또 볼 것입니다.",
+        "주인공이 멋있습니다.",
+        "영화관이 너무 멉니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_13",
+      "section": "listening",
+      "questionNumber": 13,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "심각한 문제라고 생각합니다.",
+        "날씨가 맑습니다.",
+        "쓰레기를 버렸습니다.",
+        "버스를 타는 것이 좋습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_14",
+      "section": "listening",
+      "questionNumber": 14,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "병원에 자주 갑니다.",
+        "규칙적인 운동과 명상입니다.",
+        "어제 친구와 다투었습니다.",
+        "스트레스는 몸에 해롭습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_15",
+      "section": "listening",
+      "questionNumber": 15,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "어제 뉴스를 봤습니다.",
+        "교육은 중요합니다.",
+        "찬성하는 입장입니다.",
+        "학교에 지각했습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_16",
+      "section": "listening",
+      "questionNumber": 16,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "일정이 연기되었다.",
+        "장소가 변경되었다.",
+        "목요일 오후에 열린다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_17",
+      "section": "listening",
+      "questionNumber": 17,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "날씨가 맑습니다.",
+        "쓰레기를 버렸습니다.",
+        "버스를 타는 것이 좋습니다.",
+        "심각한 문제라고 생각합니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_18",
+      "section": "listening",
+      "questionNumber": 18,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "규칙적인 운동과 명상입니다.",
+        "병원에 자주 갑니다.",
+        "어제 친구와 다투었습니다.",
+        "스트레스는 몸에 해롭습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_19",
+      "section": "listening",
+      "questionNumber": 19,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "매출 증대입니다.",
+        "사무실이 넓습니다.",
+        "내일 제출하세요.",
+        "어제 회의를 했습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_20",
+      "section": "listening",
+      "questionNumber": 20,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "학교에 지각했습니다.",
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다.",
+        "찬성하는 입장입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_21",
+      "section": "listening",
+      "questionNumber": 21,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "체크아웃은 오전 11시이다.",
+        "호텔 예약이 취소되었다.",
+        "수영장을 무료로 이용할 수 있다.",
+        "저녁 식사가 제공된다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_22",
+      "section": "listening",
+      "questionNumber": 22,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다.",
+        "내일 비가 올 것입니다.",
+        "컴퓨터를 샀습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_23",
+      "section": "listening",
+      "questionNumber": 23,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다.",
+        "컴퓨터를 샀습니다.",
+        "내일 비가 올 것입니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_24",
+      "section": "listening",
+      "questionNumber": 24,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 타는 것이 좋습니다.",
+        "날씨가 맑습니다.",
+        "심각한 문제라고 생각합니다.",
+        "쓰레기를 버렸습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_25",
+      "section": "listening",
+      "questionNumber": 25,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "컴퓨터를 샀습니다.",
+        "내일 비가 올 것입니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_26",
+      "section": "listening",
+      "questionNumber": 26,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다.",
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_27",
+      "section": "listening",
+      "questionNumber": 27,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "책을 많이 읽어야 합니다.",
+        "컴퓨터를 샀습니다.",
+        "내일 비가 올 것입니다.",
+        "새로운 일자리가 창출될 것입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_28",
+      "section": "listening",
+      "questionNumber": 28,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "가족과 함께 사는 것이 좋습니다.",
+        "집값이 너무 비쌉니다.",
+        "혼자 밥을 먹었습니다.",
+        "가치관의 변화와 경제적 요인입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_29",
+      "section": "listening",
+      "questionNumber": 29,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 또 볼 것입니다.",
+        "가족애의 소중함입니다.",
+        "영화관이 너무 멉니다.",
+        "주인공이 멋있습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_30",
+      "section": "listening",
+      "questionNumber": 30,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "날씨가 맑습니다.",
+        "쓰레기를 버렸습니다.",
+        "버스를 타는 것이 좋습니다.",
+        "심각한 문제라고 생각합니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_31",
+      "section": "listening",
+      "questionNumber": 31,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "학교에 지각했습니다.",
+        "어제 뉴스를 봤습니다.",
+        "찬성하는 입장입니다.",
+        "교육은 중요합니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_32",
+      "section": "listening",
+      "questionNumber": 32,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다.",
+        "어제 뉴스를 봤습니다.",
+        "교육은 중요합니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_33",
+      "section": "listening",
+      "questionNumber": 33,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "저녁 식사가 제공된다.",
+        "수영장을 무료로 이용할 수 있다.",
+        "체크아웃은 오전 11시이다.",
+        "호텔 예약이 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_34",
+      "section": "listening",
+      "questionNumber": 34,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "규칙적인 운동과 명상입니다.",
+        "스트레스는 몸에 해롭습니다.",
+        "어제 친구와 다투었습니다.",
+        "병원에 자주 갑니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_35",
+      "section": "listening",
+      "questionNumber": 35,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 또 볼 것입니다.",
+        "영화관이 너무 멉니다.",
+        "주인공이 멋있습니다.",
+        "가족애의 소중함입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_36",
+      "section": "listening",
+      "questionNumber": 36,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "쓰레기를 버렸습니다.",
+        "버스를 타는 것이 좋습니다.",
+        "날씨가 맑습니다.",
+        "심각한 문제라고 생각합니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_37",
+      "section": "listening",
+      "questionNumber": 37,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "가족애의 소중함입니다.",
+        "주인공이 멋있습니다.",
+        "내일 또 볼 것입니다.",
+        "영화관이 너무 멉니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_38",
+      "section": "listening",
+      "questionNumber": 38,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 회의를 했습니다.",
+        "매출 증대입니다.",
+        "내일 제출하세요.",
+        "사무실이 넓습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_39",
+      "section": "listening",
+      "questionNumber": 39,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "사무실이 넓습니다.",
+        "내일 제출하세요.",
+        "어제 회의를 했습니다.",
+        "매출 증대입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_40",
+      "section": "listening",
+      "questionNumber": 40,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "심각한 문제라고 생각합니다.",
+        "버스를 타는 것이 좋습니다.",
+        "날씨가 맑습니다.",
+        "쓰레기를 버렸습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_41",
+      "section": "listening",
+      "questionNumber": 41,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "장소가 변경되었다.",
+        "세미나가 취소되었다.",
+        "일정이 연기되었다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_42",
+      "section": "listening",
+      "questionNumber": 42,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "가치관의 변화와 경제적 요인입니다.",
+        "가족과 함께 사는 것이 좋습니다.",
+        "혼자 밥을 먹었습니다.",
+        "집값이 너무 비쌉니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_43",
+      "section": "listening",
+      "questionNumber": 43,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "집값이 너무 비쌉니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "혼자 밥을 먹었습니다.",
+        "가족과 함께 사는 것이 좋습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_44",
+      "section": "listening",
+      "questionNumber": 44,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "병원에 자주 갑니다.",
+        "규칙적인 운동과 명상입니다.",
+        "어제 친구와 다투었습니다.",
+        "스트레스는 몸에 해롭습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_45",
+      "section": "listening",
+      "questionNumber": 45,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 회의를 했습니다.",
+        "내일 제출하세요.",
+        "매출 증대입니다.",
+        "사무실이 넓습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_46",
+      "section": "listening",
+      "questionNumber": 46,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다.",
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_47",
+      "section": "listening",
+      "questionNumber": 47,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "새로운 일자리가 창출될 것입니다.",
+        "컴퓨터를 샀습니다.",
+        "책을 많이 읽어야 합니다.",
+        "내일 비가 올 것입니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_48",
+      "section": "listening",
+      "questionNumber": 48,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 책의 저자가 주장하는 바는 무엇입니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 시험이 있습니다.",
+        "도서관에서 빌렸습니다.",
+        "협력의 중요성입니다.",
+        "책이 매우 무겁습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_49",
+      "section": "listening",
+      "questionNumber": 49,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "일정이 연기되었다.",
+        "장소가 변경되었다.",
+        "목요일 오후에 열린다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_50",
+      "section": "listening",
+      "questionNumber": 50,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "저녁 식사가 제공된다.",
+        "수영장을 무료로 이용할 수 있다.",
+        "체크아웃은 오전 11시이다.",
+        "호텔 예약이 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_51",
+      "section": "listening",
+      "questionNumber": 51,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "장소가 변경되었다.",
+        "세미나가 취소되었다.",
+        "일정이 연기되었다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_52",
+      "section": "listening",
+      "questionNumber": 52,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "영화관이 너무 멉니다.",
+        "내일 또 볼 것입니다.",
+        "가족애의 소중함입니다.",
+        "주인공이 멋있습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_53",
+      "section": "listening",
+      "questionNumber": 53,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "장소가 변경되었다.",
+        "일정이 연기되었다.",
+        "세미나가 취소되었다.",
+        "목요일 오후에 열린다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_54",
+      "section": "listening",
+      "questionNumber": 54,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 또 볼 것입니다.",
+        "가족애의 소중함입니다.",
+        "영화관이 너무 멉니다.",
+        "주인공이 멋있습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_55",
+      "section": "listening",
+      "questionNumber": 55,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "가족애의 소중함입니다.",
+        "주인공이 멋있습니다.",
+        "내일 또 볼 것입니다.",
+        "영화관이 너무 멉니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_56",
+      "section": "listening",
+      "questionNumber": 56,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "규칙적인 운동과 명상입니다.",
+        "어제 친구와 다투었습니다.",
+        "스트레스는 몸에 해롭습니다.",
+        "병원에 자주 갑니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_57",
+      "section": "listening",
+      "questionNumber": 57,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "가치관의 변화와 경제적 요인입니다.",
+        "집값이 너무 비쌉니다.",
+        "혼자 밥을 먹었습니다.",
+        "가족과 함께 사는 것이 좋습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_58",
+      "section": "listening",
+      "questionNumber": 58,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "세미나가 취소되었다.",
+        "장소가 변경되었다.",
+        "일정이 연기되었다.",
+        "목요일 오후에 열린다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_59",
+      "section": "listening",
+      "questionNumber": 59,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "호텔 예약이 취소되었다.",
+        "저녁 식사가 제공된다.",
+        "체크아웃은 오전 11시이다.",
+        "수영장을 무료로 이용할 수 있다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_60",
+      "section": "listening",
+      "questionNumber": 60,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다.",
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_61",
+      "section": "listening",
+      "questionNumber": 61,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "컴퓨터를 샀습니다.",
+        "책을 많이 읽어야 합니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "내일 비가 올 것입니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_62",
+      "section": "listening",
+      "questionNumber": 62,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "날씨가 맑습니다.",
+        "심각한 문제라고 생각합니다.",
+        "쓰레기를 버렸습니다.",
+        "버스를 타는 것이 좋습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_63",
+      "section": "listening",
+      "questionNumber": 63,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "어제 뉴스를 봤습니다.",
+        "찬성하는 입장입니다.",
+        "교육은 중요합니다.",
+        "학교에 지각했습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_64",
+      "section": "listening",
+      "questionNumber": 64,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "가치관의 변화와 경제적 요인입니다.",
+        "집값이 너무 비쌉니다.",
+        "가족과 함께 사는 것이 좋습니다.",
+        "혼자 밥을 먹었습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_65",
+      "section": "listening",
+      "questionNumber": 65,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "쓰레기를 버렸습니다.",
+        "날씨가 맑습니다.",
+        "버스를 타는 것이 좋습니다.",
+        "심각한 문제라고 생각합니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_66",
+      "section": "listening",
+      "questionNumber": 66,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 책의 저자가 주장하는 바는 무엇입니까?)",
+      "audioUrl": null,
+      "options": [
+        "도서관에서 빌렸습니다.",
+        "책이 매우 무겁습니다.",
+        "협력의 중요성입니다.",
+        "내일 시험이 있습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_67",
+      "section": "listening",
+      "questionNumber": 67,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "컴퓨터를 샀습니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "내일 비가 올 것입니다.",
+        "책을 많이 읽어야 합니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_68",
+      "section": "listening",
+      "questionNumber": 68,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "혼자 밥을 먹었습니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "집값이 너무 비쌉니다.",
+        "가족과 함께 사는 것이 좋습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_69",
+      "section": "listening",
+      "questionNumber": 69,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "세미나가 취소되었다.",
+        "일정이 연기되었다.",
+        "목요일 오후에 열린다.",
+        "장소가 변경되었다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_70",
+      "section": "listening",
+      "questionNumber": 70,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "스트레스는 몸에 해롭습니다.",
+        "병원에 자주 갑니다.",
+        "규칙적인 운동과 명상입니다.",
+        "어제 친구와 다투었습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_71",
+      "section": "listening",
+      "questionNumber": 71,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "장소가 변경되었다.",
+        "일정이 연기되었다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_72",
+      "section": "listening",
+      "questionNumber": 72,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "호텔 예약이 취소되었다.",
+        "수영장을 무료로 이용할 수 있다.",
+        "저녁 식사가 제공된다.",
+        "체크아웃은 오전 11시이다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_73",
+      "section": "listening",
+      "questionNumber": 73,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "장소가 변경되었다.",
+        "목요일 오후에 열린다.",
+        "일정이 연기되었다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_74",
+      "section": "listening",
+      "questionNumber": 74,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 책의 저자가 주장하는 바는 무엇입니까?)",
+      "audioUrl": null,
+      "options": [
+        "협력의 중요성입니다.",
+        "책이 매우 무겁습니다.",
+        "도서관에서 빌렸습니다.",
+        "내일 시험이 있습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_75",
+      "section": "listening",
+      "questionNumber": 75,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "어제 친구와 다투었습니다.",
+        "병원에 자주 갑니다.",
+        "규칙적인 운동과 명상입니다.",
+        "스트레스는 몸에 해롭습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_76",
+      "section": "listening",
+      "questionNumber": 76,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다.",
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_77",
+      "section": "listening",
+      "questionNumber": 77,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "가족과 함께 사는 것이 좋습니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "혼자 밥을 먹었습니다.",
+        "집값이 너무 비쌉니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_78",
+      "section": "listening",
+      "questionNumber": 78,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "스트레스는 몸에 해롭습니다.",
+        "규칙적인 운동과 명상입니다.",
+        "병원에 자주 갑니다.",
+        "어제 친구와 다투었습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_79",
+      "section": "listening",
+      "questionNumber": 79,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 젊은 층을 중심으로 확산되고 있는 1인 가구 증가 현상의 원인은 무엇이라고 보십니까?)",
+      "audioUrl": null,
+      "options": [
+        "집값이 너무 비쌉니다.",
+        "가치관의 변화와 경제적 요인입니다.",
+        "가족과 함께 사는 것이 좋습니다.",
+        "혼자 밥을 먹었습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_80",
+      "section": "listening",
+      "questionNumber": 80,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "저녁 식사가 제공된다.",
+        "호텔 예약이 취소되었다.",
+        "체크아웃은 오전 11시이다.",
+        "수영장을 무료로 이용할 수 있다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_81",
+      "section": "listening",
+      "questionNumber": 81,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "내일 비가 올 것입니다.",
+        "컴퓨터를 샀습니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_82",
+      "section": "listening",
+      "questionNumber": 82,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 회의를 했습니다.",
+        "사무실이 넓습니다.",
+        "내일 제출하세요.",
+        "매출 증대입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_83",
+      "section": "listening",
+      "questionNumber": 83,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "컴퓨터를 샀습니다.",
+        "내일 비가 올 것입니다.",
+        "새로운 일자리가 창출될 것입니다.",
+        "책을 많이 읽어야 합니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_84",
+      "section": "listening",
+      "questionNumber": 84,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "일정이 연기되었다.",
+        "목요일 오후에 열린다.",
+        "세미나가 취소되었다.",
+        "장소가 변경되었다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_85",
+      "section": "listening",
+      "questionNumber": 85,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "찬성하는 입장입니다.",
+        "학교에 지각했습니다.",
+        "교육은 중요합니다.",
+        "어제 뉴스를 봤습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_86",
+      "section": "listening",
+      "questionNumber": 86,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 환경 오염 문제에 대해 어떻게 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "쓰레기를 버렸습니다.",
+        "날씨가 맑습니다.",
+        "심각한 문제라고 생각합니다.",
+        "버스를 타는 것이 좋습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_87",
+      "section": "listening",
+      "questionNumber": 87,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "내일 제출하세요.",
+        "매출 증대입니다.",
+        "어제 회의를 했습니다.",
+        "사무실이 넓습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_88",
+      "section": "listening",
+      "questionNumber": 88,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "매출 증대입니다.",
+        "사무실이 넓습니다.",
+        "어제 회의를 했습니다.",
+        "내일 제출하세요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_89",
+      "section": "listening",
+      "questionNumber": 89,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "일정이 연기되었다.",
+        "장소가 변경되었다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_90",
+      "section": "listening",
+      "questionNumber": 90,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "내일 제출하세요.",
+        "매출 증대입니다.",
+        "사무실이 넓습니다.",
+        "어제 회의를 했습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_91",
+      "section": "listening",
+      "questionNumber": 91,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 영화가 관객들에게 전하고자 하는 메시지는 무엇이라고 생각합니까?)",
+      "audioUrl": null,
+      "options": [
+        "주인공이 멋있습니다.",
+        "가족애의 소중함입니다.",
+        "영화관이 너무 멉니다.",
+        "내일 또 볼 것입니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_92",
+      "section": "listening",
+      "questionNumber": 92,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 최근 인공지능 기술의 발달로 인해 일자리가 감소할 것이라는 우려가 있습니다. 이에 대한 본인의 견해는 어떠합니까?)",
+      "audioUrl": null,
+      "options": [
+        "새로운 일자리가 창출될 것입니다.",
+        "내일 비가 올 것입니다.",
+        "책을 많이 읽어야 합니다.",
+        "컴퓨터를 샀습니다."
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_93",
+      "section": "listening",
+      "questionNumber": 93,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "일정이 연기되었다.",
+        "장소가 변경되었다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_94",
+      "section": "listening",
+      "questionNumber": 94,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "스트레스는 몸에 해롭습니다.",
+        "어제 친구와 다투었습니다.",
+        "병원에 자주 갑니다.",
+        "규칙적인 운동과 명상입니다."
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_95",
+      "section": "listening",
+      "questionNumber": 95,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 저희 호텔을 이용해 주셔서 감사합니다. 체크아웃 시간은 오전 11시입니다.)",
+      "audioUrl": null,
+      "options": [
+        "저녁 식사가 제공된다.",
+        "수영장을 무료로 이용할 수 있다.",
+        "체크아웃은 오전 11시이다.",
+        "호텔 예약이 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_96",
+      "section": "listening",
+      "questionNumber": 96,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 회의를 했습니다.",
+        "매출 증대입니다.",
+        "내일 제출하세요.",
+        "사무실이 넓습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_97",
+      "section": "listening",
+      "questionNumber": 97,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이번 프로젝트의 주요 목표는 무엇인가요?)",
+      "audioUrl": null,
+      "options": [
+        "사무실이 넓습니다.",
+        "내일 제출하세요.",
+        "매출 증대입니다.",
+        "어제 회의를 했습니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_98",
+      "section": "listening",
+      "questionNumber": 98,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 정부의 새로운 교육 정책에 대해 찬성하십니까, 반대하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "어제 뉴스를 봤습니다.",
+        "학교에 지각했습니다.",
+        "찬성하는 입장입니다.",
+        "교육은 중요합니다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_99",
+      "section": "listening",
+      "questionNumber": 99,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 현대 사회에서 스트레스를 관리하는 가장 효과적인 방법은 무엇이라고 생각하십니까?)",
+      "audioUrl": null,
+      "options": [
+        "어제 친구와 다투었습니다.",
+        "규칙적인 운동과 명상입니다.",
+        "병원에 자주 갑니다.",
+        "스트레스는 몸에 해롭습니다."
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    },
+    {
+      "id": "l2_100",
+      "section": "listening",
+      "questionNumber": 100,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 다음 주 세미나 일정이 변경되었음을 알려드립니다. 목요일 오전 10시로 연기되었습니다.)",
+      "audioUrl": null,
+      "options": [
+        "목요일 오후에 열린다.",
+        "장소가 변경되었다.",
+        "일정이 연기되었다.",
+        "세미나가 취소되었다."
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 어휘 및 맥락을 파악하는 문제입니다."
+    }
+  ],
+  "reading": [
+    {
+      "id": "r2_1",
+      "section": "reading",
+      "questionNumber": 1,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "마련하고 있다",
+        "포기하고 있다",
+        "무시하고 있다",
+        "파괴하고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_2",
+      "section": "reading",
+      "questionNumber": 2,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "망각하는",
+        "왜곡하는",
+        "인식하는",
+        "부정하는"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_3",
+      "section": "reading",
+      "questionNumber": 3,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "회복될",
+        "강화될",
+        "유지될",
+        "약화될"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_4",
+      "section": "reading",
+      "questionNumber": 4,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "왜곡하는",
+        "부정하는",
+        "망각하는",
+        "인식하는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_5",
+      "section": "reading",
+      "questionNumber": 5,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "무시하고 있다",
+        "마련하고 있다",
+        "포기하고 있다",
+        "파괴하고 있다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_6",
+      "section": "reading",
+      "questionNumber": 6,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "무시",
+        "거부",
+        "차별",
+        "소양"
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_7",
+      "section": "reading",
+      "questionNumber": 7,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "위험하다",
+        "여유롭다",
+        "불필요하다",
+        "시급하다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_8",
+      "section": "reading",
+      "questionNumber": 8,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "시급하다",
+        "불필요하다",
+        "위험하다",
+        "여유롭다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_9",
+      "section": "reading",
+      "questionNumber": 9,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "파괴하고 있다",
+        "포기하고 있다",
+        "무시하고 있다",
+        "마련하고 있다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_10",
+      "section": "reading",
+      "questionNumber": 10,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "약화될",
+        "유지될",
+        "회복될",
+        "강화될"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_11",
+      "section": "reading",
+      "questionNumber": 11,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "강화될",
+        "회복될",
+        "약화될",
+        "유지될"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_12",
+      "section": "reading",
+      "questionNumber": 12,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "발생하고 있다",
+        "무시되고 있다",
+        "감소하고 있다",
+        "해결되고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_13",
+      "section": "reading",
+      "questionNumber": 13,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "왜곡하는",
+        "포기하는",
+        "전달하는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_14",
+      "section": "reading",
+      "questionNumber": 14,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "강화될",
+        "유지될",
+        "약화될",
+        "회복될"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_15",
+      "section": "reading",
+      "questionNumber": 15,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "소양",
+        "차별",
+        "무시",
+        "거부"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_16",
+      "section": "reading",
+      "questionNumber": 16,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "망각하는",
+        "인식하는",
+        "부정하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_17",
+      "section": "reading",
+      "questionNumber": 17,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "결과이다",
+        "원인이다",
+        "요소이다",
+        "장애물이다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_18",
+      "section": "reading",
+      "questionNumber": 18,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "무시되고 있다",
+        "감소하고 있다",
+        "해결되고 있다",
+        "발생하고 있다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_19",
+      "section": "reading",
+      "questionNumber": 19,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "불필요하다",
+        "위험하다",
+        "시급하다",
+        "여유롭다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_20",
+      "section": "reading",
+      "questionNumber": 20,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "유지될",
+        "강화될",
+        "약화될",
+        "회복될"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_21",
+      "section": "reading",
+      "questionNumber": 21,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "위험하다",
+        "여유롭다",
+        "불필요하다",
+        "시급하다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_22",
+      "section": "reading",
+      "questionNumber": 22,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "강화될",
+        "유지될",
+        "약화될",
+        "회복될"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_23",
+      "section": "reading",
+      "questionNumber": 23,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "거부",
+        "차별",
+        "무시",
+        "소양"
+      ],
+      "correctAnswer": 3,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_24",
+      "section": "reading",
+      "questionNumber": 24,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "하지만",
+        "비록",
+        "이는",
+        "설령"
+      ],
+      "correctAnswer": 2,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_25",
+      "section": "reading",
+      "questionNumber": 25,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "무시하고 있다",
+        "마련하고 있다",
+        "파괴하고 있다",
+        "포기하고 있다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_26",
+      "section": "reading",
+      "questionNumber": 26,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "감소시킬",
+        "소멸시킬",
+        "파괴할",
+        "창출할"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_27",
+      "section": "reading",
+      "questionNumber": 27,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "감소시킬",
+        "파괴할",
+        "소멸시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_28",
+      "section": "reading",
+      "questionNumber": 28,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "해결되고 있다",
+        "발생하고 있다",
+        "무시되고 있다",
+        "감소하고 있다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_29",
+      "section": "reading",
+      "questionNumber": 29,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "거부",
+        "소양",
+        "차별",
+        "무시"
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_30",
+      "section": "reading",
+      "questionNumber": 30,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "감소시킬",
+        "파괴할",
+        "소멸시킬",
+        "창출할"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_31",
+      "section": "reading",
+      "questionNumber": 31,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "결과이다",
+        "요소이다",
+        "원인이다",
+        "장애물이다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_32",
+      "section": "reading",
+      "questionNumber": 32,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "무시",
+        "차별",
+        "소양",
+        "거부"
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_33",
+      "section": "reading",
+      "questionNumber": 33,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "전달하는",
+        "왜곡하는",
+        "포기하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_34",
+      "section": "reading",
+      "questionNumber": 34,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "전달하는",
+        "왜곡하는",
+        "포기하는",
+        "은폐하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_35",
+      "section": "reading",
+      "questionNumber": 35,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "포기하고 있다",
+        "파괴하고 있다",
+        "마련하고 있다",
+        "무시하고 있다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_36",
+      "section": "reading",
+      "questionNumber": 36,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "포기하는",
+        "전달하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_37",
+      "section": "reading",
+      "questionNumber": 37,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "왜곡하는",
+        "전달하는",
+        "은폐하는",
+        "포기하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_38",
+      "section": "reading",
+      "questionNumber": 38,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "감소시킬",
+        "파괴할",
+        "소멸시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_39",
+      "section": "reading",
+      "questionNumber": 39,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "소멸시킬",
+        "파괴할",
+        "감소시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_40",
+      "section": "reading",
+      "questionNumber": 40,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "소양",
+        "차별",
+        "거부",
+        "무시"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_41",
+      "section": "reading",
+      "questionNumber": 41,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "시급하다",
+        "여유롭다",
+        "위험하다",
+        "불필요하다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_42",
+      "section": "reading",
+      "questionNumber": 42,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "인식하는",
+        "부정하는",
+        "망각하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_43",
+      "section": "reading",
+      "questionNumber": 43,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "원인이다",
+        "요소이다",
+        "결과이다",
+        "장애물이다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_44",
+      "section": "reading",
+      "questionNumber": 44,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "비록",
+        "설령",
+        "하지만",
+        "이는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_45",
+      "section": "reading",
+      "questionNumber": 45,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "발생하고 있다",
+        "무시되고 있다",
+        "해결되고 있다",
+        "감소하고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_46",
+      "section": "reading",
+      "questionNumber": 46,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "인식하는",
+        "망각하는",
+        "부정하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_47",
+      "section": "reading",
+      "questionNumber": 47,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "장애물이다",
+        "결과이다",
+        "요소이다",
+        "원인이다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_48",
+      "section": "reading",
+      "questionNumber": 48,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "설령",
+        "이는",
+        "비록",
+        "하지만"
+      ],
+      "correctAnswer": 1,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_49",
+      "section": "reading",
+      "questionNumber": 49,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "불필요하다",
+        "시급하다",
+        "위험하다",
+        "여유롭다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_50",
+      "section": "reading",
+      "questionNumber": 50,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "소멸시킬",
+        "파괴할",
+        "창출할",
+        "감소시킬"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_51",
+      "section": "reading",
+      "questionNumber": 51,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "약화될",
+        "강화될",
+        "회복될",
+        "유지될"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_52",
+      "section": "reading",
+      "questionNumber": 52,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "불필요하다",
+        "여유롭다",
+        "시급하다",
+        "위험하다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_53",
+      "section": "reading",
+      "questionNumber": 53,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "소멸시킬",
+        "파괴할",
+        "감소시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_54",
+      "section": "reading",
+      "questionNumber": 54,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "왜곡하는",
+        "전달하는",
+        "포기하는"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_55",
+      "section": "reading",
+      "questionNumber": 55,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "왜곡하는",
+        "포기하는",
+        "전달하는",
+        "은폐하는"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_56",
+      "section": "reading",
+      "questionNumber": 56,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "감소시킬",
+        "파괴할",
+        "소멸시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_57",
+      "section": "reading",
+      "questionNumber": 57,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "원인이다",
+        "장애물이다",
+        "결과이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_58",
+      "section": "reading",
+      "questionNumber": 58,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "장애물이다",
+        "결과이다",
+        "원인이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_59",
+      "section": "reading",
+      "questionNumber": 59,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "강화될",
+        "유지될",
+        "회복될",
+        "약화될"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_60",
+      "section": "reading",
+      "questionNumber": 60,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "파괴할",
+        "감소시킬",
+        "창출할",
+        "소멸시킬"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_61",
+      "section": "reading",
+      "questionNumber": 61,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "장애물이다",
+        "요소이다",
+        "원인이다",
+        "결과이다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_62",
+      "section": "reading",
+      "questionNumber": 62,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "소양",
+        "거부",
+        "무시",
+        "차별"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_63",
+      "section": "reading",
+      "questionNumber": 63,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "소양",
+        "무시",
+        "차별",
+        "거부"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_64",
+      "section": "reading",
+      "questionNumber": 64,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "마련하고 있다",
+        "무시하고 있다",
+        "포기하고 있다",
+        "파괴하고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_65",
+      "section": "reading",
+      "questionNumber": 65,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "왜곡하는",
+        "인식하는",
+        "망각하는",
+        "부정하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_66",
+      "section": "reading",
+      "questionNumber": 66,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "왜곡하는",
+        "포기하는",
+        "전달하는",
+        "은폐하는"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_67",
+      "section": "reading",
+      "questionNumber": 67,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "왜곡하는",
+        "포기하는",
+        "전달하는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_68",
+      "section": "reading",
+      "questionNumber": 68,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "설령",
+        "이는",
+        "비록",
+        "하지만"
+      ],
+      "correctAnswer": 1,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_69",
+      "section": "reading",
+      "questionNumber": 69,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "해결되고 있다",
+        "감소하고 있다",
+        "무시되고 있다",
+        "발생하고 있다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_70",
+      "section": "reading",
+      "questionNumber": 70,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "하지만",
+        "설령",
+        "이는",
+        "비록"
+      ],
+      "correctAnswer": 2,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_71",
+      "section": "reading",
+      "questionNumber": 71,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "소멸시킬",
+        "감소시킬",
+        "파괴할"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_72",
+      "section": "reading",
+      "questionNumber": 72,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "발생하고 있다",
+        "해결되고 있다",
+        "감소하고 있다",
+        "무시되고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_73",
+      "section": "reading",
+      "questionNumber": 73,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "인식하는",
+        "왜곡하는",
+        "망각하는",
+        "부정하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_74",
+      "section": "reading",
+      "questionNumber": 74,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "결과이다",
+        "장애물이다",
+        "원인이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_75",
+      "section": "reading",
+      "questionNumber": 75,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도시 집중화 현상으로 인해 교통 체증, 주택 부족, 환경 오염 등 다양한 도시 문제가 (    ).",
+      "options": [
+        "해결되고 있다",
+        "감소하고 있다",
+        "무시되고 있다",
+        "발생하고 있다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_76",
+      "section": "reading",
+      "questionNumber": 76,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "장애물이다",
+        "요소이다",
+        "결과이다",
+        "원인이다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_77",
+      "section": "reading",
+      "questionNumber": 77,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "회복될",
+        "유지될",
+        "강화될",
+        "약화될"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_78",
+      "section": "reading",
+      "questionNumber": 78,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "창출할",
+        "감소시킬",
+        "파괴할",
+        "소멸시킬"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_79",
+      "section": "reading",
+      "questionNumber": 79,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "원인이다",
+        "결과이다",
+        "장애물이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_80",
+      "section": "reading",
+      "questionNumber": 80,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "포기하는",
+        "왜곡하는",
+        "전달하는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_81",
+      "section": "reading",
+      "questionNumber": 81,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "무시하고 있다",
+        "마련하고 있다",
+        "포기하고 있다",
+        "파괴하고 있다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_82",
+      "section": "reading",
+      "questionNumber": 82,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "문화의 다양성을 존중하는 태도는 현대 사회를 살아가는 세계 시민으로서 갖추어야 할 기본적인 (    ) 중 하나이다.",
+      "options": [
+        "소양",
+        "거부",
+        "차별",
+        "무시"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 명사 어휘"
+    },
+    {
+      "id": "r2_83",
+      "section": "reading",
+      "questionNumber": 83,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "불필요하다",
+        "시급하다",
+        "여유롭다",
+        "위험하다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_84",
+      "section": "reading",
+      "questionNumber": 84,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "장애물이다",
+        "원인이다",
+        "결과이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_85",
+      "section": "reading",
+      "questionNumber": 85,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "인식하는",
+        "부정하는",
+        "망각하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_86",
+      "section": "reading",
+      "questionNumber": 86,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "경제 성장률이 둔화되고 있는 가운데, 정부는 새로운 일자리 창출을 위한 대책을 (    ).",
+      "options": [
+        "마련하고 있다",
+        "포기하고 있다",
+        "파괴하고 있다",
+        "무시하고 있다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "고급 동사 어휘"
+    },
+    {
+      "id": "r2_87",
+      "section": "reading",
+      "questionNumber": 87,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "감소시킬",
+        "소멸시킬",
+        "창출할",
+        "파괴할"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_88",
+      "section": "reading",
+      "questionNumber": 88,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저출산 고령화 현상이 심화되면서 생산 가능 인구가 감소하고 있다. 이로 인해 경제 성장의 잠재력이 (    ) 우려가 제기되고 있다.",
+      "options": [
+        "약화될",
+        "유지될",
+        "회복될",
+        "강화될"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_89",
+      "section": "reading",
+      "questionNumber": 89,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "위험하다",
+        "시급하다",
+        "여유롭다",
+        "불필요하다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_90",
+      "section": "reading",
+      "questionNumber": 90,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 인공지능 기술이 빠르게 발전하면서, 인간의 일자리를 위협할 것이라는 우려와 함께 새로운 가치를 (    ) 것이라는 기대가 공존하고 있다.",
+      "options": [
+        "소멸시킬",
+        "감소시킬",
+        "파괴할",
+        "창출할"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_91",
+      "section": "reading",
+      "questionNumber": 91,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "장애물이다",
+        "요소이다",
+        "결과이다",
+        "원인이다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "명사 어휘 추론"
+    },
+    {
+      "id": "r2_92",
+      "section": "reading",
+      "questionNumber": 92,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "은폐하는",
+        "전달하는",
+        "포기하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_93",
+      "section": "reading",
+      "questionNumber": 93,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "왜곡하는",
+        "전달하는",
+        "은폐하는",
+        "포기하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_94",
+      "section": "reading",
+      "questionNumber": 94,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "망각하는",
+        "인식하는",
+        "왜곡하는",
+        "부정하는"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_95",
+      "section": "reading",
+      "questionNumber": 95,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "최근 스마트폰 사용 시간이 길어지면서 수면 부족을 호소하는 현대인들이 늘고 있다. (    ) 스마트폰 화면에서 나오는 푸른빛이 수면 호르몬 분비를 방해하기 때문이다.",
+      "options": [
+        "하지만",
+        "비록",
+        "설령",
+        "이는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 추론"
+    },
+    {
+      "id": "r2_96",
+      "section": "reading",
+      "questionNumber": 96,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "지구 온난화로 인해 해수면이 상승하고 기상이변이 잦아지고 있다. 이러한 환경 문제에 대처하기 위해서는 국제적인 공조가 (    ).",
+      "options": [
+        "시급하다",
+        "불필요하다",
+        "위험하다",
+        "여유롭다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘"
+    },
+    {
+      "id": "r2_97",
+      "section": "reading",
+      "questionNumber": 97,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "현대 예술은 단순히 아름다움을 추구하는 것을 넘어, 사회 문제에 대한 비판적 메시지를 (    ) 역할을 하기도 한다.",
+      "options": [
+        "전달하는",
+        "은폐하는",
+        "왜곡하는",
+        "포기하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_98",
+      "section": "reading",
+      "questionNumber": 98,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "왜곡하는",
+        "망각하는",
+        "부정하는",
+        "인식하는"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_99",
+      "section": "reading",
+      "questionNumber": 99,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "역사를 잊은 민족에게 미래는 없다는 말이 있다. 과거의 실수를 되풀이하지 않기 위해서는 역사를 올바르게 (    ) 것이 중요하다.",
+      "options": [
+        "인식하는",
+        "부정하는",
+        "망각하는",
+        "왜곡하는"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 추론"
+    },
+    {
+      "id": "r2_100",
+      "section": "reading",
+      "questionNumber": 100,
+      "type": "passage_mcq",
+      "questionText": "다음 글을 읽고 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "인간은 사회적 동물이다. 따라서 타인과의 소통과 협력은 필수불가결한 (    ).",
+      "options": [
+        "요소이다",
+        "장애물이다",
+        "결과이다",
+        "원인이다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "명사 어휘 추론"
+    }
+  ]
+}

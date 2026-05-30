@@ -1,0 +1,3206 @@
+{
+  "listening": [
+    {
+      "id": "l_1",
+      "section": "listening",
+      "questionNumber": 1,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비가 와요.",
+        "비빔밥을 좋아해요.",
+        "동생이 있어요.",
+        "여기 앉으세요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_2",
+      "section": "listening",
+      "questionNumber": 2,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "시계예요.",
+        "내일 가요.",
+        "영화를 봤어요.",
+        "아니요, 없어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_3",
+      "section": "listening",
+      "questionNumber": 3,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 갔어요.",
+        "시계가 비싸요.",
+        "비가 오고 추워요.",
+        "여름을 좋아해요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_4",
+      "section": "listening",
+      "questionNumber": 4,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "친구예요.",
+        "학생이에요.",
+        "재미있어요.",
+        "도서관이에요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_5",
+      "section": "listening",
+      "questionNumber": 5,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "여기 앉으세요.",
+        "비가 와요.",
+        "비빔밥을 좋아해요.",
+        "동생이 있어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_6",
+      "section": "listening",
+      "questionNumber": 6,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 오늘 무슨 요일이에요?)",
+      "audioUrl": null,
+      "options": [
+        "오후예요.",
+        "10월이에요.",
+        "내일 만나요.",
+        "수요일이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '오늘 무슨 요일이에요?'에 대한 알맞은 대답은 '수요일이에요.'입니다."
+    },
+    {
+      "id": "l_7",
+      "section": "listening",
+      "questionNumber": 7,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "한국어예요.",
+        "학교에 가요.",
+        "친구가 와요.",
+        "밥을 먹어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_8",
+      "section": "listening",
+      "questionNumber": 8,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "시계예요.",
+        "영화를 봤어요.",
+        "아니요, 없어요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_9",
+      "section": "listening",
+      "questionNumber": 9,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "도서관이에요.",
+        "학생이에요.",
+        "재미있어요.",
+        "친구예요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_10",
+      "section": "listening",
+      "questionNumber": 10,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "영화를 봤어요.",
+        "아니요, 없어요.",
+        "내일 가요.",
+        "시계예요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_11",
+      "section": "listening",
+      "questionNumber": 11,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 타요.",
+        "사과를 먹어요.",
+        "친구를 만나요.",
+        "집이 커요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_12",
+      "section": "listening",
+      "questionNumber": 12,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어제 왜 학교에 안 왔어요?)",
+      "audioUrl": null,
+      "options": [
+        "숙제를 다 했어요.",
+        "내일 갈 거예요.",
+        "자동차가 막혀요.",
+        "아파서 못 왔어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '어제 왜 학교에 안 왔어요?'에 대한 알맞은 대답은 '아파서 못 왔어요.'입니다."
+    },
+    {
+      "id": "l_13",
+      "section": "listening",
+      "questionNumber": 13,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비가 와요.",
+        "동생이 있어요.",
+        "비빔밥을 좋아해요.",
+        "여기 앉으세요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_14",
+      "section": "listening",
+      "questionNumber": 14,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비가 와요.",
+        "여기 앉으세요.",
+        "비빔밥을 좋아해요.",
+        "동생이 있어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_15",
+      "section": "listening",
+      "questionNumber": 15,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "지하철을 타요.",
+        "30분 걸려요.",
+        "친구가 가요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_16",
+      "section": "listening",
+      "questionNumber": 16,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "사과를 먹어요.",
+        "버스를 타요.",
+        "집이 커요.",
+        "친구를 만나요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_17",
+      "section": "listening",
+      "questionNumber": 17,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 생일이 언제예요?)",
+      "audioUrl": null,
+      "options": [
+        "내일 봐요.",
+        "오전 10시예요.",
+        "10월 5일이에요.",
+        "스무 살이에요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '생일이 언제예요?'에 대한 알맞은 대답은 '10월 5일이에요.'입니다."
+    },
+    {
+      "id": "l_18",
+      "section": "listening",
+      "questionNumber": 18,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "가방이 예뻐요.",
+        "모자를 썼어요.",
+        "파란색을 좋아해요.",
+        "사과가 맛있어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_19",
+      "section": "listening",
+      "questionNumber": 19,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "친구예요.",
+        "도서관이에요.",
+        "재미있어요.",
+        "학생이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_20",
+      "section": "listening",
+      "questionNumber": 20,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 생일이 언제예요?)",
+      "audioUrl": null,
+      "options": [
+        "스무 살이에요.",
+        "오전 10시예요.",
+        "10월 5일이에요.",
+        "내일 봐요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '생일이 언제예요?'에 대한 알맞은 대답은 '10월 5일이에요.'입니다."
+    },
+    {
+      "id": "l_21",
+      "section": "listening",
+      "questionNumber": 21,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 탔어요.",
+        "아니요, 괜찮아요.",
+        "병원에 가요.",
+        "음악을 들어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_22",
+      "section": "listening",
+      "questionNumber": 22,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비가 와요.",
+        "동생이 있어요.",
+        "여기 앉으세요.",
+        "비빔밥을 좋아해요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_23",
+      "section": "listening",
+      "questionNumber": 23,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 책은 누구의 책이에요?)",
+      "audioUrl": null,
+      "options": [
+        "어제 샀어요.",
+        "도서관에 있어요.",
+        "제 책이에요.",
+        "한국어 책이에요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '이 책은 누구의 책이에요?'에 대한 알맞은 대답은 '제 책이에요.'입니다."
+    },
+    {
+      "id": "l_24",
+      "section": "listening",
+      "questionNumber": 24,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 가족이 몇 명이에요?)",
+      "audioUrl": null,
+      "options": [
+        "동생이 작아요.",
+        "네 명이에요.",
+        "집에 가요.",
+        "오후에 만나요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '가족이 몇 명이에요?'에 대한 알맞은 대답은 '네 명이에요.'입니다."
+    },
+    {
+      "id": "l_25",
+      "section": "listening",
+      "questionNumber": 25,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 한국어를 배운 지 얼마나 됐어요?)",
+      "audioUrl": null,
+      "options": [
+        "1년 됐어요.",
+        "한국에 가요.",
+        "재미있어요.",
+        "도서관에서 공부해요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '한국어를 배운 지 얼마나 됐어요?'에 대한 알맞은 대답은 '1년 됐어요.'입니다."
+    },
+    {
+      "id": "l_26",
+      "section": "listening",
+      "questionNumber": 26,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "친구예요.",
+        "학생이에요.",
+        "도서관이에요.",
+        "재미있어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_27",
+      "section": "listening",
+      "questionNumber": 27,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "친구예요.",
+        "재미있어요.",
+        "학생이에요.",
+        "도서관이에요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_28",
+      "section": "listening",
+      "questionNumber": 28,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이거 얼마예요?)",
+      "audioUrl": null,
+      "options": [
+        "한 시예요.",
+        "맛있어요.",
+        "만 원이에요.",
+        "도서관에 있어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '이거 얼마예요?'에 대한 알맞은 대답은 '만 원이에요.'입니다."
+    },
+    {
+      "id": "l_29",
+      "section": "listening",
+      "questionNumber": 29,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "가족하고 가요.",
+        "매일 운동해요.",
+        "방에 있어요.",
+        "제가 할게요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_30",
+      "section": "listening",
+      "questionNumber": 30,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 탔어요.",
+        "음악을 들어요.",
+        "아니요, 괜찮아요.",
+        "병원에 가요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_31",
+      "section": "listening",
+      "questionNumber": 31,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "매일 운동해요.",
+        "가족하고 가요.",
+        "방에 있어요.",
+        "제가 할게요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_32",
+      "section": "listening",
+      "questionNumber": 32,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "사과를 먹어요.",
+        "집이 커요.",
+        "버스를 타요.",
+        "친구를 만나요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_33",
+      "section": "listening",
+      "questionNumber": 33,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "친구가 와요.",
+        "한국어예요.",
+        "학교에 가요.",
+        "밥을 먹어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_34",
+      "section": "listening",
+      "questionNumber": 34,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "친구가 가요.",
+        "30분 걸려요.",
+        "지하철을 타요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_35",
+      "section": "listening",
+      "questionNumber": 35,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "여름을 좋아해요.",
+        "비가 오고 추워요.",
+        "어제 갔어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_36",
+      "section": "listening",
+      "questionNumber": 36,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 점심에 뭐 먹을까요?)",
+      "audioUrl": null,
+      "options": [
+        "저녁에 봐요.",
+        "지금 두 시예요.",
+        "불고기를 먹읍시다.",
+        "도서관에서 만나요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '점심에 뭐 먹을까요?'에 대한 알맞은 대답은 '불고기를 먹읍시다.'입니다."
+    },
+    {
+      "id": "l_37",
+      "section": "listening",
+      "questionNumber": 37,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "비가 오고 추워요.",
+        "어제 갔어요.",
+        "여름을 좋아해요.",
+        "시계가 비싸요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_38",
+      "section": "listening",
+      "questionNumber": 38,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "모자를 썼어요.",
+        "파란색을 좋아해요.",
+        "가방이 예뻐요.",
+        "사과가 맛있어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_39",
+      "section": "listening",
+      "questionNumber": 39,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 가방 안에 뭐가 있어요?)",
+      "audioUrl": null,
+      "options": [
+        "책하고 펜이 있어요.",
+        "내일 학교에 가요.",
+        "가방이 비싸요.",
+        "버스를 탔어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '가방 안에 뭐가 있어요?'에 대한 알맞은 대답은 '책하고 펜이 있어요.'입니다."
+    },
+    {
+      "id": "l_40",
+      "section": "listening",
+      "questionNumber": 40,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "사과를 먹어요.",
+        "집이 커요.",
+        "버스를 타요.",
+        "친구를 만나요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_41",
+      "section": "listening",
+      "questionNumber": 41,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "재미있어요.",
+        "도서관이에요.",
+        "친구예요.",
+        "학생이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_42",
+      "section": "listening",
+      "questionNumber": 42,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어제 왜 학교에 안 왔어요?)",
+      "audioUrl": null,
+      "options": [
+        "아파서 못 왔어요.",
+        "숙제를 다 했어요.",
+        "자동차가 막혀요.",
+        "내일 갈 거예요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '어제 왜 학교에 안 왔어요?'에 대한 알맞은 대답은 '아파서 못 왔어요.'입니다."
+    },
+    {
+      "id": "l_43",
+      "section": "listening",
+      "questionNumber": 43,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "아니요, 괜찮아요.",
+        "버스를 탔어요.",
+        "병원에 가요.",
+        "음악을 들어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_44",
+      "section": "listening",
+      "questionNumber": 44,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "음악을 들어요.",
+        "아니요, 괜찮아요.",
+        "병원에 가요.",
+        "버스를 탔어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_45",
+      "section": "listening",
+      "questionNumber": 45,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "친구를 만나요.",
+        "사과를 먹어요.",
+        "버스를 타요.",
+        "집이 커요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_46",
+      "section": "listening",
+      "questionNumber": 46,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 내일 뭐 해요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 타요.",
+        "친구를 만나요.",
+        "사과를 먹어요.",
+        "집이 커요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '내일 뭐 해요?'에 대한 알맞은 대답은 '친구를 만나요.'입니다."
+    },
+    {
+      "id": "l_47",
+      "section": "listening",
+      "questionNumber": 47,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "가족하고 가요.",
+        "방에 있어요.",
+        "매일 운동해요.",
+        "제가 할게요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_48",
+      "section": "listening",
+      "questionNumber": 48,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 점심에 뭐 먹을까요?)",
+      "audioUrl": null,
+      "options": [
+        "지금 두 시예요.",
+        "도서관에서 만나요.",
+        "불고기를 먹읍시다.",
+        "저녁에 봐요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '점심에 뭐 먹을까요?'에 대한 알맞은 대답은 '불고기를 먹읍시다.'입니다."
+    },
+    {
+      "id": "l_49",
+      "section": "listening",
+      "questionNumber": 49,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "시계예요.",
+        "내일 가요.",
+        "아니요, 없어요.",
+        "영화를 봤어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_50",
+      "section": "listening",
+      "questionNumber": 50,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 가방 안에 뭐가 있어요?)",
+      "audioUrl": null,
+      "options": [
+        "가방이 비싸요.",
+        "내일 학교에 가요.",
+        "버스를 탔어요.",
+        "책하고 펜이 있어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '가방 안에 뭐가 있어요?'에 대한 알맞은 대답은 '책하고 펜이 있어요.'입니다."
+    },
+    {
+      "id": "l_51",
+      "section": "listening",
+      "questionNumber": 51,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "여름을 좋아해요.",
+        "어제 갔어요.",
+        "비가 오고 추워요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_52",
+      "section": "listening",
+      "questionNumber": 52,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "여름을 좋아해요.",
+        "어제 갔어요.",
+        "비가 오고 추워요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_53",
+      "section": "listening",
+      "questionNumber": 53,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "재미있어요.",
+        "친구예요.",
+        "도서관이에요.",
+        "학생이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_54",
+      "section": "listening",
+      "questionNumber": 54,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 여기서 시청까지 얼마나 걸려요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 타세요.",
+        "30분쯤 걸려요.",
+        "오전 9시예요.",
+        "저기 있어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '여기서 시청까지 얼마나 걸려요?'에 대한 알맞은 대답은 '30분쯤 걸려요.'입니다."
+    },
+    {
+      "id": "l_55",
+      "section": "listening",
+      "questionNumber": 55,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "비가 오고 추워요.",
+        "어제 갔어요.",
+        "여름을 좋아해요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_56",
+      "section": "listening",
+      "questionNumber": 56,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "아니요, 없어요.",
+        "시계예요.",
+        "영화를 봤어요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_57",
+      "section": "listening",
+      "questionNumber": 57,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "가족하고 가요.",
+        "매일 운동해요.",
+        "방에 있어요.",
+        "제가 할게요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_58",
+      "section": "listening",
+      "questionNumber": 58,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "파란색을 좋아해요.",
+        "가방이 예뻐요.",
+        "사과가 맛있어요.",
+        "모자를 썼어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_59",
+      "section": "listening",
+      "questionNumber": 59,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "아니요, 괜찮아요.",
+        "음악을 들어요.",
+        "병원에 가요.",
+        "버스를 탔어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_60",
+      "section": "listening",
+      "questionNumber": 60,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "여름을 좋아해요.",
+        "어제 갔어요.",
+        "비가 오고 추워요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_61",
+      "section": "listening",
+      "questionNumber": 61,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비빔밥을 좋아해요.",
+        "비가 와요.",
+        "동생이 있어요.",
+        "여기 앉으세요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_62",
+      "section": "listening",
+      "questionNumber": 62,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "비가 오고 추워요.",
+        "어제 갔어요.",
+        "여름을 좋아해요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_63",
+      "section": "listening",
+      "questionNumber": 63,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "지하철을 타요.",
+        "내일 가요.",
+        "친구가 가요.",
+        "30분 걸려요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_64",
+      "section": "listening",
+      "questionNumber": 64,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "모자를 썼어요.",
+        "사과가 맛있어요.",
+        "파란색을 좋아해요.",
+        "가방이 예뻐요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_65",
+      "section": "listening",
+      "questionNumber": 65,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 여기서 시청까지 얼마나 걸려요?)",
+      "audioUrl": null,
+      "options": [
+        "오전 9시예요.",
+        "저기 있어요.",
+        "30분쯤 걸려요.",
+        "버스를 타세요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '여기서 시청까지 얼마나 걸려요?'에 대한 알맞은 대답은 '30분쯤 걸려요.'입니다."
+    },
+    {
+      "id": "l_66",
+      "section": "listening",
+      "questionNumber": 66,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이 책은 누구의 책이에요?)",
+      "audioUrl": null,
+      "options": [
+        "제 책이에요.",
+        "도서관에 있어요.",
+        "한국어 책이에요.",
+        "어제 샀어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '이 책은 누구의 책이에요?'에 대한 알맞은 대답은 '제 책이에요.'입니다."
+    },
+    {
+      "id": "l_67",
+      "section": "listening",
+      "questionNumber": 67,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 음식을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "비빔밥을 좋아해요.",
+        "여기 앉으세요.",
+        "동생이 있어요.",
+        "비가 와요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '무슨 음식을 좋아해요?'에 대한 알맞은 대답은 '비빔밥을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_68",
+      "section": "listening",
+      "questionNumber": 68,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "가족하고 가요.",
+        "매일 운동해요.",
+        "제가 할게요.",
+        "방에 있어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_69",
+      "section": "listening",
+      "questionNumber": 69,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "파란색을 좋아해요.",
+        "가방이 예뻐요.",
+        "사과가 맛있어요.",
+        "모자를 썼어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_70",
+      "section": "listening",
+      "questionNumber": 70,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 생일이 언제예요?)",
+      "audioUrl": null,
+      "options": [
+        "내일 봐요.",
+        "스무 살이에요.",
+        "10월 5일이에요.",
+        "오전 10시예요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '생일이 언제예요?'에 대한 알맞은 대답은 '10월 5일이에요.'입니다."
+    },
+    {
+      "id": "l_71",
+      "section": "listening",
+      "questionNumber": 71,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "아니요, 없어요.",
+        "내일 가요.",
+        "시계예요.",
+        "영화를 봤어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_72",
+      "section": "listening",
+      "questionNumber": 72,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 한국어를 배운 지 얼마나 됐어요?)",
+      "audioUrl": null,
+      "options": [
+        "한국에 가요.",
+        "재미있어요.",
+        "1년 됐어요.",
+        "도서관에서 공부해요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '한국어를 배운 지 얼마나 됐어요?'에 대한 알맞은 대답은 '1년 됐어요.'입니다."
+    },
+    {
+      "id": "l_73",
+      "section": "listening",
+      "questionNumber": 73,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "친구가 와요.",
+        "한국어예요.",
+        "밥을 먹어요.",
+        "학교에 가요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_74",
+      "section": "listening",
+      "questionNumber": 74,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 오늘 무슨 요일이에요?)",
+      "audioUrl": null,
+      "options": [
+        "10월이에요.",
+        "수요일이에요.",
+        "오후예요.",
+        "내일 만나요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '오늘 무슨 요일이에요?'에 대한 알맞은 대답은 '수요일이에요.'입니다."
+    },
+    {
+      "id": "l_75",
+      "section": "listening",
+      "questionNumber": 75,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 직업이 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "도서관이에요.",
+        "학생이에요.",
+        "재미있어요.",
+        "친구예요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '직업이 뭐예요?'에 대한 알맞은 대답은 '학생이에요.'입니다."
+    },
+    {
+      "id": "l_76",
+      "section": "listening",
+      "questionNumber": 76,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 무슨 색깔을 좋아해요?)",
+      "audioUrl": null,
+      "options": [
+        "모자를 썼어요.",
+        "파란색을 좋아해요.",
+        "가방이 예뻐요.",
+        "사과가 맛있어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '무슨 색깔을 좋아해요?'에 대한 알맞은 대답은 '파란색을 좋아해요.'입니다."
+    },
+    {
+      "id": "l_77",
+      "section": "listening",
+      "questionNumber": 77,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "시계가 비싸요.",
+        "비가 오고 추워요.",
+        "여름을 좋아해요.",
+        "어제 갔어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_78",
+      "section": "listening",
+      "questionNumber": 78,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "한국어예요.",
+        "학교에 가요.",
+        "친구가 와요.",
+        "밥을 먹어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_79",
+      "section": "listening",
+      "questionNumber": 79,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이거 얼마예요?)",
+      "audioUrl": null,
+      "options": [
+        "도서관에 있어요.",
+        "맛있어요.",
+        "한 시예요.",
+        "만 원이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '이거 얼마예요?'에 대한 알맞은 대답은 '만 원이에요.'입니다."
+    },
+    {
+      "id": "l_80",
+      "section": "listening",
+      "questionNumber": 80,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "30분 걸려요.",
+        "지하철을 타요.",
+        "내일 가요.",
+        "친구가 가요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_81",
+      "section": "listening",
+      "questionNumber": 81,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 한국어를 배운 지 얼마나 됐어요?)",
+      "audioUrl": null,
+      "options": [
+        "재미있어요.",
+        "1년 됐어요.",
+        "한국에 가요.",
+        "도서관에서 공부해요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '한국어를 배운 지 얼마나 됐어요?'에 대한 알맞은 대답은 '1년 됐어요.'입니다."
+    },
+    {
+      "id": "l_82",
+      "section": "listening",
+      "questionNumber": 82,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 한국어를 배운 지 얼마나 됐어요?)",
+      "audioUrl": null,
+      "options": [
+        "한국에 가요.",
+        "도서관에서 공부해요.",
+        "재미있어요.",
+        "1년 됐어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '한국어를 배운 지 얼마나 됐어요?'에 대한 알맞은 대답은 '1년 됐어요.'입니다."
+    },
+    {
+      "id": "l_83",
+      "section": "listening",
+      "questionNumber": 83,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "영화를 봤어요.",
+        "내일 가요.",
+        "시계예요.",
+        "아니요, 없어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_84",
+      "section": "listening",
+      "questionNumber": 84,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "아니요, 없어요.",
+        "영화를 봤어요.",
+        "시계예요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_85",
+      "section": "listening",
+      "questionNumber": 85,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "밥을 먹어요.",
+        "학교에 가요.",
+        "한국어예요.",
+        "친구가 와요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_86",
+      "section": "listening",
+      "questionNumber": 86,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 한국어를 배운 지 얼마나 됐어요?)",
+      "audioUrl": null,
+      "options": [
+        "도서관에서 공부해요.",
+        "재미있어요.",
+        "1년 됐어요.",
+        "한국에 가요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '한국어를 배운 지 얼마나 됐어요?'에 대한 알맞은 대답은 '1년 됐어요.'입니다."
+    },
+    {
+      "id": "l_87",
+      "section": "listening",
+      "questionNumber": 87,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 여기서 시청까지 얼마나 걸려요?)",
+      "audioUrl": null,
+      "options": [
+        "오전 9시예요.",
+        "30분쯤 걸려요.",
+        "버스를 타세요.",
+        "저기 있어요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '여기서 시청까지 얼마나 걸려요?'에 대한 알맞은 대답은 '30분쯤 걸려요.'입니다."
+    },
+    {
+      "id": "l_88",
+      "section": "listening",
+      "questionNumber": 88,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 여기서 시청까지 얼마나 걸려요?)",
+      "audioUrl": null,
+      "options": [
+        "버스를 타세요.",
+        "오전 9시예요.",
+        "30분쯤 걸려요.",
+        "저기 있어요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '여기서 시청까지 얼마나 걸려요?'에 대한 알맞은 대답은 '30분쯤 걸려요.'입니다."
+    },
+    {
+      "id": "l_89",
+      "section": "listening",
+      "questionNumber": 89,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "지하철을 타요.",
+        "내일 가요.",
+        "30분 걸려요.",
+        "친구가 가요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_90",
+      "section": "listening",
+      "questionNumber": 90,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 취미가 뭐예요?)",
+      "audioUrl": null,
+      "options": [
+        "음악을 들어요.",
+        "병원에 가요.",
+        "버스를 탔어요.",
+        "아니요, 괜찮아요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '취미가 뭐예요?'에 대한 알맞은 대답은 '음악을 들어요.'입니다."
+    },
+    {
+      "id": "l_91",
+      "section": "listening",
+      "questionNumber": 91,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 어디에 가요?)",
+      "audioUrl": null,
+      "options": [
+        "학교에 가요.",
+        "한국어예요.",
+        "친구가 와요.",
+        "밥을 먹어요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '어디에 가요?'에 대한 알맞은 대답은 '학교에 가요.'입니다."
+    },
+    {
+      "id": "l_92",
+      "section": "listening",
+      "questionNumber": 92,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "시계예요.",
+        "영화를 봤어요.",
+        "아니요, 없어요.",
+        "내일 가요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_93",
+      "section": "listening",
+      "questionNumber": 93,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 오늘 무슨 요일이에요?)",
+      "audioUrl": null,
+      "options": [
+        "오후예요.",
+        "수요일이에요.",
+        "10월이에요.",
+        "내일 만나요."
+      ],
+      "correctAnswer": 1,
+      "explanation": "질문 '오늘 무슨 요일이에요?'에 대한 알맞은 대답은 '수요일이에요.'입니다."
+    },
+    {
+      "id": "l_94",
+      "section": "listening",
+      "questionNumber": 94,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 지금 날씨가 어때요?)",
+      "audioUrl": null,
+      "options": [
+        "여름을 좋아해요.",
+        "어제 갔어요.",
+        "비가 오고 추워요.",
+        "시계가 비싸요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '지금 날씨가 어때요?'에 대한 알맞은 대답은 '비가 오고 추워요.'입니다."
+    },
+    {
+      "id": "l_95",
+      "section": "listening",
+      "questionNumber": 95,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 집에서 학교까지 어떻게 가요?)",
+      "audioUrl": null,
+      "options": [
+        "지하철을 타요.",
+        "친구가 가요.",
+        "내일 가요.",
+        "30분 걸려요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '집에서 학교까지 어떻게 가요?'에 대한 알맞은 대답은 '지하철을 타요.'입니다."
+    },
+    {
+      "id": "l_96",
+      "section": "listening",
+      "questionNumber": 96,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 가족이 몇 명이에요?)",
+      "audioUrl": null,
+      "options": [
+        "네 명이에요.",
+        "동생이 작아요.",
+        "오후에 만나요.",
+        "집에 가요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '가족이 몇 명이에요?'에 대한 알맞은 대답은 '네 명이에요.'입니다."
+    },
+    {
+      "id": "l_97",
+      "section": "listening",
+      "questionNumber": 97,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 생일이 언제예요?)",
+      "audioUrl": null,
+      "options": [
+        "10월 5일이에요.",
+        "스무 살이에요.",
+        "오전 10시예요.",
+        "내일 봐요."
+      ],
+      "correctAnswer": 0,
+      "explanation": "질문 '생일이 언제예요?'에 대한 알맞은 대답은 '10월 5일이에요.'입니다."
+    },
+    {
+      "id": "l_98",
+      "section": "listening",
+      "questionNumber": 98,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 주말에 뭐 했어요?)",
+      "audioUrl": null,
+      "options": [
+        "시계예요.",
+        "내일 가요.",
+        "아니요, 없어요.",
+        "영화를 봤어요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '주말에 뭐 했어요?'에 대한 알맞은 대답은 '영화를 봤어요.'입니다."
+    },
+    {
+      "id": "l_99",
+      "section": "listening",
+      "questionNumber": 99,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 누구하고 같이 가요?)",
+      "audioUrl": null,
+      "options": [
+        "매일 운동해요.",
+        "방에 있어요.",
+        "가족하고 가요.",
+        "제가 할게요."
+      ],
+      "correctAnswer": 2,
+      "explanation": "질문 '누구하고 같이 가요?'에 대한 알맞은 대답은 '가족하고 가요.'입니다."
+    },
+    {
+      "id": "l_100",
+      "section": "listening",
+      "questionNumber": 100,
+      "type": "text_mcq",
+      "questionText": "다음을 듣고 알맞은 것을 고르십시오. (듣기: 이거 얼마예요?)",
+      "audioUrl": null,
+      "options": [
+        "도서관에 있어요.",
+        "맛있어요.",
+        "한 시예요.",
+        "만 원이에요."
+      ],
+      "correctAnswer": 3,
+      "explanation": "질문 '이거 얼마예요?'에 대한 알맞은 대답은 '만 원이에요.'입니다."
+    }
+  ],
+  "reading": [
+    {
+      "id": "r_1",
+      "section": "reading",
+      "questionNumber": 1,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "됩니다",
+        "걸립니다",
+        "갑니다",
+        "옵니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_2",
+      "section": "reading",
+      "questionNumber": 2,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "그래서",
+        "그런데",
+        "왜냐하면",
+        "그러면"
+      ],
+      "correctAnswer": 1,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_3",
+      "section": "reading",
+      "questionNumber": 3,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "흐립니다",
+        "덥습니다",
+        "맑습니다",
+        "눈이 옵니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_4",
+      "section": "reading",
+      "questionNumber": 4,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "먹습니다",
+        "입습니다",
+        "신습니다",
+        "읽습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_5",
+      "section": "reading",
+      "questionNumber": 5,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "마셨습니다",
+        "신었습니다",
+        "입었습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_6",
+      "section": "reading",
+      "questionNumber": 6,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "눈이 옵니다",
+        "흐립니다",
+        "덥습니다",
+        "맑습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_7",
+      "section": "reading",
+      "questionNumber": 7,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "그래서",
+        "그리고",
+        "그러면",
+        "하지만"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_8",
+      "section": "reading",
+      "questionNumber": 8,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "미안해",
+        "안녕",
+        "고마워",
+        "축하해"
+      ],
+      "correctAnswer": 2,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_9",
+      "section": "reading",
+      "questionNumber": 9,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "해야",
+        "먹어야",
+        "자야",
+        "가야"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_10",
+      "section": "reading",
+      "questionNumber": 10,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "읽습니다",
+        "신습니다",
+        "먹습니다",
+        "입습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_11",
+      "section": "reading",
+      "questionNumber": 11,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "와 주세요",
+        "가 주세요",
+        "주세요",
+        "받아 주세요"
+      ],
+      "correctAnswer": 1,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_12",
+      "section": "reading",
+      "questionNumber": 12,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "매웠습니다",
+        "즐거웠습니다",
+        "아팠습니다",
+        "슬펐습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_13",
+      "section": "reading",
+      "questionNumber": 13,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "안녕",
+        "고마워",
+        "축하해",
+        "미안해"
+      ],
+      "correctAnswer": 1,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_14",
+      "section": "reading",
+      "questionNumber": 14,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "주세요",
+        "받아 주세요",
+        "와 주세요",
+        "가 주세요"
+      ],
+      "correctAnswer": 3,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_15",
+      "section": "reading",
+      "questionNumber": 15,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "신었습니다",
+        "마셨습니다",
+        "입었습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_16",
+      "section": "reading",
+      "questionNumber": 16,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "맑습니다",
+        "덥습니다",
+        "눈이 옵니다",
+        "흐립니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_17",
+      "section": "reading",
+      "questionNumber": 17,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "구워서",
+        "끓여서",
+        "튀겨서",
+        "비벼서"
+      ],
+      "correctAnswer": 3,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_18",
+      "section": "reading",
+      "questionNumber": 18,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "미안해",
+        "고마워",
+        "축하해",
+        "안녕"
+      ],
+      "correctAnswer": 1,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_19",
+      "section": "reading",
+      "questionNumber": 19,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "슬펐습니다",
+        "매웠습니다",
+        "즐거웠습니다",
+        "아팠습니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_20",
+      "section": "reading",
+      "questionNumber": 20,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "씻어야",
+        "가져가야",
+        "버려야",
+        "입어야"
+      ],
+      "correctAnswer": 1,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_21",
+      "section": "reading",
+      "questionNumber": 21,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "그러면",
+        "왜냐하면",
+        "그래서",
+        "그런데"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_22",
+      "section": "reading",
+      "questionNumber": 22,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "맑습니다",
+        "눈이 옵니다",
+        "흐립니다",
+        "덥습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_23",
+      "section": "reading",
+      "questionNumber": 23,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "버려야",
+        "가져가야",
+        "입어야",
+        "씻어야"
+      ],
+      "correctAnswer": 1,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_24",
+      "section": "reading",
+      "questionNumber": 24,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "슬펐습니다",
+        "아팠습니다",
+        "즐거웠습니다",
+        "매웠습니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_25",
+      "section": "reading",
+      "questionNumber": 25,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "됩니다",
+        "갑니다",
+        "걸립니다",
+        "옵니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_26",
+      "section": "reading",
+      "questionNumber": 26,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "미안해",
+        "축하해",
+        "안녕",
+        "고마워"
+      ],
+      "correctAnswer": 3,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_27",
+      "section": "reading",
+      "questionNumber": 27,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "구워서",
+        "끓여서",
+        "튀겨서",
+        "비벼서"
+      ],
+      "correctAnswer": 3,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_28",
+      "section": "reading",
+      "questionNumber": 28,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 학생입니다. 대학교에서 한국어를 (    ).",
+      "options": [
+        "먹습니다",
+        "배웁니다",
+        "멉니다",
+        "잡습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_29",
+      "section": "reading",
+      "questionNumber": 29,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "덥습니다",
+        "맑습니다",
+        "눈이 옵니다",
+        "흐립니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_30",
+      "section": "reading",
+      "questionNumber": 30,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "어제 밤에 잠을 잘 못 (    ).",
+      "options": [
+        "봤습니다",
+        "먹었습니다",
+        "갔습니다",
+        "잤습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_31",
+      "section": "reading",
+      "questionNumber": 31,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "자야",
+        "먹어야",
+        "가야",
+        "해야"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_32",
+      "section": "reading",
+      "questionNumber": 32,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "구워서",
+        "튀겨서",
+        "끓여서",
+        "비벼서"
+      ],
+      "correctAnswer": 3,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_33",
+      "section": "reading",
+      "questionNumber": 33,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "자야",
+        "가야",
+        "먹어야",
+        "해야"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_34",
+      "section": "reading",
+      "questionNumber": 34,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "씻어야",
+        "버려야",
+        "입어야",
+        "가져가야"
+      ],
+      "correctAnswer": 3,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_35",
+      "section": "reading",
+      "questionNumber": 35,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "그리고",
+        "그래서",
+        "하지만",
+        "그러면"
+      ],
+      "correctAnswer": 2,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_36",
+      "section": "reading",
+      "questionNumber": 36,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "미안해",
+        "안녕",
+        "축하해",
+        "고마워"
+      ],
+      "correctAnswer": 3,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_37",
+      "section": "reading",
+      "questionNumber": 37,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "버려야",
+        "입어야",
+        "가져가야",
+        "씻어야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_38",
+      "section": "reading",
+      "questionNumber": 38,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "매웠습니다",
+        "즐거웠습니다",
+        "아팠습니다",
+        "슬펐습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_39",
+      "section": "reading",
+      "questionNumber": 39,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "씻어야",
+        "가져가야",
+        "버려야",
+        "입어야"
+      ],
+      "correctAnswer": 1,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_40",
+      "section": "reading",
+      "questionNumber": 40,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "눈이 옵니다",
+        "덥습니다",
+        "흐립니다",
+        "맑습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_41",
+      "section": "reading",
+      "questionNumber": 41,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "그래서",
+        "왜냐하면",
+        "그러면",
+        "그런데"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_42",
+      "section": "reading",
+      "questionNumber": 42,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 학생입니다. 대학교에서 한국어를 (    ).",
+      "options": [
+        "배웁니다",
+        "먹습니다",
+        "멉니다",
+        "잡습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_43",
+      "section": "reading",
+      "questionNumber": 43,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "먹습니다",
+        "읽습니다",
+        "신습니다",
+        "입습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_44",
+      "section": "reading",
+      "questionNumber": 44,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "흐립니다",
+        "맑습니다",
+        "덥습니다",
+        "눈이 옵니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_45",
+      "section": "reading",
+      "questionNumber": 45,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "봤습니다",
+        "마셨습니다",
+        "입었습니다",
+        "신었습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_46",
+      "section": "reading",
+      "questionNumber": 46,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "맑습니다",
+        "흐립니다",
+        "눈이 옵니다",
+        "덥습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_47",
+      "section": "reading",
+      "questionNumber": 47,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "튀겨서",
+        "끓여서",
+        "비벼서",
+        "구워서"
+      ],
+      "correctAnswer": 2,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_48",
+      "section": "reading",
+      "questionNumber": 48,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 학생입니다. 대학교에서 한국어를 (    ).",
+      "options": [
+        "멉니다",
+        "먹습니다",
+        "잡습니다",
+        "배웁니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_49",
+      "section": "reading",
+      "questionNumber": 49,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "해야",
+        "가야",
+        "먹어야",
+        "자야"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_50",
+      "section": "reading",
+      "questionNumber": 50,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "왜냐하면",
+        "그러면",
+        "그런데",
+        "그래서"
+      ],
+      "correctAnswer": 2,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_51",
+      "section": "reading",
+      "questionNumber": 51,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "그런데",
+        "그러면",
+        "그래서",
+        "왜냐하면"
+      ],
+      "correctAnswer": 0,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_52",
+      "section": "reading",
+      "questionNumber": 52,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "가야",
+        "먹어야",
+        "해야",
+        "자야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_53",
+      "section": "reading",
+      "questionNumber": 53,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "해야",
+        "가야",
+        "자야",
+        "먹어야"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_54",
+      "section": "reading",
+      "questionNumber": 54,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "읽습니다",
+        "신습니다",
+        "입습니다",
+        "먹습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_55",
+      "section": "reading",
+      "questionNumber": 55,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "마셨습니다",
+        "입었습니다",
+        "봤습니다",
+        "신었습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_56",
+      "section": "reading",
+      "questionNumber": 56,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "튀겨서",
+        "끓여서",
+        "비벼서",
+        "구워서"
+      ],
+      "correctAnswer": 2,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_57",
+      "section": "reading",
+      "questionNumber": 57,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "여름에는 날씨가 덥습니다. 그래서 사람들은 수영장에 (    ).",
+      "options": [
+        "줍니다",
+        "갑니다",
+        "받습니다",
+        "옵니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_58",
+      "section": "reading",
+      "questionNumber": 58,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "그러면",
+        "그래서",
+        "하지만",
+        "그리고"
+      ],
+      "correctAnswer": 2,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_59",
+      "section": "reading",
+      "questionNumber": 59,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "즐거웠습니다",
+        "아팠습니다",
+        "매웠습니다",
+        "슬펐습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_60",
+      "section": "reading",
+      "questionNumber": 60,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "하지만",
+        "그리고",
+        "그러면",
+        "그래서"
+      ],
+      "correctAnswer": 0,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_61",
+      "section": "reading",
+      "questionNumber": 61,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "끓여서",
+        "튀겨서",
+        "비벼서",
+        "구워서"
+      ],
+      "correctAnswer": 2,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_62",
+      "section": "reading",
+      "questionNumber": 62,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "입습니다",
+        "먹습니다",
+        "신습니다",
+        "읽습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_63",
+      "section": "reading",
+      "questionNumber": 63,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "먹어야",
+        "가야",
+        "해야",
+        "자야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_64",
+      "section": "reading",
+      "questionNumber": 64,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "마셨습니다",
+        "입었습니다",
+        "신었습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_65",
+      "section": "reading",
+      "questionNumber": 65,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "갑니다",
+        "됩니다",
+        "걸립니다",
+        "옵니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_66",
+      "section": "reading",
+      "questionNumber": 66,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "친구가 생일 선물을 주었습니다. 저는 친구에게 \"(    )\"라고 말했습니다.",
+      "options": [
+        "미안해",
+        "안녕",
+        "축하해",
+        "고마워"
+      ],
+      "correctAnswer": 3,
+      "explanation": "인사말 문제"
+    },
+    {
+      "id": "r_67",
+      "section": "reading",
+      "questionNumber": 67,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "신었습니다",
+        "마셨습니다",
+        "입었습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_68",
+      "section": "reading",
+      "questionNumber": 68,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "해야",
+        "가야",
+        "먹어야",
+        "자야"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_69",
+      "section": "reading",
+      "questionNumber": 69,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "갑니다",
+        "걸립니다",
+        "됩니다",
+        "옵니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_70",
+      "section": "reading",
+      "questionNumber": 70,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "끓여서",
+        "비벼서",
+        "튀겨서",
+        "구워서"
+      ],
+      "correctAnswer": 1,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_71",
+      "section": "reading",
+      "questionNumber": 71,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "주세요",
+        "와 주세요",
+        "받아 주세요",
+        "가 주세요"
+      ],
+      "correctAnswer": 3,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_72",
+      "section": "reading",
+      "questionNumber": 72,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "입어야",
+        "씻어야",
+        "가져가야",
+        "버려야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_73",
+      "section": "reading",
+      "questionNumber": 73,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "가야",
+        "먹어야",
+        "해야",
+        "자야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_74",
+      "section": "reading",
+      "questionNumber": 74,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "여름에는 날씨가 덥습니다. 그래서 사람들은 수영장에 (    ).",
+      "options": [
+        "받습니다",
+        "갑니다",
+        "줍니다",
+        "옵니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_75",
+      "section": "reading",
+      "questionNumber": 75,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "됩니다",
+        "옵니다",
+        "걸립니다",
+        "갑니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_76",
+      "section": "reading",
+      "questionNumber": 76,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "신었습니다",
+        "입었습니다",
+        "봤습니다",
+        "마셨습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_77",
+      "section": "reading",
+      "questionNumber": 77,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "됩니다",
+        "갑니다",
+        "옵니다",
+        "걸립니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_78",
+      "section": "reading",
+      "questionNumber": 78,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "씻어야",
+        "입어야",
+        "버려야",
+        "가져가야"
+      ],
+      "correctAnswer": 3,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_79",
+      "section": "reading",
+      "questionNumber": 79,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "그러면",
+        "그리고",
+        "그래서",
+        "하지만"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_80",
+      "section": "reading",
+      "questionNumber": 80,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "오늘 친구를 만났습니다. 우리는 같이 커피를 (    ).",
+      "options": [
+        "신었습니다",
+        "입었습니다",
+        "마셨습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_81",
+      "section": "reading",
+      "questionNumber": 81,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "자야",
+        "해야",
+        "가야",
+        "먹어야"
+      ],
+      "correctAnswer": 1,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_82",
+      "section": "reading",
+      "questionNumber": 82,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "우리 집은 학교에서 아주 가깝습니다. 걸어서 5분밖에 안 (    ).",
+      "options": [
+        "됩니다",
+        "옵니다",
+        "걸립니다",
+        "갑니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "시간 관련 동사 문제"
+    },
+    {
+      "id": "r_83",
+      "section": "reading",
+      "questionNumber": 83,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "끓여서",
+        "비벼서",
+        "구워서",
+        "튀겨서"
+      ],
+      "correctAnswer": 1,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_84",
+      "section": "reading",
+      "questionNumber": 84,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "하지만",
+        "그래서",
+        "그러면",
+        "그리고"
+      ],
+      "correctAnswer": 0,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_85",
+      "section": "reading",
+      "questionNumber": 85,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "주세요",
+        "받아 주세요",
+        "가 주세요",
+        "와 주세요"
+      ],
+      "correctAnswer": 2,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_86",
+      "section": "reading",
+      "questionNumber": 86,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "어제 밤에 잠을 잘 못 (    ).",
+      "options": [
+        "갔습니다",
+        "먹었습니다",
+        "잤습니다",
+        "봤습니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_87",
+      "section": "reading",
+      "questionNumber": 87,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "와 주세요",
+        "가 주세요",
+        "주세요",
+        "받아 주세요"
+      ],
+      "correctAnswer": 1,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_88",
+      "section": "reading",
+      "questionNumber": 88,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "입어야",
+        "버려야",
+        "씻어야",
+        "가져가야"
+      ],
+      "correctAnswer": 3,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_89",
+      "section": "reading",
+      "questionNumber": 89,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "아침에 일찍 일어났습니다. (    ) 피곤하지 않습니다.",
+      "options": [
+        "그러면",
+        "그런데",
+        "그래서",
+        "왜냐하면"
+      ],
+      "correctAnswer": 1,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_90",
+      "section": "reading",
+      "questionNumber": 90,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "즐거웠습니다",
+        "매웠습니다",
+        "아팠습니다",
+        "슬펐습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_91",
+      "section": "reading",
+      "questionNumber": 91,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "저는 사과를 좋아합니다. (    ) 바나나는 안 좋아합니다.",
+      "options": [
+        "그리고",
+        "그러면",
+        "그래서",
+        "하지만"
+      ],
+      "correctAnswer": 3,
+      "explanation": "접속사 문제"
+    },
+    {
+      "id": "r_92",
+      "section": "reading",
+      "questionNumber": 92,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "내일은 비가 올 것입니다. 그래서 우산을 (    ) 합니다.",
+      "options": [
+        "씻어야",
+        "버려야",
+        "가져가야",
+        "입어야"
+      ],
+      "correctAnswer": 2,
+      "explanation": "문법 문제"
+    },
+    {
+      "id": "r_93",
+      "section": "reading",
+      "questionNumber": 93,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "한국의 가을은 날씨가 시원하고 하늘이 (    ).",
+      "options": [
+        "눈이 옵니다",
+        "맑습니다",
+        "덥습니다",
+        "흐립니다"
+      ],
+      "correctAnswer": 1,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_94",
+      "section": "reading",
+      "questionNumber": 94,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "백화점에 갔습니다. 예쁜 옷이 많아서 구경하는 것이 (    ).",
+      "options": [
+        "아팠습니다",
+        "매웠습니다",
+        "즐거웠습니다",
+        "슬펐습니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "형용사 어휘 문제"
+    },
+    {
+      "id": "r_95",
+      "section": "reading",
+      "questionNumber": 95,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "택시를 탔습니다. 기사님께 \"서울역으로 (    )\"라고 말했습니다.",
+      "options": [
+        "받아 주세요",
+        "주세요",
+        "가 주세요",
+        "와 주세요"
+      ],
+      "correctAnswer": 2,
+      "explanation": "부탁 표현 문제"
+    },
+    {
+      "id": "r_96",
+      "section": "reading",
+      "questionNumber": 96,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "비빔밥에 고추장을 넣고 잘 (    ) 먹습니다.",
+      "options": [
+        "비벼서",
+        "구워서",
+        "튀겨서",
+        "끓여서"
+      ],
+      "correctAnswer": 0,
+      "explanation": "조리 관련 동사 문제"
+    },
+    {
+      "id": "r_97",
+      "section": "reading",
+      "questionNumber": 97,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "주말에는 보통 집에서 청소를 하거나 책을 (    ).",
+      "options": [
+        "읽습니다",
+        "신습니다",
+        "먹습니다",
+        "입습니다"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_98",
+      "section": "reading",
+      "questionNumber": 98,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "도서관에서는 조용히 (    ) 합니다.",
+      "options": [
+        "해야",
+        "자야",
+        "가야",
+        "먹어야"
+      ],
+      "correctAnswer": 0,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_99",
+      "section": "reading",
+      "questionNumber": 99,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "여름에는 날씨가 덥습니다. 그래서 사람들은 수영장에 (    ).",
+      "options": [
+        "옵니다",
+        "받습니다",
+        "갑니다",
+        "줍니다"
+      ],
+      "correctAnswer": 2,
+      "explanation": "동사 어휘 문제"
+    },
+    {
+      "id": "r_100",
+      "section": "reading",
+      "questionNumber": 100,
+      "type": "gap_fill_mcq",
+      "questionText": "다음 빈칸에 알맞은 것을 고르십시오.",
+      "passageText": "어제 밤에 잠을 잘 못 (    ).",
+      "options": [
+        "봤습니다",
+        "갔습니다",
+        "먹었습니다",
+        "잤습니다"
+      ],
+      "correctAnswer": 3,
+      "explanation": "동사 어휘 문제"
+    }
+  ]
+}

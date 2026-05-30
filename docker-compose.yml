@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: kmastery_backend
+    ports:
+      - "8000:8000"
+    restart: always
+    env_file:
+      - ./backend/.env
+    environment:
+      - ENV=production
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./backend/kmastery.db:/app/kmastery.db
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: kmastery_redis
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - redis_data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kmastery_frontend
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+
+volumes:
+  redis_data:

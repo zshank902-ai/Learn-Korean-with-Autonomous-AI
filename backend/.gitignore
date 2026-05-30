@@ -1,0 +1,16 @@
+# Environments
+.env
+.env.*
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Database
+kmastery.db
+*.sqlite
+*.sqlite3
+
+# Large Files
+test.json
+*.log
