@@ -509,35 +509,28 @@ def get_user_progress(user_id: int) -> dict[str, str]:
     """
     Reads all module statuses for a user from Redis.
     Returns dict mapping module_id -> status string.
-    Default status for all modules is 'locked'.
+    Since prerequisites have been decoupled, all unstarted modules default to 'available'.
     """
     redis = get_redis()
     key = f"roadmap:progress:{user_id}"
     raw = redis.hgetall(key)
-
-    # Decode bytes if needed
+    
+    progress = {}
     if raw:
         progress = {
             (k.decode() if isinstance(k, bytes) else k): (v.decode() if isinstance(v, bytes) else v)
             for k, v in raw.items()
         }
-        # Legacy migration: ensure hangul-basics is unlocked if not present or locked
-        first_mod = ROADMAP_STRUCTURE[0]["modules"][0]["id"]
-        if first_mod not in progress or progress[first_mod] == "locked":
-            redis.hset(key, first_mod, "available")
-            progress[first_mod] = "available"
-        return progress
 
-    # First-time: unlock only the very first module
-    _unlock_first_module(user_id, redis)
-    return get_user_progress(user_id)
-
-
-def _unlock_first_module(user_id: int, redis: Any) -> None:
-    """Seeds the first module as 'available' on user first access."""
-    key = f"roadmap:progress:{user_id}"
-    first_module_id = ROADMAP_STRUCTURE[0]["modules"][0]["id"]
-    redis.hset(key, first_module_id, "available")
+    # Ensure EVERY module in the roadmap defaults to "available" if not present
+    for level in ROADMAP_STRUCTURE:
+        for mod in level["modules"]:
+            mod_id = mod["id"]
+            if mod_id not in progress or progress[mod_id] == "locked":
+                progress[mod_id] = "available"
+                # Optionally write it back to Redis to keep it in sync, but it's not strictly necessary.
+                
+    return progress
 
 
 def start_module(user_id: int, module_id: str) -> dict[str, Any]:
