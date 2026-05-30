@@ -322,10 +322,36 @@ def get_module_questions(module_id: str, page: int = 1) -> dict[str, Any]:
     if not module:
         raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
 
+    m_type = module.get("type", "mcq")
+    level = module.get("level_id", 1)
+
+    # Bypass AI for MCQ to provide massive 100-question practice sets instantly
+    if m_type == "mcq":
+        import random
+        import os
+        bank_type = "listening" if "listening" in module_id.lower() else "reading"
+        path = f"app/data/topik_{1 if level <= 2 else 2}_bank.json"
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                bank = json.load(f)
+                pool = bank.get(bank_type, [])
+                if pool:
+                    selected = random.sample(pool, min(100, len(pool)))
+                    mapped = []
+                    for q in selected:
+                        mapped.append({
+                            "question": q.get("questionText", ""),
+                            "options": q.get("options", ["보기1", "보기2", "보기3", "보기4"]),
+                            "correct": q.get("correctAnswer", 0),
+                            "explanation": q.get("explanation", ""),
+                        })
+                    return {"moduleId": module_id, "page": page, "questions": mapped, "total": len(mapped)}
+
+    # For other module types, fallback to AI generation
     questions = _generate_questions_with_ai(
-        module_id, module.get("type", "mcq"), module.get("level_id", 1), 10
+        module_id, m_type, level, 10
     )
-    return {"moduleId": module_id, "page": page, "questions": questions, "total": 10}
+    return {"moduleId": module_id, "page": page, "questions": questions, "total": len(questions)}
 
 
 @router.get("/tts")
