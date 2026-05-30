@@ -195,7 +195,7 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
             "redirect_uri": redirect_uri,
             "grant_type": "authorization_code"
         }
-        res = requests.post(token_url, data=token_data)
+        res = requests.post(token_url, data=token_data, timeout=15)
         if res.status_code != 200:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -208,7 +208,7 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
         # Request user info
         userinfo_url = "https://www.googleapis.com/oauth2/v3/userinfo"
         headers = {"Authorization": f"Bearer {access_token}"}
-        userinfo_res = requests.get(userinfo_url, headers=headers)
+        userinfo_res = requests.get(userinfo_url, headers=headers, timeout=15)
         if userinfo_res.status_code != 200:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -255,7 +255,7 @@ def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
             "code": code,
             "redirect_uri": social_in.redirect_uri
         }
-        res = requests.post(token_url, data=token_data, headers=headers)
+        res = requests.post(token_url, data=token_data, headers=headers, timeout=15)
         if res.status_code != 200:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -276,7 +276,7 @@ def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
             "Authorization": f"Bearer {access_token}",
             "User-Agent": "K-Mastery-Auth-API"
         }
-        user_res = requests.get(user_url, headers=user_headers)
+        user_res = requests.get(user_url, headers=user_headers, timeout=15)
         if user_res.status_code != 200:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
@@ -291,7 +291,7 @@ def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
         # If email is not public, fetch all emails using OAuth scope user:email
         if not email:
             emails_url = "https://api.github.com/user/emails"
-            emails_res = requests.get(emails_url, headers=user_headers)
+            emails_res = requests.get(emails_url, headers=user_headers, timeout=15)
             if emails_res.status_code == 200:
                 emails = emails_res.json()
                 primary_email = next((e.get("email") for e in emails if e.get("primary")), None)
