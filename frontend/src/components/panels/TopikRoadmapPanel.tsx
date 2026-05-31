@@ -348,7 +348,6 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
 
                           {/* Level Details Bar inside card */}
                           {status !== 'locked' && (
-                            <div
                             <div className="bg-white/60 border-[2.5px] border-[#0f0f0f] rounded-2xl p-3 md:p-[14px] mb-5 grid grid-cols-2 gap-2 md:gap-4">
                               <div>
                                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Target Vocab</span>
