@@ -32,7 +32,8 @@ export function useTopikProgress(levelNum: number) {
     setError(null);
     try {
       const res = await fetch(`${API_ENDPOINTS.BASE_URL}/v1/progress/topik/${levelNum}`, {
-        headers: { 'Authorization': `Bearer ${token}` }
+        headers: { 'Authorization': `Bearer ${token}` },
+        cache: 'no-store'
       });
       
       if (!res.ok) throw new Error("Failed to fetch roadmap progress");
