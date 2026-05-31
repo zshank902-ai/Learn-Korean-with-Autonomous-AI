@@ -9,7 +9,7 @@ interface LeaderboardUser {
   id: string | number;
   nickname?: string;
   full_name?: string;
-  username?: string; // keeping just in case legacy fallback is needed
+  nickname?: string; // keeping just in case legacy fallback is needed
   xp: number;
   level: number;
   avatar_url?: string;
@@ -26,10 +26,9 @@ export default function GlobalLeaderboard() {
         if (res.ok) {
           const data = await res.json();
           // Backend returns array; map to our interface
-          const mapped = (Array.isArray(data) ? data : []).map((u: {rank?: number; user_id?: number | string; username?: string; xp?: number; level?: number}, i: number) => ({
+          const mapped = (Array.isArray(data) ? data : []).map((u: {rank?: number; user_id?: number | string; nickname?: string; xp?: number; level?: number}, i: number) => ({
             id: u.user_id ?? i + 1,
-            username: u.username ?? `User ${u.user_id}`,
-            nickname: u.username ?? `User ${u.user_id}`,
+            nickname: u.nickname ?? `User ${u.user_id}`,
             xp: u.xp ?? 0,
             level: u.level ?? 1,
           }));
@@ -45,11 +44,11 @@ export default function GlobalLeaderboard() {
 
       // Fallback: use mock data if API is down or returned empty
       const mockData = [
-        { id: 1, username: "SeoulKing", nickname: "SeoulKing", xp: 12500, level: 12 },
-        { id: 2, username: "KPopFan99", nickname: "KPopFan99", xp: 9800, level: 9 },
-        { id: 3, username: "TopikMaster", nickname: "TopikMaster", xp: 8450, level: 8 },
-        { id: 4, username: "LearnKorean24", nickname: "LearnKorean24", xp: 6200, level: 6 },
-        { id: 5, username: "BusanExplorer", nickname: "BusanExplorer", xp: 4100, level: 4 }
+        { id: 1, nickname: "SeoulKing", xp: 12500, level: 12 },
+        { id: 2, nickname: "KPopFan99", xp: 9800, level: 9 },
+        { id: 3, nickname: "TopikMaster", xp: 8450, level: 8 },
+        { id: 4, nickname: "LearnKorean24", xp: 6200, level: 6 },
+        { id: 5, nickname: "BusanExplorer", xp: 4100, level: 4 }
       ];
       setTimeout(() => {
         setUsers(mockData);

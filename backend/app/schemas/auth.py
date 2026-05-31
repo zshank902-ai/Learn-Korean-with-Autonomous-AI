@@ -13,7 +13,7 @@ class TokenPayload(BaseModel):
 
 
 class UserCreate(BaseModel):
-    username: str
+    nickname: Optional[str] = None
     email: EmailStr
     password: str
 
@@ -21,6 +21,5 @@ class UserCreate(BaseModel):
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: int
-    username: str
+    nickname: Optional[str] = None
     email: str

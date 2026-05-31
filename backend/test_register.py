@@ -7,12 +7,12 @@ def test_register():
     db = SessionLocal()
     try:
         # Create user
-        username = f"test_{uuid.uuid4().hex[:8]}"
+        nickname = f"test_{uuid.uuid4().hex[:8]}"
         hashed_password = get_password_hash("password")
         
         db_user = User(
-            username=username,
-            email=f"{username}@example.com",
+            nickname=nickname,
+            email=f"{nickname}@example.com",
             hashed_password=hashed_password
         )
         db.add(db_user)

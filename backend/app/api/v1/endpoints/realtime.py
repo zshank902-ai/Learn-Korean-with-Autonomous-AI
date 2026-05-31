@@ -98,7 +98,7 @@ async def websocket_tutor_chat(websocket: WebSocket, token: str = Query(...)):
         db.close()
         return
 
-    print(f"WebSocket: Connection established for AI Tutor Chat (User: {user.username}).")
+    print(f"WebSocket: Connection established for AI Tutor Chat (User: {user.nickname}).")
 
     try:
         while True:
