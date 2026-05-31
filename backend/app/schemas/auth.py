@@ -1,6 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 from pydantic import ConfigDict
+from uuid import UUID
 
 
 class Token(BaseModel):
@@ -21,5 +22,6 @@ class UserCreate(BaseModel):
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
+    id: UUID
     nickname: Optional[str] = None
     email: str

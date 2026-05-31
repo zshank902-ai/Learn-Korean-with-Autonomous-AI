@@ -6,6 +6,7 @@ from app.models.user import User, UserProgress
 from app.core.security import verify_password, get_password_hash, create_access_token
 from app.core.config import settings
 from typing import Optional
+from uuid import UUID
 import re
 import httpx
 
@@ -36,7 +37,7 @@ class SocialLoginInput(BaseModel):
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: str
+    id: UUID
     email: str
     nickname: Optional[str] = None
     full_name: Optional[str] = None
