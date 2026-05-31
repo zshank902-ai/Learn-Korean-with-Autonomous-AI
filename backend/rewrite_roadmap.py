@@ -1,18 +1,18 @@
-"""
-roadmap_service.py
-Principal Architect: TOPIK Roadmap Module Registry & Progression Engine.
-All 42 module definitions (6 levels × 7 modules) stored as frozen Python constants.
-Progression logic reads/writes from Redis.
-"""
-from __future__ import annotations
-from typing import Any
-from app.core.redis_client import get_redis
+import sys
 
-# ─────────────────────────────────────────────
-# MODULE REGISTRY — 42 modules, all 6 levels
-# ─────────────────────────────────────────────
+with open("app/services/roadmap_service.py", "r", encoding="utf-8") as f:
+    original_content = f.read()
 
-ROADMAP_STRUCTURE: list[dict[str, Any]] = [
+# We need to find the start of _MODULE_LOOKUP
+end_idx = original_content.find("# Flat lookup for O(1) module resolution")
+if end_idx == -1:
+    print("Could not find _MODULE_LOOKUP in roadmap_service.py")
+    sys.exit(1)
+
+header = original_content[:original_content.find("ROADMAP_STRUCTURE: list[dict[str, Any]] = [")]
+footer = original_content[end_idx:]
+
+new_structure = """ROADMAP_STRUCTURE: list[dict[str, Any]] = [
     {
         "id": 1,
         "level_num": 1,
@@ -459,124 +459,9 @@ ROADMAP_STRUCTURE: list[dict[str, Any]] = [
         ],
     },
 ]
+"""
 
+with open("app/services/roadmap_service.py", "w", encoding="utf-8") as f:
+    f.write(header + new_structure + "\n\n" + footer)
 
-# Flat lookup for O(1) module resolution
-_MODULE_LOOKUP: dict[str, dict[str, Any]] = {
-    mod["id"]: {**mod, "level_id": level["id"], "level_color": level["color"]}
-    for level in ROADMAP_STRUCTURE
-    for mod in level["modules"]
-}
-
-
-def get_level_structure() -> list[dict[str, Any]]:
-    """Returns the full roadmap structure (static)."""
-    return ROADMAP_STRUCTURE
-
-
-def get_module(module_id: str) -> dict[str, Any] | None:
-    """Returns a single module definition by ID."""
-    return _MODULE_LOOKUP.get(module_id)
-
-
-def get_user_progress(user_id: str) -> dict[str, str]:
-    """
-    Reads all module statuses for a user from Redis.
-    Returns dict mapping module_id -> status string.
-    Since prerequisites have been decoupled, all unstarted modules default to 'available'.
-    """
-    redis = get_redis()
-    key = f"roadmap:progress:{user_id}"
-    raw = redis.hgetall(key)
-    
-    progress = {}
-    if raw:
-        progress = {
-            (k.decode() if isinstance(k, bytes) else k): (v.decode() if isinstance(v, bytes) else v)
-            for k, v in raw.items()
-        }
-    else:
-        # Cache miss. Try to restore from PostgreSQL
-        try:
-            from app.db.session import SessionLocal
-            from app.models.user import UserProgress
-            import json
-            
-            db = SessionLocal()
-            db_progress = db.query(UserProgress).filter(UserProgress.user_id == user_id).first()
-            if db_progress and db_progress.roadmap_status_json:
-                progress = json.loads(db_progress.roadmap_status_json)
-                # Repopulate Redis cache
-                if progress:
-                    redis.hset(key, mapping=progress)
-            db.close()
-        except Exception as e:
-            print(f"Error restoring roadmap progress from DB: {e}")
-
-    # Ensure EVERY module in the roadmap defaults to "available" if not present
-    for level in ROADMAP_STRUCTURE:
-        for mod in level["modules"]:
-            mod_id = mod["id"]
-            if mod_id not in progress or progress[mod_id] == "locked":
-                progress[mod_id] = "available"
-                # Optionally write it back to Redis to keep it in sync, but it's not strictly necessary.
-                
-    return progress
-
-
-def start_module(user_id: str, module_id: str) -> dict[str, Any]:
-    """Marks a module as in_progress in Redis."""
-    redis = get_redis()
-    key = f"roadmap:progress:{user_id}"
-    redis.hset(key, module_id, "in_progress")
-    module = get_module(module_id)
-    return {"sessionId": f"{user_id}_{module_id}", "module": module}
-
-
-def complete_module(user_id: str, module_id: str, score: int) -> dict[str, Any]:
-    """
-    Marks module as completed, saves score, awards XP, and unlocks next module.
-    Returns xpGained, newlyUnlocked, levelProgress.
-    """
-    redis = get_redis()
-    progress_key = f"roadmap:progress:{user_id}"
-    score_key = f"roadmap:scores:{user_id}:{module_id}"
-
-    # Mark this module completed
-    redis.hset(progress_key, module_id, "completed")
-
-    # Save score history
-    import json
-    from datetime import datetime, timezone
-    score_entry = json.dumps({"score": score, "timestamp": datetime.now(timezone.utc).isoformat()})
-    redis.lpush(score_key, score_entry)
-    redis.ltrim(score_key, 0, 9)  # Keep last 10 scores
-
-    # Find next module to unlock
-    module_def = get_module(module_id)
-    xp_gained = module_def.get("xp", 50) if module_def else 50
-    newly_unlocked: list[str] = []
-
-    for level in ROADMAP_STRUCTURE:
-        for mod in level["modules"]:
-            if mod.get("prerequisite") == module_id:
-                current_status = redis.hget(progress_key, mod["id"])
-                current_status = current_status.decode() if isinstance(current_status, bytes) else current_status
-                if not current_status or current_status == "locked":
-                    redis.hset(progress_key, mod["id"], "available")
-                    newly_unlocked.append(mod["id"])
-
-    # Calculate level progress for this level
-    level_id = module_def.get("level_id", 1) if module_def else 1
-    level_modules = [m["id"] for lvl in ROADMAP_STRUCTURE if lvl["id"] == level_id for m in lvl["modules"]]
-    completed_count = sum(
-        1 for mid in level_modules
-        if (redis.hget(progress_key, mid) or b"").decode() == "completed"
-    )
-    level_progress = int((completed_count / len(level_modules)) * 100) if level_modules else 0
-
-    return {
-        "xpGained": xp_gained,
-        "newlyUnlocked": newly_unlocked,
-        "levelProgress": level_progress,
-    }
+print("Updated roadmap_service.py successfully.")

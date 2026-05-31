@@ -15,6 +15,7 @@ from fastapi import APIRouter, HTTPException, Response, Depends
 from pydantic import BaseModel
 
 from app.services import roadmap_service
+from app.services.prompts.master_tutor_prompt import get_master_tutor_prompt
 from app.core.redis_client import get_redis
 from app.api.v1.endpoints.auth import get_current_user
 from app.models.user import User
@@ -139,12 +140,24 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
     else:
         format_instruction = '[{"question": "Korean text to read and question", "options": ["보기1", "보기2", "보기3", "보기4"], "correct": 0, "explanation": "Why this is correct"}]'
 
-    system_prompt = (
-        "You are a certified TOPIK exam question writer. "
-        f"Generate {count} authentic TOPIK Level {level} {module_type} questions in Korean. "
-        f"{tsv_instruction}"
-        f"Return ONLY valid JSON array: {format_instruction}. "
-        "Questions must be realistic, culturally accurate, and match official TOPIK difficulty."
+    # Map frontend module_type to Master Prompt module
+    master_module = "vocabulary"
+    if "grammar" in module_type: master_module = "grammar"
+    elif "audio" in module_type or "listening" in module_type: master_module = "listening"
+    elif "mcq" in module_type or "reading" in module_type: master_module = "reading"
+    elif "essay" in module_type or "writing" in module_type: master_module = "writing"
+
+    json_instruction = f"CRITICAL: Return ONLY a valid JSON array: {format_instruction}. Ensure your explanations strictly follow the 'Feedback action' rules from the Master System Prompt."
+
+    system_prompt = get_master_tutor_prompt(
+        topik_level=level,
+        module=master_module,
+        tier="Starter" if level <= 2 else "Everyday" if level <= 4 else "Advanced",
+        category="Roadmap Generation",
+        action="generate",
+        user_input=f"Generate {count} authentic questions.",
+        session_history=tsv_instruction,
+        json_format_instruction=json_instruction
     )
 
     questions: list[dict] = []
