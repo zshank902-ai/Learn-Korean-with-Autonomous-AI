@@ -48,47 +48,59 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
             "You are a strict TOPIK Korean teacher. Provide a simple example sentence for each Korean word provided. "
             "CRITICAL REQUIREMENT: You MUST include the exact Korean word (or its grammatically conjugated root) in the Korean sentence. "
             "Do not hallucinate random sentences. "
-            "Return ONLY a JSON object mapping each word exactly to its example. "
+            "Return ONLY a JSON object mapping each word exactly to its example, with NO markdown formatting, NO backticks, and NO explanations. "
             'Format Example: {"가다": {"korean": "학교에 가요.", "english": "I go to school."}}'
         )
-        try:
-            res = requests.post(
-                GROQ_URL,
-                headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
-                json={
-                    "model": "llama-3.1-8b-instant",
-                    "messages": [
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": json.dumps(missing_words, ensure_ascii=False)}
-                    ],
-                    "response_format": {"type": "json_object"},
-                    "temperature": 0.3,
-                    "max_tokens": 4000
-                },
-                timeout=15
-            )
-            res.raise_for_status()
-            content = res.json()["choices"][0]["message"]["content"]
-            new_examples = json.loads(content)
-            
-            # Autonomous Verification Firewall (Structure Only)
-            for word in missing_words:
-                ex = new_examples.get(word)
-                if not (ex and isinstance(ex, dict) and "korean" in ex and "english" in ex):
-                    # Missing or malformed JSON structure
-                    new_examples[word] = {
-                        "korean": f"이 단어는 '{word}'입니다.",
-                        "english": f"This word is '{word}'."
-                    }
-                    
-            examples_map.update(new_examples)
+        
+        batch_size = 10
+        for i in range(0, len(missing_words), batch_size):
+            batch = missing_words[i:i+batch_size]
             try:
-                if redis:
-                    redis.set(cache_key, json.dumps(examples_map, ensure_ascii=False))
+                res = requests.post(
+                    GROQ_URL,
+                    headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                    json={
+                        "model": "llama-3.1-8b-instant",
+                        "messages": [
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": json.dumps(batch, ensure_ascii=False)}
+                        ],
+                        "response_format": {"type": "json_object"},
+                        "temperature": 0.3,
+                        "max_tokens": 4000
+                    },
+                    timeout=15
+                )
+                res.raise_for_status()
+                content = res.json()["choices"][0]["message"]["content"].strip()
+                
+                if content.startswith("```json"):
+                    content = content[7:]
+                if content.startswith("```"):
+                    content = content[3:]
+                if content.endswith("```"):
+                    content = content[:-3]
+                content = content.strip()
+                
+                new_examples = json.loads(content)
+                
+                # Autonomous Verification Firewall (Structure Only)
+                for word in batch:
+                    ex = new_examples.get(word)
+                    if not (ex and isinstance(ex, dict) and "korean" in ex and "english" in ex):
+                        new_examples[word] = {
+                            "korean": f"이 단어는 '{word}'입니다.",
+                            "english": f"This word is '{word}'."
+                        }
+                        
+                examples_map.update(new_examples)
+                try:
+                    if redis:
+                        redis.set(cache_key, json.dumps(examples_map, ensure_ascii=False))
+                except Exception as e:
+                    print(f"Redis unavailable for saving examples: {e}")
             except Exception as e:
-                print(f"Redis unavailable for saving examples: {e}")
-        except Exception as e:
-            print("AI example generation failed:", e)
+                print(f"AI example generation failed for batch: {e}")
     
     return examples_map
 
