@@ -20,3 +20,5 @@ requests
 email-validator
 aiofiles
 httpx
+groq
+resend
