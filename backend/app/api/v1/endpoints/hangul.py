@@ -8,6 +8,8 @@ from app.db.session import get_db
 from app.core.redis_client import get_redis
 from app.models.hangul import HangulVocabulary, UserHangulProgress
 from app.schemas.hangul import LookupResponse, VocabularyCreate, VocabularyResponse, ProgressUpdate
+from app.api.v1.endpoints.auth import get_current_user
+from app.models.user import User
 
 router = APIRouter()
 
@@ -71,21 +73,16 @@ def lookup_word(word: str = Query(..., min_length=1, max_length=50)):
 
 
 @router.post("/vocabulary", response_model=VocabularyResponse)
-def save_vocabulary(body: VocabularyCreate, db: Session = Depends(get_db)):
-    try:
-        user_id_int = int(body.user_id)
-    except ValueError:
-        user_id_int = 1 # Fallback
-        
+def save_vocabulary(body: VocabularyCreate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     vocab = HangulVocabulary(
-        user_id=user_id_int,
+        user_id=current_user.id,
         word=body.word,
         syllables=json.dumps(body.syllables)
     )
     db.add(vocab)
     db.commit()
     
-    total = db.query(HangulVocabulary).filter(HangulVocabulary.user_id == user_id_int).count()
+    total = db.query(HangulVocabulary).filter(HangulVocabulary.user_id == current_user.id).count()
     return VocabularyResponse(saved=True, total_words=total)
 
 
@@ -107,15 +104,10 @@ def get_quiz(difficulty: int = 1, count: int = 10):
 
 
 @router.post("/progress")
-def update_progress(body: ProgressUpdate, db: Session = Depends(get_db)):
-    try:
-        user_id_int = int(body.user_id)
-    except ValueError:
-        user_id_int = 1
-        
-    prog = db.query(UserHangulProgress).filter(UserHangulProgress.user_id == user_id_int).first()
+def update_progress(body: ProgressUpdate, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    prog = db.query(UserHangulProgress).filter(UserHangulProgress.user_id == current_user.id).first()
     if not prog:
-        prog = UserHangulProgress(user_id=user_id_int, total_xp=body.xp_earned, average_accuracy=body.accuracy, quizzes_taken=1)
+        prog = UserHangulProgress(user_id=current_user.id, total_xp=body.xp_earned, average_accuracy=body.accuracy, quizzes_taken=1)
         db.add(prog)
     else:
         prog.total_xp += body.xp_earned

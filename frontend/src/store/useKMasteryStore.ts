@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { useAuthStore } from './useAuthStore';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
 import type { TopikLevel, TopikModule, ModuleStatus, MockSession, RoadmapProgressResponse } from '@/lib/roadmapTypes';
 
@@ -220,7 +221,14 @@ export const useKMasteryStore = create<KMasteryState>((set) => ({
 
   fetchRoadmapProgress: async () => {
     try {
-      const res = await fetch(`${API_ENDPOINTS.ROADMAP}/progress/1`);
+      const token = useAuthStore.getState().token;
+      if (!token) return;
+
+      const res = await fetch(`${API_ENDPOINTS.ROADMAP}/progress`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (!res.ok) return;
       const data = await res.json() as RoadmapProgressResponse;
       set({ moduleStatuses: data.moduleStatuses });

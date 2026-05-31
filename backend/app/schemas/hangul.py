@@ -9,7 +9,6 @@ class LookupResponse(BaseModel):
     difficulty: int
 
 class VocabularyCreate(BaseModel):
-    user_id: str
     word: str
     syllables: List[str]
 
@@ -18,7 +17,6 @@ class VocabularyResponse(BaseModel):
     total_words: int
 
 class ProgressUpdate(BaseModel):
-    user_id: str
     xp_earned: int
     accuracy: float
     mode: str

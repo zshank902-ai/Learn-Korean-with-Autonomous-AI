@@ -11,11 +11,13 @@ import os
 import urllib.parse
 from typing import Any
 from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Response
+from fastapi import APIRouter, HTTPException, Response, Depends
 from pydantic import BaseModel
 
 from app.services import roadmap_service
 from app.core.redis_client import get_redis
+from app.api.v1.endpoints.auth import get_current_user
+from app.models.user import User
 
 router = APIRouter()
 
@@ -25,23 +27,16 @@ GROQ_MODEL = "llama-3.1-8b-instant"
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")
 
-DEFAULT_USER_ID = 1  # Demo mode until OAuth is live
-
-# ─── Pydantic Schemas ────────────────────────────────────────────────────────
-
 class CompleteModuleRequest(BaseModel):
     score: int = 0
-    user_id: int = DEFAULT_USER_ID
 
 class EssayGradeRequest(BaseModel):
     essay: str
     level: int
     prompt_hint: str = ""
-    user_id: int = DEFAULT_USER_ID
 
 class MockSubmitRequest(BaseModel):
     answers: dict[str, Any]
-    user_id: int = DEFAULT_USER_ID
 
 # ─── Helper: Essay Grader via Groq → Ollama fallback ─────────────────────────
 
@@ -201,10 +196,10 @@ def get_roadmap() -> dict[str, Any]:
     return {"levels": roadmap_service.get_level_structure()}
 
 
-@router.get("/progress/{user_id}")
-def get_progress(user_id: int) -> dict[str, Any]:
+@router.get("/progress")
+def get_progress(current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Returns per-module progress statuses and total XP for a user."""
-    module_statuses = roadmap_service.get_user_progress(user_id)
+    module_statuses = roadmap_service.get_user_progress(current_user.id)
     completed_modules = [mid for mid, status in module_statuses.items() if status == "completed"]
 
     # Calculate total XP from completed modules
@@ -222,33 +217,33 @@ def get_progress(user_id: int) -> dict[str, Any]:
 
 
 @router.post("/module/{module_id}/start")
-def start_module(module_id: str, user_id: int = DEFAULT_USER_ID) -> dict[str, Any]:
+def start_module(module_id: str, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Marks a module as in_progress and returns session info."""
     module = roadmap_service.get_module(module_id)
     if not module:
         raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
 
     # Verify module is available for this user
-    statuses = roadmap_service.get_user_progress(user_id)
+    statuses = roadmap_service.get_user_progress(current_user.id)
     status = statuses.get(module_id, "locked")
     if status == "locked":
         raise HTTPException(status_code=403, detail="Module is locked. Complete prerequisites first.")
 
-    return roadmap_service.start_module(user_id, module_id)
+    return roadmap_service.start_module(current_user.id, module_id)
 
 
 @router.post("/module/{module_id}/complete")
-def complete_module(module_id: str, body: CompleteModuleRequest) -> dict[str, Any]:
+def complete_module(module_id: str, body: CompleteModuleRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Marks module completed, awards XP, unlocks next module."""
     module = roadmap_service.get_module(module_id)
     if not module:
         raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
 
-    return roadmap_service.complete_module(body.user_id, module_id, body.score)
+    return roadmap_service.complete_module(current_user.id, module_id, body.score)
 
 
 @router.post("/essay/grade")
-def grade_essay(body: EssayGradeRequest) -> dict[str, Any]:
+def grade_essay(body: EssayGradeRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Grades a Korean essay using Groq (Ollama fallback). Returns 4-rubric JSON."""
     if not body.essay.strip():
         raise HTTPException(status_code=400, detail="Essay text cannot be empty.")
@@ -256,7 +251,7 @@ def grade_essay(body: EssayGradeRequest) -> dict[str, Any]:
 
 
 @router.get("/mock/{level_id}/generate")
-def generate_mock_exam(level_id: int) -> dict[str, Any]:
+def generate_mock_exam(level_id: int, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Generates a full TOPIK mock exam structure for a given level."""
     levels = roadmap_service.get_level_structure()
     level = next((lvl for lvl in levels if lvl["id"] == level_id), None)
@@ -299,7 +294,7 @@ def generate_mock_exam(level_id: int) -> dict[str, Any]:
 
 
 @router.post("/mock/{exam_id}/submit")
-def submit_mock_exam(exam_id: str, body: MockSubmitRequest) -> dict[str, Any]:
+def submit_mock_exam(exam_id: str, body: MockSubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Scores a submitted mock exam and returns results with weak area analysis."""
     redis = get_redis()
     cached = redis.get(f"roadmap:mock:{exam_id}")

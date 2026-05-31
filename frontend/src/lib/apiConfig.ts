@@ -12,6 +12,10 @@ if (!wsBase) {
   if (apiBase) {
     // Convert https://foo.onrender.com to wss://foo.onrender.com
     wsBase = apiBase.replace('http://', 'ws://').replace('https://', 'wss://');
+    // Ensure the URL ends with /api since the backend mounts real-time routes under /api
+    if (!wsBase.endsWith('/api')) {
+      wsBase += '/api';
+    }
   } else {
     wsBase = isBrowser ? `ws://${window.location.host}/api/proxy` : 'ws://127.0.0.1:8000/api';
   }

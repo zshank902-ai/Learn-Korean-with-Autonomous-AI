@@ -9,8 +9,11 @@ import json
 import os
 import random
 from typing import Any
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
+
+from app.api.v1.endpoints.auth import get_current_user
+from app.models.user import User
 
 router = APIRouter()
 
@@ -19,14 +22,12 @@ router = APIRouter()
 class TopikISubmitRequest(BaseModel):
     answers: dict[str, int]
     seed: str = ""
-    user_id: int = 1
 
 class TopikIISubmitRequest(BaseModel):
     mcq_answers: dict[str, int]
     writing_answers: dict[str, str]  # "51","52","53","54" → text
     target_level: int = 3
     seed: str = ""
-    user_id: int = 1
 
 
 # ─── Load Static Bank ─────────────────────────────────────────────────────────
@@ -154,7 +155,7 @@ def get_topik_ii_questions(targetLevel: int = 3, seed: str = "") -> dict[str, An
 
 
 @router.post("/topik-i/submit")
-def submit_topik_i(body: TopikISubmitRequest) -> dict[str, Any]:
+def submit_topik_i(body: TopikISubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Scores a submitted TOPIK-I exam. Returns section scores and level awarded."""
     # Reconstruct the exact same exam they took using the seed
     bank = _load_bank(1)
@@ -179,7 +180,7 @@ def submit_topik_i(body: TopikISubmitRequest) -> dict[str, Any]:
 
 
 @router.post("/topik-ii/submit")
-def submit_topik_ii(body: TopikIISubmitRequest) -> dict[str, Any]:
+def submit_topik_ii(body: TopikIISubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Scores TOPIK-II MCQ and sends Q53+Q54 essays to AI grader."""
     from app.api.v1.endpoints.roadmap import _grade_essay_with_ai
 
