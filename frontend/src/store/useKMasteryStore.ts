@@ -228,4 +228,19 @@ export const useKMasteryStore = create<KMasteryState>((set) => ({
       console.error('fetchRoadmapProgress error:', e);
     }
   },
+
+  reset: () => set({
+    xp: 0,
+    level: 1,
+    streak: 0,
+    coins: 0,
+    aiFeedback: null,
+    streamingText: "",
+    notifications: [],
+    roadmapLevels: [],
+    moduleStatuses: {},
+    activeTopikLevel: 1,
+    activeTopikModule: null,
+    currentMockExam: null,
+  })
 }));
