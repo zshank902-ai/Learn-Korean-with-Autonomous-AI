@@ -179,10 +179,11 @@ def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, ba
 def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
-    # Developer Mock Flow if credentials are missing or using placeholder
-    if code.startswith("mock_") or not settings.GOOGLE_CLIENT_ID or settings.GOOGLE_CLIENT_ID.startswith("YOUR_"):
-        print("Google OAuth: Running in Developer Mock Mode")
-        return handle_social_user(db, "google", "google_mock_12345", "mock.google@example.com", "MockGoogleUser")
+    if not settings.GOOGLE_CLIENT_ID or settings.GOOGLE_CLIENT_ID.startswith("YOUR_"):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Google Sign-In is not configured on the server."
+        )
 
     # Real Google OAuth Authorization Code Exchange
     redirect_uri = social_in.redirect_uri or "http://localhost:3000/login/callback/google"
@@ -240,10 +241,11 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
 def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
-    # Developer Mock Flow if credentials are missing or using placeholder
-    if code.startswith("mock_") or not settings.GITHUB_CLIENT_ID or settings.GITHUB_CLIENT_ID.startswith("YOUR_"):
-        print("GitHub OAuth: Running in Developer Mock Mode")
-        return handle_social_user(db, "github", "github_mock_12345", "mock.github@example.com", "MockGitHubUser")
+    if not settings.GITHUB_CLIENT_ID or settings.GITHUB_CLIENT_ID.startswith("YOUR_"):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="GitHub Sign-In is not configured on the server."
+        )
 
     # Real GitHub OAuth Authorization Code Exchange
     try:

@@ -47,8 +47,20 @@ export default function AuthPage() {
           body: JSON.stringify({ username, email, password })
         });
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.detail || "Registration failed");
+        let data;
+        try {
+          data = await response.json();
+        } catch (e) {
+          throw new Error("Server returned an invalid response. Please try again later.");
+        }
+
+        if (!response.ok) {
+          if (Array.isArray(data.detail)) {
+            // Handle Pydantic Validation Error array
+            throw new Error(data.detail[0].msg || "Validation error");
+          }
+          throw new Error(data.detail || "Registration failed");
+        }
         
         setToken(data.access_token);
         await fetchProfile();
@@ -71,8 +83,7 @@ export default function AuthPage() {
     
     if (provider === 'google') {
       if (!googleClientId || googleClientId.startsWith('YOUR_')) {
-        console.warn("Google Client ID is missing or using placeholder. Falling back to Mock Developer Login.");
-        performMockLogin('google');
+        setErrorMsg("Google Sign-In is not configured yet. Please use email signup.");
         return;
       }
       const redirectUri = encodeURIComponent(`${appUrl}/login/callback/google`);
@@ -82,8 +93,7 @@ export default function AuthPage() {
       window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}`;
     } else {
       if (!githubClientId || githubClientId.startsWith('YOUR_')) {
-        console.warn("GitHub Client ID is missing or using placeholder. Falling back to Mock Developer Login.");
-        performMockLogin('github');
+        setErrorMsg("GitHub Sign-In is not configured yet. Please use email signup.");
         return;
       }
       const redirectUri = encodeURIComponent(`${appUrl}/login/callback/github`);
@@ -91,31 +101,6 @@ export default function AuthPage() {
       const state = Math.random().toString(36).substring(2, 15);
       localStorage.setItem('oauth_state', state);
       window.location.href = `https://github.com/login/oauth/authorize?client_id=${githubClientId}&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
-    }
-  };
-
-  const performMockLogin = async (provider: 'google' | 'github') => {
-    setLoading(true);
-    try {
-      const endpoint = provider === 'google' ? API_ENDPOINTS.AUTH_GOOGLE : API_ENDPOINTS.AUTH_GITHUB;
-      const redirectUri = `${window.location.origin}/login/callback/${provider}`;
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: `mock_${provider}_code_12345`, redirect_uri: redirectUri })
-      });
-      
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.detail || "Mock login failed");
-      
-      setToken(data.access_token);
-      await fetchProfile();
-      router.push('/dashboard');
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'An unexpected error occurred during mock login';
-      setErrorMsg(message);
-    } finally {
-      setLoading(false);
     }
   };
 
