@@ -62,6 +62,7 @@ export interface MCQQuestion {
   options: [string, string, string, string];
   correct: number;
   explanation: string;
+  audioText?: string;
 }
 
 export interface MockExamConfig {

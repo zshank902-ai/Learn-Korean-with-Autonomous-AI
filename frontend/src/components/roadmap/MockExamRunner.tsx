@@ -477,7 +477,7 @@ export default function MockExamRunner({
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => speakText(currentQ.question)}
+                        onClick={() => speakText(currentQ.audioText || currentQ.question)}
                         disabled={playing}
                         className="w-14 h-14 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center shadow-sm"
                       >

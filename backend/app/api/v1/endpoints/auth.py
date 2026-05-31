@@ -179,12 +179,6 @@ def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, ba
 def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
-    if not settings.GOOGLE_CLIENT_ID or settings.GOOGLE_CLIENT_ID.startswith("YOUR_"):
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Google Sign-In is not configured on the server."
-        )
-
     # Real Google OAuth Authorization Code Exchange
     redirect_uri = social_in.redirect_uri or "http://localhost:3000/login/callback/google"
     try:
@@ -241,12 +235,6 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
 def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
-    if not settings.GITHUB_CLIENT_ID or settings.GITHUB_CLIENT_ID.startswith("YOUR_"):
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="GitHub Sign-In is not configured on the server."
-        )
-
     # Real GitHub OAuth Authorization Code Exchange
     try:
         token_url = "https://github.com/login/oauth/access_token"

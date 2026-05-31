@@ -521,6 +521,23 @@ def get_user_progress(user_id: int) -> dict[str, str]:
             (k.decode() if isinstance(k, bytes) else k): (v.decode() if isinstance(v, bytes) else v)
             for k, v in raw.items()
         }
+    else:
+        # Cache miss. Try to restore from PostgreSQL
+        try:
+            from app.db.session import SessionLocal
+            from app.models.user import UserProgress
+            import json
+            
+            db = SessionLocal()
+            db_progress = db.query(UserProgress).filter(UserProgress.user_id == user_id).first()
+            if db_progress and db_progress.roadmap_status_json:
+                progress = json.loads(db_progress.roadmap_status_json)
+                # Repopulate Redis cache
+                if progress:
+                    redis.hset(key, mapping=progress)
+            db.close()
+        except Exception as e:
+            print(f"Error restoring roadmap progress from DB: {e}")
 
     # Ensure EVERY module in the roadmap defaults to "available" if not present
     for level in ROADMAP_STRUCTURE:

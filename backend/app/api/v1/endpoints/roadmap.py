@@ -110,16 +110,45 @@ def _grade_essay_with_ai(essay: str, level: int, prompt_hint: str) -> dict[str, 
 def _generate_questions_with_ai(module_id: str, module_type: str, level: int, count: int = 10) -> list[dict]:
     """Generates TOPIK-style questions via Groq, cached in Redis for 30 days."""
     redis = get_redis()
-    cache_key = f"roadmap:questions:{module_id}:page1"
+    cache_key = f"roadmap:questions:{module_id}:page1:v2"
     cached = redis.get(cache_key)
     if cached:
         return json.loads(cached)
 
+    from app.db.session import SessionLocal
+    from app.models.srs import VocabItem
+    import random
+    
+    db = SessionLocal()
+    tsv_words = []
+    try:
+        vocab_items = db.query(VocabItem).filter(VocabItem.level_id == level).all()
+        if vocab_items:
+            sampled = random.sample(vocab_items, min(10, len(vocab_items)))
+            tsv_words = [f"{item.word} ({item.meaning})" for item in sampled]
+    except Exception:
+        pass
+    finally:
+        db.close()
+        
+    tsv_instruction = ""
+    if tsv_words:
+        words_str = ", ".join(tsv_words)
+        tsv_instruction = f"CRITICAL VOCABULARY INJECTION: You MUST prominently feature these specific official TOPIK vocabulary words in your questions/dialogues to test the user: [{words_str}]. "
+
+    # Force listening modules to generate a dialogue for the TTS engine
+    is_listening = "listening" in module_id.lower() or module_type.lower() == "listening"
+    
+    if is_listening:
+        format_instruction = '[{"audioText": "Korean dialogue goes here", "question": "Question about the dialogue", "options": ["보기1", "보기2", "보기3", "보기4"], "correct": 0, "explanation": "Why this is correct"}]'
+    else:
+        format_instruction = '[{"question": "Korean text to read and question", "options": ["보기1", "보기2", "보기3", "보기4"], "correct": 0, "explanation": "Why this is correct"}]'
+
     system_prompt = (
         "You are a certified TOPIK exam question writer. "
         f"Generate {count} authentic TOPIK Level {level} {module_type} questions in Korean. "
-        "Return ONLY valid JSON array: "
-        '[{"question": string, "options": [string, string, string, string], "correct": 0, "explanation": string}]. '
+        f"{tsv_instruction}"
+        f"Return ONLY valid JSON array: {format_instruction}. "
         "Questions must be realistic, culturally accurate, and match official TOPIK difficulty."
     )
 
@@ -255,39 +284,16 @@ def generate_mock_exam(level_id: int) -> dict[str, Any]:
     # Fetch exactly the required questions from local bank for listening/reading sections
     questions: dict[str, Any] = {}
     
-    import random
-    import os
-    
     for section in level["sections"]:
         section_type = section["name"].lower()
         if section_type in ("listening", "reading"):
             module_id = f"l{level_id}_{section_type}"
             required_count = section["questions"]
             
-            # Fetch from local bank
-            bank_path = f"app/data/topik_{1 if level_id <= 2 else 2}_bank.json"
-            if os.path.exists(bank_path):
-                with open(bank_path, "r", encoding="utf-8") as f:
-                    bank = json.load(f)
-                    pool = bank.get(section_type, [])
-                    if pool:
-                        # Get exact required_count or max available
-                        selected = random.sample(pool, min(required_count, len(pool)))
-                        mapped = []
-                        for q in selected:
-                            mapped.append({
-                                "question": q.get("questionText", ""),
-                                "options": q.get("options", ["보기1", "보기2", "보기3", "보기4"]),
-                                "correct": q.get("correctAnswer", 0),
-                                "explanation": q.get("explanation", ""),
-                            })
-                        questions[section_type] = mapped
-            
-            # Fallback to AI if local bank failed or doesn't have enough
-            if section_type not in questions or not questions[section_type]:
-                questions[section_type] = _generate_questions_with_ai(
-                    module_id, section_type, level_id, required_count
-                )
+            # Always use AI to dynamically inject official TSV Vocabulary
+            questions[section_type] = _generate_questions_with_ai(
+                module_id, section_type, level_id, required_count
+            )
 
     return {"examId": exam_id, "config": config, "questions": questions}
 
@@ -352,27 +358,7 @@ def get_module_questions(module_id: str, page: int = 1) -> dict[str, Any]:
     m_type = module.get("type", "mcq")
     level = module.get("level_id", 1)
 
-    # Bypass AI for MCQ to provide massive 100-question practice sets instantly
-    if m_type == "mcq":
-        import random
-        import os
-        bank_type = "listening" if "listening" in module_id.lower() else "reading"
-        path = f"app/data/topik_{1 if level <= 2 else 2}_bank.json"
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf-8") as f:
-                bank = json.load(f)
-                pool = bank.get(bank_type, [])
-                if pool:
-                    selected = random.sample(pool, min(100, len(pool)))
-                    mapped = []
-                    for q in selected:
-                        mapped.append({
-                            "question": q.get("questionText", ""),
-                            "options": q.get("options", ["보기1", "보기2", "보기3", "보기4"]),
-                            "correct": q.get("correctAnswer", 0),
-                            "explanation": q.get("explanation", ""),
-                        })
-                    return {"moduleId": module_id, "page": page, "questions": mapped, "total": len(mapped)}
+    # Bypass removed: Everything now flows through AI to dynamically inject official TSV Vocabulary.
 
     # For other module types, fallback to AI generation
     questions = _generate_questions_with_ai(

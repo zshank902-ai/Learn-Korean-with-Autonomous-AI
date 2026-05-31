@@ -4,11 +4,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { User, Award, Flame, Zap, Target, Hexagon } from 'lucide-react';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
+import { useAuthStore } from '@/store/useAuthStore';
 import StreakCalendar from '@/components/StreakCalendar';
 import AnimatedXPBar from '@/components/AnimatedXPBar';
 
 export default function ProfilePage() {
   const { xp, level, streak, coins } = useKMasteryStore();
+  const { user } = useAuthStore();
 
   const badges = [
     { id: 1, name: 'First Word', icon: <Target size={24} />, bg: '#F97316', earned: true },
@@ -50,9 +52,9 @@ export default function ProfilePage() {
         {/* Info */}
         <div className="flex-1 text-center md:text-left z-10">
           <h1 className="text-4xl md:text-5xl font-black mb-2 text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Student
+            {user?.username || 'Student'}
           </h1>
-          <p className="text-lg text-[#1E1B4B]/60 font-bold mb-6">Learning Korean · Joined May 2026</p>
+          <p className="text-lg text-[#1E1B4B]/60 font-bold mb-6">Learning Korean</p>
           
           <div className="max-w-md">
             <AnimatedXPBar currentXP={xp} level={level} />
@@ -60,9 +62,28 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Stats & Calendar */}
-        <div className="lg:col-span-2 space-y-8">
+      {xp === 0 ? (
+        <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-12 text-center"
+             style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
+          <div className="w-24 h-24 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center mx-auto mb-6"
+               style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
+            <Target size={40} className="text-[#4F46E5]" />
+          </div>
+          <h2 className="text-3xl font-black text-[#1E1B4B] mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
+            Zero Progress Yet!
+          </h2>
+          <p className="text-[#1E1B4B]/60 font-bold text-lg max-w-md mx-auto mb-8">
+            Your journey begins now. Complete your first lesson to start earning XP, building your streak, and unlocking badges!
+          </p>
+          <a href="/roadmap" className="inline-block px-8 py-4 bg-[#F97316] text-white font-black text-xl rounded-xl border-4 border-[#1E1B4B] hover:-translate-y-1 hover:shadow-[4px_6px_0px_#1E1B4B] active:translate-y-1 active:shadow-[0px_0px_0px_#1E1B4B] transition-all"
+             style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
+            START LEARNING
+          </a>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column: Stats & Calendar */}
+          <div className="lg:col-span-2 space-y-8">
           {/* Stat Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, i) => (
@@ -114,8 +135,9 @@ export default function ProfilePage() {
               </motion.div>
             ))}
           </div>
+          </div>
         </div>
-      </div>
+      )}
       
     </div>
   );

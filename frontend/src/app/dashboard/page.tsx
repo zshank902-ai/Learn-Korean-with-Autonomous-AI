@@ -12,6 +12,7 @@ const SmartCorrector = dynamic(() => import('@/components/SmartCorrector'), { ss
 const AIChatBox = dynamic(() => import('@/components/AIChatBox'), { ssr: false });
 const LevelUpModal = dynamic(() => import('@/components/LevelUpModal'), { ssr: false });
 const NotificationSystem = dynamic(() => import('@/components/NotificationSystem'), { ssr: false });
+const WelcomePopup = dynamic(() => import('@/components/WelcomePopup'), { ssr: false });
 
 import ProtectedRoute from '@/components/ProtectedRoute';
 
@@ -40,7 +41,8 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[#EEF2FF] p-6 max-w-screen-2xl mx-auto text-[#1E1B4B]">
+      <div className="min-h-screen bg-[#EEF2FF] p-4 md:p-6 pb-24 lg:pb-6 text-[#1E1B4B]">
+        <WelcomePopup />
         <LevelUpModal />
         <NotificationSystem />
 

@@ -1,11 +1,10 @@
 import os
 from datetime import datetime, timedelta, timezone
 from typing import Optional, Union, Any
-from passlib.context import CryptContext
+import bcrypt
 from jose import jwt
 
-# Configure your preferred hashing algorithm
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# We use bcrypt directly to avoid passlib incompatibilities in newer python versions
 
 # JWT configuration
 SECRET_KEY = os.getenv("SECRET_KEY", "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7")
@@ -14,11 +13,16 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days for convenience
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    try:
+        return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+    except Exception:
+        return False
 
 
 def get_password_hash(password: str) -> str:
-    return pwd_context.hash(password)
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    return hashed.decode('utf-8')
 
 
 def create_access_token(subject: Union[str, Any], expires_delta: Optional[timedelta] = None) -> str:

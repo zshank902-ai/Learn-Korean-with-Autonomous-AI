@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float, DateTime, Text
 from sqlalchemy.orm import relationship
 from app.db.session import Base
 from datetime import datetime, timezone
@@ -27,6 +27,7 @@ class UserProgress(Base):
     total_xp = Column(Integer, default=0)
     streak_count = Column(Integer, default=0)
     long_term_memory = Column(String, nullable=True)
+    roadmap_status_json = Column(Text, nullable=True)
     last_login = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     user = relationship("User", back_populates="progress")

@@ -4,8 +4,10 @@ from app.services.corrector import corrector_service
 from app.services.tutor import tutor_service
 from app.db.session import SessionLocal
 from app.models.user import UserProgress
+from app.models.srs import VocabItem
 import json
 import asyncio
+import random
 
 router = APIRouter()
 
@@ -87,20 +89,34 @@ async def websocket_tutor_chat(websocket: WebSocket):
             history = payload.get("history", [])
             level = payload.get("level", 1)
             is_exam = payload.get("is_exam", False)
+            session_id = payload.get("session_id")
             
             if not history:
                 continue
                 
             # Fetch long term memory from DB
             db = SessionLocal()
+            tsv_words = []
             try:
                 progress = db.query(UserProgress).first()
                 long_term_memory = progress.long_term_memory if progress else None
+                
+                if not is_exam:
+                    vocab_items = db.query(VocabItem).filter(VocabItem.level_id == int(level)).all()
+                    if vocab_items:
+                        sampled = random.sample(vocab_items, min(5, len(vocab_items)))
+                        tsv_words = [f"{item.word} ({item.meaning})" for item in sampled]
             finally:
                 db.close()
                 
             # Stream response back with dynamic level guardrails and memory context
-            async for event in tutor_service.async_stream_chat(history, topik_level=level, long_term_memory=long_term_memory, is_exam=is_exam):
+            ai_full_text = ""
+            ai_corrections = []
+            async for event in tutor_service.async_stream_chat(history, topik_level=level, long_term_memory=long_term_memory, is_exam=is_exam, tsv_words=tsv_words):
+                if event.get("type") == "stream":
+                    ai_full_text += event.get("chunk", "")
+                elif event.get("type") == "corrections":
+                    ai_corrections = event.get("data", [])
                 await websocket.send_json(event)
             
             # Send completion signal
@@ -108,9 +124,29 @@ async def websocket_tutor_chat(websocket: WebSocket):
                 "type": "done"
             })
             
+            # Construct final history and save to session
+            final_history = list(history)
+            ai_msg = {"role": "ai", "content": ai_full_text}
+            if ai_corrections:
+                ai_msg["corrections"] = ai_corrections
+            final_history.append(ai_msg)
+            
+            if session_id:
+                try:
+                    db = SessionLocal()
+                    from app.models.tutor import ChatSession
+                    session = db.query(ChatSession).filter(ChatSession.id == session_id).first()
+                    if session:
+                        session.history_json = json.dumps(final_history)
+                        db.commit()
+                except Exception as db_err:
+                    print(f"Failed to save session {session_id}: {db_err}")
+                finally:
+                    db.close()
+            
             # Fire and forget the background memory summarizer
             from app.services.memory_worker import memory_worker
-            asyncio.create_task(memory_worker.summarize_and_save(history))
+            asyncio.create_task(memory_worker.summarize_and_save(final_history))
 
     except WebSocketDisconnect:
         print("WebSocket: Tutor client disconnected safely.")

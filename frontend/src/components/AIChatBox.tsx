@@ -28,6 +28,7 @@ interface ChatMessage {
 export default function AIChatBox() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [wsStatus, setWsStatus] = useState<'connecting' | 'ready' | 'offline'>('connecting');
   const [isStreaming, setIsStreaming] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
@@ -80,6 +81,28 @@ export default function AIChatBox() {
 
   useEffect(() => {
     connect();
+    
+    // Fetch session history
+    const token = localStorage.getItem('token');
+    if (token) {
+      fetch(API_ENDPOINTS.BASE_URL + '/tutor/session', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.session_id) setSessionId(data.session_id);
+        if (data.history && Array.isArray(data.history)) {
+          setMessages(data.history.map((m: any) => ({
+            id: Math.random().toString(36).slice(2),
+            role: m.role === 'assistant' ? 'ai' : m.role,
+            content: m.content,
+            corrections: m.corrections
+          })));
+        }
+      })
+      .catch(console.error);
+    }
+
     return () => wsRef.current?.close();
   }, [connect]);
 
@@ -153,7 +176,7 @@ export default function AIChatBox() {
         role: m.role === 'ai' ? 'assistant' : m.role,
         content: m.content
       }));
-      wsRef.current.send(JSON.stringify({ type: 'chat', history: newHistory, level }));
+      wsRef.current.send(JSON.stringify({ type: 'chat', history: newHistory, level, session_id: sessionId }));
     } else {
       setIsStreaming(true);
       setTimeout(() => {
@@ -192,13 +215,28 @@ export default function AIChatBox() {
             <span className="text-[10px] font-bold text-[#818CF8] uppercase tracking-wider">🎯 TOPIK Level {level} Active</span>
           </div>
         </div>
-        <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border-2 ${
-          wsStatus === 'ready' ? 'border-green-400 bg-green-50' : 'border-[#F97316] bg-orange-50'
-        }`}>
-          {wsStatus === 'ready' ? <Wifi size={12} className="text-green-500" /> : <WifiOff size={12} className="text-[#F97316]" />}
+        <div className="flex gap-3 items-center">
+          <button 
+            onClick={() => {
+              if (confirm('Clear chat history?')) {
+                fetch(API_ENDPOINTS.BASE_URL + '/tutor/session', {
+                  method: 'DELETE',
+                  headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
+                }).then(() => setMessages([]));
+              }
+            }}
+            className="text-xs font-bold text-red-500 hover:bg-red-50 px-2 py-1 rounded-lg transition-colors border-2 border-transparent hover:border-red-200"
+          >
+            Clear Chat
+          </button>
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border-2 ${
+            wsStatus === 'ready' ? 'border-green-400 bg-green-50' : 'border-[#F97316] bg-orange-50'
+          }`}>
+            {wsStatus === 'ready' ? <Wifi size={12} className="text-green-500" /> : <WifiOff size={12} className="text-[#F97316]" />}
           <span className="text-[10px] font-black uppercase tracking-wider" style={{
             color: wsStatus === 'ready' ? '#16A34A' : '#F97316'
-          }}>{wsStatus}</span>
+          }}>{wsStatus === 'ready' ? 'Connected' : 'Reconnecting...'}</span>
+          </div>
         </div>
       </div>
 

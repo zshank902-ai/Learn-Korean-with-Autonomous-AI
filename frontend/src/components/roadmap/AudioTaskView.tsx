@@ -8,6 +8,7 @@ import type { MCQQuestion } from '@/lib/roadmapTypes';
 
 interface RawQuestion {
   question?: string;
+  audioText?: string;
   options?: string[] | [string, string, string, string];
   correct?: number;
   correct_index?: number;
@@ -56,6 +57,7 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
             options: (q.options as [string, string, string, string]).slice(0, 4) as [string, string, string, string],
             correct: q.correct ?? q.correct_index ?? q.answer_index ?? 0,
             explanation: q.explanation ?? '',
+            audioText: q.audioText,
           }));
         setQuestions(mapped.length > 0 ? mapped : getFallback());
       } catch {
@@ -103,7 +105,8 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
     if (!loading && questions.length > 0) {
       const q = questions[currentIndex];
       if (q) {
-        const timer = setTimeout(() => speakText(q.question), 400);
+        const textToSpeak = q.audioText || q.question;
+        const timer = setTimeout(() => speakText(textToSpeak), 400);
         return () => clearTimeout(timer);
       }
     }
@@ -207,7 +210,7 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => speakText(q.question)}
+              onClick={() => speakText(q.audioText || q.question)}
               disabled={playing}
               className="relative w-20 h-20 bg-white rounded-full border-4 border-white flex items-center justify-center shadow-lg disabled:opacity-70"
               aria-label="Play audio"
@@ -229,11 +232,14 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
             ) : (
               /* Fallback: show text directly */
               <div className="w-full bg-white/10 rounded-2xl p-4">
-                <p className="text-xl font-black text-white text-center">{q.question}</p>
+                <p className="text-xl font-black text-white text-center">{q.audioText || q.question}</p>
               </div>
             )}
           </div>
 
+          <p className="text-lg font-black text-[#1E1B4B] text-center mb-2">
+            {q.question}
+          </p>
           <p className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest text-center">
             Choose the correct answer:
           </p>

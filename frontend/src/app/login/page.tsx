@@ -37,6 +37,7 @@ export default function AuthPage() {
         
         setToken(data.access_token);
         await fetchProfile();
+        sessionStorage.setItem('just_logged_in', 'true');
         router.push('/dashboard');
         
       } else {
@@ -64,6 +65,7 @@ export default function AuthPage() {
         
         setToken(data.access_token);
         await fetchProfile();
+        sessionStorage.setItem('just_logged_in', 'true');
         router.push('/dashboard');
       }
     } catch (err: unknown) {
@@ -82,20 +84,12 @@ export default function AuthPage() {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
     
     if (provider === 'google') {
-      if (!googleClientId || googleClientId.startsWith('YOUR_')) {
-        setErrorMsg("Google Sign-In is not configured yet. Please use email signup.");
-        return;
-      }
       const redirectUri = encodeURIComponent(`${appUrl}/login/callback/google`);
       const scope = encodeURIComponent('openid email profile');
       const state = Math.random().toString(36).substring(2, 15);
       localStorage.setItem('oauth_state', state);
       window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=${state}`;
     } else {
-      if (!githubClientId || githubClientId.startsWith('YOUR_')) {
-        setErrorMsg("GitHub Sign-In is not configured yet. Please use email signup.");
-        return;
-      }
       const redirectUri = encodeURIComponent(`${appUrl}/login/callback/github`);
       const scope = encodeURIComponent('read:user user:email');
       const state = Math.random().toString(36).substring(2, 15);

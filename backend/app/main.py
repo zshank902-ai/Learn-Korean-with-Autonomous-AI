@@ -5,10 +5,10 @@ from sqlalchemy.orm import Session
 from app.services.corrector import corrector_service
 from app.services.production_model import model_server
 from app.db.session import engine, Base, get_db, check_and_upgrade_db
-from app.models import user, course, srs
+from app.models import user, course, srs, tutor
 from app.models.user import UserProgress
 from app.models import hangul as hangul_models
-from app.api.v1.endpoints import gamification, realtime, auth, flywheel, speech
+from app.api.v1.endpoints import gamification, realtime, auth, flywheel, speech, tutor
 from app.api.v1.endpoints import vocab
 from app.api.v1.endpoints import roadmap as roadmap_router
 from app.api.v1.endpoints import exam as exam_router
@@ -96,6 +96,7 @@ app.include_router(flywheel.router, prefix="/api/v1/ai/data-flywheel", tags=["Da
 app.include_router(roadmap_router.router, prefix="/api/roadmap", tags=["TOPIK Roadmap"])
 app.include_router(exam_router.router, prefix="/api/exam", tags=["TOPIK Exam"])
 app.include_router(hangul_router.router, prefix="/api/hangul", tags=["Hangul Mastery"])
+app.include_router(tutor.router, prefix="/api/v1/tutor", tags=["Tutor Session"])
 
 @app.get("/")
 async def root():

@@ -101,21 +101,9 @@ class GamificationManager:
     def get_leaderboard_mock(self, limit: int = 10) -> list:
         """
         Returns the real leaderboard from Redis.
-        Falls back to a seeded mock list if the leaderboard is empty
-        (e.g., on a fresh install with no XP events yet).
         """
         real_lb = self.get_leaderboard(limit=limit)
-        if real_lb:
-            return real_lb
-
-        # Seed mock data so the UI always renders correctly
-        return [
-            {"rank": 1, "user_id": "2", "username": "Minho_T", "xp": 14500, "level": 3},
-            {"rank": 2, "user_id": "1", "username": "You", "xp": 12450, "level": 3},
-            {"rank": 3, "user_id": "3", "username": "SarahJ", "xp": 9800, "level": 2},
-            {"rank": 4, "user_id": "4", "username": "BTS_Fan", "xp": 7500, "level": 2},
-            {"rank": 5, "user_id": "5", "username": "SeoulExplorer", "xp": 4200, "level": 1},
-        ]
+        return real_lb if real_lb else []
 
     def sync_all_users_to_db(self, db: Session):
         """
@@ -163,6 +151,18 @@ class GamificationManager:
                         current_topik_level=current_level
                     )
                     db.add(new_progress)
+                    progress = new_progress
+                
+                # Fetch roadmap progress from Redis and save to PostgreSQL
+                import json
+                roadmap_key = f"roadmap:progress:{user_id}"
+                roadmap_raw = self.redis.hgetall(roadmap_key)
+                if roadmap_raw:
+                    roadmap_dict = {
+                        (k.decode() if isinstance(k, bytes) else k): (v.decode() if isinstance(v, bytes) else v)
+                        for k, v in roadmap_raw.items()
+                    }
+                    progress.roadmap_status_json = json.dumps(roadmap_dict)
 
                 sync_count += 1
 

@@ -13,7 +13,7 @@ GROQ_MODEL = "llama-3.1-8b-instant"
 OLLAMA_BASE_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")
 
-def get_system_prompt(topik_level: int, long_term_memory: str = None, is_exam: bool = False) -> str:
+def get_system_prompt(topik_level: int, long_term_memory: str = None, is_exam: bool = False, tsv_words: list = None) -> str:
     if is_exam:
         next_level = topik_level + 1
         return f"""You are a strict TOPIK (Test of Proficiency in Korean) Examiner. 
@@ -52,6 +52,11 @@ If the user passes the exam on the 3rd question, the JSON MUST be:
     if long_term_memory:
         memory_instruction = f"5. USER CONTEXT / MEMORY: {long_term_memory}. Use this to personalize the conversation!"
 
+    tsv_instruction = ""
+    if tsv_words:
+        words_str = ", ".join(tsv_words)
+        tsv_instruction = f"6. SURVIVAL VOCABULARY: You MUST naturally guide the conversation to utilize these specific vocabulary words: [{words_str}]. Try to use at least one in your next response to force the user to learn it."
+
     return f"""You are an expert AI Korean language tutor. 
 Your goal is to help the user practice Korean conversation. 
 RULES:
@@ -60,6 +65,7 @@ RULES:
 3. Keep your responses encouraging and concise. Do not write long essays.
 4. {level_instruction}
 {memory_instruction}
+{tsv_instruction}
 
 CRITICAL INSTRUCTION:
 You MUST output your response in strict JSON format matching exactly this schema:
@@ -79,7 +85,7 @@ If there are no mistakes, set has_corrections to false and corrections to [].
 """
 
 class TutorService:
-    async def async_stream_chat(self, history: list, topik_level: int = 1, long_term_memory: str = None, is_exam: bool = False) -> AsyncGenerator[dict, None]:
+    async def async_stream_chat(self, history: list, topik_level: int = 1, long_term_memory: str = None, is_exam: bool = False, tsv_words: list = None) -> AsyncGenerator[dict, None]:
         """
         Streams chat responses from Groq (Llama-3).
         Yields dicts: {"type": "stream", "chunk": "..."} or {"type": "corrections", "data": [...]}
@@ -91,7 +97,7 @@ class TutorService:
                 role = "assistant"
             processed_history.append({"role": role, "content": msg.get("content", "")})
 
-        messages = [{"role": "system", "content": get_system_prompt(topik_level, long_term_memory, is_exam)}] + processed_history
+        messages = [{"role": "system", "content": get_system_prompt(topik_level, long_term_memory, is_exam, tsv_words)}] + processed_history
 
         if GROQ_API_KEY:
             try:
