@@ -55,52 +55,65 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
         batch_size = 10
         for i in range(0, len(missing_words), batch_size):
             batch = missing_words[i:i+batch_size]
-            try:
-                res = requests.post(
-                    GROQ_URL,
-                    headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
-                    json={
-                        "model": "llama-3.1-8b-instant",
-                        "messages": [
-                            {"role": "system", "content": system_prompt},
-                            {"role": "user", "content": json.dumps(batch, ensure_ascii=False)}
-                        ],
-                        "response_format": {"type": "json_object"},
-                        "temperature": 0.3,
-                        "max_tokens": 4000
-                    },
-                    timeout=15
-                )
-                res.raise_for_status()
-                content = res.json()["choices"][0]["message"]["content"].strip()
-                
-                if content.startswith("```json"):
-                    content = content[7:]
-                if content.startswith("```"):
-                    content = content[3:]
-                if content.endswith("```"):
-                    content = content[:-3]
-                content = content.strip()
-                
-                new_examples = json.loads(content)
-                
-                # Autonomous Verification Firewall (Structure Only)
-                for word in batch:
-                    ex = new_examples.get(word)
-                    if not (ex and isinstance(ex, dict) and "korean" in ex and "english" in ex):
-                        new_examples[word] = {
-                            "korean": f"이 단어는 '{word}'입니다.",
-                            "english": f"This word is '{word}'."
-                        }
-                        
-                examples_map.update(new_examples)
+            import time
+            max_retries = 3
+            for attempt in range(max_retries):
                 try:
-                    if redis:
-                        redis.set(cache_key, json.dumps(examples_map, ensure_ascii=False))
+                    res = requests.post(
+                        GROQ_URL,
+                        headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                        json={
+                            "model": "llama-3.1-8b-instant",
+                            "messages": [
+                                {"role": "system", "content": system_prompt},
+                                {"role": "user", "content": json.dumps(batch, ensure_ascii=False)}
+                            ],
+                            "response_format": {"type": "json_object"},
+                            "temperature": 0.3,
+                            "max_tokens": 1000
+                        },
+                        timeout=15
+                    )
+                    
+                    if res.status_code == 429:
+                        print(f"Rate limited on attempt {attempt+1}, sleeping...")
+                        time.sleep(2 ** attempt)
+                        continue
+                        
+                    res.raise_for_status()
+                    content = res.json()["choices"][0]["message"]["content"].strip()
+                    
+                    if content.startswith("```json"):
+                        content = content[7:]
+                    if content.startswith("```"):
+                        content = content[3:]
+                    if content.endswith("```"):
+                        content = content[:-3]
+                    content = content.strip()
+                    
+                    new_examples = json.loads(content)
+                    
+                    # Autonomous Verification Firewall (Structure Only)
+                    for word in batch:
+                        ex = new_examples.get(word)
+                        if not (ex and isinstance(ex, dict) and "korean" in ex and "english" in ex):
+                            new_examples[word] = {
+                                "korean": f"이 단어는 '{word}'입니다.",
+                                "english": f"This word is '{word}'."
+                            }
+                            
+                    examples_map.update(new_examples)
+                    try:
+                        if redis:
+                            redis.set(cache_key, json.dumps(examples_map, ensure_ascii=False))
+                    except Exception as e:
+                        print(f"Redis unavailable for saving examples: {e}")
+                    
+                    break
                 except Exception as e:
-                    print(f"Redis unavailable for saving examples: {e}")
-            except Exception as e:
-                print(f"AI example generation failed for batch: {e}")
+                    if attempt == max_retries - 1:
+                        print(f"AI example generation failed for batch after 3 attempts: {e}")
+                    time.sleep(2 ** attempt)
     
     return examples_map
 

@@ -1,0 +1,1 @@
+{"error":{"message":"Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01kqk0q34ae9jac26rt9qerprv` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 3417, Requested 4199. Please try again in 16.16s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
