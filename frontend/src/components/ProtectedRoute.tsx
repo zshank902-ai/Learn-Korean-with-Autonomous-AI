@@ -8,10 +8,23 @@ import { Loader2 } from 'lucide-react';
 export default function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, token, fetchProfile } = useAuthStore();
   const router = useRouter();
+  const [hasHydrated, setHasHydrated] = useState(false);
   const [isVerifying, setIsVerifying] = useState(true);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
+    // Wait for Zustand persist to hydrate from localStorage
+    const unsubFinishHydration = useAuthStore.persist.onFinishHydration(() => setHasHydrated(true));
+    setHasHydrated(useAuthStore.persist.hasHydrated());
+    
+    return () => {
+      unsubFinishHydration();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasHydrated) return; // Wait for hydration before checking auth
+
     let isMounted = true;
     const checkAuth = async () => {
       // If there's no token in localStorage (Zustand persist), boot them to login
@@ -51,7 +64,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
     checkAuth();
     return () => { isMounted = false; };
-  }, [isAuthenticated, token, router, fetchProfile]);
+  }, [hasHydrated, isAuthenticated, token, router, fetchProfile]);
 
   if (isVerifying) {
     return (

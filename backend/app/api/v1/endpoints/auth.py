@@ -7,7 +7,7 @@ from app.core.security import verify_password, get_password_hash, create_access_
 from app.core.config import settings
 from typing import Optional
 import re
-import requests
+import httpx
 
 
 router = APIRouter()
@@ -176,7 +176,7 @@ def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, ba
 
 
 @router.post("/google", response_model=Token)
-def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
+async def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
     # Real Google OAuth Authorization Code Exchange
@@ -190,38 +190,40 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
             "redirect_uri": redirect_uri,
             "grant_type": "authorization_code"
         }
-        res = requests.post(token_url, data=token_data, timeout=15)
-        if res.status_code != 200:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Google token exchange failed: {res.text}"
-            )
         
-        tokens = res.json()
-        access_token = tokens.get("access_token")
-        
-        # Request user info
-        userinfo_url = "https://www.googleapis.com/oauth2/v3/userinfo"
-        headers = {"Authorization": f"Bearer {access_token}"}
-        userinfo_res = requests.get(userinfo_url, headers=headers, timeout=15)
-        if userinfo_res.status_code != 200:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Google userinfo request failed"
-            )
+        async with httpx.AsyncClient() as client:
+            res = await client.post(token_url, data=token_data, timeout=15.0)
+            if res.status_code != 200:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"Google token exchange failed: {res.text}"
+                )
             
-        userinfo = userinfo_res.json()
-        google_id = userinfo.get("sub")
-        email = userinfo.get("email")
-        name = userinfo.get("name") or (email.split("@")[0] if email else "GoogleUser")
-        
-        if not google_id or not email:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Failed to retrieve key user details from Google"
-            )
+            tokens = res.json()
+            access_token = tokens.get("access_token")
             
-        return handle_social_user(db, "google", google_id, email, name)
+            # Request user info
+            userinfo_url = "https://www.googleapis.com/oauth2/v3/userinfo"
+            headers = {"Authorization": f"Bearer {access_token}"}
+            userinfo_res = await client.get(userinfo_url, headers=headers, timeout=15.0)
+            if userinfo_res.status_code != 200:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Google userinfo request failed"
+                )
+                
+            userinfo = userinfo_res.json()
+            google_id = userinfo.get("sub")
+            email = userinfo.get("email")
+            name = userinfo.get("name") or (email.split("@")[0] if email else "GoogleUser")
+            
+            if not google_id or not email:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="Failed to retrieve key user details from Google"
+                )
+                
+            return handle_social_user(db, "google", google_id, email, name)
     except Exception as e:
         if isinstance(e, HTTPException):
             raise e
@@ -232,7 +234,7 @@ def google_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
 
 
 @router.post("/github", response_model=Token)
-def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
+async def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
     code = social_in.code
     
     # Real GitHub OAuth Authorization Code Exchange
@@ -245,54 +247,56 @@ def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db)):
             "code": code,
             "redirect_uri": social_in.redirect_uri
         }
-        res = requests.post(token_url, data=token_data, headers=headers, timeout=15)
-        if res.status_code != 200:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"GitHub token exchange failed: {res.text}"
-            )
-            
-        tokens = res.json()
-        access_token = tokens.get("access_token")
-        if not access_token:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Failed to obtain access token from GitHub: {tokens.get('error_description', tokens.get('error', 'unknown error'))}"
-            )
-            
-        # Get user profile
-        user_url = "https://api.github.com/user"
-        user_headers = {
-            "Authorization": f"Bearer {access_token}",
-            "User-Agent": "K-Mastery-Auth-API"
-        }
-        user_res = requests.get(user_url, headers=user_headers, timeout=15)
-        if user_res.status_code != 200:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="GitHub user profile request failed"
-            )
-            
-        user_profile = user_res.json()
-        github_id = str(user_profile.get("id"))
-        username = user_profile.get("login")
-        email = user_profile.get("email")
         
-        # If email is not public, fetch all emails using OAuth scope user:email
-        if not email:
-            emails_url = "https://api.github.com/user/emails"
-            emails_res = requests.get(emails_url, headers=user_headers, timeout=15)
-            if emails_res.status_code == 200:
-                emails = emails_res.json()
-                primary_email = next((e.get("email") for e in emails if e.get("primary")), None)
-                if not primary_email:
-                    primary_email = next((e.get("email") for e in emails), None)
-                email = primary_email
+        async with httpx.AsyncClient() as client:
+            res = await client.post(token_url, data=token_data, headers=headers, timeout=15.0)
+            if res.status_code != 200:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"GitHub token exchange failed: {res.text}"
+                )
                 
-        if not email:
-            email = f"{username}@github.user"
+            tokens = res.json()
+            access_token = tokens.get("access_token")
+            if not access_token:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail=f"Failed to obtain access token from GitHub: {tokens.get('error_description', tokens.get('error', 'unknown error'))}"
+                )
+                
+            # Get user profile
+            user_url = "https://api.github.com/user"
+            user_headers = {
+                "Authorization": f"Bearer {access_token}",
+                "User-Agent": "K-Mastery-Auth-API"
+            }
+            user_res = await client.get(user_url, headers=user_headers, timeout=15.0)
+            if user_res.status_code != 200:
+                raise HTTPException(
+                    status_code=status.HTTP_400_BAD_REQUEST,
+                    detail="GitHub user profile request failed"
+                )
+                
+            user_profile = user_res.json()
+            github_id = str(user_profile.get("id"))
+            username = user_profile.get("login")
+            email = user_profile.get("email")
             
-        return handle_social_user(db, "github", github_id, email, username)
+            # If email is not public, fetch all emails using OAuth scope user:email
+            if not email:
+                emails_url = "https://api.github.com/user/emails"
+                emails_res = await client.get(emails_url, headers=user_headers, timeout=15.0)
+                if emails_res.status_code == 200:
+                    emails = emails_res.json()
+                    primary_email = next((e.get("email") for e in emails if e.get("primary")), None)
+                    if not primary_email:
+                        primary_email = next((e.get("email") for e in emails), None)
+                    email = primary_email
+                    
+            if not email:
+                email = f"{username}@github.user"
+                
+            return handle_social_user(db, "github", github_id, email, username)
     except Exception as e:
         if isinstance(e, HTTPException):
             raise e

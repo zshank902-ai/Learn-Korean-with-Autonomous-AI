@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { User, Award, Flame, Zap, Target, Hexagon } from 'lucide-react';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
@@ -75,10 +76,10 @@ export default function ProfilePage() {
           <p className="text-[#1E1B4B]/60 font-bold text-lg max-w-md mx-auto mb-8">
             Your journey begins now. Complete your first lesson to start earning XP, building your streak, and unlocking badges!
           </p>
-          <a href="/roadmap" className="inline-block px-8 py-4 bg-[#F97316] text-white font-black text-xl rounded-xl border-4 border-[#1E1B4B] hover:-translate-y-1 hover:shadow-[4px_6px_0px_#1E1B4B] active:translate-y-1 active:shadow-[0px_0px_0px_#1E1B4B] transition-all"
+          <Link href="/roadmap" className="inline-block px-8 py-4 bg-[#F97316] text-white font-black text-xl rounded-xl border-4 border-[#1E1B4B] hover:-translate-y-1 hover:shadow-[4px_6px_0px_#1E1B4B] active:translate-y-1 active:shadow-[0px_0px_0px_#1E1B4B] transition-all"
              style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
             START LEARNING
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
