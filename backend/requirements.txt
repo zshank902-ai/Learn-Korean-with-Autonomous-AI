@@ -22,3 +22,4 @@ aiofiles
 httpx
 groq
 resend
+cachetools
