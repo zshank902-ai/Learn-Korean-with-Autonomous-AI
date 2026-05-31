@@ -35,7 +35,7 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
     redis = None
     try:
         redis = get_redis()
-        cache_key = f"vocab:examples:v2:level{level}"
+        cache_key = f"vocab:examples:v3:level{level}"
         cached = redis.get(cache_key)
         if cached:
             examples_map = json.loads(cached)
@@ -48,8 +48,8 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
             "You are a strict TOPIK Korean teacher. Provide a simple example sentence for each Korean word provided. "
             "CRITICAL REQUIREMENT: You MUST include the exact Korean word (or its grammatically conjugated root) in the Korean sentence. "
             "Do not hallucinate random sentences. "
-            "Return ONLY a JSON object mapping each word to its example. "
-            'Format: {"word": {"korean": "example in korean", "english": "english translation"}}'
+            "Return ONLY a JSON object mapping each word exactly to its example. "
+            'Format Example: {"가다": {"korean": "학교에 가요.", "english": "I go to school."}}'
         )
         try:
             res = requests.post(
@@ -70,20 +70,11 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
             content = res.json()["choices"][0]["message"]["content"]
             new_examples = json.loads(content)
             
-            # Autonomous Verification Firewall
+            # Autonomous Verification Firewall (Structure Only)
             for word in missing_words:
                 ex = new_examples.get(word)
-                if ex and isinstance(ex, dict) and "korean" in ex:
-                    # Strip '다' from verb/adjective to check the root
-                    root = word[:-1] if word.endswith('다') else word
-                    if root not in ex["korean"]:
-                        # Hallucination detected! Overwrite with safe fallback.
-                        new_examples[word] = {
-                            "korean": f"이 단어는 '{word}'입니다.",
-                            "english": f"This word is '{word}'."
-                        }
-                else:
-                    # Missing or malformed
+                if not (ex and isinstance(ex, dict) and "korean" in ex and "english" in ex):
+                    # Missing or malformed JSON structure
                     new_examples[word] = {
                         "korean": f"이 단어는 '{word}'입니다.",
                         "english": f"This word is '{word}'."
