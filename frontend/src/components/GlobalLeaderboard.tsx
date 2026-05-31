@@ -9,7 +9,6 @@ interface LeaderboardUser {
   id: string | number;
   nickname?: string;
   full_name?: string;
-  nickname?: string; // keeping just in case legacy fallback is needed
   xp: number;
   level: number;
   avatar_url?: string;
