@@ -8,6 +8,8 @@ import { useKMasteryStore } from '@/store/useKMasteryStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import StreakCalendar from '@/components/StreakCalendar';
 import AnimatedXPBar from '@/components/AnimatedXPBar';
+import AccountSettings from '@/components/profile/AccountSettings';
+import { ToastContainer } from '@/hooks/useToast';
 
 export default function ProfilePage() {
   const { xp, level, streak, coins } = useKMasteryStore();
@@ -30,7 +32,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-[#EEF2FF] p-4 md:p-6 max-w-screen-xl mx-auto text-[#1E1B4B] pt-8 md:pt-10">
-      
+      <ToastContainer />
       {/* Header Profile Card */}
       <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 relative overflow-hidden"
            style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
@@ -53,7 +55,7 @@ export default function ProfilePage() {
         {/* Info */}
         <div className="flex-1 text-center md:text-left z-10">
           <h1 className="text-4xl md:text-5xl font-black mb-2 text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
-            {user?.username || 'Student'}
+            {user?.nickname || user?.full_name || 'Student'}
           </h1>
           <p className="text-lg text-[#1E1B4B]/60 font-bold mb-6">Learning Korean</p>
           
@@ -139,6 +141,9 @@ export default function ProfilePage() {
           </div>
         </div>
       )}
+      
+      {/* Account Settings Section */}
+      <AccountSettings />
       
     </div>
   );

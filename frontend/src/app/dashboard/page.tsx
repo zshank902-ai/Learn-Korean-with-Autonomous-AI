@@ -13,6 +13,7 @@ const AIChatBox = dynamic(() => import('@/components/AIChatBox'), { ssr: false }
 const LevelUpModal = dynamic(() => import('@/components/LevelUpModal'), { ssr: false });
 const NotificationSystem = dynamic(() => import('@/components/NotificationSystem'), { ssr: false });
 const WelcomePopup = dynamic(() => import('@/components/WelcomePopup'), { ssr: false });
+const OnboardingModal = dynamic(() => import('@/components/OnboardingModal'), { ssr: false });
 
 import ProtectedRoute from '@/components/ProtectedRoute';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -45,6 +46,7 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
+      <OnboardingModal />
       <div className="min-h-screen bg-[#EEF2FF] p-4 md:p-6 pb-24 lg:pb-6 text-[#1E1B4B]">
         <WelcomePopup />
         <LevelUpModal />

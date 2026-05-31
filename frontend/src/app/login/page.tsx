@@ -9,7 +9,8 @@ import { API_ENDPOINTS } from '@/lib/apiConfig';
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
-  const [username, setUsername] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +30,7 @@ export default function AuthPage() {
         const response = await fetch(API_ENDPOINTS.AUTH_LOGIN, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
+          body: JSON.stringify({ email, password })
         });
         
         const data = await response.json();
@@ -45,7 +46,7 @@ export default function AuthPage() {
         const response = await fetch(API_ENDPOINTS.AUTH_REGISTER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, email, password })
+          body: JSON.stringify({ email, password, nickname, full_name: fullName })
         });
 
         let data;
@@ -149,46 +150,70 @@ export default function AuthPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <AnimatePresence>
+              {!isLogin && (
+                <>
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="space-y-2 overflow-hidden mb-6"
+                  >
+                    <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Full Name</label>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40" size={20} />
+                      <input 
+                        required={!isLogin}
+                        type="text" 
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        placeholder="e.g. John Doe"
+                        className="w-full bg-[#EEF2FF] border-4 border-[#1E1B4B] rounded-xl py-4 pl-12 pr-4 font-bold focus:outline-none focus:bg-[#FEF3C7] transition-colors"
+                        style={{ boxShadow: 'inset 4px 4px 0px rgba(30,27,75,0.05)' }}
+                      />
+                    </div>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="space-y-2 overflow-hidden mb-6"
+                  >
+                    <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Nickname</label>
+                    <div className="relative">
+                      <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40" size={20} />
+                      <input 
+                        required={!isLogin}
+                        type="text" 
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        placeholder="e.g. BusanKing99"
+                        className="w-full bg-[#EEF2FF] border-4 border-[#1E1B4B] rounded-xl py-4 pl-12 pr-4 font-bold focus:outline-none focus:bg-[#FEF3C7] transition-colors"
+                        style={{ boxShadow: 'inset 4px 4px 0px rgba(30,27,75,0.05)' }}
+                      />
+                    </div>
+                  </motion.div>
+                </>
+              )}
+            </AnimatePresence>
+
             <div className="space-y-2">
-              <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Username</label>
+              <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Email</label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40" size={20} />
                 <input 
                   required
-                  type="text" 
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="e.g. BusanKing99"
+                  type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="hello@example.com"
                   className="w-full bg-[#EEF2FF] border-4 border-[#1E1B4B] rounded-xl py-4 pl-12 pr-4 font-bold focus:outline-none focus:bg-[#FEF3C7] transition-colors"
                   style={{ boxShadow: 'inset 4px 4px 0px rgba(30,27,75,0.05)' }}
                 />
               </div>
             </div>
 
-            <AnimatePresence>
-              {!isLogin && (
-                <motion.div 
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="space-y-2 overflow-hidden"
-                >
-                  <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Email</label>
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40" size={20} />
-                    <input 
-                      required={!isLogin}
-                      type="email" 
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="hello@example.com"
-                      className="w-full bg-[#EEF2FF] border-4 border-[#1E1B4B] rounded-xl py-4 pl-12 pr-4 font-bold focus:outline-none focus:bg-[#FEF3C7] transition-colors"
-                      style={{ boxShadow: 'inset 4px 4px 0px rgba(30,27,75,0.05)' }}
-                    />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+
 
             <div className="space-y-2">
               <label className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Password</label>

@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
 import { motion } from 'framer-motion';
 import ModuleCard from '@/components/roadmap/ModuleCard';
-import type { TopikModule, ModuleStatus } from '@/lib/roadmapTypes';
+import type { TopikModule } from '@/lib/roadmapTypes';
+import type { ProgressModule } from '@/hooks/useTopikProgress';
 
 interface ModuleGridProps {
   modules: TopikModule[];
-  moduleStatuses: Record<string, ModuleStatus>;
+  progressData: ProgressModule[];
   levelColor: string;
   onModuleSelect: (module: TopikModule) => void;
 }
@@ -32,7 +33,7 @@ const cardVariants = {
 
 export default function ModuleGrid({
   modules,
-  moduleStatuses,
+  progressData,
   levelColor,
   onModuleSelect,
 }: ModuleGridProps) {
@@ -53,6 +54,11 @@ export default function ModuleGrid({
     );
   }
 
+  // Create a quick lookup for dynamic progress state
+  const progressMap = new Map<string, ProgressModule>(
+    progressData?.map(p => [p.module_id, p]) || []
+  );
+
   return (
     <motion.div
       variants={containerVariants}
@@ -66,12 +72,16 @@ export default function ModuleGrid({
       }}
     >
       {modules.map((module) => {
-        const status: ModuleStatus = moduleStatuses[module.id] ?? 'locked';
+        const pState = progressMap.get(module.id);
+        const status = pState?.status ?? 'locked';
+        const progressPercent = pState?.progress_percent ?? 0;
+        
         return (
           <motion.div key={module.id} variants={cardVariants} style={{ height: '100%' }}>
             <ModuleCard
               module={module}
               status={status}
+              progressPercent={progressPercent}
               levelColor={levelColor}
               onStart={onModuleSelect}
             />

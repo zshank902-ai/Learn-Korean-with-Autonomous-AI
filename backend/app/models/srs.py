@@ -1,7 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Float, DateTime
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.db.session import Base
 from datetime import datetime, timezone
+import uuid
 
 class VocabItem(Base):
     __tablename__ = "vocab_items"
@@ -11,16 +13,16 @@ class VocabItem(Base):
     meaning = Column(String) # English/Hindi meaning
     pronunciation = Column(String) # Romaji/Hangul guide
     audio_path = Column(String, nullable=True)
-    level_id = Column(Integer, ForeignKey("topik_levels.id"))
+    level_id = Column(Integer, ForeignKey("topik_levels.id", ondelete="CASCADE"))
 
     user_progress = relationship("UserVocabProgress", back_populates="vocab_item")
 
 class UserVocabProgress(Base):
     __tablename__ = "user_vocab_progress"
 
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    vocab_id = Column(Integer, ForeignKey("vocab_items.id"))
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    vocab_id = Column(Integer, ForeignKey("vocab_items.id", ondelete="CASCADE"))
     
     # SM-2 Algorithm Fields
     ease_factor = Column(Float, default=2.5) # Initial Ease Factor

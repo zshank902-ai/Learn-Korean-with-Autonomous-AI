@@ -1,7 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, JSON, Enum, Boolean, DateTime
+from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.db.session import Base
 import enum
+import uuid
 
 class ModuleType(str, enum.Enum):
     HANGUL = "hangul"
@@ -23,7 +25,7 @@ class CourseModule(Base):
     __tablename__ = "course_modules"
 
     id = Column(Integer, primary_key=True, index=True)
-    level_id = Column(Integer, ForeignKey("topik_levels.id"))
+    level_id = Column(Integer, ForeignKey("topik_levels.id", ondelete="CASCADE"))
     title = Column(String)
     type = Column(String) # hangul, vocabulary, grammar, reading
 
@@ -34,10 +36,10 @@ class Lesson(Base):
     __tablename__ = "lessons"
 
     id = Column(Integer, primary_key=True, index=True)
-    module_id = Column(Integer, ForeignKey("course_modules.id"))
+    module_id = Column(Integer, ForeignKey("course_modules.id", ondelete="CASCADE"))
     title = Column(String)
     order = Column(Integer)
-    content = Column(JSON) # Storing flexible lesson data (slides, questions, etc.)
+    content = Column(JSON) # Storing flexible lesson data
     xp_reward = Column(Integer, default=20)
 
     module = relationship("CourseModule", back_populates="lessons")
@@ -46,9 +48,9 @@ class Lesson(Base):
 class UserLessonProgress(Base):
     __tablename__ = "user_lesson_progress"
 
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    lesson_id = Column(Integer, ForeignKey("lessons.id"))
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"))
+    lesson_id = Column(Integer, ForeignKey("lessons.id", ondelete="CASCADE"))
     is_completed = Column(Boolean, default=False)
     score = Column(Integer, nullable=True) # For quizzes
 

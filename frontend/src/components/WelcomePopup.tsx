@@ -54,7 +54,7 @@ export default function WelcomePopup() {
             </h2>
             
             <p className="text-[#1E1B4B]/70 font-bold text-lg mb-8">
-              Hi {user?.username || 'there'}! You're now inside the world's most advanced autonomous Korean learning OS.
+              Hi {user?.nickname || user?.full_name || 'there'}! You're now inside the world's most advanced autonomous Korean learning OS.
             </p>
 
             <div className="grid grid-cols-1 gap-4 w-full mb-8">

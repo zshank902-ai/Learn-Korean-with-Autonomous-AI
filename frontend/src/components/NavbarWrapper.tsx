@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Navbar from './Navbar';
+import OnboardingModal from './OnboardingModal';
 
 /**
  * NavbarWrapper: Conditionally renders the global Navbar.
@@ -15,5 +16,10 @@ export default function NavbarWrapper() {
   const shouldHide = hideNavbarRoutes.some(route => pathname?.startsWith(route));
 
   if (shouldHide) return null;
-  return <Navbar />;
+  return (
+    <>
+      <Navbar />
+      <OnboardingModal />
+    </>
+  );
 }

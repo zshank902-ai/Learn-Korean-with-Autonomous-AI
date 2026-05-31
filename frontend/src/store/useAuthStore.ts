@@ -4,9 +4,14 @@ import { API_ENDPOINTS } from '@/lib/apiConfig';
 import { useKMasteryStore } from './useKMasteryStore';
 
 interface UserProfile {
-  id: number;
-  username: string;
+  id: string;
   email: string;
+  nickname: string | null;
+  full_name: string | null;
+  avatar_url: string | null;
+  email_verified: boolean;
+  onboarding_done: boolean;
+  oauth_provider?: string | null;
 }
 
 interface AuthState {

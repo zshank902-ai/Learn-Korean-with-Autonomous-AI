@@ -12,7 +12,11 @@ from app.api.v1.endpoints import gamification, realtime, auth, flywheel, speech,
 from app.api.v1.endpoints import vocab
 from app.api.v1.endpoints import roadmap as roadmap_router
 from app.api.v1.endpoints import exam as exam_router
+from app.api.v1.endpoints import onboarding as onboarding_router
 from app.api.v1.endpoints import hangul as hangul_router
+from app.api.v1.endpoints import profile as profile_router
+from app.api.v1.endpoints import email as email_router
+from app.api.v1.endpoints import progress as progress_router
 from app.services.sync_worker import sync_worker
 import asyncio
 
@@ -88,6 +92,10 @@ from app.api.v1.endpoints import vocab
 
 # Routes
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
+app.include_router(profile_router.router, prefix="/api/profile", tags=["Profile"])
+app.include_router(email_router.router, prefix="/api/email", tags=["Email"])
+app.include_router(onboarding_router.router, prefix="/api/onboarding", tags=["Onboarding"])
+app.include_router(progress_router.router, prefix="/api/progress", tags=["Progress"])
 app.include_router(gamification.router, prefix="/api/v1/user", tags=["Gamification"])
 app.include_router(vocab.router, prefix="/api/v1", tags=["Vocabulary"])
 app.include_router(realtime.router, prefix="/api/v1/ai", tags=["Real-time AI"])

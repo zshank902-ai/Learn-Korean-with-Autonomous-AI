@@ -6,10 +6,13 @@ import { Trophy, Medal } from 'lucide-react';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
 
 interface LeaderboardUser {
-  user_id: number;
-  username: string;
+  id: string | number;
+  nickname?: string;
+  full_name?: string;
+  username?: string; // keeping just in case legacy fallback is needed
   xp: number;
   level: number;
+  avatar_url?: string;
 }
 
 export default function GlobalLeaderboard() {
@@ -24,8 +27,9 @@ export default function GlobalLeaderboard() {
           const data = await res.json();
           // Backend returns array; map to our interface
           const mapped = (Array.isArray(data) ? data : []).map((u: {rank?: number; user_id?: number | string; username?: string; xp?: number; level?: number}, i: number) => ({
-            user_id: Number(u.user_id ?? i + 1),
+            id: u.user_id ?? i + 1,
             username: u.username ?? `User ${u.user_id}`,
+            nickname: u.username ?? `User ${u.user_id}`,
             xp: u.xp ?? 0,
             level: u.level ?? 1,
           }));
@@ -41,11 +45,11 @@ export default function GlobalLeaderboard() {
 
       // Fallback: use mock data if API is down or returned empty
       const mockData = [
-        { user_id: 2, username: 'Minho_T', xp: 14500, level: 3 },
-        { user_id: 1, username: 'You', xp: 12450, level: 3 },
-        { user_id: 3, username: 'SarahJ', xp: 9800, level: 2 },
-        { user_id: 4, username: 'BTS_Fan', xp: 7500, level: 2 },
-        { user_id: 5, username: 'SeoulExplorer', xp: 4200, level: 1 },
+        { id: 1, username: "SeoulKing", nickname: "SeoulKing", xp: 12500, level: 12 },
+        { id: 2, username: "KPopFan99", nickname: "KPopFan99", xp: 9800, level: 9 },
+        { id: 3, username: "TopikMaster", nickname: "TopikMaster", xp: 8450, level: 8 },
+        { id: 4, username: "LearnKorean24", nickname: "LearnKorean24", xp: 6200, level: 6 },
+        { id: 5, username: "BusanExplorer", nickname: "BusanExplorer", xp: 4100, level: 4 }
       ];
       setTimeout(() => {
         setUsers(mockData);
@@ -87,11 +91,11 @@ export default function GlobalLeaderboard() {
           users.map((user, index) => {
             const rank = index + 1;
             const rankStyle = getRankStyle(rank);
-            const isMe = user.user_id === 1;
+            const isMe = user.id === 1;
 
             return (
               <motion.div 
-                key={user.user_id}
+                key={user.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -106,7 +110,7 @@ export default function GlobalLeaderboard() {
                 </div>
                 
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-[#1E1B4B] truncate">{user.username}</p>
+                  <p className="font-bold text-[#1E1B4B] truncate">{user.nickname || user.full_name || "Anonymous"}</p>
                   <p className="text-xs font-black text-[#4F46E5]">Lv. {user.level}</p>
                 </div>
                 

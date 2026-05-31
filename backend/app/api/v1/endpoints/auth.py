@@ -14,12 +14,13 @@ router = APIRouter()
 
 # Schemas
 class UserCreate(BaseModel):
-    username: str
     email: EmailStr
     password: str
+    nickname: Optional[str] = None
+    full_name: Optional[str] = None
 
 class UserLogin(BaseModel):
-    username: str
+    email: str
     password: str
 
 class Token(BaseModel):
@@ -35,26 +36,46 @@ class SocialLoginInput(BaseModel):
 class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: int
-    username: str
+    id: str
     email: str
+    nickname: Optional[str] = None
+    full_name: Optional[str] = None
+    avatar_url: Optional[str] = None
+    email_verified: bool
+    onboarding_done: bool
 
 @router.post("/register", response_model=Token, status_code=status.HTTP_201_CREATED)
 def register(user_in: UserCreate, db: Session = Depends(get_db)):
     # Check existing user
-    user = db.query(User).filter((User.username == user_in.username) | (User.email == user_in.email)).first()
+    user = db.query(User).filter(User.email == user_in.email).first()
     if user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Username or email already registered"
+            detail="Email already registered"
         )
     
+    if user_in.nickname:
+        nickname_check = db.query(User).filter(User.nickname == user_in.nickname).first()
+        if nickname_check:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Nickname already taken"
+            )
+            
     # Create new user
     hashed_password = get_password_hash(user_in.password)
+    
+    import random
+    import string
+    verify_code = ''.join(random.choices(string.digits, k=6))
+    print(f"\\n{'='*40}\\nEMAIL VERIFICATION MOCK\\nTo: {user_in.email}\\nCode: {verify_code}\\n{'='*40}\\n")
+    
     db_user = User(
-        username=user_in.username,
         email=user_in.email,
-        hashed_password=hashed_password
+        hashed_password=hashed_password,
+        nickname=user_in.nickname,
+        full_name=user_in.full_name,
+        email_verify_token=verify_code
     )
     db.add(db_user)
     db.commit()
@@ -76,11 +97,11 @@ def register(user_in: UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=Token)
 def login(user_in: UserLogin, db: Session = Depends(get_db)):
-    user = db.query(User).filter(User.username == user_in.username).first()
+    user = db.query(User).filter(User.email == user_in.email).first()
     if not user or not user.hashed_password or not verify_password(user_in.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
     
@@ -107,7 +128,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     except JWTError:
         raise credentials_exception
     
-    user = db.query(User).filter(User.id == int(user_id)).first()
+    user = db.query(User).filter(User.id == user_id).first()
     if user is None:
         raise credentials_exception
     return user
@@ -117,23 +138,22 @@ def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user
 
 
-# Helper to generate unique username
-def generate_unique_username(db: Session, base_username: str) -> str:
-    # Retain alphanumeric and underscores/hyphens
-    cleaned = re.sub(r'[^a-zA-Z0-9_\-]', '', base_username)
+# Helper to generate unique nickname
+def generate_unique_nickname(db: Session, base_name: str) -> str:
+    cleaned = re.sub(r'[^a-zA-Z0-9_\-]', '', base_name)
     if not cleaned:
         cleaned = "user"
     
-    username = cleaned
+    nickname = cleaned
     counter = 1
-    while db.query(User).filter(User.username == username).first() is not None:
-        username = f"{cleaned}{counter}"
+    while db.query(User).filter(User.nickname == nickname).first() is not None:
+        nickname = f"{cleaned}{counter}"
         counter += 1
-    return username
+    return nickname
 
 
 # Helper to create/link and retrieve social users
-def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, base_username: str) -> dict:
+def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, base_name: str) -> dict:
     # 1. Look up by provider + ID
     user = db.query(User).filter(User.oauth_provider == provider, User.oauth_id == oauth_id).first()
     
@@ -147,10 +167,12 @@ def handle_social_user(db: Session, provider: str, oauth_id: str, email: str, ba
             db.refresh(user)
         else:
             # 3. Create a new user account
-            unique_username = generate_unique_username(db, base_username)
+            unique_nickname = generate_unique_nickname(db, base_name)
             user = User(
-                username=unique_username,
+                nickname=unique_nickname,
+                full_name=base_name,
                 email=email,
+                email_verified=True, # Social logins are trusted
                 oauth_provider=provider,
                 oauth_id=oauth_id,
                 hashed_password=None,
