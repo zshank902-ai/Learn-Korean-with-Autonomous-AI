@@ -35,7 +35,7 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
     redis = None
     try:
         redis = get_redis()
-        cache_key = f"vocab:examples:level{level}"
+        cache_key = f"vocab:examples:v2:level{level}"
         cached = redis.get(cache_key)
         if cached:
             examples_map = json.loads(cached)
@@ -45,7 +45,9 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
     missing_words = [w for w in words if w not in examples_map]
     if missing_words and GROQ_API_KEY:
         system_prompt = (
-            "You are a TOPIK Korean teacher. Provide a simple example sentence for each Korean word provided. "
+            "You are a strict TOPIK Korean teacher. Provide a simple example sentence for each Korean word provided. "
+            "CRITICAL REQUIREMENT: You MUST include the exact Korean word (or its grammatically conjugated root) in the Korean sentence. "
+            "Do not hallucinate random sentences. "
             "Return ONLY a JSON object mapping each word to its example. "
             'Format: {"word": {"korean": "example in korean", "english": "english translation"}}'
         )
@@ -67,6 +69,26 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
             res.raise_for_status()
             content = res.json()["choices"][0]["message"]["content"]
             new_examples = json.loads(content)
+            
+            # Autonomous Verification Firewall
+            for word in missing_words:
+                ex = new_examples.get(word)
+                if ex and isinstance(ex, dict) and "korean" in ex:
+                    # Strip '다' from verb/adjective to check the root
+                    root = word[:-1] if word.endswith('다') else word
+                    if root not in ex["korean"]:
+                        # Hallucination detected! Overwrite with safe fallback.
+                        new_examples[word] = {
+                            "korean": f"이 단어는 '{word}'입니다.",
+                            "english": f"This word is '{word}'."
+                        }
+                else:
+                    # Missing or malformed
+                    new_examples[word] = {
+                        "korean": f"이 단어는 '{word}'입니다.",
+                        "english": f"This word is '{word}'."
+                    }
+                    
             examples_map.update(new_examples)
             try:
                 if redis:
