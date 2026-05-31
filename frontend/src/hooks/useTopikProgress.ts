@@ -31,7 +31,7 @@ export function useTopikProgress(levelNum: number) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${API_ENDPOINTS.BASE_URL}/v1/progress/topik/${levelNum}`, {
+      const res = await fetch(`${API_ENDPOINTS.BASE_URL}/progress/topik/${levelNum}`, {
         headers: { 'Authorization': `Bearer ${token}` },
         cache: 'no-store'
       });
@@ -51,7 +51,7 @@ export function useTopikProgress(levelNum: number) {
     if (!token) return null;
 
     try {
-      const res = await fetch(`${API_ENDPOINTS.BASE_URL}/v1/progress/complete-module`, {
+      const res = await fetch(`${API_ENDPOINTS.BASE_URL}/progress/complete-module`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
