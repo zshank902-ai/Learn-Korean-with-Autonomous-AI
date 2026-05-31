@@ -78,7 +78,7 @@ app = FastAPI(title="K-Mastery API", version="1.0.0", lifespan=lifespan)
 # Enable CORS for Next.js frontend — MUST be registered before routes
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://192.168.0.2:3000", "https://k-mastery.vercel.app"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://192.168.0.2:3000", "https://k-mastery.vercel.app", "https://learn-korean-with-autonomous-ai.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
