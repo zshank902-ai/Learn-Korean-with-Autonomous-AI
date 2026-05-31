@@ -17,12 +17,15 @@ from pydantic import BaseModel
 from app.services import roadmap_service
 from app.services.prompts.master_tutor_prompt import get_master_tutor_prompt
 from app.core.redis_client import get_redis
+from app.services.roadmap_service import ROADMAP_STRUCTURE
+from app.services.prompts.master_tutor_prompt import get_master_tutor_prompt
+from app.core.redis_client import get_redis
+from app.core.ai_config import get_groq_api_key
 from app.api.v1.endpoints.auth import get_current_user
 from app.models.user import User
 
 router = APIRouter()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.1-8b-instant"
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
@@ -54,11 +57,12 @@ def _grade_essay_with_ai(essay: str, level: int, prompt_hint: str) -> dict[str, 
     user_message = f"Level: TOPIK {level}\nPrompt: {prompt_hint}\n\nEssay:\n{essay}"
 
     # Try Groq first
-    if GROQ_API_KEY:
+    groq_key = get_groq_api_key()
+    if groq_key:
         try:
             response = requests.post(
                 GROQ_URL,
-                headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
                 json={
                     "model": GROQ_MODEL,
                     "messages": [
@@ -161,11 +165,12 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
     )
 
     questions: list[dict] = []
-    if GROQ_API_KEY:
+    groq_key = get_groq_api_key()
+    if groq_key:
         try:
             response = requests.post(
                 GROQ_URL,
-                headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
+                headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
                 json={
                     "model": GROQ_MODEL,
                     "messages": [{"role": "user", "content": system_prompt}],

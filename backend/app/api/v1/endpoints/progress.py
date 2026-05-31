@@ -10,22 +10,18 @@ from datetime import datetime, timezone
 
 router = APIRouter()
 
-# Fixed sequence for Level 1 based on requirements
-LEVEL_1_SEQUENCE = [
-    "hangul_basics", 
-    "vocabulary_800", 
-    "basic_grammar", 
-    "survival_conversations", 
-    "listening_practice", 
-    "reading_practice", 
-    "mock_exam"
-]
+from app.services.roadmap_service import ROADMAP_STRUCTURE
+
+def _get_level_sequence(level: int) -> list[str]:
+    level_data = next((l for l in ROADMAP_STRUCTURE if l["id"] == level), None)
+    return [m["id"] for m in level_data["modules"]] if level_data else []
 
 def check_level_complete(db: Session, user_id: str, level: int) -> bool:
     """Helper to check if all modules in a level are completed."""
-    # Assuming the total modules required per level is fixed. 
-    # For Level 1 it's len(LEVEL_1_SEQUENCE).
-    required = len(LEVEL_1_SEQUENCE) if level == 1 else 5 # Just a mockup for other levels
+    sequence = _get_level_sequence(level)
+    required = len(sequence)
+    if required == 0:
+        return True
     completed_count = db.query(func.count(TopikProgress.id)).filter(
         TopikProgress.user_id == user_id,
         TopikProgress.topik_level == level,
@@ -60,13 +56,13 @@ def get_topik_level_progress(
     
     progress_dict = {p.module_id: p.status for p in progress_records}
     
-    # Build response (specifically mapping Level 1 sequence)
+    # Build response
     modules = []
-    sequence = LEVEL_1_SEQUENCE if level == 1 else ["mod1", "mod2", "mod3"]
+    sequence = _get_level_sequence(level)
     
     for i, mod in enumerate(sequence):
-        # Default first module is active, rest locked
-        default_status = "active" if i == 0 else "locked"
+        # Unlock all sub-modules by default within an unlocked level
+        default_status = "active"
         modules.append({
             "module_id": mod,
             "status": progress_dict.get(mod, default_status)
@@ -109,7 +105,7 @@ def complete_module(
     # Determine sequence unlocking
     next_unlocked = None
     level_complete = False
-    sequence = LEVEL_1_SEQUENCE if data.topik_level == 1 else ["mod1", "mod2", "mod3"]
+    sequence = _get_level_sequence(data.topik_level)
     
     try:
         current_idx = sequence.index(data.module_id)

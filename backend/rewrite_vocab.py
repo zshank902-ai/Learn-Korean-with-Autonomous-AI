@@ -1,38 +1,19 @@
-from fastapi import APIRouter, Depends, Query, HTTPException
-from sqlalchemy.orm import Session
-from typing import List, Optional
-from sqlalchemy.sql.expression import func
-import random
-from datetime import date
+import re
 
-from app.db.session import get_db
-from app.models.srs import VocabItem
-from pydantic import BaseModel
-from app.core.redis_client import get_redis
-import json
-import os
-import requests
+with open("app/api/v1/endpoints/vocab.py", "r", encoding="utf-8") as f:
+    content = f.read()
 
-from app.core.ai_config import get_groq_api_key
-GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
-OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")
+# Replace GROQ_API_KEY imports with get_groq_api_key
+content = content.replace('GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")', 'from app.core.ai_config import get_groq_api_key')
 
-router = APIRouter()
+# Add OLLAMA variables
+if 'OLLAMA_URL' not in content:
+    content = content.replace(
+        'GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"',
+        'GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"\nOLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")\nOLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")'
+    )
 
-class VocabItemResponse(BaseModel):
-    id: int
-    front: str
-    back: str
-    romanization: Optional[str]
-    example: Optional[dict]
-    level: str
-    interval: int
-
-    class Config:
-        from_attributes = True
-
-def _get_or_generate_examples(words: List[str], level: int) -> dict:
+new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dict:
     examples_map = {}
     redis = None
     try:
@@ -144,59 +125,16 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
             except Exception as e:
                 print(f"Redis unavailable for saving examples: {e}")
 
-    return examples_map
+    return examples_map"""
 
-@router.get("/flashcards", response_model=List[VocabItemResponse])
-def get_daily_flashcards(
-    level: Optional[str] = Query("All"),
-    limit: int = Query(20),
-    db: Session = Depends(get_db)
-):
-    query = db.query(VocabItem)
-    
-    if level and level != "All":
-        # Assumes level is passed as "1", "2", etc.
-        try:
-            level_id = int(level)
-            query = query.filter(VocabItem.level_id == level_id)
-        except ValueError:
-            pass
+# Use regex to replace the function definition completely
+pattern = re.compile(r"def _get_or_generate_examples\(words: List\[str\], level: int\) -> dict:.*?(?=\n@router\.get\(\"/flashcards\")", re.DOTALL)
+content = pattern.sub(new_func + "\n", content)
 
-    # Get all IDs matching the criteria
-    all_ids = [item.id for item in query.with_entities(VocabItem.id).all()]
-    
-    # Mathematical seed based on today's date + the requested level
-    # This guarantees the randomizer picks the exact same batch of words for 24 hours
-    seed_value = f"{date.today().isoformat()}-{level}"
-    random.seed(seed_value)
-    
-    # Safely pick 20 random IDs (or fewer if the DB is small)
-    sampled_ids = random.sample(all_ids, min(limit, len(all_ids)))
-    
-    # Fetch the actual items
-    vocab_items = db.query(VocabItem).filter(VocabItem.id.in_(sampled_ids)).all()
+# Fix fallback in get_daily_flashcards
+fallback_pattern = re.compile(r'ex = \{"korean": f"이것은 \{item\.word\}의 예문입니다\.", "english": f"This is an example for \{item\.word\}\."\}')
+content = fallback_pattern.sub('ex = {"korean": f"\'{item.word}\' 단어를 연습하세요.", "english": f"Practice the word \'{item.word}\'.", "romanization": item.word}', content)
 
-    # Generate or fetch examples
-    words = [item.word for item in vocab_items]
-    lvl_int = int(level) if level and level != "All" else 0
-    examples_map = _get_or_generate_examples(words, lvl_int)
-
-    response_items = []
-    for item in vocab_items:
-        ex = examples_map.get(item.word)
-        if not ex:
-            ex = {"korean": f"'{item.word}' 단어를 연습하세요.", "english": f"Practice the word '{item.word}'.", "romanization": item.word}
-            
-        response_items.append(
-            VocabItemResponse(
-                id=item.id,
-                front=item.word,
-                back=item.meaning,
-                romanization=item.pronunciation or ex.get("romanization"),
-                example=ex,
-                level=str(item.level_id),
-                interval=0 # Mock interval as SRS logic is not yet fully linked
-            )
-        )
-
-    return response_items
+with open("app/api/v1/endpoints/vocab.py", "w", encoding="utf-8") as f:
+    f.write(content)
+print("vocab.py successfully updated.")
