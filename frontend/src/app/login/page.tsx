@@ -104,7 +104,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#EEF2FF] flex items-center justify-center p-6 text-[#1E1B4B] -mt-24 pt-6">
+    <div className="min-h-[100dvh] bg-[#EEF2FF] flex items-center justify-center p-4 md:p-6 text-[#1E1B4B] py-8 md:py-12">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -112,12 +112,12 @@ export default function AuthPage() {
         style={{ boxShadow: '12px 12px 0px #1E1B4B' }}
       >
         {/* Left Panel - Branding */}
-        <div className="w-full md:w-1/2 bg-[#4F46E5] p-10 md:p-12 text-white flex flex-col justify-between border-b-4 md:border-b-0 md:border-r-4 border-[#1E1B4B] relative overflow-hidden">
+        <div className="w-full md:w-1/2 bg-[#4F46E5] p-8 md:p-12 text-white flex flex-col justify-between border-b-4 md:border-b-0 md:border-r-4 border-[#1E1B4B] relative overflow-hidden">
           <div className="relative z-10">
             <div className="w-16 h-16 bg-[#F97316] border-4 border-[#1E1B4B] rounded-2xl flex items-center justify-center mb-8" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
               <span className="text-3xl font-black text-white" style={{ fontFamily: 'Fredoka, cursive' }}>K</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
               Welcome to <br />
               K-Mastery <span className="text-[#F97316]">AI</span>
             </h1>
@@ -138,7 +138,7 @@ export default function AuthPage() {
         </div>
 
         {/* Right Panel - Auth Form */}
-        <div className="w-full md:w-1/2 p-10 md:p-12 bg-white">
+        <div className="w-full md:w-1/2 p-8 md:p-12 bg-white">
           <div className="mb-10">
             <h2 className="text-3xl font-black mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
               {isLogin ? 'Sign In' : 'Create Account'}

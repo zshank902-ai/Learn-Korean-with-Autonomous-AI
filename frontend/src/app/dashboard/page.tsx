@@ -62,10 +62,10 @@ export default function DashboardPage() {
 
 
       {/* Main Grid: 12-column layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-12rem)] min-h-[800px]">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:h-[calc(100vh-12rem)] lg:min-h-[800px]">
         
         {/* Left Column (3/12): Gamification */}
-        <div className="lg:col-span-3 flex flex-col gap-6 h-full overflow-y-auto pr-2 pb-4">
+        <div className="lg:col-span-3 flex flex-col gap-6 lg:h-full lg:overflow-y-auto lg:pr-2 lg:pb-4">
           <div className="flex-none">
             <DailyQuestsPanel />
           </div>
@@ -75,7 +75,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Center Column (6/12): AI Tutor & Stats */}
-        <div className="lg:col-span-6 flex flex-col gap-6 h-full">
+        <div className="lg:col-span-6 flex flex-col gap-6 lg:h-full">
           {/* Quick Stats Card */}
           <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 flex items-center justify-between"
                style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
@@ -99,13 +99,13 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          <div className="flex-1 min-h-0">
+          <div className="flex-1 min-h-[500px] lg:min-h-0">
             <AIChatBox />
           </div>
         </div>
 
         {/* Right Column (3/12): Tools */}
-        <div className="lg:col-span-3 flex flex-col gap-6 h-full overflow-y-auto pr-2 pb-4">
+        <div className="lg:col-span-3 flex flex-col gap-6 lg:h-full lg:overflow-y-auto lg:pr-2 lg:pb-4">
           <div className="flex-none">
             <SmartCorrector />
           </div>

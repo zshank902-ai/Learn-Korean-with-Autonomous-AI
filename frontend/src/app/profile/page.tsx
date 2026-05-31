@@ -29,10 +29,10 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#EEF2FF] p-6 max-w-screen-xl mx-auto text-[#1E1B4B] pt-10">
+    <div className="min-h-screen bg-[#EEF2FF] p-4 md:p-6 max-w-screen-xl mx-auto text-[#1E1B4B] pt-8 md:pt-10">
       
       {/* Header Profile Card */}
-      <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-8 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
+      <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 relative overflow-hidden"
            style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
         {/* Background decorative blob */}
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#F97316]/10 rounded-full blur-3xl pointer-events-none" />
@@ -44,7 +44,7 @@ export default function ProfilePage() {
             <User size={64} className="text-[#4F46E5]" />
           </div>
           {/* Level Badge overlapping avatar */}
-          <div className="absolute -bottom-4 -right-4 w-14 h-14 rounded-2xl border-3 border-[#1E1B4B] flex items-center justify-center font-black text-xl z-20 text-white rotate-12"
+          <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-12 h-12 md:w-14 md:h-14 rounded-2xl border-3 border-[#1E1B4B] flex items-center justify-center font-black text-lg md:text-xl z-20 text-white rotate-12"
                style={{ background: '#F97316', boxShadow: '2px 2px 0px #1E1B4B', fontFamily: 'Fredoka, cursive' }}>
             Lv.{level}
           </div>
@@ -64,7 +64,7 @@ export default function ProfilePage() {
       </div>
 
       {xp === 0 ? (
-        <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-12 text-center"
+        <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 md:p-12 text-center"
              style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
           <div className="w-24 h-24 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center mx-auto mb-6"
                style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>

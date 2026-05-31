@@ -209,46 +209,14 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
   const sortedLevels = [...roadmapLevels].sort((a, b) => a.level_num - b.level_num);
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        background: '#EEF2FF',
-        padding: '24px 20px 80px',
-        fontFamily: 'Inter, sans-serif',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '36px',
-        }}
-      >
+    <div className="min-h-[100dvh] bg-[#EEF2FF] px-4 py-6 pb-20 md:px-5 md:py-6 font-sans">
+      <div className="max-w-[1200px] mx-auto flex flex-col gap-8 md:gap-9">
         {/* Title / Header */}
         <div>
-          <h1
-            style={{
-              margin: 0,
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 900,
-              fontSize: '32px',
-              color: '#0f0f0f',
-              letterSpacing: '-0.03em',
-            }}
-          >
+          <h1 className="m-0 font-black text-2xl md:text-[32px] text-[#0f0f0f] tracking-tighter">
             📍 TOPIK Curriculum Roadmap
           </h1>
-          <p
-            style={{
-              margin: '6px 0 0',
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 600,
-              fontSize: '15px',
-              color: '#4b5563',
-            }}
-          >
+          <p className="mt-1 md:mt-[6px] font-semibold text-sm md:text-[15px] text-gray-600">
             Master all 6 levels from beginner to advanced Korean with connected interactive modules
           </p>
         </div>
@@ -258,15 +226,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
         ) : (
           <>
             {/* 1. Progress Rail (High-level Summary) */}
-            <section
-              style={{
-                background: '#ffffff',
-                border: '2.5px solid #0f0f0f',
-                borderRadius: '18px',
-                padding: '16px 24px 24px',
-                boxShadow: '4px 4px 0px #0f0f0f',
-              }}
-            >
+            <section className="bg-white border-[2.5px] border-[#0f0f0f] rounded-[18px] p-4 md:p-6 shadow-[4px_4px_0px_#0f0f0f]">
               <SectionHeader title="Curriculum Overview" subtitle="Click any level orb to scroll smoothly to its modules" />
               <ProgressRail
                 levels={roadmapLevels}
@@ -277,7 +237,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
             </section>
 
             {/* 2. Connected Vertical Tree Timeline */}
-            <div style={{ position: 'relative', width: '100%', margin: '40px auto 0' }}>
+            <div className="relative w-full mt-8 md:mt-10 mx-auto">
               {/* Central Vertical Line Path */}
               <div
                 style={{
@@ -310,7 +270,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                 className="hidden md:block"
               />
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '56px', position: 'relative', zIndex: 10 }}>
+              <div className="flex flex-col gap-8 md:gap-14 relative z-10">
                 {sortedLevels.map((lvl, idx) => {
                   const status = getLevelStatus(lvl);
                   const isEven = idx % 2 === 0;
@@ -332,14 +292,11 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                         <motion.div
                           whileHover={status !== 'locked' ? { y: -4, boxShadow: '8px 8px 0px #0f0f0f' } : {}}
                           transition={{ type: 'spring', stiffness: 350, damping: 20 }}
+                          className={`bg-[${style.bg}] border-4 border-[#0f0f0f] rounded-3xl p-4 md:p-6 relative transition-opacity`}
                           style={{
                             background: style.bg,
-                            border: `4px solid #0f0f0f`,
-                            borderRadius: '24px',
-                            padding: '24px',
-                            boxShadow: status === 'active' ? '12px 12px 0px #0f0f0f' : '6px 6px 0px #0f0f0f',
+                            boxShadow: status === 'active' ? '8px 8px 0px #0f0f0f' : '4px 4px 0px #0f0f0f',
                             opacity: status === 'locked' ? 0.75 : 1,
-                            position: 'relative',
                           }}
                         >
                           {/* Card Header */}
@@ -392,17 +349,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                           {/* Level Details Bar inside card */}
                           {status !== 'locked' && (
                             <div
-                              style={{
-                                background: 'rgba(255, 255, 255, 0.6)',
-                                border: '2.5px solid #0f0f0f',
-                                borderRadius: '14px',
-                                padding: '14px',
-                                marginBottom: '20px',
-                                display: 'grid',
-                                gridTemplateColumns: 'repeat(2, 1fr)',
-                                gap: '16px',
-                              }}
-                            >
+                            <div className="bg-white/60 border-[2.5px] border-[#0f0f0f] rounded-2xl p-3 md:p-[14px] mb-5 grid grid-cols-2 gap-2 md:gap-4">
                               <div>
                                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Target Vocab</span>
                                 <p style={{ margin: 0, fontSize: '16px', fontWeight: 900, color: '#0f0f0f' }}>{lvl.target_vocab} Words</p>
@@ -454,22 +401,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                                 <motion.div
                                   whileHover={{ scale: 1.02 }}
                                   whileTap={{ scale: 0.98 }}
-                                  style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    gap: '8px',
-                                    background: '#ffffff',
-                                    border: '3px solid #0f0f0f',
-                                    borderRadius: '16px',
-                                    padding: '12px',
-                                    fontWeight: 900,
-                                    fontSize: '14px',
-                                    color: '#0f0f0f',
-                                    textTransform: 'uppercase',
-                                    cursor: 'pointer',
-                                    boxShadow: '3px 3px 0px #0f0f0f',
-                                  }}
+                                  className="flex items-center justify-center gap-2 bg-white border-[3px] border-[#0f0f0f] rounded-2xl p-3 font-black text-[12px] md:text-[14px] text-[#0f0f0f] uppercase cursor-pointer shadow-[3px_3px_0px_#0f0f0f]"
                                 >
                                   Enter Level {lvl.level_num} Curriculum
                                 </motion.div>
