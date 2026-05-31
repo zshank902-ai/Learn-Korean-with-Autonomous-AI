@@ -302,7 +302,7 @@ async def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db
                 
             user_profile = user_res.json()
             github_id = str(user_profile.get("id"))
-            username = user_profile.get("login")
+            github_login_name = user_profile.get("login")
             email = user_profile.get("email")
             
             # If email is not public, fetch all emails using OAuth scope user:email
@@ -317,9 +317,9 @@ async def github_login(social_in: SocialLoginInput, db: Session = Depends(get_db
                     email = primary_email
                     
             if not email:
-                email = f"{username}@github.user"
+                email = f"{github_login_name}@github.user"
                 
-            return handle_social_user(db, "github", github_id, email, username)
+            return handle_social_user(db, "github", github_id, email, github_login_name)
     except Exception as e:
         if isinstance(e, HTTPException):
             raise e

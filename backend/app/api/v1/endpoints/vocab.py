@@ -62,7 +62,8 @@ def _get_or_generate_examples(words: List[str], level: int) -> dict:
                         {"role": "user", "content": json.dumps(missing_words, ensure_ascii=False)}
                     ],
                     "response_format": {"type": "json_object"},
-                    "temperature": 0.3
+                    "temperature": 0.3,
+                    "max_tokens": 4000
                 },
                 timeout=15
             )

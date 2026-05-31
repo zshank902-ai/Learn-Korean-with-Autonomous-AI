@@ -26,7 +26,7 @@ class UserCacheState(BaseModel):
     """
     model_config = ConfigDict(from_attributes=True)
 
-    user_id: int
+    user_id: str
     xp: int
     streak: int
     coins: int

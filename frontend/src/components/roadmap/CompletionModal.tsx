@@ -60,7 +60,7 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.8, opacity: 0, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="bg-white max-w-sm w-full rounded-3xl border-4 border-[#1E1B4B] p-8 text-center relative z-10"
+          className="bg-white max-w-sm w-full rounded-3xl border-4 border-[#1E1B4B] p-6 sm:p-8 text-center relative z-10"
           style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
         >
           {type === 'level' ? (
@@ -73,7 +73,7 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
             </div>
           )}
 
-          <h2 className="text-3xl font-black text-[#1E1B4B] mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
+          <h2 className="text-2xl sm:text-3xl font-black text-[#1E1B4B] mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
             {type === 'level' ? 'Level Complete!' : 'Module Complete!'}
           </h2>
           

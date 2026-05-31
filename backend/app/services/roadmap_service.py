@@ -505,7 +505,7 @@ def get_module(module_id: str) -> dict[str, Any] | None:
     return _MODULE_LOOKUP.get(module_id)
 
 
-def get_user_progress(user_id: int) -> dict[str, str]:
+def get_user_progress(user_id: str) -> dict[str, str]:
     """
     Reads all module statuses for a user from Redis.
     Returns dict mapping module_id -> status string.
@@ -550,7 +550,7 @@ def get_user_progress(user_id: int) -> dict[str, str]:
     return progress
 
 
-def start_module(user_id: int, module_id: str) -> dict[str, Any]:
+def start_module(user_id: str, module_id: str) -> dict[str, Any]:
     """Marks a module as in_progress in Redis."""
     redis = get_redis()
     key = f"roadmap:progress:{user_id}"
@@ -559,7 +559,7 @@ def start_module(user_id: int, module_id: str) -> dict[str, Any]:
     return {"sessionId": f"{user_id}_{module_id}", "module": module}
 
 
-def complete_module(user_id: int, module_id: str, score: int) -> dict[str, Any]:
+def complete_module(user_id: str, module_id: str, score: int) -> dict[str, Any]:
     """
     Marks module as completed, saves score, awards XP, and unlocks next module.
     Returns xpGained, newlyUnlocked, levelProgress.

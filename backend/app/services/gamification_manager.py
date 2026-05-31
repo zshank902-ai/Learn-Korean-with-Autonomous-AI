@@ -15,10 +15,10 @@ class GamificationManager:
         self.LEADERBOARD_GLOBAL = "kmastery:leaderboard:global"
         self.LEADERBOARD_LEVEL_PREFIX = "kmastery:leaderboard:level"
 
-    def _get_user_key(self, user_id: int) -> str:
+    def _get_user_key(self, user_id: str) -> str:
         return f"{self.USER_STATS_PREFIX}:{user_id}:stats"
 
-    def initialize_user_stats(self, user_id: int):
+    def initialize_user_stats(self, user_id: str):
         user_key = self._get_user_key(user_id)
         self.redis.hsetnx(user_key, "xp", 0)
         self.redis.hsetnx(user_key, "streak", 0)
@@ -26,7 +26,7 @@ class GamificationManager:
         self.redis.hsetnx(user_key, "level", 1)
         self.redis.hsetnx(user_key, "last_login", datetime.now(timezone.utc).isoformat())
 
-    def get_user_stats(self, user_id: int) -> Dict:
+    def get_user_stats(self, user_id: str) -> Dict:
         user_key = self._get_user_key(user_id)
         stats = self.redis.hgetall(user_key)
         if not stats:
@@ -34,7 +34,7 @@ class GamificationManager:
             return self.get_user_stats(user_id)
         return stats
 
-    def update_stat(self, user_id: int, field: str, amount: int):
+    def update_stat(self, user_id: str, field: str, amount: int):
         user_key = self._get_user_key(user_id)
         new_val = self.redis.hincrby(user_key, field, amount)
         
@@ -66,7 +66,7 @@ class GamificationManager:
             })
         return leaderboard
 
-    def get_user_rank(self, user_id: int, level: Optional[int] = None) -> int:
+    def get_user_rank(self, user_id: str, level: Optional[int] = None) -> int:
         """
         Retrieves the user's exact rank in O(log N) time.
         """
@@ -74,7 +74,7 @@ class GamificationManager:
         rank = self.redis.zrevrank(key, str(user_id))
         return (rank + 1) if rank is not None else -1
 
-    def handle_daily_login(self, user_id: int) -> Dict:
+    def handle_daily_login(self, user_id: str) -> Dict:
         user_key = self._get_user_key(user_id)
         stats = self.get_user_stats(user_id)
         last_login_str = stats.get("last_login")
@@ -93,7 +93,7 @@ class GamificationManager:
         self.redis.hset(user_key, "last_login", now.isoformat())
         return result
 
-    def reward_session_coins(self, user_id: int, milestone_type: str):
+    def reward_session_coins(self, user_id: str, milestone_type: str):
         rewards = {"lesson_complete": 10, "quiz_perfect": 50, "daily_task_all": 100}
         amount = rewards.get(milestone_type, 5)
         return self.update_stat(user_id, "coins", amount)
@@ -121,7 +121,7 @@ class GamificationManager:
                 try:
                     parts = key.split(":")
                     # Key format: kmastery:user:{user_id}:stats
-                    user_id = int(parts[2])
+                    user_id = parts[2]
                 except (IndexError, ValueError):
                     print(f"MLOps WARNING: Invalid key format in Redis: {key}")
                     continue

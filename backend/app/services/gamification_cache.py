@@ -12,10 +12,10 @@ class GamificationCache:
         self.STATS_PREFIX = "kmastery:user"
         self.LEADERBOARD_KEY = "kmastery:leaderboard:global"
 
-    def _get_key(self, user_id: int) -> str:
+    def _get_key(self, user_id: str) -> str:
         return f"{self.STATS_PREFIX}:{user_id}:stats"
 
-    def set_xp(self, user_id: int, amount: int):
+    def set_xp(self, user_id: str, amount: int):
         """
         Increments user XP atomically in Redis memory.
         Redis Command: HINCRBY - O(1) complexity.
@@ -29,7 +29,7 @@ class GamificationCache:
         self.update_leaderboard(user_id, amount)
         return new_xp
 
-    def get_streak(self, user_id: int) -> int:
+    def get_streak(self, user_id: str) -> int:
         """
         Retrieves current streak from Redis.
         Redis Command: HGET - O(1) complexity.
@@ -38,7 +38,7 @@ class GamificationCache:
         streak = self.redis.hget(key, "streak")
         return int(streak) if streak else 0
 
-    def update_leaderboard(self, user_id: int, score_delta: int):
+    def update_leaderboard(self, user_id: str, score_delta: int):
         """
         Updates the global leaderboard Sorted Set.
         Redis Command: ZINCRBY - O(log(N)) complexity.
@@ -48,7 +48,7 @@ class GamificationCache:
         self.redis.zincrby(self.LEADERBOARD_KEY, score_delta, str(user_id))
         print(f"Redis: Global leaderboard updated for User {user_id}")
 
-    def get_full_state(self, user_id: int) -> Optional[UserCacheState]:
+    def get_full_state(self, user_id: str) -> Optional[UserCacheState]:
         """
         Returns the full Pydantic-validated state from Redis.
         """

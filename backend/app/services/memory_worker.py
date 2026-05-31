@@ -19,7 +19,7 @@ Keep it strictly under 50 words. Do not include greetings.
 """
 
 class MemoryWorker:
-    async def summarize_and_save(self, history: list, user_id: int = 1):
+    async def summarize_and_save(self, history: list, user_id: str = "1"):
         """
         Background task to update long-term memory based on chat history.
         """
