@@ -79,16 +79,17 @@ interface KMasteryState {
   updateModuleStatus: (id: string, status: ModuleStatus) => void;
   fetchRoadmap: () => Promise<void>;
   fetchRoadmapProgress: () => Promise<void>;
+  reset: () => void;
 }
 
 /**
  * Principal Architect: Global Store with Notification Queue.
  */
 export const useKMasteryStore = create<KMasteryState>((set) => ({
-  xp: 2450,
+  xp: 0,
   level: 1,
-  streak: 12,
-  coins: 50,
+  streak: 0,
+  coins: 0,
   aiFeedback: null,
   streamingText: "",
   isAiLoading: false,

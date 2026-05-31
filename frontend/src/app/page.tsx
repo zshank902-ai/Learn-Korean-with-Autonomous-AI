@@ -1,5 +1,9 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/useAuthStore';
 import { Sparkles, BrainCircuit, Mic, ArrowRight } from 'lucide-react';
 
 /**
@@ -7,6 +11,14 @@ import { Sparkles, BrainCircuit, Mic, ArrowRight } from 'lucide-react';
  * Replaces redundant dashboard modules with a clean entry portal.
  */
 export default function LandingPage() {
+  const { isAuthenticated, logout } = useAuthStore();
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    logout();
+    router.refresh();
+  };
+
   return (
     <main className="min-h-screen bg-[#EEF2FF] text-[#1E1B4B] selection:bg-[#818CF8]/30 overflow-hidden font-sans relative flex flex-col">
       {/* Navbar */}
@@ -17,13 +29,23 @@ export default function LandingPage() {
           </div>
           <span className="text-2xl font-black tracking-tighter uppercase" style={{ fontFamily: 'Fredoka, cursive' }}>K-Mastery</span>
         </div>
-        <Link 
-          href="/dashboard" 
-          className="bg-white border-4 border-[#1E1B4B] px-6 py-2 rounded-xl font-black uppercase tracking-widest hover:-translate-y-1 transition-transform"
-          style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
-        >
-          Sign In
-        </Link>
+        {isAuthenticated ? (
+          <button 
+            onClick={handleSignOut}
+            className="bg-[#EF4444] text-white border-4 border-[#1E1B4B] px-6 py-2 rounded-xl font-black uppercase tracking-widest hover:-translate-y-1 transition-transform cursor-pointer"
+            style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+          >
+            Sign Out
+          </button>
+        ) : (
+          <Link 
+            href="/login" 
+            className="bg-white border-4 border-[#1E1B4B] px-6 py-2 rounded-xl font-black uppercase tracking-widest hover:-translate-y-1 transition-transform"
+            style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+          >
+            Sign In
+          </Link>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -46,11 +68,11 @@ export default function LandingPage() {
         </p>
 
         <Link 
-          href="/dashboard" 
+          href={isAuthenticated ? "/dashboard" : "/login"} 
           className="bg-[#F97316] text-white border-4 border-[#1E1B4B] px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-xl flex items-center gap-4 hover:-translate-y-2 transition-transform hover:shadow-[12px_12px_0px_#1E1B4B]"
           style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
         >
-          Launch Dashboard <ArrowRight size={24} />
+          {isAuthenticated ? "Return to Dashboard" : "Launch Dashboard"} <ArrowRight size={24} />
         </Link>
       </div>
 

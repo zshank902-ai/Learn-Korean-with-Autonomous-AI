@@ -12,7 +12,7 @@ interface AIState {
   isProcessing: boolean;
 
   // Actions
-  connect: () => void;
+  connect: (token?: string) => void;
   disconnect: () => void;
   send: (data: Record<string, unknown>) => void;
   clearBuffer: () => void;
@@ -32,12 +32,13 @@ export const useAIStore = create<AIState>((set, get) => {
     latestPrediction: null,
     isProcessing: false,
 
-    connect: () => {
+    connect: (token?: string) => {
       if (get().socket?.readyState === WebSocket.OPEN) return;
 
       set({ status: "connecting" });
       try {
-        const ws = new WebSocket(WS_ENDPOINTS.AI_FEEDBACK);
+        const url = token ? `${WS_ENDPOINTS.AI_FEEDBACK}?token=${token}` : WS_ENDPOINTS.AI_FEEDBACK;
+        const ws = new WebSocket(url);
 
         ws.onopen = () => {
           console.log("useAIStore: WebSocket Connected");

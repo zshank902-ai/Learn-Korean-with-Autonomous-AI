@@ -1,10 +1,11 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
 from app.services.production_model import model_server
 from app.services.corrector import corrector_service
 from app.services.tutor import tutor_service
 from app.db.session import SessionLocal
 from app.models.user import UserProgress
 from app.models.srs import VocabItem
+from app.api.v1.endpoints.auth import get_current_user
 import json
 import asyncio
 import random
@@ -12,13 +13,23 @@ import random
 router = APIRouter()
 
 @router.websocket("/ws/ai-stream")
-async def websocket_realtime_correction(websocket: WebSocket):
+async def websocket_realtime_correction(websocket: WebSocket, token: str = Query(None)):
     """
     Production WebSocket Handler: Processes real-time text streams 
     using the non-blocking ProductionModelServer.
     """
     await websocket.accept()
     print("WebSocket: Connection established for real-time AI feedback.")
+
+    db = SessionLocal()
+    try:
+        if token:
+            user = get_current_user(token, db)
+    except Exception as e:
+        # We can either close or allow anonymous depending on strictness. Allowing for now.
+        pass
+    finally:
+        db.close()
 
     try:
         while True:
@@ -72,13 +83,22 @@ async def websocket_realtime_correction(websocket: WebSocket):
             pass
 
 @router.websocket("/ws/tutor-chat")
-async def websocket_tutor_chat(websocket: WebSocket):
+async def websocket_tutor_chat(websocket: WebSocket, token: str = Query(...)):
     """
     WebSocket Handler: Processes interactive chat with the AI Korean Tutor.
     Streams back tokens in real-time.
     """
     await websocket.accept()
-    print("WebSocket: Connection established for AI Tutor Chat.")
+    
+    db = SessionLocal()
+    try:
+        user = get_current_user(token, db)
+    except Exception as e:
+        await websocket.close(code=1008, reason="Unauthorized")
+        db.close()
+        return
+
+    print(f"WebSocket: Connection established for AI Tutor Chat (User: {user.username}).")
 
     try:
         while True:
@@ -98,7 +118,7 @@ async def websocket_tutor_chat(websocket: WebSocket):
             db = SessionLocal()
             tsv_words = []
             try:
-                progress = db.query(UserProgress).first()
+                progress = db.query(UserProgress).filter(UserProgress.user_id == user.id).first()
                 long_term_memory = progress.long_term_memory if progress else None
                 
                 if not is_exam:

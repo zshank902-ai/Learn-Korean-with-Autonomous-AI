@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Send, Wifi, WifiOff, Loader2, Mic, Square } from 'lucide-react';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
+import { useAuthStore } from '@/store/useAuthStore';
 import { WS_ENDPOINTS, API_ENDPOINTS } from '@/lib/apiConfig';
 
 interface Correction {
@@ -46,7 +47,9 @@ export default function AIChatBox() {
 
   const connect = useCallback(() => {
     try {
-      const ws = new WebSocket(WS_ENDPOINTS.TUTOR_CHAT);
+      const token = useAuthStore.getState().token;
+      const url = token ? `${WS_ENDPOINTS.TUTOR_CHAT}?token=${token}` : WS_ENDPOINTS.TUTOR_CHAT;
+      const ws = new WebSocket(url);
       wsRef.current = ws;
 
       ws.onopen = () => setWsStatus('ready');

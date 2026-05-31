@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldAlert, Send, Loader2, X, AlertOctagon } from 'lucide-react';
 import { WS_ENDPOINTS, API_ENDPOINTS } from '@/lib/apiConfig';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
+import { useAuthStore } from '@/store/useAuthStore';
 import Confetti from 'react-confetti';
 
 interface ExaminerModalProps {
@@ -50,7 +51,9 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
   handlePassRef.current = handlePass;
 
   const connect = useCallback(() => {
-    const ws = new WebSocket(WS_ENDPOINTS.TUTOR_CHAT);
+    const token = useAuthStore.getState().token;
+    const url = token ? `${WS_ENDPOINTS.TUTOR_CHAT}?token=${token}` : WS_ENDPOINTS.TUTOR_CHAT;
+    const ws = new WebSocket(url);
     wsRef.current = ws;
 
     ws.onmessage = async (event) => {

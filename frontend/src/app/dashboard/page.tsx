@@ -15,13 +15,17 @@ const NotificationSystem = dynamic(() => import('@/components/NotificationSystem
 const WelcomePopup = dynamic(() => import('@/components/WelcomePopup'), { ssr: false });
 
 import ProtectedRoute from '@/components/ProtectedRoute';
+import { useAuthStore } from '@/store/useAuthStore';
 
 export default function DashboardPage() {
   const { setStats, level, xp } = useKMasteryStore();
 
   useEffect(() => {
     let alive = true;
-    fetch(API_ENDPOINTS.USER_STATS)
+    const token = useAuthStore.getState().token;
+    fetch(API_ENDPOINTS.USER_STATS, {
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    })
       .then(async r => {
         if (!r.ok) throw new Error("API Error");
         return r.json();

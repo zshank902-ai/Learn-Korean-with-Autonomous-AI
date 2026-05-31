@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
+import { useKMasteryStore } from './useKMasteryStore';
 
 interface UserProfile {
   id: number;
@@ -37,7 +38,7 @@ export const useAuthStore = create<AuthState>()(
       
       logout: () => {
         set({ token: null, isAuthenticated: false, user: null, error: null });
-        // Clean up any other auth-related local storage if needed
+        useKMasteryStore.getState().reset();
       },
 
       setError: (error) => set({ error }),
