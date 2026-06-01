@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from 'framer-motion';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Lock, CheckCircle2, Play, BookOpen, RefreshCcw, Zap } from 'lucide-react';
 import type { TopikModule } from '@/lib/roadmapTypes';
 import { useToast } from '@/hooks/useToast';
@@ -13,6 +14,7 @@ export interface ModuleCardProps {
   onStart: (module: TopikModule) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const shimmer = {
   animate: { backgroundPosition: ['200% center', '-200% center'] },
   transition: { duration: 2.5, repeat: Infinity, ease: 'linear' as const },

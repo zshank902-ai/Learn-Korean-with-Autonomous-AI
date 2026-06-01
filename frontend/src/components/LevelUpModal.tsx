@@ -16,11 +16,13 @@ export default function LevelUpModal() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   }, []);
 
   useEffect(() => {
     if (level > prevLevel) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setAchievedLevel(level);
       setShow(true);
       setPrevLevel(level);

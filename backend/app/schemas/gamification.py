@@ -1,7 +1,6 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
-from pydantic import ConfigDict
+
+from pydantic import BaseModel, ConfigDict
 
 
 class UserStats(BaseModel):
@@ -24,6 +23,7 @@ class UserCacheState(BaseModel):
     Pydantic Schema for Redis User Data validation.
     Ensures that data stored in Redis memory is consistent.
     """
+
     model_config = ConfigDict(from_attributes=True)
 
     user_id: str

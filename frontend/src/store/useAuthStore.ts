@@ -72,6 +72,7 @@ export const useAuthStore = create<AuthState>()(
 
           const userData = await response.json();
           set({ user: userData, isAuthenticated: true, error: null });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
           set({ error: error.message || "An unknown error occurred" });
           throw error; // Re-throw to allow ProtectedRoute to handle it

@@ -6,7 +6,7 @@ def get_master_tutor_prompt(
     action: str,
     user_input: str,
     session_history: str = "",
-    json_format_instruction: str = ""
+    json_format_instruction: str = "",
 ) -> str:
     return f"""# IDENTITY
 

@@ -4,7 +4,8 @@ with open("app/api/v1/endpoints/vocab.py", "r", encoding="utf-8") as f:
     content = f.read()
 
 # Replace GROQ_API_KEY imports with get_groq_api_key
-content = content.replace('GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")', 'from app.core.ai_config import get_groq_api_key')
+content = content.replace('GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")',
+                          'from app.core.ai_config import get_groq_api_key')
 
 # Add OLLAMA variables
 if 'OLLAMA_URL' not in content:
@@ -24,7 +25,7 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
             examples_map = json.loads(cached)
     except Exception as e:
         print(f"Redis unavailable for reading examples: {e}")
-    
+
     missing_words = [w for w in words if w not in examples_map]
     if missing_words:
         system_prompt = (
@@ -34,14 +35,14 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
             "Return ONLY a JSON object mapping each word exactly to its example and romanization, with NO markdown formatting, NO backticks. "
             'Format Example: {"가다": {"korean": "학교에 가요.", "english": "I go to school.", "romanization": "gada"}}'
         )
-        
+
         batch_size = 10
         for i in range(0, len(missing_words), batch_size):
             batch = missing_words[i:i+batch_size]
             import time
             max_retries = 3
             success = False
-            
+
             groq_key = get_groq_api_key()
             if groq_key:
                 for attempt in range(max_retries):
@@ -61,21 +62,21 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
                             },
                             timeout=15
                         )
-                        
+
                         if res.status_code == 429:
                             print(f"Rate limited on attempt {attempt+1}, sleeping...")
                             time.sleep(2 ** attempt)
                             # Pick a new key on retry
                             groq_key = get_groq_api_key()
                             continue
-                            
+
                         res.raise_for_status()
                         content_str = res.json()["choices"][0]["message"]["content"].strip()
-                        
+
                         if content_str.startswith("```json"): content_str = content_str[7:]
                         if content_str.startswith("```"): content_str = content_str[3:]
                         if content_str.endswith("```"): content_str = content_str[:-3]
-                        
+
                         new_examples = json.loads(content_str.strip())
                         success = True
                         break
@@ -84,7 +85,7 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
                             print(f"Groq example generation failed after 3 attempts: {e}")
                         time.sleep(2 ** attempt)
                         groq_key = get_groq_api_key()
-            
+
             # Fallback to Ollama if Groq failed or key is missing
             if not success:
                 print("Falling back to Ollama for flashcards...")
@@ -117,7 +118,7 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
                     }
                 elif "romanization" not in new_examples[word]:
                     new_examples[word]["romanization"] = word
-                    
+
             examples_map.update(new_examples)
             try:
                 if redis:
@@ -128,12 +129,15 @@ new_func = """def _get_or_generate_examples(words: List[str], level: int) -> dic
     return examples_map"""
 
 # Use regex to replace the function definition completely
-pattern = re.compile(r"def _get_or_generate_examples\(words: List\[str\], level: int\) -> dict:.*?(?=\n@router\.get\(\"/flashcards\")", re.DOTALL)
+pattern = re.compile(
+    r"def _get_or_generate_examples\(words: List\[str\], level: int\) -> dict:.*?(?=\n@router\.get\(\"/flashcards\")", re.DOTALL)
 content = pattern.sub(new_func + "\n", content)
 
 # Fix fallback in get_daily_flashcards
-fallback_pattern = re.compile(r'ex = \{"korean": f"이것은 \{item\.word\}의 예문입니다\.", "english": f"This is an example for \{item\.word\}\."\}')
-content = fallback_pattern.sub('ex = {"korean": f"\'{item.word}\' 단어를 연습하세요.", "english": f"Practice the word \'{item.word}\'.", "romanization": item.word}', content)
+fallback_pattern = re.compile(
+    r'ex = \{"korean": f"이것은 \{item\.word\}의 예문입니다\.", "english": f"This is an example for \{item\.word\}\."\}')
+content = fallback_pattern.sub(
+    'ex = {"korean": f"\'{item.word}\' 단어를 연습하세요.", "english": f"Practice the word \'{item.word}\'.", "romanization": item.word}', content)
 
 with open("app/api/v1/endpoints/vocab.py", "w", encoding="utf-8") as f:
     f.write(content)

@@ -1,7 +1,7 @@
-from pydantic import BaseModel, EmailStr
 from typing import Optional
-from pydantic import ConfigDict
 from uuid import UUID
+
+from pydantic import BaseModel, ConfigDict, EmailStr
 
 
 class Token(BaseModel):

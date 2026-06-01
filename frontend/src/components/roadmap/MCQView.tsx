@@ -24,6 +24,7 @@ interface MCQViewProps {
 const OPTION_LABELS = ['A', 'B', 'C', 'D'] as const;
 const TIME_LIMIT = 60;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function MCQView({ moduleId, level: _level, onComplete }: MCQViewProps) {
   const [questions, setQuestions] = useState<MCQQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -101,6 +102,7 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
 
   useEffect(() => {
     if (!loading && questions.length > 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       startTimer();
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };

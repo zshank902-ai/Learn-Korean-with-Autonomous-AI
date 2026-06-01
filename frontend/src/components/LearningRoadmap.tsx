@@ -17,6 +17,7 @@ interface RoadmapLevel {
 export default function LearningRoadmap() {
   const [levels, setLevels] = useState<RoadmapLevel[]>([]);
   const { level } = useKMasteryStore();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   const fetchRoadmap = async () => {
@@ -30,8 +31,8 @@ export default function LearningRoadmap() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchRoadmap();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level]); // Refetch if store level changes
 
 

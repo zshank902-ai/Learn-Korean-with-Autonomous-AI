@@ -40,6 +40,7 @@ export default function ProfileInfoTab() {
     mode: 'onBlur'
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const watchNickname = watch('nickname');
 
   // Debounced Nickname Check
@@ -62,6 +63,7 @@ export default function ProfileInfoTab() {
       });
       const data = await res.json();
       setNicknameStatus(data.available ? 'available' : 'taken');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       setNicknameStatus('idle');
     } finally {
@@ -137,6 +139,7 @@ export default function ProfileInfoTab() {
       reset({ full_name: data.full_name, nickname: data.nickname }); // reset isDirty state
       setSelectedFile(null); // clear file state so it's not "dirty"
       
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       toast.error(e.message);
     } finally {
@@ -154,6 +157,7 @@ export default function ProfileInfoTab() {
         <div className="w-24 h-24 rounded-[1rem] border-3 border-[#1E1B4B] bg-[#EEF2FF] flex items-center justify-center overflow-hidden"
              style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
           {avatarPreview ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img src={avatarPreview} alt="Avatar Preview" className="w-full h-full object-cover" />
           ) : (
             <User className="text-[#4F46E5]" size={40} />

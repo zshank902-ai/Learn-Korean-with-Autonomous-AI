@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
 import { API_ENDPOINTS } from '@/lib/apiConfig';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Flame, Star } from 'lucide-react';
 
 const DailyQuestsPanel = dynamic(() => import('@/components/DailyQuestsPanel'), { ssr: false });

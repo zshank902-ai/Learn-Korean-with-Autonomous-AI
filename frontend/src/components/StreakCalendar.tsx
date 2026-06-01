@@ -12,6 +12,7 @@ export default function StreakCalendar() {
       const week = [];
       for (let d = 0; d < 7; d++) {
         // Random intensity 0-4 for demo, with higher probability of 0 for realistic gaps
+        // eslint-disable-next-line react-hooks/purity
         const intensity = Math.random() > 0.6 ? Math.floor(Math.random() * 4) + 1 : 0;
         
         // Ensure today (last week, last day) has intensity if we have a streak

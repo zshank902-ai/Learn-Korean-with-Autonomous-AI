@@ -1,7 +1,8 @@
-import os
 import json
+import os
+from typing import AsyncGenerator, Optional
+
 import httpx
-from typing import AsyncGenerator
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,10 +14,16 @@ GROQ_MODEL = "llama-3.1-8b-instant"
 OLLAMA_BASE_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")
 
-def get_system_prompt(topik_level: int, long_term_memory: str = None, is_exam: bool = False, tsv_words: list = None) -> str:
+
+def get_system_prompt(
+    topik_level: int,
+    long_term_memory: Optional[str] = None,
+    is_exam: bool = False,
+    tsv_words: Optional[list] = None,
+) -> str:
     if is_exam:
         next_level = topik_level + 1
-        return f"""You are a strict TOPIK (Test of Proficiency in Korean) Examiner. 
+        return f"""You are a strict TOPIK (Test of Proficiency in Korean) Examiner.
 The user is currently at TOPIK Level {topik_level} and wishes to unlock TOPIK Level {next_level}.
 
 Your objective is to conduct a 3-question oral exam to determine if they are ready to advance.
@@ -42,7 +49,9 @@ If the user passes the exam on the 3rd question, the JSON MUST be:
     if topik_level == 1:
         level_instruction = "Use extremely simple vocabulary (Survival Korean). Romanization is allowed for difficult words. Speak slowly and use lots of English explanations."
     elif topik_level == 2:
-        level_instruction = "Use daily life vocabulary. Keep sentences short. Minimize Romanization."
+        level_instruction = (
+            "Use daily life vocabulary. Keep sentences short. Minimize Romanization."
+        )
     elif topik_level == 3:
         level_instruction = "Use intermediate vocabulary (Social Integration). Speak mostly in Korean. Use English only for complex grammar explanations."
     elif topik_level >= 4:
@@ -57,8 +66,8 @@ If the user passes the exam on the 3rd question, the JSON MUST be:
         words_str = ", ".join(tsv_words)
         tsv_instruction = f"6. SURVIVAL VOCABULARY: You MUST naturally guide the conversation to utilize these specific vocabulary words: [{words_str}]. Try to use at least one in your next response to force the user to learn it."
 
-    return f"""You are an expert AI Korean language tutor. 
-Your goal is to help the user practice Korean conversation. 
+    return f"""You are an expert AI Korean language tutor.
+Your goal is to help the user practice Korean conversation.
 RULES:
 1. Converse natively in Korean, matching the user's apparent skill level.
 2. If the user makes a grammatical or spelling mistake in Korean, gently correct them.
@@ -84,8 +93,16 @@ You MUST output your response in strict JSON format matching exactly this schema
 If there are no mistakes, set has_corrections to false and corrections to [].
 """
 
+
 class TutorService:
-    async def async_stream_chat(self, history: list, topik_level: int = 1, long_term_memory: str = None, is_exam: bool = False, tsv_words: list = None) -> AsyncGenerator[dict, None]:
+    async def async_stream_chat(
+        self,
+        history: list,
+        topik_level: int = 1,
+        long_term_memory: Optional[str] = None,
+        is_exam: bool = False,
+        tsv_words: Optional[list] = None,
+    ) -> AsyncGenerator[dict, None]:
         """
         Streams chat responses from Groq (Llama-3).
         Yields dicts: {"type": "stream", "chunk": "..."} or {"type": "corrections", "data": [...]}
@@ -95,9 +112,17 @@ class TutorService:
             role = msg.get("role", "user")
             if role == "ai":
                 role = "assistant"
-            processed_history.append({"role": role, "content": msg.get("content", "")})
+            processed_history.append(
+                {"role": role, "content": msg.get("content", "")})
 
-        messages = [{"role": "system", "content": get_system_prompt(topik_level, long_term_memory, is_exam, tsv_words)}] + processed_history
+        messages = [
+            {
+                "role": "system",
+                "content": get_system_prompt(
+                    topik_level, long_term_memory, is_exam, tsv_words
+                ),
+            }
+        ] + processed_history
 
         if GROQ_API_KEY:
             try:
@@ -105,7 +130,9 @@ class TutorService:
                     yield event
                 return
             except Exception as e:
-                print(f"TutorService: Groq API failed ({e}), falling back to local Ollama...")
+                print(
+                    f"TutorService: Groq API failed ({e}), falling back to local Ollama..."
+                )
 
         # Fallback to Local Ollama
         try:
@@ -117,6 +144,7 @@ class TutorService:
 
         # Final Fallback to Mock Developer Mode
         import asyncio
+
         mock_response = "안녕하세요! (Offline Mode) Please add GROQ_API_KEY to your backend .env file to enable the real AI Tutor!"
         for char in mock_response:
             yield {"type": "stream", "chunk": char}
@@ -125,7 +153,7 @@ class TutorService:
     async def _stream_groq_json(self, messages: list) -> AsyncGenerator[dict, None]:
         headers = {
             "Authorization": f"Bearer {GROQ_API_KEY}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         }
         payload = {
             "model": GROQ_MODEL,
@@ -133,17 +161,19 @@ class TutorService:
             "temperature": 0.5,
             "max_tokens": 1024,
             "stream": True,
-            "response_format": {"type": "json_object"}
+            "response_format": {"type": "json_object"},
         }
 
         async with httpx.AsyncClient(timeout=20.0) as client:
-            async with client.stream("POST", GROQ_URL, headers=headers, json=payload) as response:
+            async with client.stream(
+                "POST", GROQ_URL, headers=headers, json=payload
+            ) as response:
                 response.raise_for_status()
-                
+
                 # Custom JSON Stream Parser to extract "response" string in real-time
                 buffer = ""
                 in_response_string = False
-                response_content = ""
+                _ = ""
                 escaped = False
 
                 async for line in response.aiter_lines():
@@ -157,27 +187,32 @@ class TutorService:
                             if "content" in delta:
                                 chunk = delta["content"]
                                 buffer += chunk
-                                
+
                                 # Highly robust parsing to extract the "response" field value dynamically
                                 # We wait until we see '"response": "' and then stream characters until the unescaped closing quote.
                                 if not in_response_string:
                                     # Check if we reached the start of the response string
                                     # Using a simple heuristic: if we find "response": " we start.
                                     # Since JSON keys might have spaces, we can clean up the buffer mentally.
-                                    clean_buf = buffer.replace(" ", "").replace("\\n", "").replace("\\r", "")
+                                    clean_buf = (
+                                        buffer.replace(" ", "")
+                                        .replace("\\n", "")
+                                        .replace("\\r", "")
+                                    )
                                     if '"response":"' in clean_buf:
                                         in_response_string = True
                                         # Extract anything already captured after the quote
                                         start_idx = buffer.find('"response"')
-                                        quote_idx = buffer.find('"', start_idx + 10)
+                                        quote_idx = buffer.find(
+                                            '"', start_idx + 10)
                                         if quote_idx != -1:
                                             # We found the starting quote of the value.
                                             # The rest of the buffer is the content.
-                                            content_so_far = buffer[quote_idx+1:]
+                                            content_so_far = buffer[quote_idx + 1:]
                                             # Need to handle if the closing quote is already in content_so_far
                                             # But since we just started, we'll process it character by character.
-                                            buffer = content_so_far # Reset buffer to just be the content
-                                
+                                            buffer = content_so_far  # Reset buffer to just be the content
+
                                 if in_response_string:
                                     # We are inside the response string. We need to yield characters and watch for closing quote.
                                     i = 0
@@ -187,7 +222,7 @@ class TutorService:
                                         if escaped:
                                             escaped = False
                                             chunk_to_yield += c
-                                        elif c == '\\':
+                                        elif c == "\\":
                                             escaped = True
                                             chunk_to_yield += c
                                         elif c == '"':
@@ -197,37 +232,43 @@ class TutorService:
                                         else:
                                             chunk_to_yield += c
                                         i += 1
-                                    
+
                                     # Yield the delta of what we just parsed
                                     if chunk_to_yield:
                                         # unescape simple json escapes for streaming display
-                                        display_text = chunk_to_yield.replace('\\n', '\n').replace('\\"', '"').replace('\\\\', '\\')
+                                        display_text = (
+                                            chunk_to_yield.replace("\\n", "\n")
+                                            .replace('\\"', '"')
+                                            .replace("\\\\", "\\")
+                                        )
                                         yield {"type": "stream", "chunk": display_text}
-                                    
+
                                     # Keep whatever is left in the buffer (including the closing quote and everything after)
                                     buffer = buffer[i:]
 
                         except json.JSONDecodeError:
                             pass
-                
+
                 # Stream finished. Now we parse the full JSON to extract corrections.
                 try:
-                    full_data = json.loads(buffer) if not in_response_string else {} # Fallback
-                except:
+                    full_data = (
+                        json.loads(buffer) if not in_response_string else {}
+                    )  # Fallback
+                except Exception:
                     # If the JSON is slightly malformed but we have the buffer, try to parse
                     try:
-                        import ast
+
                         # Very aggressive fallback: find the corrections array using string manipulation if json fails
                         start = buffer.find('"corrections"')
                         if start != -1:
-                            arr_start = buffer.find('[', start)
-                            arr_end = buffer.rfind(']')
+                            arr_start = buffer.find("[", start)
+                            arr_end = buffer.rfind("]")
                             if arr_start != -1 and arr_end != -1:
-                                arr_str = buffer[arr_start:arr_end+1]
+                                arr_str = buffer[arr_start: arr_end + 1]
                                 corrections = json.loads(arr_str)
                                 yield {"type": "corrections", "data": corrections}
                                 return
-                    except:
+                    except Exception:
                         pass
                     return
 
@@ -242,11 +283,13 @@ class TutorService:
             "options": {
                 "temperature": 0.5,
                 "num_predict": 512,
-            }
+            },
         }
-        
+
         async with httpx.AsyncClient(timeout=60.0) as client:
-            async with client.stream("POST", f"{OLLAMA_BASE_URL}/api/chat", json=payload) as response:
+            async with client.stream(
+                "POST", f"{OLLAMA_BASE_URL}/api/chat", json=payload
+            ) as response:
                 response.raise_for_status()
                 async for line in response.aiter_lines():
                     if line:
@@ -256,5 +299,6 @@ class TutorService:
                                 yield data["message"]["content"]
                         except json.JSONDecodeError:
                             pass
+
 
 tutor_service = TutorService()

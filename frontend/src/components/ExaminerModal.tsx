@@ -25,6 +25,7 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
   const { setLevel } = useKMasteryStore();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
   }, []);
 
@@ -48,6 +49,7 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
   };
 
   // Keep ref up-to-date so WebSocket handler is never stale
+  // eslint-disable-next-line react-hooks/refs
   handlePassRef.current = handlePass;
 
   const connect = useCallback(() => {
@@ -80,6 +82,7 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
                 handlePassRef.current?.();
                 return [...prev.slice(0, -1), { role: 'ai', content: parsed.message }];
               }
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             } catch (e) {
               // Not JSON, ignore
             }

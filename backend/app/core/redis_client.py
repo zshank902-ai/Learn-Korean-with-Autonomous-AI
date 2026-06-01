@@ -1,6 +1,7 @@
-import redis
 import os
-from app.core.config import settings
+from typing import Any
+
+import redis
 
 
 class MockRedis:
@@ -8,6 +9,7 @@ class MockRedis:
     Full in-memory Redis mock for local development without a Redis server.
     Implements all methods used across the K-Mastery codebase.
     """
+
     def __init__(self):
         self.data: dict = {}
         self.sorted_sets: dict = {}
@@ -87,7 +89,7 @@ class MockRedis:
         if end == -1:
             sliced = sorted_items[start:]
         else:
-            sliced = sorted_items[start:end + 1]
+            sliced = sorted_items[start: end + 1]
         if withscores:
             return sliced
         return [item[0] for item in sliced]
@@ -112,11 +114,11 @@ class MockRedis:
 # Principal Architect: Centralized Redis Connection Pool
 # Provides high-performance access to the real-time gamification state.
 try:
-    redis_client = redis.Redis(
+    redis_client: Any = redis.Redis(
         host=os.getenv("REDIS_HOST", "localhost"),
         port=int(os.getenv("REDIS_PORT", 6379)),
         db=0,
-        decode_responses=True
+        decode_responses=True,
     )
     # Ping to check connection
     redis_client.ping()

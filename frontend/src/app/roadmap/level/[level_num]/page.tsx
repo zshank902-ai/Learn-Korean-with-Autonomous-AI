@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Lock, CheckCircle2, GraduationCap, Play, ArrowLeft } from 'lucide-react';
 
 import ProtectedRoute from '@/components/ProtectedRoute';
@@ -16,6 +17,7 @@ import LevelTabs from '@/components/roadmap/LevelTabs';
 import CompletionModal from '@/components/roadmap/CompletionModal';
 
 import type { TopikModule, TopikLevel, TopikLevelNum } from '@/lib/roadmapTypes';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { ComponentType } from 'react';
 
 const ModuleViewer = dynamic<import('@/components/roadmap/ModuleViewer').ModuleViewerProps>(

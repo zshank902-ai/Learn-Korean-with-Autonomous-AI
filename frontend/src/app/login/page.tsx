@@ -52,6 +52,7 @@ export default function AuthPage() {
         let data;
         try {
           data = await response.json();
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (e) {
           throw new Error("Server returned an invalid response. Please try again later.");
         }

@@ -18,18 +18,19 @@ system_prompt = (
 )
 
 res = requests.post(
-    GROQ_URL, 
-    headers={'Authorization': f'Bearer {GROQ_API_KEY}', 'Content-Type': 'application/json'}, 
+    GROQ_URL,
+    headers={'Authorization': f'Bearer {GROQ_API_KEY}',
+             'Content-Type': 'application/json'},
     json={
-        'model': 'llama-3.1-8b-instant', 
+        'model': 'llama-3.1-8b-instant',
         'messages': [
-            {'role': 'system', 'content': system_prompt}, 
+            {'role': 'system', 'content': system_prompt},
             {'role': 'user', 'content': json.dumps(words, ensure_ascii=False)}
-        ], 
-        'response_format': {'type': 'json_object'}, 
-        'temperature': 0.3, 
+        ],
+        'response_format': {'type': 'json_object'},
+        'temperature': 0.3,
         'max_tokens': 4000
-    }, 
+    },
     timeout=15
 )
 print("Status Code:", res.status_code)

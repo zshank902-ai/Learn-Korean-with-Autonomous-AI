@@ -81,6 +81,7 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
   // Confetti particles
   const confetti = Array.from({ length: 12 }).map((_, i) => {
     const angle = (Math.PI * 2 * i) / 12;
+    // eslint-disable-next-line react-hooks/purity
     const distance = 60 + Math.random() * 60;
     const colors = ['#FFD600', '#00C853', '#00E5FF'];
     return (

@@ -3,13 +3,15 @@ exam.py
 TOPIK Exam endpoints — TOPIK-I (30L + 40R MCQ) and TOPIK-II (4W + 50L + 50R).
 All questions are instantly loaded from a pre-generated realistic JSON bank.
 """
+
 from __future__ import annotations
 
 import json
 import os
 import random
 from typing import Any
-from fastapi import APIRouter, HTTPException, Depends
+
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
 from app.api.v1.endpoints.auth import get_current_user
@@ -19,9 +21,11 @@ router = APIRouter()
 
 # ─── Pydantic Models ─────────────────────────────────────────────────────────
 
+
 class TopikISubmitRequest(BaseModel):
     answers: dict[str, int]
     seed: str = ""
+
 
 class TopikIISubmitRequest(BaseModel):
     mcq_answers: dict[str, int]
@@ -32,12 +36,14 @@ class TopikIISubmitRequest(BaseModel):
 
 # ─── Load Static Bank ─────────────────────────────────────────────────────────
 
+
 def _load_bank(level: int) -> dict[str, list[dict]]:
     path = f"app/data/topik_{level}_bank.json"
     if not os.path.exists(path):
         return {"listening": [], "reading": []}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 WRITING_QUESTIONS_STATIC = [
     {
@@ -60,7 +66,11 @@ WRITING_QUESTIONS_STATIC = [
         "questionNumber": 53,
         "type": "short_essay",
         "topic": "좋아하는 계절",
-        "hints": ["좋아하는 계절은 무엇입니까?", "그 계절을 좋아하는 이유는 무엇입니까?", "그 계절에 무엇을 합니까?"],
+        "hints": [
+            "좋아하는 계절은 무엇입니까?",
+            "그 계절을 좋아하는 이유는 무엇입니까?",
+            "그 계절에 무엇을 합니까?",
+        ],
         "charMin": 200,
         "charMax": 300,
     },
@@ -76,10 +86,12 @@ WRITING_QUESTIONS_STATIC = [
 
 # ─── Score Helpers ────────────────────────────────────────────────────────────
 
+
 def _score_mcq(questions: list[dict], answers: dict[str, int]) -> int:
     if not questions:
         return 0
-    correct = sum(1 for q in questions if answers.get(q["id"]) == q["correctAnswer"])
+    correct = sum(1 for q in questions if answers.get(
+        q["id"]) == q["correctAnswer"])
     return round((correct / len(questions)) * 100)
 
 
@@ -105,6 +117,7 @@ def _award_topik_ii_level(total: int) -> int:
 
 # ─── Endpoints ────────────────────────────────────────────────────────────────
 
+
 @router.get("/topik-i/questions")
 def get_topik_i_questions(seed: str = "", level: int = 1) -> dict[str, Any]:
     """Returns 30 listening + 40 reading questions for TOPIK-I."""
@@ -114,7 +127,7 @@ def get_topik_i_questions(seed: str = "", level: int = 1) -> dict[str, Any]:
 
     # Shuffle with seed (or random) for variety
     rng = random.Random(seed if seed else None)
-    
+
     # We sample 30 L and 40 R, but fallback to len if bank is smaller
     listening_sampled = rng.sample(listening, min(30, len(listening)))
     reading_sampled = rng.sample(reading, min(40, len(reading)))
@@ -155,14 +168,20 @@ def get_topik_ii_questions(targetLevel: int = 3, seed: str = "") -> dict[str, An
 
 
 @router.post("/topik-i/submit")
-def submit_topik_i(body: TopikISubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def submit_topik_i(
+    body: TopikISubmitRequest, current_user: User = Depends(get_current_user)
+) -> dict[str, Any]:
     """Scores a submitted TOPIK-I exam. Returns section scores and level awarded."""
     # Reconstruct the exact same exam they took using the seed
     bank = _load_bank(1)
     rng = random.Random(body.seed if body.seed else None)
-    
-    listening_qs = rng.sample(bank.get("listening", []), min(30, len(bank.get("listening", []))))
-    reading_qs = rng.sample(bank.get("reading", []), min(40, len(bank.get("reading", []))))
+
+    listening_qs = rng.sample(
+        bank.get("listening", []), min(30, len(bank.get("listening", [])))
+    )
+    reading_qs = rng.sample(
+        bank.get("reading", []), min(40, len(bank.get("reading", [])))
+    )
 
     listening_score = _score_mcq(listening_qs, body.answers)
     reading_score = _score_mcq(reading_qs, body.answers)
@@ -180,25 +199,36 @@ def submit_topik_i(body: TopikISubmitRequest, current_user: User = Depends(get_c
 
 
 @router.post("/topik-ii/submit")
-def submit_topik_ii(body: TopikIISubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def submit_topik_ii(
+    body: TopikIISubmitRequest, current_user: User = Depends(get_current_user)
+) -> dict[str, Any]:
     """Scores TOPIK-II MCQ and sends Q53+Q54 essays to AI grader."""
     from app.api.v1.endpoints.roadmap import _grade_essay_with_ai
 
     bank = _load_bank(2)
     rng = random.Random(body.seed if body.seed else None)
-    
-    listening_qs = rng.sample(bank.get("listening", []), min(50, len(bank.get("listening", []))))
-    reading_qs = rng.sample(bank.get("reading", []), min(50, len(bank.get("reading", []))))
+
+    listening_qs = rng.sample(
+        bank.get("listening", []), min(50, len(bank.get("listening", [])))
+    )
+    reading_qs = rng.sample(
+        bank.get("reading", []), min(50, len(bank.get("reading", [])))
+    )
 
     listening_score = _score_mcq(listening_qs, body.mcq_answers)
     reading_score = _score_mcq(reading_qs, body.mcq_answers)
 
     # Grade Q53 + Q54 essays using AI
-    essay_text = (body.writing_answers.get("53", "") + "\n\n" + body.writing_answers.get("54", "")).strip()
+    essay_text = (
+        body.writing_answers.get("53", "") + "\n\n" +
+        body.writing_answers.get("54", "")
+    ).strip()
     essay_rubric: dict = {}
     writing_score = 0
     if essay_text:
-        essay_rubric = _grade_essay_with_ai(essay_text, body.target_level, "TOPIK II 쓰기")
+        essay_rubric = _grade_essay_with_ai(
+            essay_text, body.target_level, "TOPIK II 쓰기"
+        )
         writing_score = min(essay_rubric.get("totalScore", 0), 100)
     else:
         writing_score = 50  # partial credit for Q51+Q52

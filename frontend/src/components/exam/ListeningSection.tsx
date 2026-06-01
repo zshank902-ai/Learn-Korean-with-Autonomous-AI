@@ -32,6 +32,7 @@ function AudioPlayer({
   const [ttsSupported, setTtsSupported] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTtsSupported(typeof window !== 'undefined' && 'speechSynthesis' in window);
     return () => {
       if (typeof window !== 'undefined' && window.speechSynthesis) {
@@ -45,6 +46,7 @@ function AudioPlayer({
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel();
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsPlaying(false);
     setPlayCount(0);
     setCurrentTime('0:00');

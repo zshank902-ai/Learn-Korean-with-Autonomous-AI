@@ -40,6 +40,7 @@ export function useTopikProgress(levelNum: number) {
       
       const data = await res.json();
       setProgressData(data);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
     } finally {

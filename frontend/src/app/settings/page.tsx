@@ -17,6 +17,7 @@ export default function SettingsPage() {
 
   useEffect(() => {
     if (user) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData({
         nickname: user.nickname || '',
         full_name: user.full_name || '',

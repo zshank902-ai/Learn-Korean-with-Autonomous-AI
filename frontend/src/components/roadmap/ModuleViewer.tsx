@@ -28,6 +28,7 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
   const [bannerState, setBannerState] = useState<BannerState>('idle');
   const router = useRouter();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleActivityComplete = useCallback(async (score: number) => {
     setBannerState('loading');
     try {

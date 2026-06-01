@@ -4,8 +4,12 @@ Principal Architect: TOPIK Roadmap Module Registry & Progression Engine.
 All 42 module definitions (6 levels × 7 modules) stored as frozen Python constants.
 Progression logic reads/writes from Redis.
 """
+
 from __future__ import annotations
-from typing import Any
+
+from typing import Any, Union
+import uuid
+
 from app.core.redis_client import get_redis
 
 # ─────────────────────────────────────────────
@@ -479,7 +483,7 @@ def get_module(module_id: str) -> dict[str, Any] | None:
     return _MODULE_LOOKUP.get(module_id)
 
 
-def get_user_progress(user_id: str) -> dict[str, str]:
+def get_user_progress(user_id: Union[str, uuid.UUID]) -> dict[str, str]:
     """
     Reads all module statuses for a user from Redis.
     Returns dict mapping module_id -> status string.
@@ -488,22 +492,28 @@ def get_user_progress(user_id: str) -> dict[str, str]:
     redis = get_redis()
     key = f"roadmap:progress:{user_id}"
     raw = redis.hgetall(key)
-    
+
     progress = {}
     if raw:
         progress = {
-            (k.decode() if isinstance(k, bytes) else k): (v.decode() if isinstance(v, bytes) else v)
+            (k.decode() if isinstance(k, bytes) else k): (
+                v.decode() if isinstance(v, bytes) else v
+            )
             for k, v in raw.items()
         }
     else:
         # Cache miss. Try to restore from PostgreSQL
         try:
+            import json
+
             from app.db.session import SessionLocal
             from app.models.user import UserProgress
-            import json
-            
+
             db = SessionLocal()
-            db_progress = db.query(UserProgress).filter(UserProgress.user_id == user_id).first()
+            db_progress = (
+                db.query(UserProgress).filter(
+                    UserProgress.user_id == user_id).first()
+            )
             if db_progress and db_progress.roadmap_status_json:
                 progress = json.loads(db_progress.roadmap_status_json)
                 # Repopulate Redis cache
@@ -520,11 +530,11 @@ def get_user_progress(user_id: str) -> dict[str, str]:
             if mod_id not in progress or progress[mod_id] == "locked":
                 progress[mod_id] = "available"
                 # Optionally write it back to Redis to keep it in sync, but it's not strictly necessary.
-                
+
     return progress
 
 
-def start_module(user_id: str, module_id: str) -> dict[str, Any]:
+def start_module(user_id: Union[str, uuid.UUID], module_id: str) -> dict[str, Any]:
     """Marks a module as in_progress in Redis."""
     redis = get_redis()
     key = f"roadmap:progress:{user_id}"
@@ -533,7 +543,7 @@ def start_module(user_id: str, module_id: str) -> dict[str, Any]:
     return {"sessionId": f"{user_id}_{module_id}", "module": module}
 
 
-def complete_module(user_id: str, module_id: str, score: int) -> dict[str, Any]:
+def complete_module(user_id: Union[str, uuid.UUID], module_id: str, score: int) -> dict[str, Any]:
     """
     Marks module as completed, saves score, awards XP, and unlocks next module.
     Returns xpGained, newlyUnlocked, levelProgress.
@@ -548,7 +558,10 @@ def complete_module(user_id: str, module_id: str, score: int) -> dict[str, Any]:
     # Save score history
     import json
     from datetime import datetime, timezone
-    score_entry = json.dumps({"score": score, "timestamp": datetime.now(timezone.utc).isoformat()})
+
+    score_entry = json.dumps(
+        {"score": score, "timestamp": datetime.now(timezone.utc).isoformat()}
+    )
     redis.lpush(score_key, score_entry)
     redis.ltrim(score_key, 0, 9)  # Keep last 10 scores
 
@@ -561,19 +574,31 @@ def complete_module(user_id: str, module_id: str, score: int) -> dict[str, Any]:
         for mod in level["modules"]:
             if mod.get("prerequisite") == module_id:
                 current_status = redis.hget(progress_key, mod["id"])
-                current_status = current_status.decode() if isinstance(current_status, bytes) else current_status
+                current_status = (
+                    current_status.decode()
+                    if isinstance(current_status, bytes)
+                    else current_status
+                )
                 if not current_status or current_status == "locked":
                     redis.hset(progress_key, mod["id"], "available")
                     newly_unlocked.append(mod["id"])
 
     # Calculate level progress for this level
     level_id = module_def.get("level_id", 1) if module_def else 1
-    level_modules = [m["id"] for lvl in ROADMAP_STRUCTURE if lvl["id"] == level_id for m in lvl["modules"]]
+    level_modules = [
+        m["id"]
+        for lvl in ROADMAP_STRUCTURE
+        if lvl["id"] == level_id
+        for m in lvl["modules"]
+    ]
     completed_count = sum(
-        1 for mid in level_modules
+        1
+        for mid in level_modules
         if (redis.hget(progress_key, mid) or b"").decode() == "completed"
     )
-    level_progress = int((completed_count / len(level_modules)) * 100) if level_modules else 0
+    level_progress = (
+        int((completed_count / len(level_modules)) * 100) if level_modules else 0
+    )
 
     return {
         "xpGained": xp_gained,

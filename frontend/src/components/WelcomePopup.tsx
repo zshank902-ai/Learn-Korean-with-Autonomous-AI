@@ -12,6 +12,7 @@ export default function WelcomePopup() {
   useEffect(() => {
     const justLoggedIn = sessionStorage.getItem('just_logged_in');
     if (justLoggedIn === 'true') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(true);
       sessionStorage.removeItem('just_logged_in');
     }

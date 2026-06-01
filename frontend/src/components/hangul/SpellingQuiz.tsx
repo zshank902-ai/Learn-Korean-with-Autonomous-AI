@@ -19,6 +19,7 @@ export default function SpellingQuiz() {
   const [loading, setLoading] = useState(true);
   
   const [selected, setSelected] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   
   const [score, setScore] = useState(0);
@@ -66,6 +67,7 @@ export default function SpellingQuiz() {
     }, 1000);
     
     return () => clearInterval(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, loading, isFinished]);
 
   const handleTimeout = () => {

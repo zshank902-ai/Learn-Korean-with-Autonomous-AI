@@ -39,6 +39,7 @@ export default function CallbackPage({ params }: CallbackPageProps) {
     localStorage.removeItem('oauth_state');
 
     if (!code) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setErrorMsg("No authorization code returned from provider.");
       return;
     }

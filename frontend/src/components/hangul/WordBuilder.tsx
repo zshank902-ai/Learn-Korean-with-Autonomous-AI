@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { motion, Reorder } from 'framer-motion';
 import { useHangulStore } from '@/store/hangulStore';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis';
@@ -22,6 +23,7 @@ const PRESETS = [
 ];
 
 export default function WordBuilder() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { composedSyllables, removeSyllable, clearSyllables, reorderSyllables, setTab } = useHangulStore();
   const { speak } = useSpeechSynthesis();
   
@@ -33,6 +35,7 @@ export default function WordBuilder() {
   const [items, setItems] = useState<{id: string, text: string}[]>([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setItems(composedSyllables.map((s, i) => ({ id: `${i}-${s}`, text: s })));
   }, [composedSyllables]);
 

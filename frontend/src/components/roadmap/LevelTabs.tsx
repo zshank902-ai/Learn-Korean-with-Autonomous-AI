@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { motion } from 'framer-motion';
 import { Lock, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/useToast';

@@ -94,6 +94,7 @@ function isCorrectPronunciation(
   return { correct: false, bestMatch: heardTranscript };
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function usePronunciationDrill(userId?: string) {
   const [state, setState] = useState<DrillState>({
     phase: 'setup',
@@ -147,6 +148,49 @@ export function usePronunciationDrill(userId?: string) {
     }));
   }, []);
 
+
+
+  const handleSTTResult = useCallback((transcript: string) => {
+    setState(prev => {
+      const currentWord = prev.words[prev.currentIndex];
+      if (!currentWord) return prev;
+
+      if (!transcript.trim()) {
+        return { ...prev, phase: 'ready', error: '소리가 들리지 않아요 — Couldn\'t hear you, try again' };
+      }
+
+      const { correct, bestMatch } = isCorrectPronunciation(transcript, currentWord);
+      const newAttempts = prev.attempts + 1;
+
+      if (correct) {
+        const xp = currentWord.difficulty === 1 ? 5 : currentWord.difficulty === 2 ? 10 : 20;
+        return {
+          ...prev,
+          phase: 'correct',
+          heardText: bestMatch,
+          attempts: newAttempts,
+          sessionXP: prev.sessionXP + xp,
+          results: [...prev.results, { word: currentWord, heard: bestMatch, correct: true, attemptsUsed: newAttempts, xpEarned: xp }]
+        };
+      } else if (newAttempts >= 3) {
+        return {
+          ...prev,
+          phase: 'skipped',
+          heardText: bestMatch,
+          attempts: newAttempts,
+          results: [...prev.results, { word: currentWord, heard: bestMatch, correct: false, attemptsUsed: newAttempts, xpEarned: 0 }]
+        };
+      } else {
+        return {
+          ...prev,
+          phase: 'wrong',
+          heardText: bestMatch,
+          attempts: newAttempts
+        };
+      }
+    });
+  }, []);
+
   const handleMicTap = useCallback(async () => {
     if (state.phase !== 'ready' && state.phase !== 'wrong') return;
 
@@ -196,7 +240,7 @@ export function usePronunciationDrill(userId?: string) {
       setState(prev => ({ ...prev, error: '🚫 마이크 접근이 거부되었습니다 — Please allow microphone' }));
       setTimeout(() => setState(p => ({ ...p, error: null })), 3000);
     }
-  }, [state.phase]);
+  }, [state.phase, handleSTTResult]);
 
   const stopRecording = useCallback(() => {
     if (mediaRecorderRef.current?.state === 'recording') {
@@ -205,46 +249,6 @@ export function usePronunciationDrill(userId?: string) {
     }
   }, []);
 
-  const handleSTTResult = useCallback((transcript: string) => {
-    setState(prev => {
-      const currentWord = prev.words[prev.currentIndex];
-      if (!currentWord) return prev;
-
-      if (!transcript.trim()) {
-        return { ...prev, phase: 'ready', error: '소리가 들리지 않아요 — Couldn\'t hear you, try again' };
-      }
-
-      const { correct, bestMatch } = isCorrectPronunciation(transcript, currentWord);
-      const newAttempts = prev.attempts + 1;
-
-      if (correct) {
-        const xp = currentWord.difficulty === 1 ? 5 : currentWord.difficulty === 2 ? 10 : 20;
-        return {
-          ...prev,
-          phase: 'correct',
-          heardText: bestMatch,
-          attempts: newAttempts,
-          sessionXP: prev.sessionXP + xp,
-          results: [...prev.results, { word: currentWord, heard: bestMatch, correct: true, attemptsUsed: newAttempts, xpEarned: xp }]
-        };
-      } else if (newAttempts >= 3) {
-        return {
-          ...prev,
-          phase: 'skipped',
-          heardText: bestMatch,
-          attempts: newAttempts,
-          results: [...prev.results, { word: currentWord, heard: bestMatch, correct: false, attemptsUsed: newAttempts, xpEarned: 0 }]
-        };
-      } else {
-        return {
-          ...prev,
-          phase: 'wrong',
-          heardText: bestMatch,
-          attempts: newAttempts
-        };
-      }
-    });
-  }, []);
 
   // Handle phase transitions
   useEffect(() => {

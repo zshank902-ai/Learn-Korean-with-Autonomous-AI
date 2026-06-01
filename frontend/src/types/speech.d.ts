@@ -35,6 +35,9 @@ interface SpeechRecognition extends EventTarget {
   stop(): void;
   abort(): void;
 }
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface SpeechGrammarList {}
+// eslint-disable-next-line no-var
 declare var SpeechRecognition: { new(): SpeechRecognition };
+// eslint-disable-next-line no-var
 declare var webkitSpeechRecognition: { new(): SpeechRecognition };

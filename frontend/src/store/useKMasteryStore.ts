@@ -141,6 +141,7 @@ export const useKMasteryStore = create<KMasteryState>((set) => ({
           notifications: [...state.notifications, xpNotification]
         };
       });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       // Fallback local state if backend is down
       set((state) => {

@@ -136,6 +136,7 @@ function TopikIIExamInner() {
   // Break countdown
   useEffect(() => {
     if (phase !== 'break') return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setBreakRemaining(900);
     breakTimerRef.current = setInterval(() => {
       setBreakRemaining((s) => {

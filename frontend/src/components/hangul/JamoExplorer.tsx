@@ -10,6 +10,7 @@ export default function JamoExplorer() {
   // Grouping
   const basicConsonants = JAMO_DATA.filter(d => d.type === 'consonant');
   const tenseConsonants = JAMO_DATA.filter(d => d.type === 'tense');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const basicVowels = JAMO_DATA.filter(d => d.type === 'vowel' && d.romanization.length <= 2 && !d.romanization.includes('e') && !d.romanization.includes('w')); 
   // Above basic vowel logic is a bit naive for Korean, let's group by explicit sets:
   const BASIC_VOWELS = ['ㅏ', 'ㅑ', 'ㅓ', 'ㅕ', 'ㅗ', 'ㅛ', 'ㅜ', 'ㅠ', 'ㅡ', 'ㅣ'];

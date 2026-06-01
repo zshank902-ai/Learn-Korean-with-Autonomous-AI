@@ -34,6 +34,7 @@ interface GrammarDrillViewProps {
   onComplete: (score: number) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function GrammarDrillView({ moduleId, level: _level, onComplete }: GrammarDrillViewProps) {
   const [questions, setQuestions] = useState<GrammarQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -2,27 +2,26 @@
 roadmap.py
 All 7 TOPIK Roadmap API endpoints.
 """
+
 from __future__ import annotations
 
 import json
-import uuid
-import requests
 import os
 import urllib.parse
-from typing import Any
+import uuid
 from datetime import datetime, timezone
-from fastapi import APIRouter, HTTPException, Response, Depends
+from typing import Any
+
+import requests
+from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel
 
+from app.api.v1.endpoints.auth import get_current_user
+from app.core.ai_config import get_groq_api_key
+from app.core.redis_client import get_redis
+from app.models.user import User
 from app.services import roadmap_service
 from app.services.prompts.master_tutor_prompt import get_master_tutor_prompt
-from app.core.redis_client import get_redis
-from app.services.roadmap_service import ROADMAP_STRUCTURE
-from app.services.prompts.master_tutor_prompt import get_master_tutor_prompt
-from app.core.redis_client import get_redis
-from app.core.ai_config import get_groq_api_key
-from app.api.v1.endpoints.auth import get_current_user
-from app.models.user import User
 
 router = APIRouter()
 
@@ -31,18 +30,23 @@ GROQ_MODEL = "llama-3.1-8b-instant"
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "phi3:latest")
 
+
 class CompleteModuleRequest(BaseModel):
     score: int = 0
+
 
 class EssayGradeRequest(BaseModel):
     essay: str
     level: int
     prompt_hint: str = ""
 
+
 class MockSubmitRequest(BaseModel):
     answers: dict[str, Any]
 
+
 # ─── Helper: Essay Grader via Groq → Ollama fallback ─────────────────────────
+
 
 def _grade_essay_with_ai(essay: str, level: int, prompt_hint: str) -> dict[str, Any]:
     strictness = "very strict" if level >= 5 else "moderately strict"
@@ -62,7 +66,10 @@ def _grade_essay_with_ai(essay: str, level: int, prompt_hint: str) -> dict[str, 
         try:
             response = requests.post(
                 GROQ_URL,
-                headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
+                headers={
+                    "Authorization": f"Bearer {groq_key}",
+                    "Content-Type": "application/json",
+                },
                 json={
                     "model": GROQ_MODEL,
                     "messages": [
@@ -107,7 +114,9 @@ def _grade_essay_with_ai(essay: str, level: int, prompt_hint: str) -> dict[str, 
     }
 
 
-def _generate_questions_with_ai(module_id: str, module_type: str, level: int, count: int = 10) -> list[dict]:
+def _generate_questions_with_ai(
+    module_id: str, module_type: str, level: int, count: int = 10
+) -> list[dict]:
     """Generates TOPIK-style questions via Groq, cached in Redis for 30 days."""
     redis = get_redis()
     cache_key = f"roadmap:questions:{module_id}:page1:v2"
@@ -115,14 +124,16 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
     if cached:
         return json.loads(cached)
 
+    import random
+
     from app.db.session import SessionLocal
     from app.models.srs import VocabItem
-    import random
-    
+
     db = SessionLocal()
     tsv_words = []
     try:
-        vocab_items = db.query(VocabItem).filter(VocabItem.level_id == level).all()
+        vocab_items = db.query(VocabItem).filter(
+            VocabItem.level_id == level).all()
         if vocab_items:
             sampled = random.sample(vocab_items, min(10, len(vocab_items)))
             tsv_words = [f"{item.word} ({item.meaning})" for item in sampled]
@@ -130,15 +141,17 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
         pass
     finally:
         db.close()
-        
+
     tsv_instruction = ""
     if tsv_words:
         words_str = ", ".join(tsv_words)
         tsv_instruction = f"CRITICAL VOCABULARY INJECTION: You MUST prominently feature these specific official TOPIK vocabulary words in your questions/dialogues to test the user: [{words_str}]. "
 
     # Force listening modules to generate a dialogue for the TTS engine
-    is_listening = "listening" in module_id.lower() or module_type.lower() == "listening"
-    
+    is_listening = (
+        "listening" in module_id.lower() or module_type.lower() == "listening"
+    )
+
     if is_listening:
         format_instruction = '[{"audioText": "Korean dialogue goes here", "question": "Question about the dialogue", "options": ["보기1", "보기2", "보기3", "보기4"], "correct": 0, "explanation": "Why this is correct"}]'
     else:
@@ -146,10 +159,14 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
 
     # Map frontend module_type to Master Prompt module
     master_module = "vocabulary"
-    if "grammar" in module_type: master_module = "grammar"
-    elif "audio" in module_type or "listening" in module_type: master_module = "listening"
-    elif "mcq" in module_type or "reading" in module_type: master_module = "reading"
-    elif "essay" in module_type or "writing" in module_type: master_module = "writing"
+    if "grammar" in module_type:
+        master_module = "grammar"
+    elif "audio" in module_type or "listening" in module_type:
+        master_module = "listening"
+    elif "mcq" in module_type or "reading" in module_type:
+        master_module = "reading"
+    elif "essay" in module_type or "writing" in module_type:
+        master_module = "writing"
 
     json_instruction = f"CRITICAL: Return ONLY a valid JSON array: {format_instruction}. Ensure your explanations strictly follow the 'Feedback action' rules from the Master System Prompt."
 
@@ -161,7 +178,7 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
         action="generate",
         user_input=f"Generate {count} authentic questions.",
         session_history=tsv_instruction,
-        json_format_instruction=json_instruction
+        json_format_instruction=json_instruction,
     )
 
     questions: list[dict] = []
@@ -170,7 +187,10 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
         try:
             response = requests.post(
                 GROQ_URL,
-                headers={"Authorization": f"Bearer {groq_key}", "Content-Type": "application/json"},
+                headers={
+                    "Authorization": f"Bearer {groq_key}",
+                    "Content-Type": "application/json",
+                },
                 json={
                     "model": GROQ_MODEL,
                     "messages": [{"role": "user", "content": system_prompt}],
@@ -208,6 +228,7 @@ def _generate_questions_with_ai(module_id: str, module_type: str, level: int, co
 
 # ─── Endpoints ───────────────────────────────────────────────────────────────
 
+
 @router.get("")
 def get_roadmap() -> dict[str, Any]:
     """Returns the full static TOPIK module structure."""
@@ -218,13 +239,14 @@ def get_roadmap() -> dict[str, Any]:
 def get_progress(current_user: User = Depends(get_current_user)) -> dict[str, Any]:
     """Returns per-module progress statuses and total XP for a user."""
     module_statuses = roadmap_service.get_user_progress(current_user.id)
-    completed_modules = [mid for mid, status in module_statuses.items() if status == "completed"]
+    completed_modules = [
+        mid for mid, status in module_statuses.items() if status == "completed"
+    ]
 
     # Calculate total XP from completed modules
     total_xp = sum(
-        roadmap_service.get_module(mid).get("xp", 0)
+        (roadmap_service.get_module(mid) or {}).get("xp", 0)
         for mid in completed_modules
-        if roadmap_service.get_module(mid)
     )
 
     return {
@@ -235,46 +257,62 @@ def get_progress(current_user: User = Depends(get_current_user)) -> dict[str, An
 
 
 @router.post("/module/{module_id}/start")
-def start_module(module_id: str, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def start_module(
+    module_id: str, current_user: User = Depends(get_current_user)
+) -> dict[str, Any]:
     """Marks a module as in_progress and returns session info."""
     module = roadmap_service.get_module(module_id)
     if not module:
-        raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
+        raise HTTPException(
+            status_code=404, detail=f"Module '{module_id}' not found")
 
     # Verify module is available for this user
     statuses = roadmap_service.get_user_progress(current_user.id)
     status = statuses.get(module_id, "locked")
     if status == "locked":
-        raise HTTPException(status_code=403, detail="Module is locked. Complete prerequisites first.")
+        raise HTTPException(
+            status_code=403, detail="Module is locked. Complete prerequisites first."
+        )
 
     return roadmap_service.start_module(current_user.id, module_id)
 
 
 @router.post("/module/{module_id}/complete")
-def complete_module(module_id: str, body: CompleteModuleRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def complete_module(
+    module_id: str,
+    body: CompleteModuleRequest,
+    current_user: User = Depends(get_current_user),
+) -> dict[str, Any]:
     """Marks module completed, awards XP, unlocks next module."""
     module = roadmap_service.get_module(module_id)
     if not module:
-        raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
+        raise HTTPException(
+            status_code=404, detail=f"Module '{module_id}' not found")
 
     return roadmap_service.complete_module(current_user.id, module_id, body.score)
 
 
 @router.post("/essay/grade")
-def grade_essay(body: EssayGradeRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def grade_essay(
+    body: EssayGradeRequest, current_user: User = Depends(get_current_user)
+) -> dict[str, Any]:
     """Grades a Korean essay using Groq (Ollama fallback). Returns 4-rubric JSON."""
     if not body.essay.strip():
-        raise HTTPException(status_code=400, detail="Essay text cannot be empty.")
+        raise HTTPException(
+            status_code=400, detail="Essay text cannot be empty.")
     return _grade_essay_with_ai(body.essay, body.level, body.prompt_hint)
 
 
 @router.get("/mock/{level_id}/generate")
-def generate_mock_exam(level_id: int, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def generate_mock_exam(
+    level_id: int, current_user: User = Depends(get_current_user)
+) -> dict[str, Any]:
     """Generates a full TOPIK mock exam structure for a given level."""
     levels = roadmap_service.get_level_structure()
     level = next((lvl for lvl in levels if lvl["id"] == level_id), None)
     if not level:
-        raise HTTPException(status_code=404, detail=f"Level {level_id} not found")
+        raise HTTPException(
+            status_code=404, detail=f"Level {level_id} not found")
 
     exam_id = str(uuid.uuid4())
     redis = get_redis()
@@ -296,13 +334,13 @@ def generate_mock_exam(level_id: int, current_user: User = Depends(get_current_u
 
     # Fetch exactly the required questions from local bank for listening/reading sections
     questions: dict[str, Any] = {}
-    
+
     for section in level["sections"]:
         section_type = section["name"].lower()
         if section_type in ("listening", "reading"):
             module_id = f"l{level_id}_{section_type}"
             required_count = section["questions"]
-            
+
             # Always use AI to dynamically inject official TSV Vocabulary
             questions[section_type] = _generate_questions_with_ai(
                 module_id, section_type, level_id, required_count
@@ -312,12 +350,19 @@ def generate_mock_exam(level_id: int, current_user: User = Depends(get_current_u
 
 
 @router.post("/mock/{exam_id}/submit")
-def submit_mock_exam(exam_id: str, body: MockSubmitRequest, current_user: User = Depends(get_current_user)) -> dict[str, Any]:
+def submit_mock_exam(
+    exam_id: str,
+    body: MockSubmitRequest,
+    current_user: User = Depends(get_current_user),
+) -> dict[str, Any]:
     """Scores a submitted mock exam and returns results with weak area analysis."""
     redis = get_redis()
     cached = redis.get(f"roadmap:mock:{exam_id}")
     if not cached:
-        raise HTTPException(status_code=404, detail="Exam session expired or not found. Please generate a new exam.")
+        raise HTTPException(
+            status_code=404,
+            detail="Exam session expired or not found. Please generate a new exam.",
+        )
 
     config = json.loads(cached)
     answers = body.answers
@@ -328,14 +373,19 @@ def submit_mock_exam(exam_id: str, body: MockSubmitRequest, current_user: User =
 
     for section_name, section_answers in answers.items():
         if isinstance(section_answers, dict):
-            correct = sum(1 for q_id, ans in section_answers.items() if ans.get("correct", False))
+            correct = sum(
+                1 for q_id, ans in section_answers.items() if ans.get("correct", False)
+            )
             section_scores[section_name] = correct
             total_correct += correct
 
     # Score: scale to max_score based on correct ratio
-    total_questions = sum(s["questions"] for s in config["sections"] if s["name"].lower() != "writing")
+    total_questions = sum(
+        s["questions"] for s in config["sections"] if s["name"].lower() != "writing"
+    )
     score_ratio = total_correct / total_questions if total_questions > 0 else 0
-    total_score = int(score_ratio * config["maxScore"] * 0.8)  # 80% from MCQ portion
+    # 80% from MCQ portion
+    total_score = int(score_ratio * config["maxScore"] * 0.8)
 
     # Writing score if provided
     writing_score = answers.get("writing", {}).get("totalScore", 0)
@@ -346,8 +396,10 @@ def submit_mock_exam(exam_id: str, body: MockSubmitRequest, current_user: User =
 
     # Identify weak areas
     weak_areas = [
-        section for section, score in section_scores.items()
-        if total_questions > 0 and score / max(total_questions // len(section_scores), 1) < 0.6
+        section
+        for section, score in section_scores.items()
+        if total_questions > 0
+        and score / max(total_questions // len(section_scores), 1) < 0.6
     ]
 
     return {
@@ -366,7 +418,8 @@ def get_module_questions(module_id: str, page: int = 1) -> dict[str, Any]:
     """Paginated question fetcher for any module (10 per page)."""
     module = roadmap_service.get_module(module_id)
     if not module:
-        raise HTTPException(status_code=404, detail=f"Module '{module_id}' not found")
+        raise HTTPException(
+            status_code=404, detail=f"Module '{module_id}' not found")
 
     m_type = module.get("type", "mcq")
     level = module.get("level_id", 1)
@@ -374,10 +427,13 @@ def get_module_questions(module_id: str, page: int = 1) -> dict[str, Any]:
     # Bypass removed: Everything now flows through AI to dynamically inject official TSV Vocabulary.
 
     # For other module types, fallback to AI generation
-    questions = _generate_questions_with_ai(
-        module_id, m_type, level, 10
-    )
-    return {"moduleId": module_id, "page": page, "questions": questions, "total": len(questions)}
+    questions = _generate_questions_with_ai(module_id, m_type, level, 10)
+    return {
+        "moduleId": module_id,
+        "page": page,
+        "questions": questions,
+        "total": len(questions),
+    }
 
 
 @router.get("/tts")
@@ -385,8 +441,9 @@ def proxy_tts(text: str):
     """Proxies Google TTS to bypass browser CORB/CORS blocks."""
     url = f"https://translate.google.com/translate_tts?ie=UTF-8&tl=ko&client=tw-ob&q={urllib.parse.quote(text)}"
     try:
-        res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=5)
+        res = requests.get(
+            url, headers={"User-Agent": "Mozilla/5.0"}, timeout=5)
         res.raise_for_status()
         return Response(content=res.content, media_type="audio/mpeg")
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500, detail="TTS proxy failed")

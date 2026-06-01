@@ -1,6 +1,6 @@
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-from typing import Callable, Any
+from typing import Any, Callable
 
 # Principal Architect: Global executor for CPU-bound TensorFlow tasks
 # This prevents blocking the FastAPI event loop during heavy inference.

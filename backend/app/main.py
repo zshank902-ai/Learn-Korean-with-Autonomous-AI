@@ -1,24 +1,26 @@
+from app.api.v1.endpoints import vocab
+import asyncio
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Depends
+
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+
+from app.api.v1.endpoints import auth
+from app.api.v1.endpoints import email as email_router
+from app.api.v1.endpoints import exam as exam_router
+from app.api.v1.endpoints import flywheel, gamification
+from app.api.v1.endpoints import hangul as hangul_router
+from app.api.v1.endpoints import onboarding as onboarding_router
+from app.api.v1.endpoints import profile as profile_router
+from app.api.v1.endpoints import progress as progress_router
+from app.api.v1.endpoints import realtime, speech, tutor
+from app.api.v1.endpoints import roadmap as roadmap_router
+from app.db.session import Base, check_and_upgrade_db, engine, get_db
+from app.models.user import UserProgress
 from app.services.corrector import corrector_service
 from app.services.production_model import model_server
-from app.db.session import engine, Base, get_db, check_and_upgrade_db
-from app.models import user, course, srs, tutor
-from app.models.user import UserProgress
-from app.models import hangul as hangul_models
-from app.api.v1.endpoints import gamification, realtime, auth, flywheel, speech, tutor
-from app.api.v1.endpoints import vocab
-from app.api.v1.endpoints import roadmap as roadmap_router
-from app.api.v1.endpoints import exam as exam_router
-from app.api.v1.endpoints import onboarding as onboarding_router
-from app.api.v1.endpoints import hangul as hangul_router
-from app.api.v1.endpoints import profile as profile_router
-from app.api.v1.endpoints import email as email_router
-from app.api.v1.endpoints import progress as progress_router
 from app.services.sync_worker import sync_worker
-import asyncio
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -34,8 +36,11 @@ async def lifespan(app: FastAPI):
     print("Principal Architect: Warming up TensorFlow/Keras models...")
     try:
         import os
+
         if os.getenv("RENDER"):
-            print("MLOps: Running on Render Free Tier. Bypassing TensorFlow init to prevent crash.")
+            print(
+                "MLOps: Running on Render Free Tier. Bypassing TensorFlow init to prevent crash."
+            )
             model_server.is_mock = True
             model_server.is_ready = True
             model_server.model = "mock"
@@ -54,6 +59,7 @@ async def lifespan(app: FastAPI):
         from app.db.session import SessionLocal
         from app.models.srs import VocabItem
         from app.scripts.seed_vocab import generate_vocab
+
         db = SessionLocal()
         try:
             if db.query(VocabItem).count() == 0:
@@ -82,29 +88,45 @@ app = FastAPI(title="K-Mastery API", version="1.0.0", lifespan=lifespan)
 # Enable CORS for Next.js frontend — MUST be registered before routes
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://192.168.0.2:3000", "https://k-mastery.vercel.app", "https://learn-korean-with-autonomous-ai.vercel.app"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://192.168.0.2:3000",
+        "https://k-mastery.vercel.app",
+        "https://learn-korean-with-autonomous-ai.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-from app.api.v1.endpoints import vocab
 
 # Routes
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
-app.include_router(profile_router.router, prefix="/api/profile", tags=["Profile"])
+app.include_router(profile_router.router,
+                   prefix="/api/profile", tags=["Profile"])
 app.include_router(email_router.router, prefix="/api/email", tags=["Email"])
-app.include_router(onboarding_router.router, prefix="/api/onboarding", tags=["Onboarding"])
-app.include_router(progress_router.router, prefix="/api/progress", tags=["Progress"])
-app.include_router(gamification.router, prefix="/api/v1/user", tags=["Gamification"])
+app.include_router(
+    onboarding_router.router, prefix="/api/onboarding", tags=["Onboarding"]
+)
+app.include_router(progress_router.router,
+                   prefix="/api/progress", tags=["Progress"])
+app.include_router(gamification.router,
+                   prefix="/api/v1/user", tags=["Gamification"])
 app.include_router(vocab.router, prefix="/api/v1", tags=["Vocabulary"])
 app.include_router(realtime.router, prefix="/api/v1/ai", tags=["Real-time AI"])
 app.include_router(speech.router, prefix="/api/v1/ai", tags=["Speech AI"])
-app.include_router(flywheel.router, prefix="/api/v1/ai/data-flywheel", tags=["Data Flywheel"])
-app.include_router(roadmap_router.router, prefix="/api/roadmap", tags=["TOPIK Roadmap"])
+app.include_router(
+    flywheel.router, prefix="/api/v1/ai/data-flywheel", tags=["Data Flywheel"]
+)
+app.include_router(roadmap_router.router,
+                   prefix="/api/roadmap", tags=["TOPIK Roadmap"])
 app.include_router(exam_router.router, prefix="/api/exam", tags=["TOPIK Exam"])
-app.include_router(hangul_router.router, prefix="/api/hangul", tags=["Hangul Mastery"])
-app.include_router(tutor.router, prefix="/api/v1/tutor", tags=["Tutor Session"])
+app.include_router(hangul_router.router,
+                   prefix="/api/hangul", tags=["Hangul Mastery"])
+app.include_router(tutor.router, prefix="/api/v1/tutor",
+                   tags=["Tutor Session"])
+
 
 @app.get("/")
 async def root():
@@ -119,28 +141,70 @@ def get_roadmap(db: Session = Depends(get_db)):
     """
     all_levels = [
         {
-            "id": 1, "title": "TOPIK I - Level 1", "focus": "Survival Korean",
-            "modules": ["Hangul Alphabet", "Greetings & Numbers", "Basic Particles (은/는, 이/가)", "Present Tense"]
+            "id": 1,
+            "title": "TOPIK I - Level 1",
+            "focus": "Survival Korean",
+            "modules": [
+                "Hangul Alphabet",
+                "Greetings & Numbers",
+                "Basic Particles (은/는, 이/가)",
+                "Present Tense",
+            ],
         },
         {
-            "id": 2, "title": "TOPIK I - Level 2", "focus": "Daily Life",
-            "modules": ["Daily Routines", "Honorifics (시/으시)", "Past & Future Tense", "Conjunctions"]
+            "id": 2,
+            "title": "TOPIK I - Level 2",
+            "focus": "Daily Life",
+            "modules": [
+                "Daily Routines",
+                "Honorifics (시/으시)",
+                "Past & Future Tense",
+                "Conjunctions",
+            ],
         },
         {
-            "id": 3, "title": "TOPIK II - Level 3", "focus": "Social Integration",
-            "modules": ["Expressing Opinions", "Indirect Quotations", "Complex Particles", "Emotional Nuance"]
+            "id": 3,
+            "title": "TOPIK II - Level 3",
+            "focus": "Social Integration",
+            "modules": [
+                "Expressing Opinions",
+                "Indirect Quotations",
+                "Complex Particles",
+                "Emotional Nuance",
+            ],
         },
         {
-            "id": 4, "title": "TOPIK II - Level 4", "focus": "Professional Skills",
-            "modules": ["Email Etiquette", "News Comprehension", "Debate Fundamentals", "Formal Expressions"]
+            "id": 4,
+            "title": "TOPIK II - Level 4",
+            "focus": "Professional Skills",
+            "modules": [
+                "Email Etiquette",
+                "News Comprehension",
+                "Debate Fundamentals",
+                "Formal Expressions",
+            ],
         },
         {
-            "id": 5, "title": "TOPIK II - Level 5", "focus": "Academic Fluency",
-            "modules": ["Abstract Reasoning", "Hanja Vocabulary", "Formal Presentations", "Cultural Nuance"]
+            "id": 5,
+            "title": "TOPIK II - Level 5",
+            "focus": "Academic Fluency",
+            "modules": [
+                "Abstract Reasoning",
+                "Hanja Vocabulary",
+                "Formal Presentations",
+                "Cultural Nuance",
+            ],
         },
         {
-            "id": 6, "title": "TOPIK II - Level 6", "focus": "Native-Like Mastery",
-            "modules": ["Thesis Defense", "Specialized Literature", "Native Idioms & Slang", "Nuanced Debates"]
+            "id": 6,
+            "title": "TOPIK II - Level 6",
+            "focus": "Native-Like Mastery",
+            "modules": [
+                "Thesis Defense",
+                "Specialized Literature",
+                "Native Idioms & Slang",
+                "Nuanced Debates",
+            ],
         },
     ]
 
@@ -151,9 +215,9 @@ def get_roadmap(db: Session = Depends(get_db)):
     # Dynamically assign status based on the user's level
     levels_with_status = []
     for lvl in all_levels:
-        if lvl["id"] < current_level:
+        if int(str(lvl["id"])) < int(str(current_level)):
             status = "completed"
-        elif lvl["id"] == current_level:
+        elif int(str(lvl["id"])) == int(str(current_level)):
             status = "active"
         else:
             status = "locked"

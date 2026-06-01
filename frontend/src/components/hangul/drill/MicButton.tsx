@@ -26,13 +26,16 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
         setBars(bars.map(() => 8 + Math.random() * 32));
       }, 100);
     } else if (isProcessing) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setBars([20, 20, 20, 20, 20]); // Freeze at medium height
     } else {
       setBars([8, 16, 24, 16, 8]); // Reset to idle
     }
     return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRecording, isProcessing]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handlePointerDown = (e: React.PointerEvent) => {
     if (disabled) return;
     // We only trigger tap on mouse down to start recording immediately

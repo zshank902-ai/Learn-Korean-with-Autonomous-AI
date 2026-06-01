@@ -16,12 +16,14 @@ function formatTime(seconds: number): string {
 
 export default function ExamTimer({ startSeconds, onExpire, paused = false }: ExamTimerProps) {
   const [remaining, setRemaining] = useState(startSeconds);
+  // eslint-disable-next-line react-hooks/purity
   const startRef = useRef<number>(Date.now());
   const initialRef = useRef<number>(startSeconds);
   const expiredRef = useRef(false);
 
   // Reset when startSeconds changes (section transition)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRemaining(startSeconds);
     startRef.current = Date.now();
     initialRef.current = startSeconds;

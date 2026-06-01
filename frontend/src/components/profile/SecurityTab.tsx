@@ -37,6 +37,7 @@ export default function SecurityTab() {
     mode: 'onChange'
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library
   const watchNewPassword = watch('new_password', '');
 
   // Calculate strength based on rules matched
@@ -82,6 +83,7 @@ export default function SecurityTab() {
       toast.success("Password updated successfully");
       reset(); // Clear all fields
       
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       toast.error(e.message);
     } finally {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Zap, X } from 'lucide-react';
 import type { MockExamResult, EssayGradeResult, RubricScores } from '@/lib/roadmapTypes';
@@ -231,7 +232,7 @@ function XPBurst({ xp }: { xp: number }) {
 
 export default function ScoreScreen({ result, resultType, onClose, xpEarned }: ScoreScreenProps) {
   const updateXP = useKMasteryStore((s) => s.updateXP);
-  const [xpTriggered, setXpTriggered] = useState(false);
+  const xpTriggeredRef = useRef(false);
 
   const totalScore = result.totalScore;
   const animatedScore = useCountUp(totalScore);
@@ -243,11 +244,11 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
 
   // Trigger XP on pass
   useEffect(() => {
-    if (passed && !xpTriggered && xpEarned > 0) {
-      setXpTriggered(true);
+    if (passed && !xpTriggeredRef.current && xpEarned > 0) {
+      xpTriggeredRef.current = true;
       void updateXP(xpEarned);
     }
-  }, [passed, xpTriggered, xpEarned, updateXP]);
+  }, [passed, xpEarned, updateXP]);
 
   // Build section bars
   const sectionBars: Array<{ label: string; score: number; maxScore: number; color: string }> = [];

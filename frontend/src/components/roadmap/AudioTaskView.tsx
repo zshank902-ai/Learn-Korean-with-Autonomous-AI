@@ -24,6 +24,7 @@ interface AudioTaskViewProps {
 
 const OPTION_LABELS = ['A', 'B', 'C', 'D'] as const;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function AudioTaskView({ moduleId, level: _level, onComplete }: AudioTaskViewProps) {
   const [questions, setQuestions] = useState<MCQQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,6 +38,7 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
   const playingRef = useRef(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSpeechSupported(true);
   }, []);
 

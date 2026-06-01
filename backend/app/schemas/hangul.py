@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from typing import List
+
+from pydantic import BaseModel
+
 
 class LookupResponse(BaseModel):
     word: str
@@ -8,13 +10,16 @@ class LookupResponse(BaseModel):
     example: str
     difficulty: int
 
+
 class VocabularyCreate(BaseModel):
     word: str
     syllables: List[str]
 
+
 class VocabularyResponse(BaseModel):
     saved: bool
     total_words: int
+
 
 class ProgressUpdate(BaseModel):
     xp_earned: int

@@ -107,7 +107,6 @@ function CameraManager() {
       [targetNode[0], targetNode[1] + 5, targetNode[2] + 12],
       [targetNode[0], targetNode[1], targetNode[2]]
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [level]);
 
   useFrame((state) => {

@@ -1,5 +1,6 @@
 'use client';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useHangulStore } from '@/store/hangulStore';
@@ -189,6 +190,7 @@ export default function SyllableBuilder() {
         {flyingChar && (
           <motion.div
             initial={{ position: 'fixed', left: flyingChar.rect.left, top: flyingChar.rect.top, width: flyingChar.rect.width, height: flyingChar.rect.height, zIndex: 9999, background: flyingChar.target === 'jung' ? '#00E5FF' : '#FFD600', border: '3px solid #0f0f0f', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: 900, color: '#0f0f0f', boxShadow: '4px 4px 0px #0f0f0f' }}
+            // eslint-disable-next-line react-hooks/refs
             animate={{ left: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().left, top: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().top, width: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().width, height: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().height, boxShadow: '0px 0px 0px #0f0f0f' }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             onAnimationComplete={handleAnimationComplete}

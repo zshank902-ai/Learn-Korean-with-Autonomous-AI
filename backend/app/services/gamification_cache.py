@@ -1,12 +1,15 @@
+from typing import Optional
+
 from app.core.redis_client import get_redis
 from app.schemas.gamification import UserCacheState
-from typing import Optional
+
 
 class GamificationCache:
     """
     Principal Architect: High-frequency Redis utility layer.
     Handles atomic operations for XP, Streaks, and Leaderboards.
     """
+
     def __init__(self):
         self.redis = get_redis()
         self.STATS_PREFIX = "kmastery:user"
@@ -24,7 +27,7 @@ class GamificationCache:
         # Atomic increment of the 'xp' field in the user's hash
         new_xp = self.redis.hincrby(key, "xp", amount)
         print(f"Redis: User {user_id} XP incremented to {new_xp}")
-        
+
         # After updating XP, we must trigger leaderboard sync
         self.update_leaderboard(user_id, amount)
         return new_xp
@@ -56,13 +59,14 @@ class GamificationCache:
         data = self.redis.hgetall(key)
         if not data:
             return None
-            
+
         return UserCacheState(
             user_id=user_id,
             xp=int(data.get("xp", 0)),
             streak=int(data.get("streak", 0)),
             coins=int(data.get("coins", 0)),
-            last_login=data.get("last_login", "")
+            last_login=data.get("last_login", ""),
         )
+
 
 gamification_cache = GamificationCache()

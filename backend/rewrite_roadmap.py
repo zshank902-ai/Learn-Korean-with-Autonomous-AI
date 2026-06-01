@@ -9,7 +9,8 @@ if end_idx == -1:
     print("Could not find _MODULE_LOOKUP in roadmap_service.py")
     sys.exit(1)
 
-header = original_content[:original_content.find("ROADMAP_STRUCTURE: list[dict[str, Any]] = [")]
+header = original_content[:original_content.find(
+    "ROADMAP_STRUCTURE: list[dict[str, Any]] = [")]
 footer = original_content[end_idx:]
 
 new_structure = """ROADMAP_STRUCTURE: list[dict[str, Any]] = [

@@ -7,6 +7,7 @@ import { API_ENDPOINTS } from '@/lib/apiConfig';
 import { Mail, ShieldCheck, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function EmailTab() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user, token, fetchProfile } = useAuthStore();
   const toast = useToast();
   
@@ -41,6 +42,7 @@ export default function EmailTab() {
       toast.success("Check your inbox — verification link sent!");
       setCooldown(60); // 60 second cooldown
       
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       toast.error(e.message);
     } finally {

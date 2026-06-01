@@ -1,7 +1,7 @@
-import asyncio
 import os
-import json
+
 import httpx
+
 from app.db.session import SessionLocal
 from app.models.user import UserProgress
 
@@ -18,6 +18,7 @@ Write a short, concise paragraph summarizing these insights. This will be fed di
 Keep it strictly under 50 words. Do not include greetings.
 """
 
+
 class MemoryWorker:
     async def summarize_and_save(self, history: list, user_id: str = "1"):
         """
@@ -29,38 +30,44 @@ class MemoryWorker:
 
         try:
             # Flatten history into a readable script
-            chat_script = "\n".join([f"{msg['role']}: {msg['content']}" for msg in history])
-            
+            chat_script = "\n".join(
+                [f"{msg['role']}: {msg['content']}" for msg in history]
+            )
+
             payload = {
                 "model": GROQ_MODEL,
                 "messages": [
                     {"role": "system", "content": MEMORY_SYSTEM_PROMPT},
-                    {"role": "user", "content": f"Chat History:\n{chat_script}"}
+                    {"role": "user", "content": f"Chat History:\n{chat_script}"},
                 ],
                 "temperature": 0.3,
-                "max_tokens": 100
+                "max_tokens": 100,
             }
-            
+
             headers = {
                 "Authorization": f"Bearer {GROQ_API_KEY}",
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
-            
+
             async with httpx.AsyncClient(timeout=20.0) as client:
                 response = await client.post(GROQ_URL, headers=headers, json=payload)
                 response.raise_for_status()
                 data = response.json()
                 summary = data["choices"][0]["message"]["content"].strip()
-                
+
             print(f"MemoryWorker: Generated summary: {summary}")
-            
+
             # Save to DB
             db = SessionLocal()
             try:
-                progress = db.query(UserProgress).filter(UserProgress.user_id == user_id).first()
+                progress = (
+                    db.query(UserProgress)
+                    .filter(UserProgress.user_id == user_id)
+                    .first()
+                )
                 if not progress:
                     progress = db.query(UserProgress).first()
-                    
+
                 if progress:
                     # Append or overwrite? For MVP, overwrite is fine.
                     progress.long_term_memory = summary
@@ -71,8 +78,9 @@ class MemoryWorker:
                 print(f"MemoryWorker DB Error: {db_err}")
             finally:
                 db.close()
-                
+
         except Exception as e:
             print(f"MemoryWorker Error: {e}")
+
 
 memory_worker = MemoryWorker()

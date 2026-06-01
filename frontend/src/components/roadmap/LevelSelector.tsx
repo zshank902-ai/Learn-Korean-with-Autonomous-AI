@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { TopikLevel, TopikLevelNum, ModuleStatus } from '@/lib/roadmapTypes';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
 

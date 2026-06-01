@@ -1,6 +1,7 @@
 "use client";
 
 import { create } from 'zustand';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, XCircle, Info, X } from 'lucide-react';

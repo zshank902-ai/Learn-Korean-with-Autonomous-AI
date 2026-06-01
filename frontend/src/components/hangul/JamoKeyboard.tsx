@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CHO_SEONG, JUNG_SEONG } from '@/lib/hangulUtils';
 
 interface JamoKeyboardProps {
@@ -21,6 +22,7 @@ export default function JamoKeyboard({ onJamoClick }: JamoKeyboardProps) {
     return (
       <motion.button
         key={jamo}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClick={(e) => onJamoClick(jamo, e as any)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95, y: 2, boxShadow: '2px 2px 0px #0f0f0f' }}

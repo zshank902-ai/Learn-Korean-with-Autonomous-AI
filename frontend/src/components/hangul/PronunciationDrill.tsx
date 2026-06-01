@@ -23,6 +23,7 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
     stopRecording, 
     restartSession, 
     drillWeakWords, 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     clearError 
   } = usePronunciationDrill();
   const { speak } = useSpeechSynthesis();

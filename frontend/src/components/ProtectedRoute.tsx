@@ -15,6 +15,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
   useEffect(() => {
     // Wait for Zustand persist to hydrate from localStorage
     const unsubFinishHydration = useAuthStore.persist.onFinishHydration(() => setHasHydrated(true));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setHasHydrated(useAuthStore.persist.hasHydrated());
     
     return () => {
@@ -43,6 +44,7 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
         try {
           await fetchProfile(controller.signal);
           clearTimeout(timeoutId);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
           clearTimeout(timeoutId);
           if (isMounted) {

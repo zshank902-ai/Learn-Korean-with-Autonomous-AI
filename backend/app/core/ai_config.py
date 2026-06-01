@@ -1,6 +1,7 @@
 import os
 import random
 
+
 def get_groq_api_key() -> str:
     """
     Returns a random Groq API key from GROQ_API_KEYS (comma-separated list).
