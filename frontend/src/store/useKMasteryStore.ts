@@ -184,17 +184,41 @@ export const useKMasteryStore = create<KMasteryState>((set) => ({
     currentCardIndex: Math.min(state.currentCardIndex + 1, state.flashcardDeck.length - 1)
   })),
 
-  rateCard: (rating) => {
-    // In a real app, this would ping the backend to update SRS intervals.
-    // We update local state, add XP, and advance.
+  rateCard: async (rating) => {
     let xpGain = 0;
-    if (rating === 'good') xpGain = 10;
-    if (rating === 'easy') xpGain = 20;
+    let quality = 0;
+    
+    if (rating === 'again') quality = 0;
+    if (rating === 'hard') quality = 2;
+    if (rating === 'good') { xpGain = 10; quality = 4; }
+    if (rating === 'easy') { xpGain = 20; quality = 5; }
+
+    const state = useKMasteryStore.getState();
+    const currentCard = state.flashcardDeck[state.currentCardIndex];
+
+    if (currentCard) {
+      try {
+        const token = localStorage.getItem('token');
+        await fetch(`${API_ENDPOINTS.FLASHCARDS}/review`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+          },
+          body: JSON.stringify({
+            vocab_id: parseInt(currentCard.id),
+            quality: quality
+          })
+        });
+      } catch (e) {
+        console.error("Failed to sync flashcard review", e);
+      }
+    }
 
     if (xpGain > 0) {
-      useKMasteryStore.getState().updateXP(xpGain);
+      state.updateXP(xpGain);
     }
-    useKMasteryStore.getState().advanceCard();
+    state.advanceCard();
   },
 
   loadFlashcards: (cards) => set({ flashcardDeck: cards, currentCardIndex: 0 }),
