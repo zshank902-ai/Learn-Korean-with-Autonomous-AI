@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.core.database import get_db
+from app.db.session import get_db
 from app.models.srs import VocabItem
 from app.core.config import settings
 from groq import Groq
