@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+from app.core.ai_config import get_groq_api_key
 from functools import partial
 
 import requests
@@ -10,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Groq / Ollama Configuration
-GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_API_KEY = get_groq_api_key()
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.1-8b-instant"
 

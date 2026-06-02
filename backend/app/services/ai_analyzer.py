@@ -1,5 +1,6 @@
 import json
 import os
+from app.core.ai_config import get_groq_api_key
 
 from groq import AsyncGroq
 
@@ -7,7 +8,7 @@ from groq import AsyncGroq
 # Configure Groq client
 # It will automatically pick up GROQ_API_KEY from the environment
 def get_groq_client():
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = get_groq_api_key()
     if not api_key:
         print("WARNING: GROQ_API_KEY is not set.")
     return AsyncGroq(api_key=api_key)

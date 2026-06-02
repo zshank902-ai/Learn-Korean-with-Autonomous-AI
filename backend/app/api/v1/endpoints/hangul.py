@@ -1,5 +1,6 @@
 import json
 import os
+from app.core.ai_config import get_groq_api_key
 import random
 
 import requests
@@ -16,7 +17,7 @@ from app.schemas.hangul import (LookupResponse, ProgressUpdate,
 
 router = APIRouter()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY = get_groq_api_key()
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 HANGUL_LOOKUP_SYSTEM_PROMPT = """
