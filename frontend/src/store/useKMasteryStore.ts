@@ -75,6 +75,7 @@ interface KMasteryState {
   advanceCard: () => void;
   rateCard: (rating: 'again' | 'hard' | 'good' | 'easy') => void;
   loadFlashcards: (cards: FlashCard[]) => void;
+  translateCard: (wordId: string) => Promise<void>;
   // Roadmap Actions
   setActiveTopikLevel: (n: 1 | 2 | 3 | 4 | 5 | 6) => void;
   setActiveTopikModule: (m: TopikModule | null) => void;
@@ -197,6 +198,38 @@ export const useKMasteryStore = create<KMasteryState>((set) => ({
   },
 
   loadFlashcards: (cards) => set({ flashcardDeck: cards, currentCardIndex: 0 }),
+
+  translateCard: async (wordId: string) => {
+    try {
+      // For now, assuming API is hosted at localhost:8000 for local dev
+      // Use dynamic base URL in prod
+      const API_BASE = "http://localhost:8000";
+      const res = await fetch(`${API_BASE}/api/srs/translate/${wordId}`, {
+        method: "POST"
+      });
+      if (!res.ok) throw new Error("Translation failed");
+      
+      const data = await res.json();
+      
+      set((state) => {
+        const newDeck = [...state.flashcardDeck];
+        const cardIndex = newDeck.findIndex(c => c.id === wordId);
+        if (cardIndex !== -1) {
+          const card = newDeck[cardIndex];
+          newDeck[cardIndex] = {
+            ...card,
+            example: {
+              ...card.example!,
+              english: data.translation
+            }
+          };
+        }
+        return { flashcardDeck: newDeck };
+      });
+    } catch (e) {
+      console.error("Translation error:", e);
+    }
+  },
 
   // ── Roadmap Actions ───────────────────────────────────────
   setActiveTopikLevel: (n) => set({ activeTopikLevel: n }),

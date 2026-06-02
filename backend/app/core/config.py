@@ -13,7 +13,12 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # AI & 3rd Party API Keys
-    GROQ_API_KEY: Optional[str] = None
+    GROQ_API_KEYS: Optional[str] = None
+    
+    def get_groq_keys(self) -> list[str]:
+        if not self.GROQ_API_KEYS:
+            return []
+        return [k.strip() for k in self.GROQ_API_KEYS.split(",") if k.strip()]
     GEMINI_API_KEY: Optional[str] = None
     RESEND_API_KEY: Optional[str] = None
 

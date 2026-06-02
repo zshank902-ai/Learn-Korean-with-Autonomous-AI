@@ -101,7 +101,8 @@ app.add_middleware(
 )
 
 
-# Routes
+from app.api.v1.endpoints import ai_srs
+
 app.include_router(auth.router, prefix="/api/v1/auth", tags=["Authentication"])
 app.include_router(profile_router.router,
                    prefix="/api/profile", tags=["Profile"])
@@ -126,7 +127,7 @@ app.include_router(hangul_router.router,
                    prefix="/api/hangul", tags=["Hangul Mastery"])
 app.include_router(tutor.router, prefix="/api/v1/tutor",
                    tags=["Tutor Session"])
-
+app.include_router(ai_srs.router, prefix="/api/srs", tags=["SRS AI Features"])
 
 @app.get("/")
 async def root():

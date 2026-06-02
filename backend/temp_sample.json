@@ -1,0 +1,664 @@
+{
+  "Lemma": {
+    "feat": {
+      "att": "writtenForm",
+      "val": "가"
+    }
+  },
+  "Sense": [
+    {
+      "Equivalent": [
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "몽골어"
+            },
+            {
+              "att": "lemma",
+              "val": "зах, ирмэг"
+            },
+            {
+              "att": "definition",
+              "val": "ямар нэгэн газар буюу эд зүйлийн зах болон төгсгөл хэсэг."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "아랍어"
+            },
+            {
+              "att": "lemma",
+              "val": "طرف حدّ"
+            },
+            {
+              "att": "definition",
+              "val": "محيط مكان ما أو شيء ما أو طرف مكان ما أو شيء ما"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "중국어"
+            },
+            {
+              "att": "lemma",
+              "val": "边，边上"
+            },
+            {
+              "att": "definition",
+              "val": "某个场所或东西的四周或末端。"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "베트남어"
+            },
+            {
+              "att": "lemma",
+              "val": "viền, mép, bờ "
+            },
+            {
+              "att": "definition",
+              "val": "Phần cuối cùng hoặc chu vi của đồ vật hay địa điểm nào đó. "
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "타이어"
+            },
+            {
+              "att": "lemma",
+              "val": "ริม, ข้าง, ฝั่ง, ด้าน, ด้านข้าง, ขอบ, ปลาย, รอบ, สุด"
+            },
+            {
+              "att": "definition",
+              "val": "บริเวณปลายหรือเส้นรอบวงของสิ่งของหรือสถานที่ใด ๆ"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "인도네시아어"
+            },
+            {
+              "att": "lemma",
+              "val": "batas, pinggir, tepi"
+            },
+            {
+              "att": "definition",
+              "val": "bagian lingkar atau ujung dari suatu tempat atau barang"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "러시아어"
+            },
+            {
+              "att": "lemma",
+              "val": "окраина; край; обочина"
+            },
+            {
+              "att": "definition",
+              "val": "Окружность или конечная часть какого-либо места или предмета."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "영어"
+            },
+            {
+              "att": "lemma",
+              "val": "edge; verge"
+            },
+            {
+              "att": "definition",
+              "val": "The perimeter or outer limits of a place or a thing."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "일본어"
+            },
+            {
+              "att": "lemma",
+              "val": "はし【端】。ふち【縁】。へ【辺】。へん【辺】"
+            },
+            {
+              "att": "definition",
+              "val": "ある場所や物の縁または端の部分。"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "프랑스어"
+            },
+            {
+              "att": "lemma",
+              "val": "bord, rebord, bordure, contour"
+            },
+            {
+              "att": "definition",
+              "val": "Contour, limite ou extrémité d'un lieu ou un objet."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "스페인어"
+            },
+            {
+              "att": "lemma",
+              "val": "borde, extremo"
+            },
+            {
+              "att": "definition",
+              "val": "Parte última o periferia de algo o de algún lugar."
+            }
+          ]
+        }
+      ],
+      "SenseExample": [
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가를 꾸미다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가를 장식하다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가에 걸치다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가에 달다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가에 달라붙다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가에 세우다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "가에 앉다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "문장"
+            },
+            {
+              "att": "example",
+              "val": "공원의 중앙에는 잔디밭이 있고 가에는 울타리가 둘러쳐져 있었다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "문장"
+            },
+            {
+              "att": "example",
+              "val": "민준이는 금방이라도 일어날 듯이 의자 가에 엉덩이만 살짝 걸치고 앉았다."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "대화"
+            },
+            {
+              "att": "example",
+              "val": "차는 어디에 주차했어요?"
+            },
+            {
+              "att": "example",
+              "val": "저기 운동장 가에 세워 뒀어요."
+            }
+          ]
+        }
+      ],
+      "att": "id",
+      "feat": {
+        "att": "definition",
+        "val": "어떤 장소나 물건의 둘레나 끝부분."
+      },
+      "val": "1"
+    },
+    {
+      "Equivalent": [
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "몽골어"
+            },
+            {
+              "att": "lemma",
+              "val": "ойр орчим"
+            },
+            {
+              "att": "definition",
+              "val": "&quot;ойр орчим, хүрээ&quot; гэсэн утгыг илэрхийлдэг үг."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "아랍어"
+            },
+            {
+              "att": "lemma",
+              "val": "جوار"
+            },
+            {
+              "att": "definition",
+              "val": "كلام يدل على معنى الجوار"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "중국어"
+            },
+            {
+              "att": "lemma",
+              "val": "边，岸边"
+            },
+            {
+              "att": "definition",
+              "val": "表示“周边，周围”的意思。"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "베트남어"
+            },
+            {
+              "att": "lemma",
+              "val": "ven "
+            },
+            {
+              "att": "definition",
+              "val": "Từ thể hiện ý nghĩa của &quot;xung quanh&quot;. "
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "타이어"
+            },
+            {
+              "att": "lemma",
+              "val": "บริเวณรอบ ๆ..."
+            },
+            {
+              "att": "definition",
+              "val": "คำที่ใช้แสดงความหมายของคำว่า &quot;บริเวณรอบๆ&quot;"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "인도네시아어"
+            },
+            {
+              "att": "lemma",
+              "val": "pinggir, sekitar"
+            },
+            {
+              "att": "definition",
+              "val": "kata yang menyatakan maksud 'sekitar'"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "러시아어"
+            },
+            {
+              "att": "lemma",
+              "val": "поблизости; возле; около"
+            },
+            {
+              "att": "definition",
+              "val": "Выражение, означающее &quot;вблизи&quot;."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "영어"
+            },
+            {
+              "att": "lemma",
+              "val": "by; fringe"
+            },
+            {
+              "att": "definition",
+              "val": "The surrounding area of a place."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "일본어"
+            },
+            {
+              "att": "lemma",
+              "val": "はた【端】。きわ【際】。ほとり。へ【辺】。へん【辺】。へり　"
+            },
+            {
+              "att": "definition",
+              "val": "「周辺」の意を表す語。"
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "프랑스어"
+            },
+            {
+              "att": "lemma",
+              "val": "bord"
+            },
+            {
+              "att": "definition",
+              "val": "Terme signifiant &quot;voisinage, proximité&quot;."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "language",
+              "val": "스페인어"
+            },
+            {
+              "att": "lemma",
+              "val": "orilla, borde"
+            },
+            {
+              "att": "definition",
+              "val": "Se refiere al “alrededor”."
+            }
+          ]
+        }
+      ],
+      "SenseExample": [
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "강가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "길가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "냇가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "문가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "시냇가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "우물가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "창가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "창문가."
+            }
+          ]
+        },
+        {
+          "feat": [
+            {
+              "att": "type",
+              "val": "구"
+            },
+            {
+              "att": "example",
+              "val": "호숫가."
+            }
+          ]
+        }
+      ],
+      "att": "id",
+      "feat": [
+        {
+          "att": "annotation",
+          "val": "일부 명사 뒤에 붙여 쓴다."
+        },
+        {
+          "att": "definition",
+          "val": "‘주변’의 뜻을 나타내는 말."
+        }
+      ],
+      "val": "2"
+    }
+  ],
+  "WordForm": {
+    "feat": [
+      {
+        "att": "type",
+        "val": "발음"
+      },
+      {
+        "att": "pronunciation",
+        "val": "가ː"
+      },
+      {
+        "att": "sound",
+        "val": "https://dicmedia.korean.go.kr/multimedia/naver/2016/20000/17000/27733_ga-.wav"
+      }
+    ]
+  },
+  "att": "id",
+  "feat": [
+    {
+      "att": "homonym_number",
+      "val": "1"
+    },
+    {
+      "att": "lexicalUnit",
+      "val": "단어"
+    },
+    {
+      "att": "partOfSpeech",
+      "val": "명사"
+    },
+    {
+      "att": "vocabularyLevel",
+      "val": "고급"
+    },
+    {
+      "att": "semanticCategory",
+      "val": "자연 > 지형"
+    }
+  ],
+  "val": "27733"
+}

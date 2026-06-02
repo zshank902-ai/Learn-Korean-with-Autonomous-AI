@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Book, RefreshCcw, CheckCircle2, Zap, BrainCircuit, Play, Volume2 } from 'lucide-react';
+import { Book, RefreshCcw, CheckCircle2, Zap, BrainCircuit, Play, Volume2, Sparkles, Loader2 } from 'lucide-react';
 import Confetti from 'react-confetti';
 import { useKMasteryStore } from '@/store/useKMasteryStore';
 import { useAudio } from '@/hooks/useAudio';
@@ -13,10 +13,11 @@ import { API_ENDPOINTS } from '@/lib/apiConfig';
 
 export default function FlashcardsPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { flashcardDeck, currentCardIndex, loadFlashcards, rateCard, xp } = useKMasteryStore();
+  const { flashcardDeck, currentCardIndex, loadFlashcards, rateCard, translateCard, xp } = useKMasteryStore();
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<string>('All');
   const [isLoading, setIsLoading] = useState(true);
+  const [isTranslating, setIsTranslating] = useState(false);
   const [playing, setPlaying] = useState(false);
   const { playSound } = useAudio();
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
@@ -62,6 +63,19 @@ export default function FlashcardsPage() {
     setTimeout(() => {
       rateCard(rating);
     }, 150);
+  };
+
+  const handleTranslate = async (e: React.MouseEvent, wordId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isTranslating) return;
+    
+    setIsTranslating(true);
+    try {
+      await translateCard(wordId);
+    } finally {
+      setIsTranslating(false);
+    }
   };
 
   const playAudio = async (e: React.MouseEvent, textToSpeak: string, customAudioPath?: string) => {
@@ -262,9 +276,22 @@ export default function FlashcardsPage() {
                       <p className="text-xl font-medium mb-1 leading-relaxed">
                         {currentCard.example?.korean || "예문이 아직 없습니다."}
                       </p>
-                      <p className="text-sm text-white/50 leading-relaxed">
-                        {currentCard.example?.english || "No example sentence provided."}
-                      </p>
+                      <div className="text-sm text-white/50 leading-relaxed mt-2">
+                        {currentCard.example?.english ? (
+                          currentCard.example.english
+                        ) : currentCard.example?.korean ? (
+                          <button 
+                            onClick={(e) => handleTranslate(e, currentCard.id)}
+                            disabled={isTranslating}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#4F46E5] text-white text-xs font-bold uppercase tracking-wider rounded-lg border-2 border-[#1E1B4B] hover:-translate-y-0.5 hover:shadow-[2px_2px_0px_#1E1B4B] transition-all disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                          >
+                            {isTranslating ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
+                            {isTranslating ? "Translating..." : "Translate with AI"}
+                          </button>
+                        ) : (
+                          "No example sentence provided."
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
