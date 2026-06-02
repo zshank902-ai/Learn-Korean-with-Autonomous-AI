@@ -20,6 +20,12 @@ class VocabItem(Base):
     meaning: Mapped[str] = mapped_column(String)  # English/Hindi meaning
     pronunciation: Mapped[str] = mapped_column(String)  # Romaji/Hangul guide
     audio_path: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    pos: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    example_kr: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    example_en: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    category: Mapped[Optional[str]] = mapped_column(String, nullable=True)
+    is_enriched: Mapped[bool] = mapped_column(default=False)
+    
     level_id: Mapped[Optional[int]] = mapped_column(
         Integer, ForeignKey("topik_levels.id", ondelete="CASCADE"))
 

@@ -15,6 +15,7 @@ export interface FlashCard {
   front: string;
   back: string;
   romanization: string; // Added for English spelling of Korean words
+  audio_path?: string; // NIKL official audio URL
   example?: {
     korean: string;
     english: string;

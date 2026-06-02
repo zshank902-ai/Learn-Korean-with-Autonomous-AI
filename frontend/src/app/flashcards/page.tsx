@@ -64,26 +64,38 @@ export default function FlashcardsPage() {
     }, 150);
   };
 
-  const playAudio = async (e: React.MouseEvent, textToSpeak: string) => {
+  const playAudio = async (e: React.MouseEvent, textToSpeak: string, customAudioPath?: string) => {
     e.preventDefault();
     e.stopPropagation(); // Don't trigger card flip
     if (playing) return;
     setPlaying(true);
     
-    const url = `${API_ENDPOINTS.ROADMAP}/tts?text=${encodeURIComponent(textToSpeak)}`;
-    const audio = new Audio(url);
-    audio.playbackRate = 0.8;
-    
-    audio.onended = () => setPlaying(false);
-    audio.onerror = () => {
-      console.error("Audio playback failed");
-      setPlaying(false);
-    };
-    
-    audio.play().catch(e => {
-      console.error("Audio play error:", e);
-      setPlaying(false);
-    });
+    if (customAudioPath) {
+      // Use official NIKL native audio
+      const audio = new Audio(customAudioPath);
+      audio.playbackRate = 0.8; // Slowed down for beginners
+      audio.onended = () => setPlaying(false);
+      audio.onerror = () => {
+        console.error("Audio playback failed");
+        setPlaying(false);
+      };
+      audio.play().catch(e => {
+        console.error("Audio play error:", e);
+        setPlaying(false);
+      });
+    } else {
+      // Fallback to Browser Web Speech API
+      if ('speechSynthesis' in window) {
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = "ko-KR";
+        utterance.rate = 0.75; // Slower for language learners to hear spelling
+        utterance.onend = () => setPlaying(false);
+        utterance.onerror = () => setPlaying(false);
+        window.speechSynthesis.speak(utterance);
+      } else {
+        setPlaying(false);
+      }
+    }
   };
 
   const isComplete = flashcardDeck.length > 0 && currentCardIndex >= flashcardDeck.length;
@@ -201,7 +213,7 @@ export default function FlashcardsPage() {
                     </div>
                     
                     <button 
-                      onClick={(e) => playAudio(e, currentCard.front)}
+                      onClick={(e) => playAudio(e, currentCard.front, currentCard.audio_path)}
                       className="absolute top-5 right-5 w-12 h-12 bg-[#F97316] border-2 border-[#1E1B4B] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform"
                       style={{ boxShadow: '2px 2px 0px #1E1B4B' }}
                     >
@@ -225,7 +237,7 @@ export default function FlashcardsPage() {
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)', boxShadow: '8px 8px 0px rgba(0,0,0,0.2)' }}
                   >
                     <button 
-                      onClick={(e) => playAudio(e, currentCard.front)}
+                      onClick={(e) => playAudio(e, currentCard.front, currentCard.audio_path)}
                       className="absolute top-5 right-5 w-12 h-12 bg-[#F97316] border-2 border-[#1E1B4B] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform"
                       style={{ boxShadow: '2px 2px 0px #1E1B4B' }}
                     >
