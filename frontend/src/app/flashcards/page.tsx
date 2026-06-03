@@ -121,7 +121,7 @@ export default function FlashcardsPage() {
   }, [isComplete, playSound]);
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col pt-8 px-6 relative z-10 font-sans">
+    <div className="flex-1 p-6 md:p-12 max-w-7xl mx-auto w-full space-y-8 relative z-10 font-sans flex flex-col min-h-[calc(100vh-100px)]">
       
       {isComplete && (
         <div className="fixed inset-0 pointer-events-none z-50">
@@ -201,23 +201,20 @@ export default function FlashcardsPage() {
             <div key="flashcard-container" className="w-full max-w-2xl flex flex-col items-center">
               {/* The 3D Card */}
               <div 
-                className="w-full aspect-[4/3] max-h-[400px] relative cursor-pointer"
+                className="w-full aspect-[4/3] max-h-[400px] relative cursor-pointer [perspective:1000px]"
                 onClick={() => {
                   playSound('click');
                   setIsFlipped(!isFlipped);
                 }}
-                style={{ perspective: '1000px' }}
               >
                 <motion.div
-                  className="w-full h-full relative preserve-3d"
+                  className="w-full h-full relative preserve-3d [transform-style:preserve-3d]"
                   animate={{ rotateX: isFlipped ? 180 : 0 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   {/* Front */}
                   <div 
-                    className="absolute inset-0 backface-hidden sahara-card rounded-3xl p-8 flex flex-col items-center justify-center border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)] bg-[var(--color-surface)]"
-                    style={{ backfaceVisibility: 'hidden' }}
+                    className="absolute inset-0 backface-hidden [backface-visibility:hidden] sahara-card rounded-3xl p-8 flex flex-col items-center justify-center border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)] bg-[var(--color-surface)]"
                   >
                     <div className="absolute top-6 left-6 px-3 py-1 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-full text-xs font-bold uppercase text-[var(--color-on-surface-variant)] shadow-sm">
                       Lv. {currentCard.level}
@@ -243,8 +240,7 @@ export default function FlashcardsPage() {
 
                   {/* Back */}
                   <div 
-                    className="absolute inset-0 backface-hidden sahara-card bg-[var(--color-surface-container-low)] rounded-3xl p-8 flex flex-col items-center justify-center text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)]"
-                    style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
+                    className="absolute inset-0 backface-hidden [backface-visibility:hidden] [transform:rotateX(180deg)] sahara-card bg-[var(--color-surface-container-low)] rounded-3xl p-8 flex flex-col items-center justify-center text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)]"
                   >
                     <button 
                       onClick={(e) => playAudio(e, currentCard.front, currentCard.audio_path)}

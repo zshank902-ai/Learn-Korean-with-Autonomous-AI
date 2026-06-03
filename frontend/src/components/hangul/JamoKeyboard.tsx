@@ -17,7 +17,7 @@ export default function JamoKeyboard({ onJamoClick }: JamoKeyboardProps) {
   const complexVowels = ['ㅐ', 'ㅒ', 'ㅔ', 'ㅖ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅢ'];
 
   const renderKey = (jamo: string, type: 'consonant' | 'vowel') => {
-    const bg = type === 'consonant' ? '#FFD600' : '#00E5FF';
+    const bgClass = type === 'consonant' ? 'bg-[var(--color-secondary-container)]' : 'bg-[var(--color-primary-container)]';
     
     return (
       <motion.button
@@ -25,23 +25,8 @@ export default function JamoKeyboard({ onJamoClick }: JamoKeyboardProps) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClick={(e) => onJamoClick(jamo, e as any)}
         whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95, y: 2, boxShadow: '2px 2px 0px #0f0f0f' }}
-        style={{
-          background: bg,
-          border: '3px solid #0f0f0f',
-          borderRadius: '12px',
-          width: '56px',
-          height: '64px',
-          fontSize: '28px',
-          fontWeight: 900,
-          color: '#0f0f0f',
-          boxShadow: '4px 4px 0px #0f0f0f',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          fontFamily: '"Noto Sans KR", sans-serif',
-        }}
+        whileTap={{ scale: 0.95, y: 2 }}
+        className={`w-14 h-16 rounded-xl border border-[var(--color-outline-variant)] ${bgClass} text-[28px] font-bold text-[var(--color-on-surface)] flex items-center justify-center cursor-pointer shadow-sm font-sans`}
       >
         {jamo}
       </motion.button>
@@ -49,21 +34,21 @@ export default function JamoKeyboard({ onJamoClick }: JamoKeyboardProps) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div className="flex flex-col gap-6 font-sans">
       <div>
-        <h3 style={{ fontSize: '14px', fontWeight: 900, marginBottom: '12px', textTransform: 'uppercase', color: '#0f0f0f' }}>Consonants (자음)</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+        <h3 className="text-[11px] font-bold mb-3 uppercase tracking-wider text-[var(--color-on-surface)]">Consonants (자음)</h3>
+        <div className="flex flex-wrap gap-3">
           {basicConsonants.map(c => renderKey(c, 'consonant'))}
-          <div style={{ width: '100%', height: '4px' }} />
+          <div className="w-full h-1" />
           {doubleConsonants.map(c => renderKey(c, 'consonant'))}
         </div>
       </div>
 
       <div>
-        <h3 style={{ fontSize: '14px', fontWeight: 900, marginBottom: '12px', textTransform: 'uppercase', color: '#0f0f0f' }}>Vowels (모음)</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+        <h3 className="text-[11px] font-bold mb-3 uppercase tracking-wider text-[var(--color-on-surface)]">Vowels (모음)</h3>
+        <div className="flex flex-wrap gap-3">
           {basicVowels.map(v => renderKey(v, 'vowel'))}
-          <div style={{ width: '100%', height: '4px' }} />
+          <div className="w-full h-1" />
           {complexVowels.map(v => renderKey(v, 'vowel'))}
         </div>
       </div>

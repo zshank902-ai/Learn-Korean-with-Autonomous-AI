@@ -28,10 +28,7 @@ export default function AnimatedXPBar({ currentXP, level }: XPBarProps) {
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-          className="h-full rounded-full bg-[var(--color-primary)]"
-          style={{
-            background: 'linear-gradient(90deg, var(--color-primary), var(--color-tertiary, #e38d58))',
-          }}
+          className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-tertiary,#e38d58)]"
         />
       </div>
     </div>

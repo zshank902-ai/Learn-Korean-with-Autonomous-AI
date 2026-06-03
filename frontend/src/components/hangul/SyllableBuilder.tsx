@@ -81,21 +81,21 @@ export default function SyllableBuilder() {
   const getRom = (char: string) => JAMO_DATA.find(d => d.char === char)?.romanization || '';
 
   return (
-    <div style={{ padding: '32px 0' }}>
-      <h1 style={{ fontSize: '32px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', marginBottom: '40px' }}>받침 SYLLABLE BUILDER</h1>
+    <div className="py-8">
+      <h1 className="text-3xl font-extrabold font-serif mb-10 text-[var(--color-on-surface)]">받침 SYLLABLE BUILDER</h1>
       
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         
         {/* Left: Picker */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div style={{ background: '#FAFAFA', border: '4px solid #0A0A0A', borderRadius: '24px', padding: '24px', boxShadow: '8px 8px 0px #0A0A0A' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '16px' }}>CONSONANTS (자음)</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+        <div className="flex flex-col gap-6">
+          <div className="sahara-card p-6">
+            <h3 className="text-lg font-bold mb-4 font-sans uppercase tracking-widest text-[var(--color-on-surface-variant)]">CONSONANTS (자음)</h3>
+            <div className="flex flex-wrap gap-2">
               {CHOSEONG.map(c => (
                 <button
                   key={`c-${c}`}
                   onClick={(e) => handlePickerClick(c, 'consonant', e)}
-                  style={{ width: '48px', height: '48px', fontSize: '24px', fontWeight: 900, background: '#FFD600', border: '3px solid #0A0A0A', borderRadius: '8px', cursor: 'pointer', boxShadow: '2px 2px 0px #0A0A0A' }}
+                  className="w-12 h-12 text-2xl font-extrabold font-serif rounded-lg cursor-pointer bg-[var(--color-secondary-container)] border border-[var(--color-outline-variant)] text-[var(--color-on-secondary-container)] hover:-translate-y-1 hover:shadow-md transition-all"
                 >
                   {c}
                 </button>
@@ -103,14 +103,14 @@ export default function SyllableBuilder() {
             </div>
           </div>
 
-          <div style={{ background: '#FAFAFA', border: '4px solid #0A0A0A', borderRadius: '24px', padding: '24px', boxShadow: '8px 8px 0px #0A0A0A' }}>
-            <h3 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '16px' }}>VOWELS (모음)</h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          <div className="sahara-card p-6">
+            <h3 className="text-lg font-bold mb-4 font-sans uppercase tracking-widest text-[var(--color-on-surface-variant)]">VOWELS (모음)</h3>
+            <div className="flex flex-wrap gap-2">
               {JUNGSEONG.map(v => (
                 <button
                   key={`v-${v}`}
                   onClick={(e) => handlePickerClick(v, 'vowel', e)}
-                  style={{ width: '48px', height: '48px', fontSize: '24px', fontWeight: 900, background: '#00E5FF', border: '3px solid #0A0A0A', borderRadius: '8px', cursor: 'pointer', boxShadow: '2px 2px 0px #0A0A0A' }}
+                  className="w-12 h-12 text-2xl font-extrabold font-serif rounded-lg cursor-pointer bg-[var(--color-primary-container)] border border-[var(--color-outline-variant)] text-[var(--color-on-primary-container)] hover:-translate-y-1 hover:shadow-md transition-all"
                 >
                   {v}
                 </button>
@@ -120,46 +120,42 @@ export default function SyllableBuilder() {
         </div>
 
         {/* Right: Builder Area */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div className="flex flex-col gap-8">
           
           {/* Main Composed Preview */}
-          <div style={{ 
-            background: '#ffffff', border: `6px solid ${isValid ? '#0A0A0A' : (cho || jung) ? '#FF4B4B' : '#0A0A0A'}`, 
-            borderRadius: '32px', padding: '40px', boxShadow: '12px 12px 0px #0A0A0A',
-            display: 'flex', flexDirection: 'column', alignItems: 'center'
-          }}>
-            <div style={{ height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: '140px', fontWeight: 900, fontFamily: '"Noto Sans KR", sans-serif', color: isValid ? '#0A0A0A' : '#cbd5e1' }}>
+          <div className={`sahara-card rounded-3xl p-10 flex flex-col items-center border-2 ${isValid ? 'border-[var(--color-primary)]' : (cho || jung) ? 'border-[var(--color-error)]' : 'border-[var(--color-outline-variant)]'}`}>
+            <div className="h-40 flex items-center justify-center">
+              <span className={`text-[140px] font-extrabold font-serif drop-shadow-sm ${isValid ? 'text-[var(--color-on-surface)]' : 'text-[var(--color-outline-variant)]'}`}>
                 {isValid ? composed : '?'}
               </span>
             </div>
             
             {/* Breakdown */}
-            <div style={{ marginTop: '24px', background: '#FAFAFA', border: '3px solid #0A0A0A', borderRadius: '12px', padding: '16px', width: '100%', textAlign: 'center', fontWeight: 900, fontSize: '18px' }}>
-              <span style={{ color: '#d97706' }}>{cho || '_'}</span>
-              <span style={{ color: '#6b7280', margin: '0 8px' }}>+</span>
-              <span style={{ color: '#0284c7' }}>{jung || '_'}</span>
-              <span style={{ color: '#6b7280', margin: '0 8px' }}>+</span>
-              <span style={{ color: '#d97706' }}>{jong || '_'}</span>
-              <span style={{ color: '#6b7280', margin: '0 8px' }}>=</span>
-              <span>{isValid ? `${getRom(cho)}${getRom(jung)}${getRom(jong)}` : '?'}</span>
+            <div className="mt-6 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl p-4 w-full text-center font-bold text-lg font-sans">
+              <span className="text-[var(--color-secondary)]">{cho || '_'}</span>
+              <span className="text-[var(--color-on-surface-variant)] mx-2">+</span>
+              <span className="text-[var(--color-primary)]">{jung || '_'}</span>
+              <span className="text-[var(--color-on-surface-variant)] mx-2">+</span>
+              <span className="text-[var(--color-secondary)]">{jong || '_'}</span>
+              <span className="text-[var(--color-on-surface-variant)] mx-2">=</span>
+              <span className="text-[var(--color-on-surface)]">{isValid ? `${getRom(cho)}${getRom(jung)}${getRom(jong)}` : '?'}</span>
             </div>
 
             {/* Actions */}
-            <div style={{ display: 'flex', gap: '16px', marginTop: '24px', width: '100%' }}>
+            <div className="flex gap-4 mt-6 w-full">
               <motion.button
-                whileHover={{ y: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
-                whileTap={{ y: 2, x: 2, boxShadow: '0px 0px 0px #0A0A0A' }}
+                whileHover={isValid ? { y: -2 } : {}}
+                whileTap={isValid ? { y: 1 } : {}}
                 onClick={() => speak(composed)}
                 disabled={!isValid}
-                style={{ flex: 1, padding: '16px', background: '#0A0A0A', color: '#fff', border: '3px solid #0A0A0A', borderRadius: '12px', fontWeight: 900, fontSize: '16px', cursor: isValid ? 'pointer' : 'not-allowed', opacity: isValid ? 1 : 0.5, boxShadow: isValid ? '4px 4px 0px #0A0A0A' : 'none' }}
+                className={`flex-1 p-4 rounded-xl font-bold text-lg font-sans transition-all ${isValid ? 'bg-[var(--color-secondary-container)] text-[var(--color-on-secondary-container)] border border-[var(--color-outline-variant)] hover:bg-[var(--color-secondary)] hover:text-white cursor-pointer' : 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed border border-[var(--color-outline-variant)]'}`}
               >
                 🔊 SPEAK IT
               </motion.button>
               
               <motion.button
-                whileHover={{ y: -2, boxShadow: '4px 4px 0px #0A0A0A' }}
-                whileTap={{ y: 2, x: 2, boxShadow: '0px 0px 0px #0A0A0A' }}
+                whileHover={isValid ? { y: -2 } : {}}
+                whileTap={isValid ? { y: 1 } : {}}
                 onClick={() => {
                   if (isValid) {
                     addComposedSyllable(composed);
@@ -168,7 +164,7 @@ export default function SyllableBuilder() {
                   }
                 }}
                 disabled={!isValid}
-                style={{ flex: 1, padding: '16px', background: '#10B981', color: '#fff', border: '3px solid #0A0A0A', borderRadius: '12px', fontWeight: 900, fontSize: '16px', cursor: isValid ? 'pointer' : 'not-allowed', opacity: isValid ? 1 : 0.5, boxShadow: isValid ? '4px 4px 0px #0A0A0A' : 'none' }}
+                className={`flex-1 p-4 rounded-xl font-bold text-lg font-sans transition-all ${isValid ? 'sahara-btn' : 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed border border-[var(--color-outline-variant)]'}`}
               >
                 ➕ ADD TO WORD
               </motion.button>
@@ -176,10 +172,10 @@ export default function SyllableBuilder() {
           </div>
 
           {/* Slots */}
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <div ref={choRef} style={{ flex: 1, height: '100px', border: '4px dashed #9ca3af', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', fontWeight: 900, background: cho ? '#FEF9C3' : 'transparent', borderColor: cho ? '#0A0A0A' : '#9ca3af', borderStyle: cho ? 'solid' : 'dashed' }}>{cho}</div>
-            <div ref={jungRef} style={{ flex: 1, height: '100px', border: '4px dashed #9ca3af', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', fontWeight: 900, background: jung ? '#E0F2FE' : 'transparent', borderColor: jung ? '#0A0A0A' : '#9ca3af', borderStyle: jung ? 'solid' : 'dashed' }}>{jung}</div>
-            <div ref={jongRef} style={{ flex: 1, height: '100px', border: '4px dashed #9ca3af', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', fontWeight: 900, background: jong ? '#FEF9C3' : 'transparent', borderColor: jong ? '#0A0A0A' : '#9ca3af', borderStyle: jong ? 'solid' : 'dashed' }}>{jong}</div>
+          <div className="flex gap-4">
+            <div ref={choRef} className={`flex-1 h-24 border-2 border-dashed rounded-2xl flex items-center justify-center text-5xl font-extrabold font-serif ${cho ? 'bg-[var(--color-secondary-container)] border-[var(--color-outline)] text-[var(--color-on-secondary-container)] border-solid' : 'border-[var(--color-outline-variant)] text-transparent'}`}>{cho || '_'}</div>
+            <div ref={jungRef} className={`flex-1 h-24 border-2 border-dashed rounded-2xl flex items-center justify-center text-5xl font-extrabold font-serif ${jung ? 'bg-[var(--color-primary-container)] border-[var(--color-outline)] text-[var(--color-on-primary-container)] border-solid' : 'border-[var(--color-outline-variant)] text-transparent'}`}>{jung || '_'}</div>
+            <div ref={jongRef} className={`flex-1 h-24 border-2 border-dashed rounded-2xl flex items-center justify-center text-5xl font-extrabold font-serif ${jong ? 'bg-[var(--color-secondary-container)] border-[var(--color-outline)] text-[var(--color-on-secondary-container)] border-solid' : 'border-[var(--color-outline-variant)] text-transparent'}`}>{jong || '_'}</div>
           </div>
           
         </div>
@@ -189,9 +185,10 @@ export default function SyllableBuilder() {
       <AnimatePresence>
         {flyingChar && (
           <motion.div
-            initial={{ position: 'fixed', left: flyingChar.rect.left, top: flyingChar.rect.top, width: flyingChar.rect.width, height: flyingChar.rect.height, zIndex: 9999, background: flyingChar.target === 'jung' ? '#00E5FF' : '#FFD600', border: '3px solid #0f0f0f', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', fontWeight: 900, color: '#0f0f0f', boxShadow: '4px 4px 0px #0f0f0f' }}
+            initial={{ position: 'fixed', left: flyingChar.rect.left, top: flyingChar.rect.top, width: flyingChar.rect.width, height: flyingChar.rect.height, zIndex: 9999 }}
+            className={`flex items-center justify-center text-2xl font-extrabold font-serif rounded-lg border border-[var(--color-outline-variant)] shadow-sm ${flyingChar.target === 'jung' ? 'bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)]' : 'bg-[var(--color-secondary-container)] text-[var(--color-on-secondary-container)]'}`}
             // eslint-disable-next-line react-hooks/refs
-            animate={{ left: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().left, top: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().top, width: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().width, height: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().height, boxShadow: '0px 0px 0px #0f0f0f' }}
+            animate={{ left: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().left, top: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().top, width: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().width, height: (flyingChar.target === 'cho' ? choRef : flyingChar.target === 'jung' ? jungRef : jongRef).current?.getBoundingClientRect().height }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
             onAnimationComplete={handleAnimationComplete}
             exit={{ opacity: 0 }}

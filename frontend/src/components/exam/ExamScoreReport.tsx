@@ -15,39 +15,21 @@ interface ExamScoreReportProps {
 function CertBadge({ level, score }: { level: number; score: number }) {
   if (level === 0) {
     return (
-      <div
-        style={{
-          background: '#fef2f2',
-          border: '1px solid #ef4444',
-          borderRadius: '24px',
-          padding: '24px 32px',
-          textAlign: 'center',
-          boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)',
-        }}
-      >
-        <p style={{ margin: 0, fontSize: '28px', fontWeight: 700, color: '#991B1B', fontFamily: '"EB Garamond", serif' }}>불합격</p>
-        <p style={{ margin: '8px 0 0', fontSize: '14px', fontWeight: 600, color: '#EF4444', fontFamily: '"Manrope", sans-serif' }}>Not Passed · Score: {score}</p>
+      <div className="bg-[#fef2f2] border border-[#ef4444] rounded-3xl p-6 md:p-8 text-center shadow-sm">
+        <p className="m-0 text-3xl font-bold text-[#991B1B] font-serif">불합격</p>
+        <p className="mt-2 text-sm font-semibold text-[#EF4444] font-sans">Not Passed · Score: {score}</p>
       </div>
     );
   }
   return (
-    <div
-      style={{
-        background: '#e8f5e9',
-        border: '1px solid #81c784',
-        borderRadius: '24px',
-        padding: '24px 32px',
-        textAlign: 'center',
-        boxShadow: '0 4px 12px rgba(129, 199, 132, 0.15)',
-      }}
-    >
-      <p style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#2e7d32', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: '"Manrope", sans-serif' }}>
+    <div className="bg-[#e8f5e9] border border-[#81c784] rounded-3xl p-6 md:p-8 text-center shadow-sm">
+      <p className="m-0 text-sm font-bold text-[#2e7d32] uppercase tracking-widest font-sans">
         🎓 Certificate Awarded
       </p>
-      <p style={{ margin: '8px 0 0', fontSize: '36px', fontWeight: 700, color: '#1b5e20', fontFamily: '"EB Garamond", serif' }}>
+      <p className="mt-2 text-4xl font-bold text-[#1b5e20] font-serif">
         TOPIK Level {level}
       </p>
-      <p style={{ margin: '8px 0 0', fontSize: '15px', fontWeight: 600, color: '#388e3c', fontFamily: '"Manrope", sans-serif' }}>합격 · Score: {score}</p>
+      <p className="mt-2 text-base font-semibold text-[#388e3c] font-sans">합격 · Score: {score}</p>
     </div>
   );
 }
@@ -56,20 +38,17 @@ function ScoreBar({ label, score, max }: { label: string; score: number; max: nu
   const pct = Math.round((score / max) * 100);
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface)', fontFamily: '"Manrope", sans-serif' }}>{label}</span>
-        <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"Manrope", sans-serif' }}>
+      <div className="flex justify-between mb-2">
+        <span className="text-sm font-semibold text-[var(--color-on-surface)] font-sans">{label}</span>
+        <span className="text-sm font-bold text-[var(--color-primary)] font-sans">
           {score} / {max}
         </span>
       </div>
-      <div style={{ background: 'var(--color-surface-container-low)', border: '1px solid var(--color-outline-variant)', borderRadius: '999px', height: '12px', overflow: 'hidden' }}>
+      <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-full h-3 overflow-hidden">
         <div
+          className={`h-full rounded-full transition-all duration-700 ease-out ${pct >= 60 ? 'bg-[#2e7d32]' : 'bg-[var(--color-primary)]'}`}
           style={{
-            height: '100%',
             width: `${pct}%`,
-            background: pct >= 60 ? '#2e7d32' : 'var(--color-primary)',
-            borderRadius: '999px',
-            transition: 'width 0.6s ease',
           }}
         />
       </div>
@@ -86,37 +65,15 @@ function RubricBars({ rubric }: { rubric: EssayRubric }) {
   ] as const;
 
   return (
-    <div
-      style={{
-        background: 'var(--color-surface)',
-        border: '1px solid var(--color-outline-variant)',
-        borderRadius: '24px',
-        padding: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '16px',
-        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)'
-      }}
-    >
-      <p style={{ margin: '0 0 4px', fontSize: '14px', fontWeight: 700, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: '"Manrope", sans-serif' }}>
+    <div className="bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 flex flex-col gap-4 shadow-sm">
+      <p className="m-0 text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest font-sans">
         AI Essay Rubric
       </p>
       {items.map(({ key, label }) => (
         <ScoreBar key={key} label={label} score={rubric.rubricScores[key]} max={25} />
       ))}
       {rubric.feedback && (
-        <div
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '16px',
-            padding: '16px',
-            fontSize: '14px',
-            lineHeight: 1.6,
-            color: 'var(--color-on-surface)',
-            fontFamily: '"Manrope", sans-serif',
-          }}
-        >
+        <div className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-2xl p-4 text-sm leading-relaxed text-[var(--color-on-surface)] font-sans mt-2">
           💡 {rubric.feedback}
         </div>
       )}
@@ -138,62 +95,25 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
   const essayRubric = !isTopikI ? (result as TopikIIResult).essayRubric : null;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-        maxWidth: '680px',
-        margin: '0 auto',
-        fontFamily: '"Manrope", sans-serif'
-      }}
-    >
+    <div className="flex flex-col gap-6 max-w-3xl mx-auto font-sans">
       {/* Total Score Display */}
-      <div
-        style={{
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-outline-variant)',
-          borderRadius: '32px',
-          padding: '40px 32px',
-          textAlign: 'center',
-          boxShadow: '0 8px 24px rgba(58, 48, 42, 0.08)',
-        }}
-      >
-        <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <div className="bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-[32px] p-8 md:p-10 text-center shadow-md">
+        <p className="m-0 mb-2 text-sm font-semibold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           {isTopikI ? 'TOPIK I Final Score' : 'TOPIK II Final Score'}
         </p>
-        <div
-          style={{
-            fontSize: '88px',
-            fontWeight: 700,
-            color: 'var(--color-on-surface)',
-            lineHeight: 1,
-            fontFamily: '"EB Garamond", serif',
-          }}
-        >
+        <div className="text-[88px] font-bold text-[var(--color-on-surface)] leading-none font-serif drop-shadow-sm">
           {totalScore}
         </div>
-        <p style={{ margin: '8px 0 24px', fontSize: '16px', fontWeight: 600, color: 'var(--color-on-surface-variant)' }}>
+        <p className="mt-2 mb-6 text-base font-semibold text-[var(--color-on-surface-variant)]">
           / {maxScore} points
         </p>
 
         <CertBadge level={levelAwarded} score={totalScore} />
 
         {xp > 0 && (
-          <div
-            style={{
-              marginTop: '24px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              background: 'var(--color-surface-container)',
-              border: '1px solid var(--color-outline-variant)',
-              borderRadius: '16px',
-              padding: '10px 20px',
-            }}
-          >
-            <span style={{ fontSize: '18px' }}>⭐</span>
-            <span style={{ fontWeight: 700, fontSize: '16px', color: 'var(--color-on-surface)', fontFamily: '"EB Garamond", serif' }}>
+          <div className="mt-6 inline-flex items-center gap-2 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-2xl px-5 py-2.5 shadow-sm">
+            <span className="text-lg">⭐</span>
+            <span className="font-bold text-base text-[var(--color-on-surface)] font-serif">
               +{xp} XP Earned
             </span>
           </div>
@@ -201,19 +121,8 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
       </div>
 
       {/* Section Breakdown */}
-      <div
-        style={{
-          background: 'var(--color-surface)',
-          border: '1px solid var(--color-outline-variant)',
-          borderRadius: '24px',
-          padding: '24px',
-          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-        }}
-      >
-        <p style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: 'var(--color-on-surface)', fontFamily: '"EB Garamond", serif' }}>
+      <div className="bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 shadow-sm flex flex-col gap-5">
+        <p className="m-0 text-base font-bold text-[var(--color-on-surface)] font-serif">
           Section Breakdown
         </p>
         {writingScore !== null && <ScoreBar label="쓰기 (Writing)" score={writingScore} max={100} />}
@@ -225,39 +134,18 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
       {essayRubric && <RubricBars rubric={essayRubric} />}
 
       {/* CTA Buttons */}
-      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+      <div className="flex gap-4 flex-wrap">
         {onReviewMistakes && (
           <button
             onClick={onReviewMistakes}
-            className="sahara-btn-secondary"
-            style={{
-              flex: 1,
-              minWidth: '200px',
-              padding: '16px',
-              fontWeight: 700,
-              fontSize: '15px',
-              borderRadius: '16px',
-              fontFamily: '"Manrope", sans-serif',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}
+            className="flex-1 min-w-[200px] sahara-btn-secondary p-4 font-bold text-[15px] rounded-2xl uppercase tracking-widest"
           >
             🔍 Review Mistakes
           </button>
         )}
-        <Link href="/roadmap" style={{ flex: 1, minWidth: '200px', textDecoration: 'none' }}>
+        <Link href="/roadmap" className="flex-1 min-w-[200px] no-underline">
           <button
-            className="sahara-btn"
-            style={{
-              width: '100%',
-              padding: '16px',
-              fontWeight: 700,
-              fontSize: '15px',
-              borderRadius: '16px',
-              fontFamily: '"Manrope", sans-serif',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}
+            className="w-full sahara-btn p-4 font-bold text-[15px] rounded-2xl uppercase tracking-widest"
           >
             ← Return to Roadmap
           </button>

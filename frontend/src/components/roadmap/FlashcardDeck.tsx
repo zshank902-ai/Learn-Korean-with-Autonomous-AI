@@ -181,9 +181,9 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-12 h-12 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
         />
-        <p className="font-bold text-[#1E1B4B]">Loading flashcards…</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Loading flashcards…</p>
       </div>
     );
   }
@@ -196,8 +196,8 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
         className="flex flex-col items-center justify-center h-64 gap-4"
       >
         <div className="text-6xl">🎉</div>
-        <p className="text-2xl font-black text-[#1E1B4B]">Deck Complete!</p>
-        <p className="font-bold text-gray-600">Score: {correct}/{correct + incorrect} correct</p>
+        <p className="text-2xl font-black text-[var(--color-on-surface)]">Deck Complete!</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Score: {correct}/{correct + incorrect} correct</p>
       </motion.div>
     );
   }
@@ -207,13 +207,13 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-4 p-8 text-center">
         <AlertTriangle className="w-12 h-12 text-[#EA580C]" />
-        <h3 className="text-xl font-black text-[#1E1B4B]">No Flashcards Found</h3>
-        <p className="text-gray-500 font-bold mb-2">
+        <h3 className="text-xl font-black text-[var(--color-on-surface)]">No Flashcards Found</h3>
+        <p className="text-[var(--color-on-surface-variant)] font-bold mb-2">
           The vocabulary database for this level is currently empty. Check back later!
         </p>
         <button
           onClick={() => onComplete(100)}
-          className="px-6 py-2 bg-[#1E1B4B] text-white font-bold rounded-xl hover:bg-[#3730A3] transition-colors"
+          className="sahara-btn px-6 py-3 rounded-xl font-bold uppercase tracking-wider text-[13px] shadow-sm"
         >
           Mark as Complete Anyway
         </button>
@@ -241,15 +241,15 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
       )}
 
       <div className="w-full flex items-center justify-between">
-        <span className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest">
+        <span className="text-[11px] font-black text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           Card {Math.min(reviewed + 1, total)} of {total}
         </span>
-        <span className="text-sm font-bold text-green-600">{correct} ✓</span>
+        <span className="text-[11px] font-bold text-green-600">{correct} ✓</span>
       </div>
 
-      <div className="w-full h-2 bg-gray-200 rounded-full border-2 border-[#1E1B4B]">
+      <div className="w-full h-3 bg-[var(--color-surface-container-high)] rounded-full border border-[var(--color-outline-variant)] overflow-hidden">
         <motion.div
-          className="h-full bg-[#1E1B4B] rounded-full"
+          className="h-full bg-[var(--color-primary)] rounded-full"
           animate={{ width: `${Math.min(((total - queue.length) / total) * 100, 100)}%` }}
           transition={{ duration: 0.4 }}
         />
@@ -271,73 +271,66 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
       </AnimatePresence>
 
       <div
-        className="relative w-full max-w-sm cursor-pointer"
-        style={{ perspective: '1000px', height: 'auto' }}
+        className="relative w-full max-w-sm cursor-pointer [perspective:1000px] h-auto"
         onClick={() => setIsFlipped(f => !f)}
       >
         <motion.div
           animate={{ rotateY: isFlipped ? 180 : 0 }}
           transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-          style={{ transformStyle: 'preserve-3d', width: '100%', height: '240px', position: 'relative' }}
+          className="w-full h-[240px] relative preserve-3d [transform-style:preserve-3d]"
         >
           <div
-            style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
-            className="absolute inset-0 bg-white border-4 border-[#1E1B4B] rounded-3xl flex flex-col items-center justify-center gap-4 p-6"
+            className="absolute inset-0 backface-hidden [backface-visibility:hidden] sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl flex flex-col items-center justify-center gap-4 p-6 shadow-sm"
           >
             <button
               onClick={e => playAudio(e, currentCard.front)}
-              className="absolute top-4 right-4 w-10 h-10 bg-blue-100 border-2 border-[#1E1B4B] rounded-xl flex items-center justify-center hover:bg-blue-200 transition-colors"
+              className="absolute top-4 right-4 w-10 h-10 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center hover:scale-105 transition-transform shadow-sm"
               aria-label="Play audio"
             >
-              <Volume2 size={18} className="text-[#1E1B4B]" />
+              <Volume2 size={18} className="text-[var(--color-on-surface)]" />
             </button>
-            <span className="text-5xl font-black text-[#1E1B4B]">{currentCard.front}</span>
-            <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Tap to reveal</span>
+            <span className="text-[64px] font-extrabold font-serif text-[var(--color-on-surface)] drop-shadow-sm">{currentCard.front}</span>
+            <span className="text-xs font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Tap to reveal</span>
           </div>
 
           <div
-            style={{
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)',
-            }}
-            className="absolute inset-0 bg-[#1E1B4B] border-4 border-[#1E1B4B] rounded-3xl flex flex-col items-center justify-center gap-3 p-6"
+            className="absolute inset-0 backface-hidden [backface-visibility:hidden] [transform:rotateY(180deg)] sahara-card bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-3xl flex flex-col items-center justify-center gap-3 p-6 shadow-sm"
           >
             <button
               onClick={e => playAudio(e, currentCard.front)}
-              className="absolute top-4 right-4 w-10 h-10 bg-indigo-900 border-2 border-indigo-400 rounded-xl flex items-center justify-center hover:bg-indigo-800 transition-colors"
+              className="absolute top-4 right-4 w-10 h-10 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center hover:scale-105 transition-transform shadow-sm"
               aria-label="Play audio"
             >
-              <Volume2 size={18} className="text-white" />
+              <Volume2 size={18} className="text-[var(--color-on-surface)]" />
             </button>
-            <span className="text-3xl font-black text-white">{currentCard.back}</span>
+            <span className="text-[32px] font-extrabold font-serif text-[var(--color-on-surface)] drop-shadow-sm">{currentCard.back}</span>
             {currentCard.romanization && (
-              <span className="text-sm font-bold text-blue-300 italic">{currentCard.romanization}</span>
+              <span className="text-[13px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">{currentCard.romanization}</span>
             )}
             
             {/* Example fallback defaults */}
-            <div className="w-full mt-1 bg-white/10 rounded-2xl p-4 border-2 border-white/20 relative group text-left">
+            <div className="w-full mt-1 bg-[var(--color-surface)] rounded-2xl p-4 border border-[var(--color-outline-variant)] relative group text-left shadow-sm">
               <div className="flex justify-between items-center mb-1">
-                <span className="text-xs font-bold text-[#F97316] uppercase tracking-widest">Example</span>
+                <span className="text-[11px] font-bold text-[var(--color-primary)] uppercase tracking-widest">Example</span>
                 <button
                   onClick={(e) => { e.stopPropagation(); playAudio(e, currentCard.example?.korean || currentCard.front); }}
-                  className="p-1.5 rounded-full bg-white/10 hover:bg-[#F97316] transition-colors"
+                  className="p-1.5 rounded-full bg-[var(--color-surface-container)] hover:bg-[var(--color-surface-container-high)] transition-colors"
                   aria-label="Play example audio"
                 >
-                  <Volume2 size={14} className="text-white" />
+                  <Volume2 size={14} className="text-[var(--color-on-surface-variant)]" />
                 </button>
               </div>
-              <p className="text-md font-medium text-white mb-1 leading-relaxed">
+              <p className="text-[15px] font-bold text-[var(--color-on-surface)] mb-1 leading-relaxed">
                 {currentCard.example?.korean || "예문이 아직 없습니다."}
               </p>
-              <p className="text-xs text-white/60 leading-relaxed">
+              <p className="text-[13px] text-[var(--color-on-surface-variant)] leading-relaxed">
                 {currentCard.example?.english || "No example sentence provided."}
               </p>
             </div>
 
             <div className="flex items-center gap-1 mt-1">
-              <RotateCcw size={14} className="text-gray-400" />
-              <span className="text-xs text-gray-400 font-bold">Tap card to flip back</span>
+              <RotateCcw size={14} className="text-[var(--color-on-surface-variant)]" />
+              <span className="text-[11px] text-[var(--color-on-surface-variant)] font-bold uppercase tracking-widest">Tap card to flip back</span>
             </div>
           </div>
         </motion.div>
@@ -357,8 +350,8 @@ export default function FlashcardDeck({ moduleId: _moduleId, level, onComplete }
               <button
                 key={rating}
                 onClick={() => handleRate(rating)}
-                className="py-3 rounded-2xl border-4 border-[#1E1B4B] font-black text-sm transition-transform active:scale-95 hover:-translate-y-1"
-                style={{ background: bg, color, boxShadow: '4px 4px 0px #1E1B4B' }}
+                className="py-3 rounded-2xl border font-bold text-[13px] uppercase tracking-widest transition-transform active:scale-95 hover:-translate-y-1 shadow-sm"
+                style={{ background: bg, color, borderColor: color }}
               >
                 {label}
               </button>

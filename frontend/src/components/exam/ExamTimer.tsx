@@ -52,47 +52,26 @@ export default function ExamTimer({ startSeconds, onExpire, paused = false }: Ex
 
   return (
     <div
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        background: isWarning ? '#fef2f2' : 'var(--color-surface-container)',
-        border: `1px solid ${isWarning ? '#ef4444' : 'var(--color-outline-variant)'}`,
-        borderRadius: '16px',
-        padding: '10px 16px',
-        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-        animation: isCritical ? 'pulse 1s infinite' : 'none',
-        fontFamily: '"Manrope", sans-serif',
-      }}
+      className={`inline-flex items-center gap-2 rounded-2xl px-4 py-2.5 shadow-sm border ${
+        isWarning
+          ? 'bg-[#fef2f2] border-[#ef4444]'
+          : 'bg-[var(--color-surface-container)] border-[var(--color-outline-variant)]'
+      } ${isCritical ? 'animate-pulse' : ''}`}
     >
       <span
-        style={{
-          fontSize: '14px',
-          fontWeight: 700,
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
-          color: isWarning ? '#ef4444' : 'var(--color-on-surface-variant)',
-        }}
+        className={`text-sm font-bold uppercase tracking-widest ${
+          isWarning ? 'text-[#ef4444]' : 'text-[var(--color-on-surface-variant)]'
+        }`}
       >
         ⏱
       </span>
       <span
-        style={{
-          fontSize: '20px',
-          fontWeight: 700,
-          fontVariantNumeric: 'tabular-nums',
-          color: isWarning ? '#ef4444' : 'var(--color-on-surface)',
-          letterSpacing: '0.04em',
-        }}
+        className={`text-xl font-bold font-sans tabular-nums tracking-wider ${
+          isWarning ? 'text-[#ef4444]' : 'text-[var(--color-on-surface)]'
+        }`}
       >
         {formatTime(remaining)}
       </span>
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.6; }
-        }
-      `}</style>
     </div>
   );
 }

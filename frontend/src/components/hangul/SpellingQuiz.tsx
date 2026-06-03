@@ -111,21 +111,21 @@ export default function SpellingQuiz() {
     }
   };
 
-  if (loading) return <div style={{ padding: '60px', textAlign: 'center', fontWeight: 900 }}>Loading Quiz...</div>;
+  if (loading) return <div className="p-16 text-center font-extrabold text-2xl font-serif text-[var(--color-on-surface)]">Loading Quiz...</div>;
 
   if (isFinished) {
     return (
-      <div style={{ padding: '40px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h1 style={{ fontSize: '48px', marginBottom: '16px' }}>🏁</h1>
-        <h2 style={{ fontSize: '32px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', marginBottom: '32px' }}>QUIZ COMPLETE</h2>
+      <div className="py-10 flex flex-col items-center">
+        <h1 className="text-6xl mb-4">🏁</h1>
+        <h2 className="text-4xl font-extrabold font-serif mb-8 text-[var(--color-on-surface)]">QUIZ COMPLETE</h2>
         
-        <div style={{ background: '#FAFAFA', border: '6px solid #0f0f0f', borderRadius: '32px', padding: '40px', boxShadow: '12px 12px 0px #0f0f0f', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '18px', fontWeight: 900, color: '#6b7280', textTransform: 'uppercase' }}>Final Score</h3>
-          <p style={{ fontSize: '72px', fontWeight: 900, margin: '16px 0', color: score >= 7 ? '#10B981' : '#FF4B4B' }}>{score} / {questions.length}</p>
-          <p style={{ fontSize: '20px', fontWeight: 900, color: '#00E5FF', background: '#0f0f0f', padding: '12px', borderRadius: '12px' }}>+{score * 5} XP Earned!</p>
+        <div className="sahara-card rounded-3xl p-10 w-full max-w-md text-center">
+          <h3 className="text-lg font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest font-sans">Final Score</h3>
+          <p className={`text-7xl font-extrabold font-serif my-4 drop-shadow-sm ${score >= 7 ? 'text-[#10B981]' : 'text-[var(--color-error)]'}`}>{score} / {questions.length}</p>
+          <p className="text-xl font-bold text-[var(--color-primary-container)] bg-[var(--color-surface)] border border-[var(--color-outline-variant)] py-3 rounded-xl font-sans inline-block px-6">+{score * 5} XP Earned!</p>
         </div>
         
-        <button onClick={() => setTab('jamo')} style={{ marginTop: '48px', padding: '16px 32px', background: '#FFD600', border: '4px solid #0f0f0f', borderRadius: '16px', fontWeight: 900, fontSize: '18px', cursor: 'pointer', boxShadow: '6px 6px 0px #0f0f0f' }}>
+        <button onClick={() => setTab('jamo')} className="mt-12 sahara-btn px-8 py-4 text-xl">
           Back to Explorer
         </button>
       </div>
@@ -135,69 +135,56 @@ export default function SpellingQuiz() {
   const q = questions[currentIndex];
 
   return (
-    <div style={{ padding: '32px 0' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-        <h1 style={{ fontSize: '24px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif' }}>SPELLING QUIZ</h1>
-        <div style={{ fontSize: '20px', fontWeight: 900 }}>Question {currentIndex + 1} of {questions.length}</div>
+    <div className="py-8">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-extrabold font-serif text-[var(--color-on-surface)]">SPELLING QUIZ</h1>
+        <div className="text-xl font-bold font-sans text-[var(--color-on-surface-variant)]">Question {currentIndex + 1} of {questions.length}</div>
       </div>
 
       {/* Progress Bar */}
-      <div style={{ width: '100%', height: '24px', border: '4px solid #0f0f0f', borderRadius: '12px', overflow: 'hidden', marginBottom: '40px', background: '#FAFAFA' }}>
-        <div style={{ width: `${(timeLeft / 30) * 100}%`, height: '100%', background: timeLeft <= 5 ? '#FF4B4B' : '#00E5FF', transition: 'width 1s linear' }} />
+      <div className="w-full h-4 border border-[var(--color-outline-variant)] rounded-full overflow-hidden mb-10 bg-[var(--color-surface-container)]">
+        <div style={{ width: `${(timeLeft / 30) * 100}%` }} className={`h-full transition-[width] duration-1000 ease-linear ${timeLeft <= 5 ? 'bg-[var(--color-error)]' : 'bg-[var(--color-primary)]'}`} />
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '48px' }}>
+      <div className="flex flex-col items-center gap-12">
         
         {/* Question Area */}
-        <div style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 900, color: '#6b7280', marginBottom: '16px', textTransform: 'uppercase' }}>{q.prompt}</h2>
+        <div className="text-center w-full max-w-md">
+          <h2 className="text-xl font-bold text-[var(--color-on-surface-variant)] mb-4 uppercase tracking-widest font-sans">{q.prompt}</h2>
           
-          <div style={{ background: '#fff', border: '6px solid #0f0f0f', borderRadius: '24px', padding: '40px', boxShadow: '8px 8px 0px #0f0f0f', minWidth: '300px' }}>
+          <div className="sahara-card rounded-3xl p-10 min-w-[300px] flex items-center justify-center">
             {q.type === 'D' ? (
-              <button onClick={() => speak(q.target)} style={{ fontSize: '64px', background: 'transparent', border: 'none', cursor: 'pointer' }}>🔊</button>
+              <button onClick={() => speak(q.target)} className="text-6xl bg-transparent border-none cursor-pointer hover:scale-110 transition-transform">🔊</button>
             ) : (
-              <span style={{ fontSize: '80px', fontWeight: 900, fontFamily: '"Noto Sans KR", sans-serif' }}>{q.target}</span>
+              <span className="text-[80px] font-extrabold font-serif drop-shadow-sm leading-none">{q.target}</span>
             )}
           </div>
         </div>
 
         {/* Options Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', width: '100%', maxWidth: '600px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
           {q.options.map((opt, i) => {
             const isSelected = selected === opt;
-            let bg = '#FAFAFA';
-            let color = '#0f0f0f';
+            let bgClass = 'bg-[var(--color-surface)] text-[var(--color-on-surface)] border-[var(--color-outline-variant)] hover:bg-[var(--color-surface-container-low)]';
             
             if (selected) {
               if (opt === q.answer) {
-                bg = '#10B981'; // Green if correct answer
-                color = '#fff';
+                bgClass = 'bg-[#10B981] text-white border-[#10B981]'; // Green if correct answer
               } else if (isSelected) {
-                bg = '#FF4B4B'; // Red if wrong selection
-                color = '#fff';
+                bgClass = 'bg-[var(--color-error)] text-white border-[var(--color-error)]'; // Red if wrong selection
+              } else {
+                bgClass = 'bg-[var(--color-surface)] text-[var(--color-outline-variant)] border-[var(--color-surface-container)] opacity-50 cursor-not-allowed';
               }
             }
 
             return (
               <motion.button
                 key={i}
-                whileHover={{ y: selected ? 0 : -4, boxShadow: selected ? '4px 4px 0px #0f0f0f' : '8px 8px 0px #0f0f0f' }}
-                whileTap={{ y: selected ? 0 : 4, x: selected ? 0 : 4, boxShadow: '0px 0px 0px #0f0f0f' }}
+                whileHover={selected ? {} : { y: -2 }}
+                whileTap={selected ? {} : { y: 2 }}
                 onClick={() => handleSelect(opt)}
                 disabled={!!selected}
-                style={{
-                  padding: '24px',
-                  fontSize: '24px',
-                  fontWeight: 900,
-                  fontFamily: q.type === 'A' ? '"Space Grotesk", sans-serif' : '"Noto Sans KR", sans-serif',
-                  background: bg,
-                  color: color,
-                  border: '4px solid #0f0f0f',
-                  borderRadius: '16px',
-                  cursor: selected ? 'default' : 'pointer',
-                  boxShadow: '4px 4px 0px #0f0f0f',
-                  transition: 'background 0.2s'
-                }}
+                className={`p-6 text-2xl font-extrabold rounded-2xl border transition-all duration-200 cursor-pointer shadow-sm ${bgClass} ${q.type === 'A' ? 'font-sans' : 'font-serif'}`}
               >
                 {opt}
               </motion.button>

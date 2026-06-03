@@ -131,11 +131,10 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 300, damping: 32 }}
         className="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-[var(--color-surface)] z-50 flex flex-col overflow-hidden"
-        style={{ boxShadow: '-4px 0px 24px rgba(58, 48, 42, 0.08)' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center gap-4 px-6 py-4 border-b border-[var(--color-outline-variant)] bg-[var(--color-surface-container)]">
-          <div className="w-12 h-12 bg-[#ffffff] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center text-2xl shrink-0">
+          <div className="w-12 h-12 bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center text-2xl shrink-0">
             {module.icon || <BookOpen size={22} className="text-[var(--color-primary)]" />}
           </div>
           <div className="flex-1 min-w-0">

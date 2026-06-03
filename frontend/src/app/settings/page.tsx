@@ -43,7 +43,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4 md:p-8 relative z-10 font-sans">
+    <div className="flex-1 p-6 md:p-12 max-w-4xl mx-auto w-full space-y-8 relative z-10 font-sans text-[var(--color-on-surface)]">
       <div className="mb-8 flex items-center gap-4">
         <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-outline-variant)] shadow-sm">
           <Settings className="text-[var(--color-primary)] drop-shadow-sm" size={32} />

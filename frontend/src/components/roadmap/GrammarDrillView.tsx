@@ -141,9 +141,9 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-12 h-12 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
         />
-        <p className="font-bold text-[#1E1B4B]">Loading grammar drills…</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Loading grammar drills…</p>
       </div>
     );
   }
@@ -159,14 +159,14 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
   if (phase === 'theory') {
     return (
       <div className="flex flex-col gap-6 items-center justify-center py-2">
-        <div className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-8 w-full" style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
-          <h3 className="text-2xl font-black text-[#1E1B4B] mb-4">Grammar Concept</h3>
-          <p className="text-lg font-bold text-[#1E1B4B]/80 mb-6 leading-relaxed">
+        <div className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 w-full shadow-sm">
+          <h3 className="text-2xl font-black text-[var(--color-on-surface)] mb-4">Grammar Concept</h3>
+          <p className="text-lg font-bold text-[var(--color-on-surface-variant)] mb-6 leading-relaxed">
             In this module, you will practice using essential grammar particles and sentence structures. Pay close attention to the context hints!
           </p>
-          <div className="bg-[#F5F3FF] border-4 border-[#6366F1] rounded-2xl p-5 mb-8">
-            <h4 className="font-black text-[#6366F1] uppercase tracking-widest text-sm mb-2">Tip</h4>
-            <p className="font-bold text-[#1E1B4B]">
+          <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-5 mb-8 shadow-sm">
+            <h4 className="font-black text-[var(--color-primary)] uppercase tracking-widest text-[11px] mb-2">Tip</h4>
+            <p className="font-bold text-[var(--color-on-surface)]">
               Look at the noun ending before the blank. If it ends in a consonant, use 이/은/을. If it ends in a vowel, use 가/는/를.
             </p>
           </div>
@@ -177,7 +177,7 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
               setPhase('drill');
               setTimeout(() => inputRef.current?.focus(), 100);
             }}
-            className="w-full bg-[#6366F1] text-white font-black py-4 rounded-2xl border-4 border-[#1E1B4B] text-lg shadow-[4px_4px_0px_#1E1B4B]"
+            className="sahara-btn w-full py-4 rounded-2xl font-extrabold text-[15px] uppercase tracking-wider flex items-center justify-center shadow-sm"
           >
             Start Drill
           </motion.button>
@@ -199,16 +199,16 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
 
       {/* Progress */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest">
+        <span className="text-[11px] font-black text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           Question {currentIndex + 1} of {questions.length}
         </span>
-        <span className="text-sm font-bold text-green-600">{score} correct</span>
+        <span className="text-[11px] font-bold text-green-600">{score} correct</span>
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-2 bg-gray-200 rounded-full border-2 border-[#1E1B4B]">
+      <div className="w-full h-3 bg-[var(--color-surface-container-high)] rounded-full border border-[var(--color-outline-variant)] overflow-hidden">
         <motion.div
-          className="h-full bg-[#1E1B4B] rounded-full"
+          className="h-full bg-[var(--color-primary)] rounded-full"
           animate={{ width: `${((currentIndex) / questions.length) * 100}%` }}
           transition={{ duration: 0.4 }}
         />
@@ -222,22 +222,21 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -40, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-6 flex flex-col gap-4"
-          style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+          className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 flex flex-col gap-5 shadow-sm"
         >
           {q.context && (
-            <div className="text-xs font-black uppercase tracking-widest text-gray-500 bg-gray-100 rounded-xl px-3 py-1 self-start">
+            <div className="text-[11px] font-black uppercase tracking-widest text-[var(--color-on-surface-variant)] bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl px-3 py-1 self-start shadow-sm">
               {q.context}
             </div>
           )}
 
           {/* Sentence with blank */}
-          <p className="text-2xl font-black text-[#1E1B4B] leading-relaxed">
+          <p className="text-2xl font-black text-[var(--color-on-surface)] leading-relaxed font-serif drop-shadow-sm">
             {q.sentence.split('___').map((part, i, arr) => (
               <React.Fragment key={i}>
                 {part}
                 {i < arr.length - 1 && (
-                  <span className="inline-block border-b-4 border-[#6366F1] min-w-[80px] mx-1 text-center text-[#6366F1]">
+                  <span className="inline-block border-b-2 border-[var(--color-primary)] min-w-[80px] mx-1 text-center text-[var(--color-primary)]">
                     {submitted && userAnswer ? userAnswer : '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0'}
                   </span>
                 )}
@@ -254,16 +253,14 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
               onKeyDown={e => { if (e.key === 'Enter' && !submitted) handleSubmit(); }}
               disabled={submitted}
               placeholder="Type your answer…"
-              className="flex-1 border-4 border-[#1E1B4B] rounded-xl px-4 py-3 font-bold text-lg text-[#1E1B4B] focus:outline-none focus:ring-4 focus:ring-[#6366F1]/30 disabled:bg-gray-100"
-              style={{ boxShadow: '3px 3px 0px #1E1B4B' }}
+              className="flex-1 bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-xl px-4 py-3 font-bold text-[15px] text-[var(--color-on-surface)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] disabled:bg-[var(--color-surface-container-low)] shadow-sm"
               autoFocus
             />
             {!submitted && (
               <button
                 onClick={handleSubmit}
                 disabled={!userAnswer.trim() || checking}
-                className="bg-[#1E1B4B] text-white px-6 py-3 rounded-xl border-4 border-[#1E1B4B] font-black disabled:opacity-50 hover:bg-[#312E81] transition-colors"
-                style={{ boxShadow: '3px 3px 0px #6366F1' }}
+                className="sahara-btn px-6 py-3 rounded-xl font-bold uppercase tracking-wider shadow-sm disabled:opacity-50"
               >
                 {checking ? '…' : 'Check'}
               </button>
@@ -277,29 +274,29 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                className={`rounded-2xl border-4 p-4 flex flex-col gap-2 ${
+                className={`rounded-2xl border p-5 flex flex-col gap-2 shadow-sm ${
                   isCorrect
-                    ? 'bg-green-50 border-green-400'
-                    : 'bg-red-50 border-red-400'
+                    ? 'bg-[#e8f5e9] border-[#4caf50]'
+                    : 'bg-[#ffebee] border-[#ef5350]'
                 }`}
               >
                 <div className="flex items-center gap-2">
                   {isCorrect ? (
-                    <CheckCircle size={20} className="text-green-600" />
+                    <CheckCircle size={20} className="text-[#2e7d32]" />
                   ) : (
-                    <XCircle size={20} className="text-red-500" />
+                    <XCircle size={20} className="text-[#c62828]" />
                   )}
-                  <span className={`font-black text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+                  <span className={`font-black text-sm ${isCorrect ? 'text-[#2e7d32]' : 'text-[#c62828]'}`}>
                     {isCorrect ? 'Correct!' : 'Not quite…'}
                   </span>
                 </div>
                 {feedback.corrected && (
-                  <p className="text-sm font-bold text-gray-700">
-                    <span className="text-gray-400 font-black">Corrected: </span>{feedback.corrected}
+                  <p className="text-[14px] font-bold text-[var(--color-on-surface)]">
+                    <span className="text-[var(--color-on-surface-variant)] font-black">Corrected: </span>{feedback.corrected}
                   </p>
                 )}
                 {feedback.explanation && (
-                  <p className="text-sm text-gray-600 leading-relaxed">{feedback.explanation}</p>
+                  <p className="text-[14px] text-[var(--color-on-surface)] leading-relaxed">{feedback.explanation}</p>
                 )}
               </motion.div>
             )}
@@ -311,8 +308,7 @@ export default function GrammarDrillView({ moduleId, level: _level, onComplete }
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={handleNext}
-              className="self-end flex items-center gap-2 bg-[#6366F1] text-white px-6 py-3 rounded-xl border-4 border-[#1E1B4B] font-black hover:bg-[#4F46E5] transition-colors"
-              style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+              className="sahara-btn self-end flex items-center gap-2 px-6 py-3 rounded-xl font-bold uppercase tracking-wider shadow-sm mt-2"
             >
               {currentIndex + 1 >= questions.length ? 'Finish' : 'Next'}
               <ChevronRight size={18} />

@@ -173,11 +173,11 @@ function TopikIExamInner() {
 
   if (isLoading) {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', fontFamily: '"Manrope", sans-serif' }}>
-          <div style={{ fontSize: '40px', marginBottom: '16px' }}>📋</div>
-          <p style={{ fontWeight: 700, fontSize: '18px', color: 'var(--color-on-background)' }}>Loading Exam…</p>
-          <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '14px', marginTop: '8px' }}>Generating TOPIK-I questions</p>
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center font-sans">
+        <div className="text-center">
+          <div className="text-5xl mb-4">📋</div>
+          <p className="font-extrabold text-xl text-[var(--color-on-background)] font-serif">Loading Exam…</p>
+          <p className="text-[var(--color-on-surface-variant)] text-sm mt-2 font-medium">Generating TOPIK-I questions</p>
         </div>
       </div>
     );
@@ -185,9 +185,9 @@ function TopikIExamInner() {
 
   if (phase === 'results' && result) {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', padding: '32px 20px 80px', fontFamily: '"Manrope", sans-serif' }}>
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-on-background)', marginBottom: '24px', fontFamily: '"EB Garamond", serif' }}>
+      <div className="min-h-screen bg-[var(--color-background)] p-8 pb-20 font-sans">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-extrabold text-[var(--color-on-background)] mb-6 font-serif">
             📊 TOPIK I — Exam Results
           </h1>
           <ExamScoreReport
@@ -206,20 +206,20 @@ function TopikIExamInner() {
 
   if (phase === 'transition') {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="min-h-screen bg-[var(--color-surface)] flex items-center justify-center font-sans">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          style={{ textAlign: 'center', color: 'var(--color-on-surface)' }}
+          className="text-center text-[var(--color-on-surface)]"
         >
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
-          <h2 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px', fontFamily: '"EB Garamond", serif' }}>
+          <div className="text-6xl mb-4">✅</div>
+          <h2 className="text-3xl font-extrabold mb-2 font-serif text-[var(--color-on-surface)]">
             Listening Complete!
           </h2>
-          <p style={{ fontSize: '16px', color: 'var(--color-on-surface-variant)', marginBottom: '24px', fontFamily: '"Manrope", sans-serif' }}>
+          <p className="text-lg text-[var(--color-on-surface-variant)] mb-6 font-medium">
             Starting Reading section in…
           </p>
-          <div style={{ fontSize: '72px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif' }}>
+          <div className="text-[80px] font-extrabold text-[var(--color-primary)] font-serif leading-none">
             {transitionCount}
           </div>
         </motion.div>
@@ -228,40 +228,18 @@ function TopikIExamInner() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-background)', fontFamily: '"Manrope", sans-serif' }}>
+    <div className="min-h-screen bg-[var(--color-background)] font-sans flex flex-col">
       {/* Exam Header */}
       <div
-        style={{
-          background: 'var(--color-surface)',
-          borderBottom: '1px solid var(--color-outline-variant)',
-          padding: '16px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-          position: 'sticky',
-          top: 0,
-          zIndex: 50,
-          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-        }}
+        className="bg-[var(--color-surface)] border-b border-[var(--color-outline-variant)] py-4 px-6 flex items-center gap-4 flex-wrap sticky top-0 z-50 shadow-sm"
       >
-        <Link href="/roadmap" style={{ textDecoration: 'none' }}>
-          <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif', cursor: 'pointer' }}>
+        <Link href="/roadmap" className="no-underline">
+          <div className="text-2xl font-extrabold text-[var(--color-primary)] font-serif cursor-pointer">
             K-Mastery
           </div>
         </Link>
         <div
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '12px',
-            padding: '6px 16px',
-            fontWeight: 700,
-            fontSize: '13px',
-            color: 'var(--color-on-surface)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
+          className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl py-1.5 px-4 font-bold text-sm text-[var(--color-on-surface)] uppercase tracking-wide"
         >
           {phase === 'listening' ? '🎧 Listening' : '📖 Reading'}
         </div>
@@ -272,32 +250,17 @@ function TopikIExamInner() {
           onExpire={phase === 'listening' ? handleListeningExpire : handleReadingExpire}
         />
 
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-on-surface)' }}>
+        <div className="ml-auto flex items-center gap-4">
+          <span className="text-base font-bold text-[var(--color-on-surface)]">
             Q{currentIndex + 1} / {totalQCount}
           </span>
-          <span style={{ fontSize: '13px', color: 'var(--color-on-surface-variant)' }}>
+          <span className="text-sm text-[var(--color-on-surface-variant)] font-medium">
             {answeredCount}/{totalQCount} answered
           </span>
           <button
             onClick={phase === 'listening' ? submitListening : submitReading}
             disabled={sectionSubmitted}
-            style={{
-              background: 'var(--color-primary)',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '16px',
-              padding: '10px 20px',
-              fontWeight: 700,
-              fontSize: '14px',
-              cursor: sectionSubmitted ? 'not-allowed' : 'pointer',
-              boxShadow: sectionSubmitted ? 'none' : '0 4px 12px rgba(194, 101, 42, 0.3)',
-              textTransform: 'uppercase',
-              opacity: sectionSubmitted ? 0.6 : 1,
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={(e) => { if (!sectionSubmitted) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
+            className={`px-5 py-2.5 rounded-xl font-bold text-sm uppercase tracking-wide transition-all ${sectionSubmitted ? 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed opacity-60' : 'sahara-btn'}`}
           >
             Submit Section →
           </button>
@@ -305,9 +268,9 @@ function TopikIExamInner() {
       </div>
 
       {/* Main Body */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 20px 60px', display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
+      <div className="flex-1 w-full max-w-7xl mx-auto p-6 md:p-8 flex gap-8 flex-col lg:flex-row items-start">
         {/* Question area */}
-        <div style={{ flex: '1', minWidth: '300px' }}>
+        <div className="flex-1 min-w-[300px] w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${phase}-${currentIndex}`}
@@ -315,13 +278,7 @@ function TopikIExamInner() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.2 }}
-              style={{
-                background: 'var(--color-surface)',
-                border: '1px solid var(--color-outline-variant)',
-                borderRadius: '24px',
-                padding: '32px',
-                boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-              }}
+              className="sahara-card rounded-3xl p-8"
             >
               {phase === 'listening' ? (
                 <ListeningSection
@@ -344,47 +301,18 @@ function TopikIExamInner() {
           </AnimatePresence>
 
           {/* Prev / Next navigation */}
-          <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
+          <div className="flex gap-4 mt-6">
             <button
               onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
               disabled={currentIndex === 0}
-              style={{
-                flex: 1,
-                background: 'var(--color-surface)',
-                border: '1px solid var(--color-outline-variant)',
-                borderRadius: '16px',
-                padding: '14px',
-                fontWeight: 700,
-                color: 'var(--color-on-surface)',
-                cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-                opacity: currentIndex === 0 ? 0.5 : 1,
-                fontFamily: '"Manrope", sans-serif',
-                transition: 'all 0.2s ease',
-              }}
-              onMouseEnter={(e) => { if (currentIndex !== 0) (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)'; }}
+              className={`flex-1 py-4 rounded-xl font-bold transition-all ${currentIndex === 0 ? 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed opacity-50' : 'sahara-btn-secondary bg-[var(--color-surface)] hover:bg-[var(--color-surface-container-low)]'}`}
             >
               ← Previous
             </button>
             <button
               onClick={() => setCurrentIndex((i) => Math.min(totalQCount - 1, i + 1))}
               disabled={currentIndex === totalQCount - 1}
-              style={{
-                flex: 1,
-                background: 'var(--color-primary)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '16px',
-                padding: '14px',
-                fontWeight: 700,
-                cursor: currentIndex === totalQCount - 1 ? 'not-allowed' : 'pointer',
-                opacity: currentIndex === totalQCount - 1 ? 0.5 : 1,
-                boxShadow: currentIndex === totalQCount - 1 ? 'none' : '0 4px 12px rgba(194, 101, 42, 0.3)',
-                fontFamily: '"Manrope", sans-serif',
-                transition: 'transform 0.2s',
-              }}
-              onMouseEnter={(e) => { if (currentIndex !== totalQCount - 1) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
+              className={`flex-1 py-4 rounded-xl font-bold transition-all ${currentIndex === totalQCount - 1 ? 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed opacity-50' : 'sahara-btn'}`}
             >
               Next →
             </button>
@@ -392,7 +320,7 @@ function TopikIExamInner() {
         </div>
 
         {/* Right sidebar: navigator */}
-        <div style={{ width: '280px', flexShrink: 0 }}>
+        <div className="w-full lg:w-[320px] shrink-0 sticky top-28">
           <QuestionNavigator
             total={totalQCount}
             answers={currentAnswers}
@@ -410,8 +338,8 @@ function TopikIExamInner() {
 export default function TopikIExamPage() {
   return (
     <Suspense fallback={
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontWeight: 700, color: 'var(--color-on-background)', fontFamily: '"Manrope", sans-serif' }}>Loading…</p>
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center font-sans">
+        <p className="font-extrabold text-[var(--color-on-background)] font-serif text-xl">Loading…</p>
       </div>
     }>
       <TopikIExamInner />

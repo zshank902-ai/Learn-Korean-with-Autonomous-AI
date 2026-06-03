@@ -140,9 +140,9 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-12 h-12 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
         />
-        <p className="font-bold text-[#1E1B4B]">Loading listening tasks…</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Loading listening tasks…</p>
       </div>
     );
   }
@@ -159,11 +159,11 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
 
   const getOptionStyle = (idx: number): string => {
     if (!revealed) {
-      return 'bg-white border-[#1E1B4B] text-[#1E1B4B] hover:bg-[#F5F3FF] hover:border-[#6366F1]';
+      return 'bg-[var(--color-surface)] border-[var(--color-outline-variant)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container)] hover:border-[var(--color-primary)]';
     }
-    if (idx === q.correct) return 'bg-green-50 border-green-500 text-green-700';
-    if (idx === selected && idx !== q.correct) return 'bg-red-50 border-red-400 text-red-600';
-    return 'bg-gray-50 border-gray-300 text-gray-400';
+    if (idx === q.correct) return 'bg-[#e8f5e9] border-[#4caf50] text-[#2e7d32]';
+    if (idx === selected && idx !== q.correct) return 'bg-[#ffebee] border-[#ef5350] text-[#c62828]';
+    return 'bg-[var(--color-surface-container-low)] border-[var(--color-outline-variant)] text-[var(--color-on-surface-variant)] opacity-50';
   };
 
   return (
@@ -177,16 +177,16 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
 
       {/* Progress */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest">
+        <span className="text-[11px] font-black text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           {currentIndex + 1} / {questions.length}
         </span>
-        <span className="text-sm font-bold text-green-600">{score} correct</span>
+        <span className="text-[11px] font-bold text-[var(--color-primary)]">{score} correct</span>
       </div>
 
       {/* Progress bar */}
-      <div className="w-full h-2 bg-gray-200 rounded-full border-2 border-[#1E1B4B]">
+      <div className="w-full h-3 bg-[var(--color-surface-container-high)] rounded-full border border-[var(--color-outline-variant)] overflow-hidden">
         <motion.div
-          className="h-full bg-[#1E1B4B] rounded-full"
+          className="h-full bg-[var(--color-primary)] rounded-full"
           animate={{ width: `${(currentIndex / questions.length) * 100}%` }}
           transition={{ duration: 0.4 }}
         />
@@ -203,10 +203,9 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
         >
           {/* Audio card */}
           <div
-            className="bg-[#1E1B4B] border-4 border-[#1E1B4B] rounded-3xl p-6 flex flex-col items-center gap-4"
-            style={{ boxShadow: '6px 6px 0px #6366F1' }}
+            className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 flex flex-col items-center gap-5 shadow-sm"
           >
-            <p className="text-xs font-black uppercase tracking-widest text-blue-300">Listening Task</p>
+            <p className="text-xs font-black uppercase tracking-widest text-[var(--color-on-surface-variant)]">Listening Task</p>
 
             {/* Play button */}
             <motion.button
@@ -214,35 +213,35 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
               whileTap={{ scale: 0.95 }}
               onClick={() => speakText(q.audioText || q.question)}
               disabled={playing}
-              className="relative w-20 h-20 bg-white rounded-full border-4 border-white flex items-center justify-center shadow-lg disabled:opacity-70"
+              className="relative w-20 h-20 bg-[var(--color-surface-container)] rounded-full border border-[var(--color-outline-variant)] flex items-center justify-center shadow-sm disabled:opacity-70"
               aria-label="Play audio"
             >
               {playing && (
                 <motion.div
-                  className="absolute inset-0 rounded-full border-4 border-blue-400"
+                  className="absolute inset-0 rounded-full border-2 border-[var(--color-primary)]"
                   animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
               )}
-              <Volume2 size={32} className={playing ? 'text-[#6366F1]' : 'text-[#1E1B4B]'} />
+              <Volume2 size={32} className={playing ? 'text-[var(--color-primary)]' : 'text-[var(--color-on-surface)]'} />
             </motion.button>
 
             {speechSupported ? (
-              <p className="text-sm font-bold text-blue-200">
+              <p className="text-sm font-bold text-[var(--color-on-surface-variant)]">
                 {playing ? 'Playing…' : 'Tap to play audio again'}
               </p>
             ) : (
               /* Fallback: show text directly */
-              <div className="w-full bg-white/10 rounded-2xl p-4">
-                <p className="text-xl font-black text-white text-center">{q.audioText || q.question}</p>
+              <div className="w-full bg-[var(--color-surface-container-low)] rounded-2xl p-4 border border-[var(--color-outline-variant)]">
+                <p className="text-xl font-black text-[var(--color-on-surface)] text-center">{q.audioText || q.question}</p>
               </div>
             )}
           </div>
 
-          <p className="text-lg font-black text-[#1E1B4B] text-center mb-2">
+          <p className="text-xl font-black text-[var(--color-on-surface)] text-center mb-2 font-serif drop-shadow-sm">
             {q.question}
           </p>
-          <p className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest text-center">
+          <p className="text-[11px] font-black text-[var(--color-on-surface-variant)] uppercase tracking-widest text-center">
             Choose the correct answer:
           </p>
 
@@ -255,28 +254,26 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
                 whileTap={!revealed ? { scale: 0.98 } : {}}
                 onClick={() => handleSelect(idx)}
                 disabled={revealed}
-                className={`w-full flex items-center gap-3 p-4 rounded-2xl border-4 font-bold text-left transition-all ${getOptionStyle(idx)}`}
-                style={{ boxShadow: '3px 3px 0px #1E1B4B' }}
+                className={`w-full flex items-center gap-4 p-4 rounded-2xl border font-bold text-left transition-all shadow-sm ${getOptionStyle(idx)}`}
               >
-                <span className="w-8 h-8 rounded-lg border-2 border-current flex items-center justify-center text-xs font-black shrink-0">
+                <span className="w-8 h-8 rounded-xl border border-current flex items-center justify-center text-xs font-black shrink-0 bg-[var(--color-surface-container)]">
                   {OPTION_LABELS[idx]}
                 </span>
-                {opt}
+                <span className="text-[15px]">{opt}</span>
               </motion.button>
             ))}
           </div>
 
-          {/* Explanation */}
           <AnimatePresence>
             {revealed && q.explanation && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0 }}
-                className="bg-[#F5F3FF] border-4 border-[#6366F1] rounded-2xl p-4"
+                className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-5 shadow-sm"
               >
-                <p className="text-xs font-black uppercase tracking-widest text-[#6366F1] mb-1">Explanation</p>
-                <p className="text-sm font-bold text-[#1E1B4B]">{q.explanation}</p>
+                <p className="text-[11px] font-black uppercase tracking-widest text-[var(--color-primary)] mb-2">Explanation</p>
+                <p className="text-[14px] font-bold text-[var(--color-on-surface)]">{q.explanation}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -287,8 +284,7 @@ export default function AudioTaskView({ moduleId, level: _level, onComplete }: A
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={handleNext}
-              className="self-end flex items-center gap-2 bg-[#1E1B4B] text-white px-6 py-3 rounded-xl border-4 border-[#1E1B4B] font-black hover:bg-[#312E81] transition-colors"
-              style={{ boxShadow: '4px 4px 0px #6366F1' }}
+              className="sahara-btn self-end flex items-center gap-2 px-6 py-3 rounded-2xl font-bold uppercase tracking-wider text-[13px] shadow-sm mt-2"
             >
               {currentIndex + 1 >= questions.length ? 'Finish' : 'Next'}
               <ChevronRight size={18} />

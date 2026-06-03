@@ -27,13 +27,11 @@ const ModuleViewer = dynamic<ModuleViewerProps>(
 function SkeletonCard() {
   return (
     <div
+      className="h-[240px] rounded-3xl border border-[var(--color-outline-variant)]"
       style={{
-        height: '240px',
-        borderRadius: '24px',
         background: 'linear-gradient(90deg, var(--color-surface-container-low) 25%, var(--color-surface-container) 50%, var(--color-surface-container-low) 75%)',
         backgroundSize: '200% 100%',
         animation: 'shimmer 1.4s infinite',
-        border: '1px solid var(--color-outline-variant)',
       }}
     />
   );
@@ -41,27 +39,19 @@ function SkeletonCard() {
 
 function LoadingSkeleton() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+    <div className="flex flex-col gap-8">
       {/* Rail skeleton */}
       <div
+        className="h-[110px] rounded-2xl border border-[var(--color-outline-variant)]"
         style={{
-          height: '110px',
-          borderRadius: '18px',
           background: 'linear-gradient(90deg, var(--color-surface-container-low) 25%, var(--color-surface-container) 50%, var(--color-surface-container-low) 75%)',
           backgroundSize: '200% 100%',
           animation: 'shimmer 1.4s infinite',
-          border: '1px solid var(--color-outline-variant)',
         }}
       />
 
       {/* Grid skeleton */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '32px',
-        }}
-      >
+      <div className="grid grid-cols-1 gap-8">
         {[...Array(3)].map((_, i) => <SkeletonCard key={i} />)}
       </div>
 
@@ -84,7 +74,7 @@ interface SectionHeaderProps {
 
 function SectionHeader({ title, subtitle }: SectionHeaderProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+    <div className="flex flex-col gap-0.5">
       <h2 className="m-0 font-serif font-extrabold text-[20px] text-[var(--color-on-surface)] tracking-tight drop-shadow-sm">
         {title}
       </h2>
@@ -177,14 +167,12 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
           bg: 'var(--color-surface-container)',
           border: '#10B981',
           icon: <CheckCircle2 size={28} className="text-[#10B981] drop-shadow-sm" />,
-          shadow: '0 2px 16px rgba(58, 48, 42, 0.04)',
         };
       case 'active':
         return {
-          bg: '#ffffff',
+          bg: 'var(--color-surface)',
           border: 'var(--color-primary)',
           icon: <GraduationCap size={28} className="text-[var(--color-primary)] drop-shadow-sm" />,
-          shadow: '0 2px 16px rgba(58, 48, 42, 0.08)',
         };
       case 'locked':
       default:
@@ -192,7 +180,6 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
           bg: 'var(--color-surface-container-lowest)',
           border: 'var(--color-outline-variant)',
           icon: <Lock size={28} className="text-[var(--color-on-surface-variant)]" />,
-          shadow: 'none',
         };
     }
   }
@@ -231,34 +218,11 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
             <div className="relative w-full mt-8 md:mt-10 mx-auto">
               {/* Central Vertical Line Path */}
               <div
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  top: '0',
-                  bottom: '0',
-                  width: '16px',
-                  background: 'var(--color-surface-container-high)',
-                  transform: 'translateX(-50%)',
-                  borderRadius: '999px',
-                  zIndex: 1,
-                }}
-                className="hidden md:block"
+                className="hidden md:block absolute left-1/2 top-0 bottom-0 w-4 bg-[var(--color-surface-container-high)] -translate-x-1/2 rounded-full z-[1]"
               />
               {/* Inner highlight line to create a double-layered look */}
               <div
-                style={{
-                  position: 'absolute',
-                  left: '50%',
-                  top: '0',
-                  bottom: '0',
-                  width: '8px',
-                  background: 'var(--color-primary)',
-                  opacity: 0.5,
-                  transform: 'translateX(-50%)',
-                  borderRadius: '999px',
-                  zIndex: 2,
-                }}
-                className="hidden md:block"
+                className="hidden md:block absolute left-1/2 top-0 bottom-0 w-2 bg-[var(--color-primary)] opacity-50 -translate-x-1/2 rounded-full z-[2]"
               />
 
               <div className="flex flex-col gap-8 md:gap-14 relative z-10">
@@ -274,37 +238,25 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                     <div
                       key={lvl.id}
                       id={`level-section-${lvl.level_num}`}
-                      className={`flex flex-col md:flex-row items-center justify-between w-full ${
+                      className={`flex flex-col md:flex-row items-center justify-between w-full relative ${
                         isEven ? 'md:flex-row-reverse' : ''
                       }`}
-                      style={{ position: 'relative' }}
                     >
                       {/* Level Card */}
-                      <div className="w-full md:w-[46%]" style={{ zIndex: 12 }}>
+                      <div className="w-full md:w-[46%] z-[12]">
                         <motion.div
-                          whileHover={status !== 'locked' ? { y: -4, boxShadow: style.shadow } : {}}
+                          whileHover={status !== 'locked' ? { y: -4 } : {}}
                           transition={{ type: 'spring', stiffness: 350, damping: 20 }}
                           className={`sahara-card rounded-3xl p-4 md:p-6 relative transition-all duration-300 border border-[var(--color-outline-variant)]`}
                           style={{
                             background: style.bg,
-                            boxShadow: style.shadow,
                             opacity: status === 'locked' ? 0.75 : 1,
                           }}
                         >
                           {/* Card Header */}
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                          <div className="flex items-center gap-4 mb-5">
                             <div
-                              style={{
-                                width: '64px',
-                                height: '64px',
-                                borderRadius: '16px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                background: 'var(--color-surface-container)',
-                                border: '1px solid var(--color-outline-variant)',
-                                flexShrink: 0,
-                              }}
+                              className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] shrink-0"
                             >
                               {style.icon}
                             </div>
@@ -334,8 +286,8 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
 
                           {/* Module Completion Summary & CTA */}
                           {status !== 'locked' && (
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '16px' }}>
-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div className="flex flex-col gap-3.5 mt-4">
+                              <div className="flex justify-between items-center">
                                 <span className="font-sans text-[13px] font-extrabold text-[var(--color-on-surface)]">
                                   Modules Progress
                                 </span>
@@ -347,20 +299,17 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                               {/* Progress bar */}
                               <div className="h-[14px] rounded-full overflow-hidden bg-[var(--color-surface-container-high)]">
                                 <div
+                                  className="h-full bg-[var(--color-primary)] transition-all duration-500 ease-out rounded-full"
                                   style={{
-                                    height: '100%',
-                                    background: 'var(--color-primary)',
                                     width: `${(lvl.modules.filter((m) => moduleStatuses[m.id] === 'completed').length / lvl.modules.length) * 100}%`,
-                                    transition: 'width 0.5s ease-out',
                                   }}
-                                  className="rounded-full"
                                 />
                               </div>
 
                               {/* Link to Sub-page */}
                               <Link
                                 href={`/roadmap/level/${lvl.level_num}`}
-                                style={{ textDecoration: 'none', display: 'block', marginTop: '6px' }}
+                                className="no-underline block mt-1.5"
                               >
                                 <motion.div
                                   whileHover={{ scale: 1.02 }}
@@ -383,28 +332,11 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
 
                       {/* Timeline Central Node Marker */}
                       <div
-                        className="hidden md:flex"
-                        style={{
-                          position: 'absolute',
-                          left: '50%',
-                          top: '50%',
-                          transform: 'translate(-50%, -50%)',
-                          width: '48px',
-                          height: '48px',
-                          borderRadius: '50%',
-                          border: '2px solid var(--color-outline-variant)',
-                          background: '#ffffff',
-                          zIndex: 20,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                        }}
+                        className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-[var(--color-outline-variant)] bg-[var(--color-surface)] z-20 items-center justify-center shadow-sm"
                       >
                         <div
+                          className="w-4 h-4 rounded-full"
                           style={{
-                            width: '16px',
-                            height: '16px',
-                            borderRadius: '50%',
                             background: style.border,
                           }}
                         />
@@ -429,17 +361,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              background: 'rgba(0,0,0,0.1)',
-              backdropFilter: 'blur(4px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 100,
-              padding: '20px',
-            }}
+            className="fixed inset-0 bg-black/10 backdrop-blur-[4px] flex items-center justify-center z-[100] p-5"
             onClick={(e) => {
               if (e.target === e.currentTarget) handleModuleViewerClose();
             }}

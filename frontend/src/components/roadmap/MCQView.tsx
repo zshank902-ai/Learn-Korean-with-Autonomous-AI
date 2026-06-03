@@ -140,9 +140,9 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-12 h-12 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
         />
-        <p className="font-bold text-[#1E1B4B]">Loading questions…</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Loading questions…</p>
       </div>
     );
   }
@@ -161,11 +161,11 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
 
   const getOptionStyle = (idx: number): string => {
     if (!revealed) {
-      return 'bg-white border-[#1E1B4B] text-[#1E1B4B] hover:bg-[#F5F3FF] hover:border-[#6366F1]';
+      return 'bg-[var(--color-surface)] border-[var(--color-outline-variant)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container)] hover:border-[var(--color-primary)]';
     }
-    if (idx === q.correct) return 'bg-green-50 border-green-500 text-green-700';
-    if (idx === selected && idx !== q.correct) return 'bg-red-50 border-red-400 text-red-600';
-    return 'bg-gray-50 border-gray-300 text-gray-400';
+    if (idx === q.correct) return 'bg-[#e8f5e9] border-[#4caf50] text-[#2e7d32]';
+    if (idx === selected && idx !== q.correct) return 'bg-[#ffebee] border-[#ef5350] text-[#c62828]';
+    return 'bg-[var(--color-surface-container-low)] border-[var(--color-outline-variant)] text-[var(--color-on-surface-variant)] opacity-50';
   };
 
   return (
@@ -179,10 +179,10 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
 
       {/* Header row */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-black text-[#1E1B4B] uppercase tracking-widest">
+        <span className="text-[11px] font-black text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           {currentIndex + 1} / {questions.length}
         </span>
-        <div className={`flex items-center gap-1.5 font-black text-sm ${timerWarning ? 'text-red-500' : 'text-[#1E1B4B]'}`}>
+        <div className={`flex items-center gap-1.5 font-bold text-[13px] ${timerWarning ? 'text-red-500' : 'text-[var(--color-on-surface)]'}`}>
           <motion.div
             animate={timerWarning ? { scale: [1, 1.2, 1] } : { scale: 1 }}
             transition={{ duration: 0.5, repeat: timerWarning ? Infinity : 0 }}
@@ -194,9 +194,9 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
       </div>
 
       {/* Timer bar */}
-      <div className="w-full h-3 bg-gray-200 rounded-full border-2 border-[#1E1B4B] overflow-hidden">
+      <div className="w-full h-3 bg-[var(--color-surface-container-high)] rounded-full border border-[var(--color-outline-variant)] overflow-hidden">
         <motion.div
-          className={`h-full rounded-full transition-colors ${timerWarning ? 'bg-red-500' : 'bg-[#6366F1]'}`}
+          className={`h-full rounded-full transition-colors ${timerWarning ? 'bg-red-500' : 'bg-[var(--color-primary)]'}`}
           animate={{ width: `${timerPct}%` }}
           transition={{ duration: 0.5 }}
         />
@@ -229,26 +229,25 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
           className="flex flex-col gap-4"
         >
           <div
-            className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-6"
-            style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+            className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 flex flex-col gap-4 shadow-sm"
           >
             {moduleId.includes('listening') && (
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-4 mb-2">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => speakText(q.question)}
                   disabled={playing}
-                  className="w-14 h-14 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center shadow-sm"
+                  className="w-14 h-14 bg-[var(--color-surface-container)] rounded-full border border-[var(--color-outline-variant)] flex items-center justify-center shadow-sm"
                 >
-                  <Volume2 size={24} className={playing ? 'text-[#6366F1]' : 'text-[#1E1B4B]'} />
+                  <Volume2 size={24} className={playing ? 'text-[var(--color-primary)]' : 'text-[var(--color-on-surface)]'} />
                 </motion.button>
-                <p className="text-sm font-bold text-[#1E1B4B]/60 uppercase tracking-widest">
+                <p className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
                   {playing ? 'Playing Audio...' : 'Tap to Listen'}
                 </p>
               </div>
             )}
-            <p className="text-xl font-black text-[#1E1B4B] leading-relaxed">
+            <p className="text-xl font-black text-[var(--color-on-surface)] leading-relaxed font-serif drop-shadow-sm">
               {moduleId.includes('listening') && !revealed ? 'Listen to the audio and choose the correct option.' : q.question}
             </p>
           </div>
@@ -262,15 +261,14 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
                 whileTap={!revealed ? { scale: 0.98 } : {}}
                 onClick={() => handleSelect(idx)}
                 disabled={revealed}
-                className={`w-full flex items-center gap-3 p-4 rounded-2xl border-4 font-bold text-left transition-all ${getOptionStyle(idx)}`}
-                style={{ boxShadow: '3px 3px 0px #1E1B4B' }}
+                className={`w-full flex items-center gap-4 p-4 rounded-2xl border font-bold text-left transition-all shadow-sm ${getOptionStyle(idx)}`}
               >
                 <span
-                  className="w-8 h-8 rounded-lg border-2 border-current flex items-center justify-center text-xs font-black shrink-0"
+                  className="w-8 h-8 rounded-xl border border-current flex items-center justify-center text-xs font-black shrink-0 bg-[var(--color-surface-container)]"
                 >
                   {OPTION_LABELS[idx]}
                 </span>
-                {opt}
+                <span className="text-[15px]">{opt}</span>
               </motion.button>
             ))}
           </div>
@@ -282,10 +280,10 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="bg-[#F5F3FF] border-4 border-[#6366F1] rounded-2xl p-4"
+                className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-3xl p-6 shadow-sm"
               >
-                <p className="text-xs font-black uppercase tracking-widest text-[#6366F1] mb-1">Explanation</p>
-                <p className="text-sm font-bold text-[#1E1B4B]">{q.explanation}</p>
+                <p className="text-[11px] font-black uppercase tracking-widest text-[var(--color-primary)] mb-2">Explanation</p>
+                <p className="text-[14px] font-bold text-[var(--color-on-surface)] leading-relaxed">{q.explanation}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -296,8 +294,7 @@ export default function MCQView({ moduleId, level: _level, onComplete }: MCQView
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               onClick={handleNext}
-              className="self-end flex items-center gap-2 bg-[#1E1B4B] text-white px-6 py-3 rounded-xl border-4 border-[#1E1B4B] font-black hover:bg-[#312E81] transition-colors"
-              style={{ boxShadow: '4px 4px 0px #6366F1' }}
+              className="sahara-btn self-end flex items-center gap-2 px-6 py-3 rounded-2xl font-bold uppercase tracking-wider text-[13px] shadow-sm mt-2"
             >
               {currentIndex + 1 >= questions.length ? 'See Results' : 'Next'}
               <ChevronRight size={18} />

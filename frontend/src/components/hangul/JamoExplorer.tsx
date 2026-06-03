@@ -18,11 +18,11 @@ export default function JamoExplorer() {
   const compoundV = JAMO_DATA.filter(d => d.type === 'vowel' && !BASIC_VOWELS.includes(d.char));
 
   const renderSection = (title: string, data: typeof JAMO_DATA) => (
-    <div style={{ marginBottom: '48px' }}>
-      <h2 style={{ fontSize: '24px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', textTransform: 'uppercase', borderBottom: '4px solid #0A0A0A', paddingBottom: '8px', marginBottom: '24px' }}>
+    <div className="mb-12">
+      <h2 className="text-2xl font-extrabold font-serif text-[var(--color-on-surface)] border-b border-[var(--color-outline-variant)] pb-2 mb-6">
         {title}
       </h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '24px' }}>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6">
         {data.map(d => (
           <JamoCard key={d.char} data={d} showRomanization={showRomanization} />
         ))}
@@ -31,22 +31,13 @@ export default function JamoExplorer() {
   );
 
   return (
-    <div style={{ padding: '32px 0' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif' }}>자모 EXPLORER</h1>
+    <div className="py-8">
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-3xl font-extrabold font-serif text-[var(--color-on-surface)]">자모 EXPLORER</h1>
         
         <button
           onClick={() => setShowRomanization(!showRomanization)}
-          style={{
-            background: showRomanization ? '#00E5FF' : '#FAFAFA',
-            border: '3px solid #0A0A0A',
-            padding: '12px 24px',
-            borderRadius: '12px',
-            fontWeight: 900,
-            boxShadow: '4px 4px 0px #0A0A0A',
-            cursor: 'pointer',
-            fontFamily: '"Space Grotesk", sans-serif'
-          }}
+          className={`sahara-btn px-6 py-3 ${!showRomanization ? 'sahara-btn-secondary' : ''}`}
         >
           {showRomanization ? 'Hide Romanization' : 'Show Romanization'}
         </button>

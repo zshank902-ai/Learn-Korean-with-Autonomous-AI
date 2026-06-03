@@ -13,27 +13,27 @@ export default function DrillProgress({ state }: DrillProgressProps) {
   const current = state.currentIndex + 1;
 
   return (
-    <div style={{ width: '100%', height: '56px', backgroundColor: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', color: '#ffffff', borderBottom: '2px solid #000' }}>
+    <div className="w-full h-14 bg-[var(--color-on-surface)] flex items-center justify-between px-6 text-[var(--color-surface)] border-b-2 border-black font-sans">
       
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflowX: total > 10 ? 'auto' : 'visible', flex: 1, paddingRight: '24px' }}>
+      <div className={`flex items-center gap-2 flex-1 pr-6 ${total > 10 ? 'overflow-x-auto' : 'overflow-x-visible'}`}>
         {state.words.map((w, index) => {
           const isPast = index < state.currentIndex;
           const isCurrent = index === state.currentIndex;
           const result = state.results.find(r => r.word.id === w.id);
           const isCorrect = result?.correct;
 
-          let bg = '#374151'; // pending grey
+          let bgClass = 'bg-gray-700'; // pending grey
           let content: React.ReactNode = index + 1;
-          let borderColor = '#0A0A0A';
+          let borderClass = 'border-[var(--color-on-surface)]';
 
           if (isPast && result) {
-            bg = isCorrect ? '#00C853' : '#FF4B4B';
+            bgClass = isCorrect ? 'bg-[#10B981]' : 'bg-[#ef4444]';
             content = isCorrect ? '✓' : '✗';
-            borderColor = '#ffffff';
+            borderClass = 'border-white';
           } else if (isCurrent) {
-            bg = '#FFD600';
+            bgClass = 'bg-[#FFD600]';
             content = index + 1;
-            borderColor = '#FFD600';
+            borderClass = 'border-[#FFD600]';
           }
 
           return (
@@ -44,42 +44,28 @@ export default function DrillProgress({ state }: DrillProgressProps) {
               animate={{
                 scale: 1,
                 opacity: 1,
-                backgroundColor: bg,
-                borderColor: borderColor,
-                color: isCurrent || (isPast && result) ? '#0f0f0f' : '#ffffff'
               }}
               transition={{ layout: { type: 'spring', stiffness: 300, damping: 30 } }}
-              style={{
-                minWidth: '32px',
-                height: '32px',
-                borderRadius: '16px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontWeight: 900,
-                fontSize: '14px',
-                border: '2px solid',
-                flexShrink: 0
-              }}
+              className={`min-w-[32px] h-8 rounded-2xl flex items-center justify-center font-black text-sm border-2 flex-shrink-0 ${bgClass} ${borderClass} ${isCurrent || (isPast && result) ? 'text-[var(--color-on-surface)]' : 'text-white'}`}
             >
               {isCurrent && (
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
                   transition={{ repeat: Infinity, duration: 1.5 }}
-                  style={{ position: 'absolute', inset: -4, border: '2px solid #FFD600', borderRadius: '20px' }}
+                  className="absolute -inset-1 border-2 border-[#FFD600] rounded-full"
                 />
               )}
-              <span style={{ position: 'relative', zIndex: 1 }}>{content}</span>
+              <span className="relative z-[1]">{content}</span>
             </motion.div>
           );
         })}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexShrink: 0 }}>
-        <div style={{ fontWeight: 900, fontSize: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ color: '#00C853' }}>+{state.sessionXP} XP</span>
+      <div className="flex items-center gap-6 flex-shrink-0">
+        <div className="font-black text-base flex items-center gap-2">
+          <span className="text-[#10B981]">+{state.sessionXP} XP</span>
         </div>
-        <div style={{ fontWeight: 700, fontSize: '14px', color: '#9ca3af' }}>
+        <div className="font-bold text-sm text-gray-400">
           Word {Math.min(current, total)} of {total}
         </div>
       </div>

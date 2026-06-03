@@ -48,37 +48,33 @@ export default function DashboardPage() {
   return (
     <ProtectedRoute>
       <OnboardingModal />
-      <div className="min-h-screen p-4 md:p-6 pb-24 lg:pb-6 relative z-10">
+      <div className="flex-1 p-6 md:p-12 max-w-7xl mx-auto w-full space-y-8 relative z-10">
         <WelcomePopup />
         <LevelUpModal />
         <NotificationSystem />
 
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-2">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-2 font-serif tracking-tight text-[var(--color-on-background)]">
             Learning <span className="text-[var(--color-primary)]">Dashboard</span>
           </h1>
-          <p className="text-xl text-[var(--color-on-surface-variant)] font-medium">
+          <p className="text-xl text-[var(--color-on-surface-variant)] font-sans font-medium">
             Your daily mission control. Complete quests and level up!
           </p>
         </div>
 
 
       {/* Main Grid: 12-column layout */}
-      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:h-[calc(100vh-12rem)] lg:min-h-[800px]">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-8 lg:min-h-[800px]">
         
         {/* Left Column (3/12): Gamification */}
-        <div className="lg:col-span-3 flex flex-col gap-6 lg:h-full lg:overflow-y-auto lg:pr-2 lg:pb-4">
-          <div className="flex-none">
-            <DailyQuestsPanel />
-          </div>
-          <div className="flex-none">
-            <GlobalLeaderboard />
-          </div>
+        <div className="lg:col-span-3 flex flex-col gap-6">
+          <DailyQuestsPanel />
+          <GlobalLeaderboard />
         </div>
 
         {/* Center Column (6/12): AI Tutor & Stats */}
-        <div className="lg:col-span-6 flex flex-col gap-6 lg:h-full">
+        <div className="lg:col-span-6 flex flex-col gap-6">
           {/* Quick Stats Card */}
           <div className="sahara-card p-6 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -86,30 +82,28 @@ export default function DashboardPage() {
                 <Star className="text-[var(--color-on-secondary-container)] fill-current" size={32} />
               </div>
               <div>
-                <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Current Rank</p>
-                <h2 className="text-2xl font-extrabold text-[var(--color-on-surface)]">
+                <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest font-sans">Current Rank</p>
+                <h2 className="text-2xl font-extrabold text-[var(--color-on-surface)] font-serif">
                   TOPIK Level {level}
                 </h2>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Next Level</p>
-              <p className="text-xl font-extrabold text-[var(--color-primary)]">
+              <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest font-sans">Next Level</p>
+              <p className="text-xl font-extrabold text-[var(--color-primary)] font-serif">
                 {5000 - (xp % 5000)} XP
               </p>
             </div>
           </div>
 
-          <div className="flex-1 min-h-[500px] lg:min-h-0">
+          <div className="flex-1 min-h-[500px]">
             <AIChatBox />
           </div>
         </div>
 
         {/* Right Column (3/12): Tools */}
-        <div className="lg:col-span-3 flex flex-col gap-6 lg:h-full lg:overflow-y-auto lg:pr-2 lg:pb-4">
-          <div className="flex-none">
-            <SmartCorrector />
-          </div>
+        <div className="lg:col-span-3 flex flex-col gap-6">
+          <SmartCorrector />
         </div>
 
       </div>

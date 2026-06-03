@@ -309,25 +309,24 @@ export default function MockExamRunner({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-[#EEF2FF] overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[var(--color-surface-container-low)] overflow-y-auto"
     >
       {/* Header */}
       <div
-        className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-white border-b-4 border-[#1E1B4B]"
-        style={{ boxShadow: '0 4px 0 #1E1B4B' }}
+        className="sticky top-0 z-10 flex items-center justify-between px-6 py-4 bg-[var(--color-surface)] border-b border-[var(--color-outline-variant)] shadow-sm"
       >
         <div className="flex items-center gap-3">
           <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center border-2 border-[#1E1B4B]"
+            className="w-10 h-10 rounded-xl flex items-center justify-center border border-[var(--color-outline-variant)] shadow-sm"
             style={{ background: levelColor }}
           >
             <span className="text-lg">🏆</span>
           </div>
           <div>
-            <p className="font-black text-[#1E1B4B] text-lg" style={{ fontFamily: 'Fredoka, cursive' }}>
+            <p className="font-extrabold text-[var(--color-on-surface)] text-lg font-serif">
               TOPIK {levelId} Mock Exam
             </p>
-            <p className="text-xs font-bold text-[#1E1B4B]/50 uppercase tracking-widest">
+            <p className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
               {examType} · {phase.toUpperCase()}
             </p>
           </div>
@@ -338,10 +337,9 @@ export default function MockExamRunner({
           <motion.div
             animate={isLowTime ? { scale: [1, 1.05, 1] } : {}}
             transition={{ repeat: Infinity, duration: 1 }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-[#1E1B4B] font-black text-xl ${
-              isLowTime ? 'bg-red-500 text-white' : 'bg-white text-[#1E1B4B]'
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--color-outline-variant)] font-extrabold text-xl font-serif ${
+              isLowTime ? 'bg-red-500 text-white' : 'bg-[var(--color-surface)] text-[var(--color-on-surface)]'
             }`}
-            style={{ fontFamily: 'Fredoka, cursive' }}
           >
             <Timer size={20} />
             {formatTime(timeRemaining)}
@@ -350,7 +348,7 @@ export default function MockExamRunner({
 
         <button
           onClick={onClose}
-          className="px-4 py-2 flex items-center gap-2 rounded-xl border-2 border-red-500 bg-red-50 hover:bg-red-100 text-red-600 transition-colors font-bold"
+          className="px-4 py-2 flex items-center gap-2 rounded-xl border border-red-400 bg-[#ffebee] hover:bg-red-100 text-[#c62828] transition-colors font-bold shadow-sm"
         >
           <X size={18} />
           <span className="hidden sm:inline">Quit Exam</span>
@@ -368,9 +366,9 @@ export default function MockExamRunner({
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-                className="w-16 h-16 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+                className="w-16 h-16 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
               />
-              <p className="font-black text-[#1E1B4B] text-2xl" style={{ fontFamily: 'Fredoka, cursive' }}>
+              <p className="font-extrabold text-[var(--color-on-surface)] text-2xl font-serif">
                 Generating Your Exam...
               </p>
             </motion.div>
@@ -379,16 +377,16 @@ export default function MockExamRunner({
           {/* Writing Phase (TOPIK-II) */}
           {phase === 'writing' && (
             <motion.div key="writing" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-              <div className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-8 mb-6" style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
-                <h2 className="font-black text-2xl mb-2 text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+              <div className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 mb-6 shadow-sm">
+                <h2 className="font-extrabold text-2xl mb-2 text-[var(--color-on-surface)] font-serif">
                   ✏️ Writing Section
                 </h2>
-                <p className="text-[#1E1B4B]/60 font-semibold mb-6">
+                <p className="text-[var(--color-on-surface-variant)] font-semibold mb-6">
                   Write a {levelId >= 5 ? '600-700' : '200-300'} character essay on a topic of your TOPIK level.
                 </p>
-                <p className="font-bold text-[#1E1B4B] mb-3">Essay Prompt:</p>
-                <div className="bg-[#EEF2FF] rounded-2xl p-4 mb-4 border-2 border-[#1E1B4B]/20">
-                  <p className="text-[#1E1B4B]">
+                <p className="font-bold text-[var(--color-on-surface)] mb-3">Essay Prompt:</p>
+                <div className="bg-[var(--color-surface-container-low)] rounded-2xl p-4 mb-4 border border-[var(--color-outline-variant)]">
+                  <p className="text-[var(--color-on-surface)]">
                     {levelId >= 5
                       ? '환경 문제를 해결하기 위한 방법에 대해 자신의 의견을 쓰십시오.'
                       : '여러분이 좋아하는 계절은 무엇입니까? 이유를 쓰십시오.'}
@@ -398,7 +396,7 @@ export default function MockExamRunner({
                   value={essayText}
                   onChange={(e) => setEssayText(e.target.value)}
                   placeholder="여기에 작문을 쓰세요..."
-                  className="w-full h-48 p-4 border-2 border-[#1E1B4B] rounded-2xl font-medium resize-none focus:outline-none focus:border-[#4F46E5] text-[#1E1B4B]"
+                  className="w-full h-48 p-5 bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-2xl font-medium resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-[var(--color-on-surface)] shadow-sm"
                 />
                 <div className="flex justify-between items-center mt-2">
                   <span className={`text-sm font-bold ${
@@ -409,7 +407,7 @@ export default function MockExamRunner({
                   </span>
                   <button
                     onClick={handlePhaseEnd}
-                    className="px-6 py-3 bg-[#1E1B4B] text-white font-black rounded-xl hover:bg-[#4F46E5] transition-colors flex items-center gap-2"
+                    className="sahara-btn px-6 py-3 rounded-xl font-bold uppercase tracking-wider flex items-center gap-2 shadow-sm"
                   >
                     Submit Writing <ChevronRight size={18} />
                   </button>
@@ -422,20 +420,20 @@ export default function MockExamRunner({
           {phase === 'break' && (
             <motion.div key="break" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
               className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
-              <div className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-12 text-center max-w-md" style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
-                <Coffee size={64} className="text-[#F59E0B] mx-auto mb-4" />
-                <h2 className="font-black text-3xl mb-2 text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+              <div className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-12 text-center max-w-md shadow-sm">
+                <Coffee size={64} className="text-[var(--color-primary)] mx-auto mb-4" />
+                <h2 className="font-extrabold text-3xl mb-2 text-[var(--color-on-surface)] font-serif">
                   Break Time ☕
                 </h2>
-                <p className="text-[#1E1B4B]/60 font-semibold mb-6">
+                <p className="text-[var(--color-on-surface-variant)] font-semibold mb-6">
                   Rest up before the listening + reading sections.
                 </p>
-                <div className="text-6xl font-black text-[#4F46E5] mb-4" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <div className="text-[56px] font-extrabold text-[var(--color-primary)] mb-4 font-serif">
                   {formatTime(breakRemaining)}
                 </div>
                 <button
                   onClick={() => setBreakRemaining(0)}
-                  className="px-8 py-3 bg-[#1E1B4B] text-white font-black rounded-xl hover:bg-[#4F46E5] transition-colors"
+                  className="sahara-btn px-8 py-3 rounded-xl font-bold uppercase tracking-wider shadow-sm"
                 >
                   Skip Break →
                 </button>
@@ -451,16 +449,16 @@ export default function MockExamRunner({
                 <div className="flex items-center gap-3">
                   <span className="text-3xl">{phase === 'listening' ? '🎧' : '📰'}</span>
                   <div>
-                    <h2 className="font-black text-2xl text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+                    <h2 className="font-extrabold text-2xl text-[var(--color-on-surface)] font-serif">
                       {phase === 'listening' ? 'Listening' : 'Reading'} Section
                     </h2>
-                    <p className="text-sm font-bold text-[#1E1B4B]/50">
+                    <p className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
                       Question {currentQIdx + 1} of {currentQs.length}
                     </p>
                   </div>
                 </div>
                 {/* Progress bar */}
-                <div className="w-32 h-3 bg-[#EEF2FF] border-2 border-[#1E1B4B] rounded-full overflow-hidden">
+                <div className="w-32 h-3 bg-[var(--color-surface-container-high)] border border-[var(--color-outline-variant)] rounded-full overflow-hidden">
                   <motion.div
                     className="h-full rounded-full"
                     style={{ background: levelColor }}
@@ -474,8 +472,7 @@ export default function MockExamRunner({
                   key={currentQIdx}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-8"
-                  style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+                  className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 shadow-sm"
                 >
                   {currentSection === 'listening' && (
                     <div className="flex items-center gap-4 mb-4">
@@ -484,16 +481,16 @@ export default function MockExamRunner({
                         whileTap={{ scale: 0.95 }}
                         onClick={() => speakText(currentQ.audioText || currentQ.question)}
                         disabled={playing}
-                        className="w-14 h-14 bg-[#EEF2FF] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center shadow-sm"
+                        className="w-14 h-14 bg-[var(--color-surface-container)] rounded-full border border-[var(--color-outline-variant)] flex items-center justify-center shadow-sm"
                       >
-                        <Volume2 size={24} className={playing ? 'text-[#6366F1]' : 'text-[#1E1B4B]'} />
+                        <Volume2 size={24} className={playing ? 'text-[var(--color-primary)]' : 'text-[var(--color-on-surface)]'} />
                       </motion.button>
-                      <p className="text-sm font-bold text-[#1E1B4B]/60 uppercase tracking-widest">
+                      <p className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
                         {playing ? 'Playing Audio...' : 'Tap to Listen'}
                       </p>
                     </div>
                   )}
-                  <p className="font-bold text-[#1E1B4B] text-lg mb-6 leading-relaxed">
+                  <p className="font-bold text-[var(--color-on-surface)] text-lg mb-6 leading-relaxed font-serif">
                     {currentSection === 'listening' && selectedOption === null ? 'Listen to the audio and choose the correct option.' : currentQ.question}
                   </p>
 
@@ -501,10 +498,10 @@ export default function MockExamRunner({
                     {currentQ.options.map((opt, idx) => {
                       const isSelected = selectedOption === idx;
                       const isCorrect = currentQ.correct === idx;
-                      let bgColor = 'bg-white hover:bg-[#EEF2FF]';
+                      let bgColor = 'bg-[var(--color-surface)] hover:bg-[var(--color-surface-container)]';
                       if (selectedOption !== null) {
-                        if (isCorrect) bgColor = 'bg-green-100 border-green-500';
-                        else if (isSelected) bgColor = 'bg-red-100 border-red-500';
+                        if (isCorrect) bgColor = 'bg-[#e8f5e9] border-[#4caf50]';
+                        else if (isSelected) bgColor = 'bg-[#ffebee] border-[#ef5350]';
                       }
                       return (
                         <motion.button
@@ -512,15 +509,15 @@ export default function MockExamRunner({
                           whileTap={{ scale: 0.98 }}
                           onClick={() => handleSelectOption(idx)}
                           disabled={selectedOption !== null}
-                          className={`w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-[#1E1B4B] text-left font-semibold transition-colors ${bgColor} disabled:cursor-default`}
+                          className={`w-full flex items-center gap-4 p-4 rounded-2xl border border-[var(--color-outline-variant)] text-left font-semibold transition-colors shadow-sm ${bgColor} disabled:cursor-default`}
                         >
                           <span
-                            className="w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm shrink-0 border-2 border-[#1E1B4B]"
-                            style={{ background: isSelected || (selectedOption !== null && isCorrect) ? levelColor : '#EEF2FF', color: '#1E1B4B' }}
+                            className="w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs shrink-0 border border-[var(--color-outline-variant)]"
+                            style={{ background: isSelected || (selectedOption !== null && isCorrect) ? levelColor : 'var(--color-surface-container)', color: 'var(--color-on-surface)' }}
                           >
                             {optionLabels[idx]}
                           </span>
-                          <span className="text-[#1E1B4B]">{opt}</span>
+                          <span className="text-[15px] text-[var(--color-on-surface)]">{opt}</span>
                           {selectedOption !== null && isCorrect && (
                             <CheckCircle2 size={18} className="text-green-600 ml-auto shrink-0" />
                           )}
@@ -538,7 +535,7 @@ export default function MockExamRunner({
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="bg-[#EEF2FF] border-2 border-[#1E1B4B]/30 rounded-2xl p-4 mb-4 text-sm text-[#1E1B4B]/70 font-medium"
+                        className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-5 mb-4 text-[14px] text-[var(--color-on-surface)] font-medium shadow-sm"
                       >
                         💡 {currentQ.explanation}
                       </motion.div>
@@ -550,7 +547,7 @@ export default function MockExamRunner({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       onClick={handleNextQuestion}
-                      className="w-full py-3 bg-[#1E1B4B] text-white font-black rounded-xl hover:bg-[#4F46E5] transition-colors flex items-center justify-center gap-2"
+                      className="sahara-btn w-full py-3 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm"
                     >
                       {currentQIdx < currentQs.length - 1 ? 'Next Question' : 'Finish Section'}
                       <ChevronRight size={18} />
@@ -575,9 +572,9 @@ export default function MockExamRunner({
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-                className="w-16 h-16 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+                className="w-16 h-16 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
               />
-              <p className="font-black text-2xl text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+              <p className="font-extrabold text-2xl text-[var(--color-on-surface)] font-serif">
                 Calculating Your Score...
               </p>
             </motion.div>
@@ -600,10 +597,10 @@ export default function MockExamRunner({
             <motion.div key="error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
               <AlertTriangle size={48} className="text-red-500" />
-              <p className="font-black text-xl text-[#1E1B4B]">{error}</p>
+              <p className="font-extrabold text-xl text-[var(--color-on-surface)]">{error}</p>
               <button
                 onClick={onClose}
-                className="px-6 py-3 bg-[#1E1B4B] text-white font-black rounded-xl"
+                className="sahara-btn px-6 py-3 rounded-xl font-bold uppercase tracking-wider shadow-sm"
               >
                 Close
               </button>

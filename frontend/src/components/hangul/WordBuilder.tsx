@@ -77,75 +77,74 @@ export default function WordBuilder() {
   };
 
   return (
-    <div style={{ padding: '32px 0' }}>
-      <h1 style={{ fontSize: '32px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', marginBottom: '40px' }}>단어 WORD BUILDER</h1>
+    <div className="py-8">
+      <h1 className="text-3xl font-extrabold font-serif mb-10 text-[var(--color-on-surface)]">단어 WORD BUILDER</h1>
 
       {/* Preset Challenges */}
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '32px', flexWrap: 'wrap' }}>
+      <div className="flex gap-3 mb-8 flex-wrap">
         {PRESETS.map((p) => {
           const unlocked = word === p.target;
           return (
-            <div key={p.target} style={{ padding: '8px 16px', background: unlocked ? '#10B981' : '#FAFAFA', color: unlocked ? '#fff' : '#0f0f0f', border: '3px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, boxShadow: unlocked ? 'none' : '4px 4px 0px #0f0f0f' }}>
+            <div key={p.target} className={`px-4 py-2 rounded-xl font-bold font-sans border transition-all ${unlocked ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow-sm' : 'bg-[var(--color-surface)] text-[var(--color-on-surface)] border-[var(--color-outline-variant)]'}`}>
               {unlocked ? '✅ ' : '🔒 '}{p.target} ({p.en})
             </div>
           );
         })}
       </div>
 
-      <div style={{ background: '#FAFAFA', border: '4px solid #0f0f0f', borderRadius: '32px', padding: '40px', boxShadow: '12px 12px 0px #0f0f0f', minHeight: '300px' }}>
+      <div className="sahara-card rounded-3xl p-10 min-h-[300px]">
         
         {items.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '60px 0', color: '#6b7280' }}>
-            <div style={{ fontSize: '64px', marginBottom: '16px' }}>🧩</div>
-            <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#0f0f0f' }}>No syllables yet</h3>
-            <p>Go to the Syllable Builder to create blocks and add them here!</p>
-            <button onClick={() => setTab('builder')} style={{ marginTop: '24px', padding: '12px 24px', background: '#FFD600', border: '3px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}>
+          <div className="text-center py-16 text-[var(--color-on-surface-variant)] flex flex-col items-center">
+            <div className="text-6xl mb-4">🧩</div>
+            <h3 className="text-2xl font-extrabold text-[var(--color-on-surface)] font-serif mb-2">No syllables yet</h3>
+            <p className="font-medium">Go to the Syllable Builder to create blocks and add them here!</p>
+            <button onClick={() => setTab('builder')} className="mt-6 sahara-btn px-6 py-3">
               Go to Builder
             </button>
           </div>
         ) : (
           <>
             <Reorder.Group axis="x" values={items} onReorder={(newItems) => {
-              // Note: robust implementation would sync this back to Zustand
               setItems(newItems);
-            }} style={{ display: 'flex', gap: '16px', listStyle: 'none', padding: 0, margin: '0 0 32px 0', minHeight: '120px' }}>
+            }} className="flex gap-4 list-none p-0 m-0 mb-8 min-h-[120px]">
               {items.map((item, idx) => (
-                <Reorder.Item key={item.id} value={item} style={{ position: 'relative' }}>
-                  <div style={{ width: '120px', height: '120px', background: '#00E5FF', border: '4px solid #0f0f0f', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '64px', fontWeight: 900, fontFamily: '"Noto Sans KR", sans-serif', boxShadow: '6px 6px 0px #0f0f0f', cursor: 'grab' }}>
+                <Reorder.Item key={item.id} value={item} className="relative">
+                  <div className="w-[120px] h-[120px] bg-[var(--color-primary-container)] border border-[var(--color-outline-variant)] rounded-2xl flex items-center justify-center text-6xl font-extrabold font-serif text-[var(--color-on-primary-container)] shadow-sm cursor-grab">
                     {item.text}
                   </div>
-                  <button onClick={() => removeSyllable(idx)} style={{ position: 'absolute', top: '-10px', right: '-10px', width: '32px', height: '32px', background: '#FF4B4B', color: '#fff', border: '3px solid #0f0f0f', borderRadius: '50%', fontWeight: 900, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>×</button>
+                  <button onClick={() => removeSyllable(idx)} className="absolute -top-3 -right-3 w-8 h-8 bg-[var(--color-error)] text-white rounded-full font-bold flex items-center justify-center z-10 shadow-sm border border-[var(--color-error-container)] hover:scale-110 transition-transform">×</button>
                 </Reorder.Item>
               ))}
             </Reorder.Group>
 
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '32px' }}>
-              <button onClick={() => speak(word)} style={{ padding: '12px 24px', background: '#0f0f0f', color: '#fff', border: '3px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}>🔊 Speak Word</button>
-              <button onClick={clearSyllables} style={{ padding: '12px 24px', background: '#FF4B4B', color: '#fff', border: '3px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}>🗑️ Clear All</button>
+            <div className="flex gap-4 mb-8">
+              <button onClick={() => speak(word)} className="sahara-btn-secondary px-6 py-3 border-[var(--color-outline-variant)] bg-[var(--color-surface)] hover:bg-[var(--color-surface-container)]">🔊 Speak Word</button>
+              <button onClick={clearSyllables} className="sahara-btn-secondary px-6 py-3 border-[var(--color-error)] text-[var(--color-error)] hover:bg-[var(--color-error-container)]">🗑️ Clear All</button>
             </div>
 
             {isLookingUp ? (
-              <div style={{ fontWeight: 900, color: '#6b7280' }}>Looking up dictionary...</div>
+              <div className="font-bold text-[var(--color-on-surface-variant)]">Looking up dictionary...</div>
             ) : lookupResult ? (
-              <div style={{ background: '#fff', border: '4px solid #0f0f0f', borderRadius: '16px', padding: '24px', boxShadow: '4px 4px 0px #0f0f0f' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+              <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-6 shadow-sm">
+                <div className="flex justify-between items-start">
                   <div>
-                    <h2 style={{ fontSize: '32px', fontWeight: 900, margin: 0 }}>{lookupResult.word} <span style={{ fontSize: '18px', color: '#6b7280' }}>[{lookupResult.romanization}]</span></h2>
-                    <p style={{ fontSize: '20px', fontWeight: 800, color: '#0f0f0f', marginTop: '8px' }}>{lookupResult.meaning}</p>
+                    <h2 className="text-3xl font-extrabold font-serif text-[var(--color-on-surface)] m-0">{lookupResult.word} <span className="text-lg text-[var(--color-on-surface-variant)] font-sans font-medium tracking-wide">[{lookupResult.romanization}]</span></h2>
+                    <p className="text-xl font-bold text-[var(--color-on-surface)] mt-2">{lookupResult.meaning}</p>
                     {lookupResult.example && (
-                      <div style={{ marginTop: '16px', padding: '12px', background: '#f3f4f6', borderRadius: '8px', borderLeft: '4px solid #FFD600' }}>
-                        <p style={{ margin: 0, fontWeight: 700 }}>{lookupResult.example}</p>
+                      <div className="mt-4 p-4 bg-[var(--color-surface)] rounded-xl border-l-4 border-[var(--color-primary)]">
+                        <p className="m-0 font-medium text-[var(--color-on-surface)]">{lookupResult.example}</p>
                       </div>
                     )}
                   </div>
                   <div>
-                    <span style={{ background: '#FFD600', padding: '4px 12px', border: '2px solid #0f0f0f', borderRadius: '8px', fontWeight: 900 }}>
+                    <span className="bg-[var(--color-secondary-container)] px-3 py-1 rounded-lg font-bold text-[var(--color-on-secondary-container)] border border-[var(--color-outline-variant)]">
                       TOPIK Lv. {lookupResult.difficulty || '?'}
                     </span>
                   </div>
                 </div>
-                <div style={{ marginTop: '24px' }}>
-                  <button onClick={handleSave} disabled={saved} style={{ padding: '12px 24px', background: saved ? '#10B981' : '#00E5FF', color: saved ? '#fff' : '#0f0f0f', border: '3px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, cursor: saved ? 'default' : 'pointer', boxShadow: saved ? 'none' : '4px 4px 0px #0f0f0f' }}>
+                <div className="mt-6">
+                  <button onClick={handleSave} disabled={saved} className={`px-6 py-3 font-bold rounded-xl transition-all ${saved ? 'bg-[#10B981] text-white cursor-default' : 'sahara-btn'}`}>
                     {saved ? '✅ Saved to Vocabulary' : '💾 Save Word'}
                   </button>
                 </div>

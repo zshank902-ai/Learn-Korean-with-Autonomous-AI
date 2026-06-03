@@ -54,20 +54,16 @@ function TopikRoadmap3D({ currentLevel }: { currentLevel: number }) {
             <Html
               position={[0, isActive ? 2 : 1.5, 0]}
               center
-              style={{ pointerEvents: 'none', whiteSpace: 'pre-line', textAlign: 'center' }}
+              className="pointer-events-none whitespace-pre-line text-center"
             >
-              <div style={{
-                background: isActive ? LEVEL_COLORS[i] : 'rgba(250, 245, 238, 0.95)',
-                color: isActive ? 'white' : '#3a302a',
-                padding: '6px 14px',
-                borderRadius: '16px',
-                border: isActive ? 'none' : '1px solid rgba(58, 48, 42, 0.15)',
-                fontWeight: isActive ? 700 : 600,
-                fontSize: isActive ? '12px' : '10px',
-                fontFamily: '"EB Garamond", serif',
-                boxShadow: isActive ? '0px 8px 24px rgba(194, 101, 42, 0.4)' : '0px 4px 12px rgba(58, 48, 42, 0.08)',
-                opacity: isLocked ? 0.6 : 1,
-              }}>
+              <div 
+                className={`px-3.5 py-1.5 rounded-2xl font-serif ${
+                  isActive ? 'text-white font-bold text-xs shadow-md' : 'text-[#3a302a] font-semibold text-[10px] border border-[#3a302a]/15 shadow-sm'
+                } ${isLocked ? 'opacity-60' : 'opacity-100'}`}
+                style={{
+                  background: isActive ? LEVEL_COLORS[i] : 'rgba(250, 245, 238, 0.95)',
+                }}
+              >
                 {isCompleted ? '✓ ' : ''}{LEVEL_LABELS[i].replace('\n', ' ')}
               </div>
             </Html>
@@ -167,7 +163,7 @@ export default function ThreeScene({ children }: { children?: React.ReactNode })
   const { level } = useKMasteryStore();
 
   return (
-    <div className="fixed inset-0 z-0" style={{ background: 'linear-gradient(180deg, #f2eadf 0%, #faf5ee 60%, #eee3d5 100%)' }}>
+    <div className="fixed inset-0 z-0 bg-gradient-to-b from-[#f2eadf] via-[#faf5ee] via-60% to-[#eee3d5]">
       <Canvas
         camera={{ position: [0, 5, 10], fov: 60 }}
         gl={{ antialias: true, alpha: false }}

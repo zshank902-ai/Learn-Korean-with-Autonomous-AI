@@ -21,14 +21,14 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
     if (phase === 'correct') {
       // Step 1: Border flash
       controls.start({
-        borderColor: '#00C853',
-        boxShadow: '6px 6px 0px #00C853',
+        borderColor: '#10B981', // green
+        boxShadow: 'none',
         transition: { duration: 0.15, ease: 'easeOut' }
       });
       // Step 2: Fill sweep
       overlayControls.start({
         scaleX: [0, 1],
-        backgroundColor: 'rgba(0, 200, 83, 0.2)',
+        backgroundColor: 'rgba(16, 185, 129, 0.2)',
         transition: { duration: 0.3, ease: 'easeOut' }
       });
       // Word pop
@@ -38,22 +38,22 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
       });
     } else if (phase === 'wrong') {
       controls.start({
-        borderColor: '#FF4B4B',
-        boxShadow: '6px 6px 0px #FF4B4B',
+        borderColor: '#ef4444', // red
+        boxShadow: 'none',
         x: [0, -12, 12, -10, 10, -6, 6, -3, 3, 0],
         transition: { duration: 0.5, ease: 'linear' }
       });
       overlayControls.start({
         scaleX: 1,
-        backgroundColor: ['rgba(255, 75, 75, 0)', 'rgba(255, 75, 75, 0.15)', 'rgba(255, 75, 75, 0)'],
+        backgroundColor: ['rgba(239, 68, 68, 0)', 'rgba(239, 68, 68, 0.15)', 'rgba(239, 68, 68, 0)'],
         transition: { duration: 0.4 }
       });
       // Reset after 0.6s
       setTimeout(() => {
         if (phase === 'wrong') {
           controls.start({
-            borderColor: '#0f0f0f',
-            boxShadow: '6px 6px 0px #0f0f0f',
+            borderColor: 'var(--color-on-surface)',
+            boxShadow: 'none',
             x: 0,
             transition: { duration: 0.2 }
           });
@@ -61,17 +61,17 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
       }, 600);
     } else if (phase === 'skipped') {
       controls.start({
-        borderColor: '#B71C1C',
-        boxShadow: '6px 6px 0px #B71C1C',
+        borderColor: '#b91c1c',
+        boxShadow: 'none',
         backgroundColor: '#fee2e2',
         transition: { duration: 0.2 }
       });
     } else if (phase === 'ready') {
       // Reset
       controls.start({
-        borderColor: '#0f0f0f',
-        boxShadow: '6px 6px 0px #0f0f0f',
-        backgroundColor: '#ffffff',
+        borderColor: 'var(--color-on-surface)',
+        boxShadow: 'none',
+        backgroundColor: 'var(--color-surface)',
         transition: { duration: 0.2 }
       });
       overlayControls.start({ scaleX: 0, backgroundColor: 'rgba(0,0,0,0)' });
@@ -83,7 +83,7 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
     const angle = (Math.PI * 2 * i) / 12;
     // eslint-disable-next-line react-hooks/purity
     const distance = 60 + Math.random() * 60;
-    const colors = ['#FFD600', '#00C853', '#00E5FF'];
+    const colors = ['var(--color-secondary)', '#10B981', 'var(--color-primary)'];
     return (
       <motion.div
         key={i}
@@ -95,13 +95,8 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
           y: Math.sin(angle) * distance,
         } : { opacity: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        style={{
-          position: 'absolute',
-          width: '8px',
-          height: '8px',
-          backgroundColor: colors[i % 3],
-          zIndex: 10
-        }}
+        className="absolute w-2 h-2 z-10"
+        style={{ backgroundColor: colors[i % 3] }}
       />
     );
   });
@@ -109,38 +104,25 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
   return (
     <motion.div
       animate={controls}
-      initial={{ borderColor: '#0f0f0f', boxShadow: '6px 6px 0px #0f0f0f', backgroundColor: '#ffffff', x: 0 }}
-      style={{
-        position: 'relative',
-        width: '100%',
-        maxWidth: '500px',
-        minHeight: '280px',
-        border: '3px solid #0f0f0f',
-        borderRadius: '24px',
-        overflow: 'hidden',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '32px'
-      }}
+      initial={{ borderColor: 'var(--color-outline-variant)', boxShadow: 'none', backgroundColor: 'var(--color-surface)', x: 0 }}
+      className="relative w-full max-w-[500px] min-h-[280px] border border-[var(--color-outline-variant)] rounded-3xl overflow-hidden flex flex-col items-center justify-center p-8 shadow-sm font-sans"
     >
       <motion.div
         animate={overlayControls}
         initial={{ scaleX: 0, originX: 0 }}
-        style={{ position: 'absolute', inset: 0, zIndex: 0 }}
+        className="absolute inset-0 z-0"
       />
       
       {phase === 'correct' && confetti}
 
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div className="relative z-[1] flex flex-col items-center">
         <AnimatePresence>
           {phase === 'correct' && (
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: [0, 1.4, 1], opacity: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-              style={{ position: 'absolute', top: -30, right: -40, color: '#00C853', fontSize: '48px', fontWeight: 900 }}
+              className="absolute -top-8 -right-10 text-[#10B981] text-5xl font-extrabold"
             >
               ✓
             </motion.div>
@@ -150,7 +132,7 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: [0, 1.4, 1], opacity: 1 }}
               transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-              style={{ position: 'absolute', top: -30, right: -40, color: '#B71C1C', fontSize: '48px', fontWeight: 900 }}
+              className="absolute -top-8 -right-10 text-[#b91c1c] text-5xl font-extrabold"
             >
               ✗
             </motion.div>
@@ -159,36 +141,36 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
 
         <motion.span
           animate={wordControls}
-          style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', fontWeight: 900, fontFamily: '"Noto Sans KR", sans-serif', color: '#0f0f0f', lineHeight: 1.2 }}
+          className="text-[clamp(3rem,8vw,5rem)] font-extrabold text-[var(--color-on-surface)] leading-[1.2]"
         >
           {word.korean}
         </motion.span>
 
-        <div style={{ marginTop: '8px', cursor: 'pointer' }} onClick={() => setShowHint(!showHint)}>
+        <div className="mt-2 cursor-pointer" onClick={() => setShowHint(!showHint)}>
           {showHint ? (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <span style={{ fontSize: '20px', fontWeight: 900, color: '#6b7280', letterSpacing: '1px' }}>
+            <div className="flex flex-col items-center">
+              <span className="text-xl font-bold text-[var(--color-on-surface-variant)] tracking-widest">
                 {word.romanization}
               </span>
-              <span style={{ fontSize: '18px', fontStyle: 'italic', color: '#374151', marginTop: '4px' }}>
+              <span className="text-lg italic text-[var(--color-on-surface-variant)] mt-1">
                 {word.meaning}
               </span>
             </div>
           ) : (
-            <span style={{ fontSize: '14px', fontWeight: 700, color: '#9ca3af', textDecoration: 'underline' }}>Show hint</span>
+            <span className="text-sm font-bold text-[var(--color-on-surface-variant)] underline">Show hint</span>
           )}
         </div>
 
-        <div style={{ display: 'flex', gap: '8px', marginTop: '24px' }}>
+        <div className="flex gap-2 mt-6">
           {[0, 1, 2].map(i => (
             <motion.div
               key={i}
               animate={{
                 scale: attempts === i + 1 && phase === 'wrong' ? [1, 1.4, 1] : 1,
-                backgroundColor: attempts > i || phase === 'skipped' ? '#FF4B4B' : '#e5e7eb'
+                backgroundColor: attempts > i || phase === 'skipped' ? '#ef4444' : '#e5e7eb'
               }}
               transition={{ duration: 0.3 }}
-              style={{ width: '12px', height: '12px', borderRadius: '50%' }}
+              className="w-3 h-3 rounded-full"
             />
           ))}
         </div>
@@ -198,7 +180,7 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              style={{ marginTop: '16px', fontWeight: 900, color: '#B71C1C', fontSize: '18px' }}
+              className="mt-4 font-bold text-[#b91c1c] text-lg"
             >
               Skipped — we'll revisit this!
             </motion.div>
@@ -208,7 +190,7 @@ export default function WordBox({ word, phase, attempts }: WordBoxProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ repeat: Infinity, duration: 2 }}
-              style={{ marginTop: '16px', fontWeight: 700, color: '#9ca3af', fontSize: '14px' }}
+              className="mt-4 font-bold text-[var(--color-on-surface-variant)] text-sm"
             >
               Tap mic to speak
             </motion.div>

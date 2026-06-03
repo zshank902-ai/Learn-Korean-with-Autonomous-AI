@@ -30,10 +30,10 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
 
   if (state.phase === 'setup') {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', padding: '24px' }}>
-        <h2 style={{ fontSize: '32px', fontWeight: 900, marginBottom: '48px', textAlign: 'center' }}>Choose Difficulty</h2>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] p-6 py-8">
+        <h2 className="text-3xl font-extrabold font-serif mb-12 text-center text-[var(--color-on-surface)]">Choose Difficulty</h2>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '100%', maxWidth: '400px' }}>
+        <div className="flex flex-col gap-6 w-full max-w-md">
           {[
             { level: 1, label: '초급 — Beginner', desc: 'Single & double syllables' },
             { level: 2, label: '중급 — Intermediate', desc: 'Common 2-3 syllable words' },
@@ -42,18 +42,14 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
             <motion.button
               key={opt.level}
               type="button"
-              whileHover={{ x: -4, y: -4, boxShadow: '8px 8px 0px #0f0f0f' }}
-              whileTap={{ x: 4, y: 4, boxShadow: '0px 0px 0px #0f0f0f' }}
+              whileHover={{ y: -4 }}
+              whileTap={{ y: 2, scale: 0.98 }}
               onClick={(e) => { e.preventDefault(); startSession(opt.level as 1 | 2 | 3 | 'all'); }}
               disabled={state.isLoadingWords}
-              style={{
-                width: '100%', padding: '24px', backgroundColor: '#FAFAFA', border: '3px solid #0f0f0f',
-                borderRadius: '16px', boxShadow: '4px 4px 0px #0f0f0f', cursor: state.isLoadingWords ? 'wait' : 'pointer',
-                display: 'flex', flexDirection: 'column', alignItems: 'center'
-              }}
+              className={`sahara-card p-6 w-full flex flex-col items-center justify-center transition-all ${state.isLoadingWords ? 'opacity-50 cursor-wait' : 'cursor-pointer hover:border-[var(--color-primary)]'}`}
             >
-              <span style={{ fontSize: '24px', fontWeight: 900, marginBottom: '8px' }}>{opt.label}</span>
-              <span style={{ fontSize: '14px', color: '#6b7280', fontWeight: 700 }}>{opt.desc}</span>
+              <span className="text-2xl font-extrabold font-serif mb-2 text-[var(--color-on-surface)]">{opt.label}</span>
+              <span className="text-sm font-bold text-[var(--color-on-surface-variant)] font-sans">{opt.desc}</span>
             </motion.button>
           ))}
         </div>
@@ -75,10 +71,10 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
   const currentWord = state.words[state.currentIndex];
 
   return (
-    <div style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAFAFA', position: 'relative' }}>
+    <div className="w-full flex flex-col min-h-screen relative font-sans">
       <DrillProgress state={state} />
 
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '48px 24px', overflow: 'hidden', position: 'relative' }}>
+      <div className="flex-1 flex flex-col items-center p-6 py-12 overflow-hidden relative">
         
         <AnimatePresence mode="wait">
           {state.error && (
@@ -86,14 +82,14 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              style={{ position: 'absolute', top: 24, right: 24, padding: '16px 24px', backgroundColor: '#FF4B4B', color: 'white', border: '3px solid #0f0f0f', borderRadius: '12px', boxShadow: '4px 4px 0px #0f0f0f', fontWeight: 900, zIndex: 50 }}
+              className="absolute top-6 right-6 p-4 px-6 bg-[var(--color-error-container)] text-[var(--color-on-error-container)] border border-[var(--color-error)] rounded-xl shadow-sm font-bold z-50"
             >
               {state.error}
             </motion.div>
           )}
         </AnimatePresence>
 
-        <div style={{ position: 'relative', width: '100%', maxWidth: '500px', display: 'flex', justifyContent: 'center' }}>
+        <div className="relative w-full max-w-lg flex justify-center">
           <AnimatePresence mode="popLayout" custom={state.currentIndex}>
             <motion.div
               key={currentWord?.id}
@@ -101,7 +97,7 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: '-120%', opacity: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-              style={{ width: '100%', position: 'absolute' }}
+              className="w-full absolute"
             >
               {currentWord && (
                 <WordBox word={currentWord} phase={state.phase} attempts={state.attempts} />
@@ -109,7 +105,7 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
             </motion.div>
           </AnimatePresence>
           {/* Spacer to maintain layout height while WordBox is absolutely positioned */}
-          <div style={{ height: '280px', width: '100%' }} />
+          <div className="h-[280px] w-full" />
         </div>
 
         <MicButton
@@ -120,10 +116,10 @@ export default function PronunciationDrill({ onBack }: PronunciationDrillProps) 
 
         <motion.button
           type="button"
-          whileHover={{ y: -2, boxShadow: '4px 4px 0px #0f0f0f' }}
-          whileTap={{ y: 2, boxShadow: '0px 0px 0px #0f0f0f' }}
+          whileHover={{ y: -2 }}
+          whileTap={{ y: 2 }}
           onClick={() => currentWord && speak(currentWord.korean)}
-          style={{ marginTop: '32px', padding: '12px 24px', backgroundColor: '#ffffff', border: '2px solid #0f0f0f', borderRadius: '12px', fontWeight: 900, fontSize: '16px', cursor: 'pointer', boxShadow: '2px 2px 0px #0f0f0f' }}
+          className="mt-8 px-6 py-3 sahara-btn-secondary bg-[var(--color-surface)] border-[var(--color-outline-variant)] hover:bg-[var(--color-surface-container)]"
         >
           🔊 들어보기 (Listen)
         </motion.button>

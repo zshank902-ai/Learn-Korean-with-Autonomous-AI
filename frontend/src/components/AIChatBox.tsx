@@ -235,9 +235,9 @@ export default function AIChatBox() {
             wsStatus === 'ready' ? 'border-green-600/50 bg-green-100' : 'border-orange-600/50 bg-orange-100'
           }`}>
             {wsStatus === 'ready' ? <Wifi size={12} className="text-green-600" /> : <WifiOff size={12} className="text-orange-600" />}
-          <span className="text-[10px] font-extrabold uppercase tracking-wider" style={{
-            color: wsStatus === 'ready' ? '#16a34a' : '#ea580c'
-          }}>{wsStatus === 'ready' ? 'Connected' : 'Reconnecting...'}</span>
+          <span className={`text-[10px] font-extrabold uppercase tracking-wider ${
+            wsStatus === 'ready' ? 'text-green-600' : 'text-orange-600'
+          }`}>{wsStatus === 'ready' ? 'Connected' : 'Reconnecting...'}</span>
           </div>
         </div>
       </div>

@@ -227,13 +227,13 @@ function TopikIIExamInner() {
 
   if (isLoading || isGrading) {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', fontFamily: '"Manrope", sans-serif' }}>
-          <div style={{ fontSize: '40px', marginBottom: '16px' }}>{isGrading ? '🤖' : '📋'}</div>
-          <p style={{ fontWeight: 700, fontSize: '18px', color: 'var(--color-on-background)' }}>
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center font-sans">
+        <div className="text-center">
+          <div className="text-5xl mb-4">{isGrading ? '🤖' : '📋'}</div>
+          <p className="font-extrabold text-xl text-[var(--color-on-background)] font-serif">
             {isGrading ? 'AI is grading your essays…' : 'Loading Exam…'}
           </p>
-          <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '14px', marginTop: '8px' }}>
+          <p className="text-[var(--color-on-surface-variant)] text-sm mt-2 font-medium">
             {isGrading ? 'This may take up to 15 seconds' : 'Generating TOPIK-II questions'}
           </p>
         </div>
@@ -243,9 +243,9 @@ function TopikIIExamInner() {
 
   if (phase === 'results' && result) {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', padding: '32px 20px 80px', fontFamily: '"Manrope", sans-serif' }}>
-        <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-on-background)', marginBottom: '24px', fontFamily: '"EB Garamond", serif' }}>
+      <div className="min-h-screen bg-[var(--color-background)] p-8 pb-20 font-sans">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-extrabold text-[var(--color-on-background)] mb-6 font-serif">
             📊 TOPIK II — Exam Results
           </h1>
           <ExamScoreReport examType="topik-ii" result={result} />
@@ -256,30 +256,20 @@ function TopikIIExamInner() {
 
   if (phase === 'break') {
     return (
-      <div style={{ minHeight: '100vh', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="min-h-screen bg-[var(--color-surface)] flex items-center justify-center font-sans">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '24px',
-            padding: '48px 40px',
-            textAlign: 'center',
-            boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-            maxWidth: '420px',
-            width: '100%',
-            fontFamily: '"Manrope", sans-serif',
-          }}
+          className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-3xl p-12 text-center shadow-sm w-full max-w-md"
         >
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>☕</div>
-          <h2 style={{ fontSize: '26px', fontWeight: 700, color: 'var(--color-on-surface)', marginBottom: '8px', fontFamily: '"EB Garamond", serif' }}>
+          <div className="text-6xl mb-4">☕</div>
+          <h2 className="text-3xl font-extrabold text-[var(--color-on-surface)] mb-2 font-serif">
             쓰기 시험 완료
           </h2>
-          <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '15px', marginBottom: '24px' }}>
+          <p className="text-[var(--color-on-surface-variant)] text-base mb-6 font-medium">
             잠시 휴식 후 듣기 시험이 시작됩니다.
           </p>
-          <div style={{ fontSize: '56px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif', marginBottom: '24px' }}>
+          <div className="text-6xl font-extrabold text-[var(--color-primary)] font-serif mb-8 leading-none">
             {formatBreak(breakRemaining)}
           </div>
           <button
@@ -288,22 +278,7 @@ function TopikIIExamInner() {
               setPhase('listening');
               setCurrentIndex(0);
             }}
-            style={{
-              background: 'var(--color-primary)',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '16px',
-              padding: '14px 32px',
-              fontWeight: 700,
-              fontSize: '15px',
-              cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(194, 101, 42, 0.3)',
-              textTransform: 'uppercase',
-              fontFamily: '"Manrope", sans-serif',
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.05)'; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; }}
+            className="sahara-btn px-8 py-4 text-base w-full uppercase tracking-widest"
           >
             지금 시작하기 →
           </button>
@@ -318,40 +293,18 @@ function TopikIIExamInner() {
   const answeredCount = Object.keys(currentMCQAnswers).length;
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-background)', fontFamily: '"Manrope", sans-serif' }}>
+    <div className="min-h-screen bg-[var(--color-background)] font-sans flex flex-col">
       {/* Header */}
       <div
-        style={{
-          background: 'var(--color-surface)',
-          borderBottom: '1px solid var(--color-outline-variant)',
-          padding: '16px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '16px',
-          flexWrap: 'wrap',
-          position: 'sticky',
-          top: 0,
-          zIndex: 50,
-          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-        }}
+        className="bg-[var(--color-surface)] border-b border-[var(--color-outline-variant)] py-4 px-6 flex items-center gap-4 flex-wrap sticky top-0 z-50 shadow-sm"
       >
-        <Link href="/roadmap" style={{ textDecoration: 'none' }}>
-          <span style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif', cursor: 'pointer' }}>
+        <Link href="/roadmap" className="no-underline">
+          <span className="text-2xl font-extrabold text-[var(--color-primary)] font-serif cursor-pointer">
             K-Mastery
           </span>
         </Link>
         <div
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '12px',
-            padding: '6px 16px',
-            fontWeight: 700,
-            fontSize: '13px',
-            color: 'var(--color-on-surface)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
+          className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl py-1.5 px-4 font-bold text-sm text-[var(--color-on-surface)] uppercase tracking-wide"
         >
           {phase === 'writing' ? '✏️ Writing' : phase === 'listening' ? '🎧 Listening' : '📖 Reading'}
         </div>
@@ -368,11 +321,11 @@ function TopikIIExamInner() {
         )}
 
         {showMCQHeader && (
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-on-surface)' }}>
+          <div className="ml-auto flex items-center gap-4">
+            <span className="text-base font-bold text-[var(--color-on-surface)]">
               Q{currentIndex + 1} / {totalQCount}
             </span>
-            <span style={{ fontSize: '13px', color: 'var(--color-on-surface-variant)' }}>
+            <span className="text-sm text-[var(--color-on-surface-variant)] font-medium">
               {answeredCount}/{totalQCount} answered
             </span>
             <button
@@ -384,21 +337,7 @@ function TopikIIExamInner() {
                   void submitFinal();
                 }
               }}
-              style={{
-                background: 'var(--color-primary)',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '16px',
-                padding: '10px 20px',
-                fontWeight: 700,
-                fontSize: '14px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 12px rgba(194, 101, 42, 0.3)',
-                textTransform: 'uppercase',
-                transition: 'transform 0.2s',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
+              className="px-5 py-2.5 rounded-xl font-bold text-sm uppercase tracking-wide transition-all sahara-btn"
             >
               {phase === 'listening' ? 'Next Section →' : 'Submit Exam →'}
             </button>
@@ -407,19 +346,21 @@ function TopikIIExamInner() {
       </div>
 
       {/* Body */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 20px 60px' }}>
+      <div className="flex-1 w-full max-w-7xl mx-auto p-6 md:p-8 flex gap-8 flex-col lg:flex-row items-start">
         {phase === 'writing' && (
-          <WritingSection
-            questions={writingQs}
-            answers={writingAnswers}
-            onAnswer={(qNum, val) => setWritingAnswers((p) => ({ ...p, [qNum]: val }))}
-            onSubmit={submitWriting}
-          />
+          <div className="w-full">
+            <WritingSection
+              questions={writingQs}
+              answers={writingAnswers}
+              onAnswer={(qNum, val) => setWritingAnswers((p) => ({ ...p, [qNum]: val }))}
+              onSubmit={submitWriting}
+            />
+          </div>
         )}
 
         {showMCQHeader && (
-          <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
-            <div style={{ flex: '1', minWidth: '300px' }}>
+          <div className="flex w-full gap-8 flex-col lg:flex-row items-start">
+            <div className="flex-1 min-w-[300px] w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`${phase}-${currentIndex}`}
@@ -427,17 +368,11 @@ function TopikIIExamInner() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2 }}
-                  style={{
-                    background: 'var(--color-surface)',
-                    border: '1px solid var(--color-outline-variant)',
-                    borderRadius: '24px',
-                    padding: '32px',
-                    boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-                  }}
+                  className="sahara-card rounded-3xl p-8"
                 >
                   {phase === 'listening' ? (
                     <ListeningSection
-                      questions={currentMCQQuestions}
+                      questions={currentMCQQuestions as any}
                       answers={currentMCQAnswers}
                       onAnswer={handleMCQAnswer}
                       currentIndex={currentIndex}
@@ -445,7 +380,7 @@ function TopikIIExamInner() {
                     />
                   ) : (
                     <ReadingSection
-                      questions={currentMCQQuestions}
+                      questions={currentMCQQuestions as any}
                       answers={currentMCQAnswers}
                       onAnswer={handleMCQAnswer}
                       currentIndex={currentIndex}
@@ -455,54 +390,25 @@ function TopikIIExamInner() {
                 </motion.div>
               </AnimatePresence>
 
-              <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
+              <div className="flex gap-4 mt-6">
                 <button
                   onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
                   disabled={currentIndex === 0}
-                  style={{
-                    flex: 1,
-                    background: 'var(--color-surface)',
-                    border: '1px solid var(--color-outline-variant)',
-                    borderRadius: '16px',
-                    padding: '14px',
-                    fontWeight: 700,
-                    color: 'var(--color-on-surface)',
-                    cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-                    opacity: currentIndex === 0 ? 0.5 : 1,
-                    fontFamily: '"Manrope", sans-serif',
-                    transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => { if (currentIndex !== 0) (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)'; }}
+                  className={`flex-1 py-4 rounded-xl font-bold transition-all ${currentIndex === 0 ? 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed opacity-50' : 'sahara-btn-secondary bg-[var(--color-surface)] hover:bg-[var(--color-surface-container-low)]'}`}
                 >
                   ← Previous
                 </button>
                 <button
                   onClick={() => setCurrentIndex((i) => Math.min(totalQCount - 1, i + 1))}
                   disabled={currentIndex === totalQCount - 1}
-                  style={{
-                    flex: 1,
-                    background: 'var(--color-primary)',
-                    color: '#ffffff',
-                    border: 'none',
-                    borderRadius: '16px',
-                    padding: '14px',
-                    fontWeight: 700,
-                    cursor: currentIndex === totalQCount - 1 ? 'not-allowed' : 'pointer',
-                    opacity: currentIndex === totalQCount - 1 ? 0.5 : 1,
-                    boxShadow: currentIndex === totalQCount - 1 ? 'none' : '0 4px 12px rgba(194, 101, 42, 0.3)',
-                    fontFamily: '"Manrope", sans-serif',
-                    transition: 'transform 0.2s',
-                  }}
-                  onMouseEnter={(e) => { if (currentIndex !== totalQCount - 1) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
+                  className={`flex-1 py-4 rounded-xl font-bold transition-all ${currentIndex === totalQCount - 1 ? 'bg-[var(--color-surface-container)] text-[var(--color-outline-variant)] cursor-not-allowed opacity-50' : 'sahara-btn'}`}
                 >
                   Next →
                 </button>
               </div>
             </div>
 
-            <div style={{ width: '280px', flexShrink: 0 }}>
+            <div className="w-full lg:w-[320px] shrink-0 sticky top-28">
               <QuestionNavigator
                 total={totalQCount}
                 answers={currentMCQAnswers}
@@ -522,8 +428,8 @@ function TopikIIExamInner() {
 export default function TopikIIExamPage() {
   return (
     <Suspense fallback={
-      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontWeight: 700, color: 'var(--color-on-background)', fontFamily: '"Manrope", sans-serif' }}>Loading…</p>
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center">
+        <p className="font-bold text-[var(--color-on-background)] font-sans">Loading…</p>
       </div>
     }>
       <TopikIIExamInner />

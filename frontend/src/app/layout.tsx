@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
-import NavbarWrapper from "@/components/NavbarWrapper";
+import NavigationLayout from "@/components/NavigationLayout";
 
 const ebGaramond = EB_Garamond({ subsets: ["latin"], variable: "--font-serif" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" });
@@ -18,11 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${ebGaramond.variable} ${manrope.variable}`} suppressHydrationWarning>
-      <body suppressHydrationWarning className="font-sans antialiased min-h-screen relative overflow-x-hidden bg-[var(--color-background)] text-[var(--color-on-background)] selection:bg-[var(--color-primary-container)] selection:text-white">
-        <NavbarWrapper />
-        <div className="pt-24 pb-8">
+      <body suppressHydrationWarning className="font-sans antialiased min-h-screen flex flex-col md:flex-row bg-[var(--color-background)] text-[var(--color-on-background)] selection:bg-[var(--color-primary-container)] selection:text-white">
+        <NavigationLayout>
           {children}
-        </div>
+        </NavigationLayout>
       </body>
     </html>
   );

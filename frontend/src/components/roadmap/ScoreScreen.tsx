@@ -68,7 +68,7 @@ function CircularProgress({ percent, size = 120, strokeWidth = 10, color = '#636
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#e5e7eb"
+          stroke="var(--color-surface-container-high)"
           strokeWidth={strokeWidth}
         />
         <motion.circle
@@ -100,7 +100,7 @@ function CircularProgress({ percent, size = 120, strokeWidth = 10, color = '#636
             fontFamily: 'Inter, sans-serif',
             fontWeight: 900,
             fontSize: '22px',
-            color: '#0f0f0f',
+            color: 'var(--color-on-surface)',
           }}
         >
           {percent}%
@@ -110,7 +110,7 @@ function CircularProgress({ percent, size = 120, strokeWidth = 10, color = '#636
             fontFamily: 'Inter, sans-serif',
             fontWeight: 600,
             fontSize: '10px',
-            color: '#6b7280',
+            color: 'var(--color-on-surface-variant)',
             textTransform: 'uppercase',
             letterSpacing: '0.06em',
           }}
@@ -139,7 +139,7 @@ function SectionBar({ label, score, maxScore, color }: SectionBarProps) {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 700,
             fontSize: '12px',
-            color: '#374151',
+            color: 'var(--color-on-surface-variant)',
             textTransform: 'capitalize',
           }}
         >
@@ -159,10 +159,10 @@ function SectionBar({ label, score, maxScore, color }: SectionBarProps) {
       <div
         style={{
           height: '8px',
-          background: '#f3f4f6',
+          background: 'var(--color-surface-container-low)',
           borderRadius: '999px',
           overflow: 'hidden',
-          border: '1.5px solid #e5e7eb',
+          border: '1px solid var(--color-outline-variant)',
         }}
       >
         <motion.div
@@ -208,10 +208,9 @@ function XPBurst({ xp }: { xp: number }) {
           alignItems: 'center',
           gap: '4px',
           background: '#fef9c3',
-          border: '2.5px solid #ca8a04',
+          border: '1px solid #ca8a04',
           borderRadius: '10px',
           padding: '8px 16px',
-          boxShadow: '3px 3px 0px #0f0f0f',
         }}
       >
         <Zap size={18} color="#ca8a04" />
@@ -283,13 +282,12 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
       exit={{ opacity: 0, scale: 0.92 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       style={{
-        background: '#ffffff',
-        border: '3px solid #0f0f0f',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
         borderRadius: '20px',
         padding: '32px',
         maxWidth: '560px',
         width: '100%',
-        boxShadow: '6px 6px 0px #0f0f0f',
         fontFamily: 'Inter, sans-serif',
         display: 'flex',
         flexDirection: 'column',
@@ -305,7 +303,7 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
           top: '16px',
           right: '16px',
           background: 'none',
-          border: '2px solid #d1d5db',
+          border: '1px solid var(--color-outline-variant)',
           borderRadius: '8px',
           padding: '4px',
           cursor: 'pointer',
@@ -314,12 +312,12 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
           justifyContent: 'center',
         }}
       >
-        <X size={16} color="#6b7280" />
+        <X size={16} color="var(--color-on-surface-variant)" />
       </button>
 
       {/* Score + pass/fail */}
       <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-        <p style={{ margin: 0, fontWeight: 600, fontSize: '13px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+        <p style={{ margin: 0, fontWeight: 600, fontSize: '13px', color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
           {resultType === 'essay' ? 'Essay Score' : 'Exam Score'}
         </p>
         <motion.span
@@ -342,10 +340,9 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
           transition={{ type: 'spring', stiffness: 400, damping: 20, delay: 0.4 }}
           style={{
             background: passed ? '#dcfce7' : '#fee2e2',
-            border: `2.5px solid ${passed ? '#16a34a' : '#dc2626'}`,
+            border: `1px solid ${passed ? '#16a34a' : '#dc2626'}`,
             borderRadius: '999px',
             padding: '6px 24px',
-            boxShadow: `3px 3px 0px ${passed ? '#16a34a' : '#dc2626'}`,
           }}
         >
           <span
@@ -379,13 +376,13 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
             display: 'flex',
             flexDirection: 'column',
             gap: '10px',
-            background: '#f9fafb',
-            border: '2px solid #e5e7eb',
+            background: 'var(--color-surface-container-low)',
+            border: '1px solid var(--color-outline-variant)',
             borderRadius: '12px',
             padding: '16px',
           }}
         >
-          <p style={{ margin: 0, fontWeight: 800, fontSize: '13px', color: '#374151' }}>
+          <p style={{ margin: 0, fontWeight: 800, fontSize: '13px', color: 'var(--color-on-surface-variant)' }}>
             {resultType === 'essay' ? '📝 Rubric Breakdown' : '📊 Section Scores'}
           </p>
           {sectionBars.map((bar) => (
@@ -410,7 +407,7 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
                 margin: '0 0 8px',
                 fontWeight: 800,
                 fontSize: '12px',
-                color: '#374151',
+                color: 'var(--color-on-surface-variant)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.06em',
               }}
@@ -422,14 +419,14 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
                 <span
                   key={area}
                   style={{
-                    background: '#fee2e2',
-                    border: '2px solid #dc2626',
+                    background: '#ffebee',
+                    border: '1px solid #ef5350',
                     borderRadius: '6px',
                     padding: '3px 10px',
                     fontFamily: 'Inter, sans-serif',
                     fontWeight: 700,
                     fontSize: '11px',
-                    color: '#b91c1c',
+                    color: '#c62828',
                   }}
                 >
                   {area}
@@ -459,7 +456,7 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
                 fontFamily: 'Inter, sans-serif',
                 fontWeight: 400,
                 fontSize: '12px',
-                color: '#4b5563',
+                color: 'var(--color-on-surface-variant)',
                 lineHeight: 1.5,
               }}
             >
@@ -495,14 +492,13 @@ export default function ScoreScreen({ result, resultType, onClose, xpEarned }: S
         style={{
           padding: '12px 0',
           borderRadius: '10px',
-          border: '2.5px solid #0f0f0f',
-          background: passed ? '#dcfce7' : '#f9fafb',
-          color: '#0f0f0f',
+          border: '1px solid var(--color-outline-variant)',
+          background: passed ? '#dcfce7' : 'var(--color-surface-container-low)',
+          color: 'var(--color-on-surface)',
           fontFamily: 'Inter, sans-serif',
           fontWeight: 800,
           fontSize: '14px',
           cursor: 'pointer',
-          boxShadow: '3px 3px 0px #0f0f0f',
           width: '100%',
         }}
       >

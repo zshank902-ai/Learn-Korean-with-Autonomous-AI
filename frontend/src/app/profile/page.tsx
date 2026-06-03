@@ -16,22 +16,22 @@ export default function ProfilePage() {
   const { user } = useAuthStore();
 
   const badges = [
-    { id: 1, name: 'First Word', icon: <Target size={24} />, bg: '#C2652A', earned: true },
-    { id: 2, name: '7-Day Streak', icon: <Flame size={24} />, bg: '#EF4444', earned: true },
-    { id: 3, name: 'Perfect Pronunciation', icon: <Award size={24} />, bg: '#818CF8', earned: true },
-    { id: 4, name: '10k XP Club', icon: <Zap size={24} />, bg: '#4F46E5', earned: xp >= 10000 },
-    { id: 5, name: 'TOPIK II Master', icon: <Hexagon size={24} />, bg: '#16A34A', earned: level >= 3 },
+    { id: 1, name: 'First Word', icon: <Target size={24} />, bgClass: 'bg-[#C2652A]', earned: true },
+    { id: 2, name: '7-Day Streak', icon: <Flame size={24} />, bgClass: 'bg-[#EF4444]', earned: true },
+    { id: 3, name: 'Perfect Pronunciation', icon: <Award size={24} />, bgClass: 'bg-[#818CF8]', earned: true },
+    { id: 4, name: '10k XP Club', icon: <Zap size={24} />, bgClass: 'bg-[#4F46E5]', earned: xp >= 10000 },
+    { id: 5, name: 'TOPIK II Master', icon: <Hexagon size={24} />, bgClass: 'bg-[#16A34A]', earned: level >= 3 },
   ];
 
   const stats = [
-    { label: 'Total XP', value: xp.toLocaleString(), color: '#4F46E5' },
-    { label: 'Current Streak', value: `${streak} Days`, color: '#C2652A' },
-    { label: 'K-Coins', value: coins.toLocaleString(), color: '#FBBF24' },
-    { label: 'Words Learned', value: '342', color: '#16A34A' },
+    { label: 'Total XP', value: xp.toLocaleString(), textClass: 'text-[#4F46E5]' },
+    { label: 'Current Streak', value: `${streak} Days`, textClass: 'text-[#C2652A]' },
+    { label: 'K-Coins', value: coins.toLocaleString(), textClass: 'text-[#FBBF24]' },
+    { label: 'Words Learned', value: '342', textClass: 'text-[#16A34A]' },
   ];
 
   return (
-    <div className="min-h-screen bg-transparent p-4 md:p-6 max-w-screen-xl mx-auto text-[var(--color-on-surface)] pt-8 md:pt-10 relative z-10 font-sans">
+    <div className="flex-1 p-6 md:p-12 max-w-7xl mx-auto w-full space-y-8 relative z-10 font-sans text-[var(--color-on-surface)]">
       <ToastContainer />
       {/* Header Profile Card */}
       <div className="sahara-card rounded-3xl border border-[var(--color-outline-variant)] p-6 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 relative overflow-hidden">
@@ -89,7 +89,7 @@ export default function ProfilePage() {
                   className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-outline-variant)] p-5 text-center shadow-sm"
                 >
                   <p className="text-xs font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest mb-2 font-sans">{stat.label}</p>
-                  <p className="text-2xl font-extrabold font-serif drop-shadow-sm" style={{ color: stat.color }}>
+                  <p className={`text-2xl font-extrabold font-serif drop-shadow-sm ${stat.textClass}`}>
                     {stat.value}
                   </p>
                 </motion.div>
@@ -115,8 +115,7 @@ export default function ProfilePage() {
                   className={`flex flex-col items-center text-center p-4 rounded-2xl border ${badge.earned ? 'border-[var(--color-outline-variant)] bg-[var(--color-surface)] shadow-sm' : 'border-[var(--color-outline-variant)] bg-[var(--color-surface-container)] opacity-60'}`}
                 >
                   <div 
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${badge.earned ? 'border border-[var(--color-outline-variant)] shadow-sm text-white' : 'border-[var(--color-outline-variant)] opacity-40 grayscale bg-[var(--color-surface)] text-[var(--color-on-surface-variant)]'}`}
-                    style={badge.earned ? { background: badge.bg } : {}}
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${badge.earned ? `border border-[var(--color-outline-variant)] shadow-sm text-white ${badge.bgClass}` : 'border-[var(--color-outline-variant)] opacity-40 grayscale bg-[var(--color-surface)] text-[var(--color-on-surface-variant)]'}`}
                   >
                     {badge.icon}
                   </div>

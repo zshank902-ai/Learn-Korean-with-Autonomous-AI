@@ -48,7 +48,7 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="absolute w-4 h-4 rounded-full"
                 style={{
-                  backgroundColor: ['#c2652a', '#e38d58', '#faf5ee', '#1E1B4B'][i % 4]
+                  backgroundColor: ['#c2652a', '#e38d58', '#faf5ee', '#3a302a'][i % 4]
                 }}
               />
             );

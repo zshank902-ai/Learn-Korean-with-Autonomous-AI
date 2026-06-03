@@ -96,16 +96,14 @@ export default function ProgressRail({
                     height: orbSize,
                     borderRadius: '50%',
                     border: `1.5px solid ${locked ? 'var(--color-outline-variant)' : 'var(--color-primary)'}`,
-                    background: locked ? 'var(--color-surface-container-low)' : completed ? 'var(--color-surface-container)' : isActive ? 'var(--color-surface-container)' : '#ffffff',
+                    background: locked ? 'var(--color-surface-container-low)' : completed ? 'var(--color-surface-container)' : isActive ? 'var(--color-surface-container)' : 'var(--color-surface)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: locked ? 'not-allowed' : 'pointer',
                     boxShadow: isActive
-                      ? `0 0 0 4px var(--color-primary-container), 0 2px 12px rgba(58, 48, 42, 0.08)`
-                      : locked
-                      ? 'none'
-                      : '0 2px 12px rgba(58, 48, 42, 0.04)',
+                      ? `0 0 0 4px var(--color-primary-container)`
+                      : 'none',
                     transition: 'box-shadow 0.2s ease',
                     position: 'relative',
                     flexShrink: 0,

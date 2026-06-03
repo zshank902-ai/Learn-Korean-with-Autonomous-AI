@@ -40,7 +40,7 @@ export default function LevelUpModal() {
             recycle={false}
             numberOfPieces={400}
             gravity={0.15}
-            colors={['#c2652a', '#e38d58', '#faf5ee', '#1E1B4B']}
+            colors={['#c2652a', '#e38d58', '#faf5ee', '#3a302a']}
           />
           {/* Backdrop */}
           <motion.div

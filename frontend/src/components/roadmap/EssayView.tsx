@@ -136,9 +136,9 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-12 h-12 border-4 border-[#1E1B4B] border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full"
         />
-        <p className="font-bold text-[#1E1B4B]">Loading writing prompt…</p>
+        <p className="font-bold text-[var(--color-on-surface-variant)]">Loading writing prompt…</p>
       </div>
     );
   }
@@ -154,11 +154,10 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
 
       {/* Prompt */}
       <div
-        className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-5"
-        style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+        className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 shadow-sm"
       >
-        <p className="text-xs font-black uppercase tracking-widest text-[#6366F1] mb-2">Writing Prompt</p>
-        <p className="text-lg font-black text-[#1E1B4B] leading-relaxed">{prompt}</p>
+        <p className="text-xs font-black uppercase tracking-widest text-[var(--color-on-surface-variant)] mb-2">Writing Prompt</p>
+        <p className="text-xl font-black text-[var(--color-on-surface)] leading-relaxed font-serif drop-shadow-sm">{prompt}</p>
       </div>
 
       {/* Textarea */}
@@ -169,8 +168,7 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
           disabled={grading || !!result}
           placeholder="한국어로 에세이를 쓰세요… (Write your essay in Korean…)"
           rows={8}
-          className="w-full border-4 border-[#1E1B4B] rounded-2xl p-4 font-bold text-[#1E1B4B] text-base focus:outline-none focus:ring-4 focus:ring-[#6366F1]/30 resize-none disabled:bg-gray-50"
-          style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+          className="w-full bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-2xl p-5 font-bold text-[var(--color-on-surface)] text-[15px] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] resize-none disabled:bg-[var(--color-surface-container-low)] shadow-sm"
         />
 
         {/* Character counter */}
@@ -195,8 +193,7 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
         <button
           onClick={handleSubmit}
           disabled={!essay.trim() || grading || charCount < 50}
-          className="w-full py-4 bg-[#6366F1] text-white rounded-2xl border-4 border-[#1E1B4B] font-black text-lg disabled:opacity-50 hover:bg-[#4F46E5] transition-colors flex items-center justify-center gap-3"
-          style={{ boxShadow: '5px 5px 0px #1E1B4B' }}
+          className="sahara-btn w-full py-4 rounded-2xl font-extrabold text-[15px] uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-3 shadow-sm"
         >
           {grading ? (
             <>
@@ -220,39 +217,37 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
           >
             {/* Total score */}
             <div
-              className="bg-[#1E1B4B] rounded-3xl border-4 border-[#1E1B4B] p-6 flex flex-col items-center gap-2"
-              style={{ boxShadow: '6px 6px 0px #6366F1' }}
+              className="bg-[var(--color-surface-container)] rounded-3xl border border-[var(--color-outline-variant)] p-6 flex flex-col items-center gap-2 shadow-sm"
             >
-              <p className="text-xs font-black uppercase tracking-widest text-blue-300">Total Score</p>
+              <p className="text-xs font-black uppercase tracking-widest text-[var(--color-on-surface-variant)]">Total Score</p>
               <motion.p
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-                className="text-7xl font-black text-white"
+                className="text-[64px] font-extrabold text-[var(--color-on-surface)] font-serif drop-shadow-sm"
               >
                 {result.totalScore}
               </motion.p>
-              <p className="text-blue-300 font-bold text-sm">out of 100</p>
+              <p className="text-[var(--color-on-surface-variant)] font-bold text-sm">out of 100</p>
             </div>
 
             {/* Rubric bars */}
             <div
-              className="bg-white border-4 border-[#1E1B4B] rounded-3xl p-5 flex flex-col gap-4"
-              style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+              className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 flex flex-col gap-5 shadow-sm"
             >
-              <p className="text-xs font-black uppercase tracking-widest text-[#1E1B4B]">Score Breakdown</p>
+              <p className="text-xs font-black uppercase tracking-widest text-[var(--color-on-surface-variant)]">Score Breakdown</p>
               {RUBRIC_KEYS.map((key, i) => {
                 const val = result.rubricScores[key];
                 const pct = (val / 25) * 100;
                 return (
-                  <div key={key} className="flex flex-col gap-1">
+                  <div key={key} className="flex flex-col gap-1.5">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-black capitalize" style={{ color: RUBRIC_COLORS[key] }}>
                         {key}
                       </span>
-                      <span className="text-sm font-black text-[#1E1B4B]">{val} / 25</span>
+                      <span className="text-[13px] font-bold text-[var(--color-on-surface)]">{val} / 25</span>
                     </div>
-                    <div className="w-full h-3 bg-gray-100 rounded-full border-2 border-[#1E1B4B] overflow-hidden">
+                    <div className="w-full h-[10px] bg-[var(--color-surface-container-high)] rounded-full border border-[var(--color-outline-variant)] overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
@@ -268,23 +263,22 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
 
             {/* AI Feedback */}
             <div
-              className="bg-[#F5F3FF] border-4 border-[#6366F1] rounded-3xl p-5"
-              style={{ boxShadow: '4px 4px 0px #6366F1' }}
+              className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-3xl p-6 shadow-sm"
             >
-              <p className="text-xs font-black uppercase tracking-widest text-[#6366F1] mb-2">AI Feedback</p>
-              <div className="max-h-40 overflow-y-auto pr-1">
-                <p className="text-sm font-bold text-[#1E1B4B] leading-relaxed">{result.feedback}</p>
+              <p className="text-[11px] font-black uppercase tracking-widest text-[var(--color-primary)] mb-3">AI Feedback</p>
+              <div className="max-h-40 overflow-y-auto pr-2">
+                <p className="text-[14px] font-bold text-[var(--color-on-surface)] leading-relaxed">{result.feedback}</p>
               </div>
             </div>
 
             {/* Model Answer collapsible */}
             {result.modelAnswer && (
-              <div className="border-4 border-[#1E1B4B] rounded-3xl overflow-hidden">
+              <div className="border border-[var(--color-outline-variant)] rounded-3xl overflow-hidden shadow-sm">
                 <button
                   onClick={() => setModelAnswerOpen(o => !o)}
-                  className="w-full flex items-center justify-between px-5 py-4 bg-gray-50 hover:bg-gray-100 transition-colors"
+                  className="w-full flex items-center justify-between px-6 py-5 bg-[var(--color-surface-container)] hover:bg-[var(--color-surface-container-high)] transition-colors"
                 >
-                  <span className="text-sm font-black uppercase tracking-widest text-[#1E1B4B]">Model Answer</span>
+                  <span className="text-[11px] font-black uppercase tracking-widest text-[var(--color-on-surface)]">Model Answer</span>
                   {modelAnswerOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </button>
                 <AnimatePresence>
@@ -295,8 +289,8 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
                       exit={{ height: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className="p-5 bg-white border-t-4 border-[#1E1B4B]">
-                        <p className="text-sm font-bold text-[#1E1B4B] leading-relaxed whitespace-pre-wrap">
+                      <div className="p-6 bg-[var(--color-surface)] border-t border-[var(--color-outline-variant)]">
+                        <p className="text-[14px] font-bold text-[var(--color-on-surface)] leading-relaxed whitespace-pre-wrap">
                           {result.modelAnswer}
                         </p>
                       </div>
@@ -312,8 +306,7 @@ export default function EssayView({ moduleId, level, onComplete }: EssayViewProp
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleComplete}
-                className="w-full py-4 bg-green-500 text-white rounded-2xl border-4 border-[#1E1B4B] font-black text-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
-                style={{ boxShadow: '5px 5px 0px #1E1B4B' }}
+                className="sahara-btn w-full py-4 rounded-2xl font-extrabold text-[15px] uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm mt-2"
               >
                 ✓ Complete Module
               </motion.button>

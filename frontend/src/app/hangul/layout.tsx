@@ -17,71 +17,60 @@ export default function HangulLayout({ children }: { children: React.ReactNode }
   ];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#FAFAFA', fontFamily: '"IBM Plex Mono", monospace' }}>
+    <div className="min-h-screen bg-[var(--color-background)] font-sans flex flex-col">
       
-      {/* Background Rain effect (simplified via CSS) */}
-      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, opacity: 0.03, fontSize: '24px', overflow: 'hidden', whiteSpace: 'pre-wrap' }}>
+      {/* Background Rain effect */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-5 text-2xl overflow-hidden whitespace-pre-wrap font-serif text-[var(--color-primary)]">
         {'ㄱ ㅏ ㄴ ㄷ ㄹ ㅏ ㅁ ㅓ ㅂ ㅅ ㅗ ㅇ ㅈ ㅜ ㅊ ㅋ ㅡ ㅌ ㅍ ㅣ ㅎ '.repeat(1000)}
       </div>
 
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: '1200px', margin: '0 auto', padding: '32px 24px' }}>
+      <div className="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-8 flex-1 flex flex-col">
         
         {/* Global Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
+        <div className="flex justify-between items-start mb-10 flex-wrap gap-4">
           <div>
-            <Link href="/roadmap" style={{ display: 'inline-block', marginBottom: '16px', fontWeight: 900, color: '#0f0f0f', textDecoration: 'none', borderBottom: '2px solid #0f0f0f' }}>
+            <Link href="/roadmap" className="inline-block mb-4 font-bold text-[var(--color-primary)] no-underline hover:underline decoration-2 underline-offset-4">
               ← Back to Roadmap
             </Link>
-            <h1 style={{ fontSize: '48px', fontWeight: 900, margin: 0, fontFamily: '"Space Grotesk", sans-serif', textTransform: 'uppercase', letterSpacing: '-1px' }}>
-              <span style={{ color: '#00E5FF', textShadow: '4px 4px 0px #0f0f0f' }}>한글</span> PLAYGROUND
+            <h1 className="text-4xl md:text-5xl font-extrabold m-0 font-serif uppercase tracking-tight text-[var(--color-on-background)] drop-shadow-sm">
+              <span className="text-[var(--color-primary)]">한글</span> PLAYGROUND
             </h1>
           </div>
 
-          <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+          <div className="flex gap-6 items-center">
             {/* Progress Ring / Stats */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-              <span style={{ fontSize: '12px', fontWeight: 900, textTransform: 'uppercase', color: '#6b7280' }}>Mastered</span>
-              <span style={{ fontSize: '24px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif' }}>{masteredJamo.size} <span style={{ color: '#6b7280', fontSize: '16px' }}>/ 40</span></span>
+            <div className="flex flex-col items-end">
+              <span className="text-xs font-bold uppercase text-[var(--color-on-surface-variant)] tracking-wider">Mastered</span>
+              <span className="text-2xl font-extrabold font-serif text-[var(--color-on-surface)] drop-shadow-sm">
+                {masteredJamo.size} <span className="text-[var(--color-on-surface-variant)] text-base font-sans">/ 40</span>
+              </span>
             </div>
             
             {/* XP Badge */}
             <motion.div 
               key={sessionXP}
               initial={{ scale: 1.2 }} animate={{ scale: 1 }}
-              style={{ background: '#FFD600', border: '3px solid #0f0f0f', padding: '12px 24px', borderRadius: '16px', boxShadow: '4px 4px 0px #0f0f0f', display: 'flex', alignItems: 'center', gap: '8px' }}
+              className="bg-[var(--color-primary-container)] border border-[var(--color-outline-variant)] py-3 px-5 rounded-2xl shadow-sm flex items-center gap-2"
             >
-              <span style={{ fontSize: '24px' }}>⚡</span>
-              <span style={{ fontSize: '24px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif' }}>{sessionXP} XP</span>
+              <span className="text-2xl drop-shadow-sm">⚡</span>
+              <span className="text-xl font-extrabold font-serif text-[var(--color-on-primary-container)]">{sessionXP} XP</span>
             </motion.div>
           </div>
         </div>
 
         {/* Tab Navigation */}
-        <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '16px', borderBottom: '4px solid #0f0f0f', marginBottom: '40px' }}>
+        <div className="flex gap-3 overflow-x-auto pb-4 border-b border-[var(--color-outline-variant)] mb-10 hide-scrollbar">
           {tabs.map(tab => {
             const active = currentTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setTab(tab.id)}
-                style={{
-                  padding: '16px 24px',
-                  background: active ? '#0f0f0f' : '#fff',
-                  color: active ? '#FFD600' : '#0f0f0f',
-                  border: '3px solid #0f0f0f',
-                  borderRadius: '12px 12px 0 0',
-                  fontWeight: 900,
-                  fontSize: '16px',
-                  fontFamily: '"Space Grotesk", sans-serif',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  transform: active ? 'translateY(4px)' : 'none',
-                  borderBottom: active ? 'none' : '3px solid #0f0f0f',
-                  position: 'relative',
-                  zIndex: active ? 20 : 10
-                }}
+                className={`px-6 py-4 rounded-t-2xl font-bold text-base flex items-center gap-2 transition-all whitespace-nowrap ${
+                  active 
+                    ? 'bg-[var(--color-surface)] text-[var(--color-primary)] border-t border-l border-r border-[var(--color-outline-variant)] border-b-0 shadow-sm translate-y-[1px] -mb-[1px]' 
+                    : 'bg-transparent text-[var(--color-on-surface-variant)] hover:bg-[var(--color-surface-container-low)] hover:text-[var(--color-on-surface)] border border-transparent mb-0'
+                }`}
               >
                 <span>{tab.icon}</span>
                 {tab.label}
@@ -91,7 +80,7 @@ export default function HangulLayout({ children }: { children: React.ReactNode }
         </div>
 
         {/* Main Content Area */}
-        <div style={{ position: 'relative', zIndex: 10 }}>
+        <div className="relative z-10 flex-1">
           {children}
         </div>
 

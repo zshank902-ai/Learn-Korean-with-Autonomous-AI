@@ -27,14 +27,7 @@ export default function XPPopup({ amount, isVisible, onComplete }: XPPopupProps)
             scale: [0.5, 1.2, 1, 0.8]
           }}
           transition={{ duration: 1.5, times: [0, 0.2, 0.8, 1] }}
-          className="fixed pointer-events-none z-[300] flex items-center gap-2 px-6 py-3 rounded-2xl border border-[var(--color-outline-variant)] font-sans"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'var(--color-surface)',
-            boxShadow: '0px 8px 24px rgba(58, 48, 42, 0.12)',
-          }}
+          className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-[300] flex items-center gap-2 px-6 py-3 rounded-2xl border border-[var(--color-outline-variant)] bg-[var(--color-surface)] shadow-md font-sans"
         >
           <div className="w-8 h-8 bg-[var(--color-primary-container)] rounded-lg flex items-center justify-center border border-[var(--color-outline-variant)] shadow-sm">
             <Zap className="text-[var(--color-primary)]" size={18} fill="currentColor" />

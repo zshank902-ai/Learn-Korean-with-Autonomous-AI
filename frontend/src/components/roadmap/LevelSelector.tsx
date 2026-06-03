@@ -46,17 +46,14 @@ export default function LevelSelector({ levels, activeLevel, onSelect }: LevelSe
               gap: '6px',
               padding: '8px 18px',
               borderRadius: '999px',
-              border: isActive ? `2.5px solid #0f0f0f` : '2px solid #d1d5db',
-              background: isActive ? level.color : '#ffffff',
-              color: isActive ? '#0f0f0f' : '#4b5563',
+              border: isActive ? `1px solid var(--color-primary)` : '1px solid var(--color-outline-variant)',
+              background: isActive ? level.color : 'var(--color-surface)',
+              color: isActive ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
               fontFamily: 'Inter, sans-serif',
               fontWeight: 700,
               fontSize: '13px',
               cursor: 'pointer',
-              boxShadow: isActive
-                ? `3px 3px 0px #0f0f0f`
-                : '1px 1px 0px #9ca3af',
-              transition: 'box-shadow 0.15s ease, background 0.15s ease',
+              transition: 'background 0.15s ease',
               letterSpacing: '0.02em',
               whiteSpace: 'nowrap',
             }}
@@ -64,7 +61,7 @@ export default function LevelSelector({ levels, activeLevel, onSelect }: LevelSe
             {completed && (
               <CheckCircle2
                 size={14}
-                style={{ color: isActive ? '#0f0f0f' : '#16a34a', flexShrink: 0 }}
+                style={{ color: isActive ? 'var(--color-on-surface)' : '#16a34a', flexShrink: 0 }}
               />
             )}
             <span>L{level.level_num} {level.title.split(' ').slice(-1)[0]}</span>

@@ -43,8 +43,8 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', marginTop: '24px' }}>
-      <div style={{ position: 'relative', width: '80px', height: '80px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div className="flex flex-col items-center relative mt-6 font-sans">
+      <div className="relative w-20 h-20 flex justify-center items-center">
         
         <AnimatePresence>
           {isRecording && [0, 1, 2].map(i => (
@@ -53,13 +53,7 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
               initial={{ scale: 1, opacity: 0.4 }}
               animate={{ scale: 2, opacity: 0 }}
               transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.3, ease: 'easeOut' }}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                borderRadius: '50%',
-                backgroundColor: '#FF4B4B',
-                zIndex: 0
-              }}
+              className="absolute inset-0 rounded-full bg-[#ef4444] z-0"
             />
           ))}
         </AnimatePresence>
@@ -69,11 +63,11 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
           onPointerDown={(e) => { e.preventDefault(); handlePointerDown(e); }}
           onPointerUp={(e) => { e.preventDefault(); onRelease(); }}
           onPointerCancel={(e) => { e.preventDefault(); onRelease(); }}
-          whileHover={!disabled ? { x: -2, y: -2, boxShadow: '6px 6px 0px #000' } : {}}
-          whileTap={!disabled ? { x: 2, y: 2, boxShadow: '0px 0px 0px #000' } : {}}
+          whileHover={!disabled ? { x: -2, y: -2 } : {}}
+          whileTap={!disabled ? { x: 2, y: 2 } : {}}
           animate={{
-            backgroundColor: isRecording ? '#FF4B4B' : (isProcessing ? '#ffffff' : '#FFD600'),
-            borderColor: '#0f0f0f',
+            backgroundColor: isRecording ? '#ef4444' : (isProcessing ? '#ffffff' : 'var(--color-primary)'),
+            borderColor: 'var(--color-on-surface)',
             rotate: isProcessing ? 360 : 0
           }}
           transition={{
@@ -81,23 +75,10 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
             backgroundColor: { duration: 0.2 }
           }}
           disabled={disabled}
-          style={{
-            position: 'relative',
-            zIndex: 1,
-            width: '80px',
-            height: '80px',
-            borderRadius: '50%',
-            border: '3px solid #0f0f0f',
-            boxShadow: '4px 4px 0px #0f0f0f',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: disabled ? 'not-allowed' : 'pointer',
-            opacity: disabled ? 0.5 : 1
-          }}
+          className={`relative z-[1] w-20 h-20 rounded-full border border-[var(--color-outline-variant)] shadow-sm flex items-center justify-center ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer opacity-100'}`}
         >
           {isProcessing ? (
-            <Loader2 size={32} color="#0f0f0f" />
+            <Loader2 size={32} className="text-[var(--color-on-surface)]" />
           ) : isRecording ? (
             <motion.div
               animate={{ scale: [1, 1.15, 1] }}
@@ -106,25 +87,25 @@ export default function MicButton({ phase, onTap, onRelease }: MicButtonProps) {
               <MicOff size={32} color="#ffffff" />
             </motion.div>
           ) : (
-            <Mic size={32} color="#0f0f0f" />
+            <Mic size={32} className="text-[var(--color-on-surface)]" />
           )}
         </motion.button>
       </div>
 
-      <div style={{ display: 'flex', gap: '4px', marginTop: '16px', height: '40px', alignItems: 'center' }}>
+      <div className="flex gap-1 mt-4 h-10 items-center">
         {bars.map((height, i) => (
           <motion.div
             key={i}
             animate={{ height }}
             transition={{ type: 'tween', duration: 0.1 }}
-            style={{ width: '4px', backgroundColor: isRecording || isProcessing ? '#FF4B4B' : '#d1d5db', borderRadius: '2px' }}
+            className={`w-1 rounded-sm ${isRecording || isProcessing ? 'bg-[#ef4444]' : 'bg-[var(--color-outline-variant)]'}`}
           />
         ))}
       </div>
 
       <motion.p
-        animate={{ color: isRecording || isProcessing ? '#0f0f0f' : '#6b7280' }}
-        style={{ marginTop: '12px', fontWeight: 900, fontSize: '16px' }}
+        animate={{ color: isRecording || isProcessing ? 'var(--color-on-surface)' : '#6b7280' }}
+        className="mt-3 font-bold text-base"
       >
         {isRecording ? '듣는 중...' : isProcessing ? '분석 중...' : '탭하여 말하기'}
       </motion.p>

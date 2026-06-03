@@ -11,50 +11,36 @@ interface JamoCardProps {
 const JamoCardComponent: React.FC<JamoCardProps> = ({ data, showRomanization }) => {
   const { speak } = useSpeechSynthesis();
 
-  let bgColor = '#FFD600'; // Consonant
-  if (data.type === 'vowel') bgColor = '#00E5FF'; // Cyan
-  if (data.type === 'tense') bgColor = '#FF4B4B'; // Coral
+  // Using Sahara colors
+  let bgColorClass = 'bg-[var(--color-secondary-container)] border-[var(--color-outline-variant)] text-[var(--color-on-secondary-container)]'; // Consonant
+  if (data.type === 'vowel') bgColorClass = 'bg-[var(--color-primary-container)] border-[var(--color-outline-variant)] text-[var(--color-on-primary-container)]'; // Vowel
+  if (data.type === 'tense') bgColorClass = 'bg-[var(--color-tertiary-container)] border-[var(--color-outline-variant)] text-[var(--color-on-tertiary-container)]'; // Tense
 
   return (
     <motion.button
       onClick={() => speak(data.char)}
-      whileHover={{ y: -4, boxShadow: '6px 6px 0px #0A0A0A' }}
-      whileTap={{ y: 2, x: 2, boxShadow: '2px 2px 0px #0A0A0A' }}
-      style={{
-        background: bgColor,
-        border: '3px solid #0A0A0A',
-        borderRadius: '16px',
-        padding: '24px',
-        boxShadow: '4px 4px 0px #0A0A0A',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        minHeight: '220px',
-        position: 'relative',
-        overflow: 'hidden',
-        width: '100%',
-      }}
+      whileHover={{ y: -4 }}
+      whileTap={{ y: 2, scale: 0.98 }}
+      className={`sahara-card flex flex-col items-center justify-center p-6 cursor-pointer min-h-[220px] relative overflow-hidden w-full ${bgColorClass}`}
     >
-      <span style={{ fontSize: '72px', fontWeight: 900, fontFamily: '"Noto Sans KR", sans-serif', color: '#0A0A0A', lineHeight: 1 }}>
+      <span className="text-[72px] font-extrabold font-serif leading-none drop-shadow-sm">
         {data.char}
       </span>
       
       {showRomanization ? (
-        <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-          <span style={{ fontSize: '20px', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', color: '#0A0A0A' }}>
+        <div className="mt-4 flex flex-col items-center gap-1">
+          <span className="text-xl font-extrabold font-sans">
             {data.romanization}
           </span>
-          <span style={{ fontSize: '14px', fontWeight: 700, fontFamily: '"IBM Plex Mono", monospace', color: '#333' }}>
+          <span className="text-sm font-bold opacity-80 font-sans">
             {data.ipa}
           </span>
-          <p style={{ marginTop: '12px', fontSize: '12px', fontWeight: 600, color: '#0A0A0A', textAlign: 'center', lineHeight: 1.4 }}>
+          <p className="mt-3 text-xs font-semibold text-center leading-relaxed opacity-90 font-sans">
             {data.mnemonic}
           </p>
         </div>
       ) : (
-        <div style={{ marginTop: '16px', height: '60px' }} /> // Spacer to maintain card size
+        <div className="mt-4 h-[60px]" /> // Spacer to maintain card size
       )}
     </motion.button>
   );

@@ -39,7 +39,7 @@ const MockExamRunner = dynamic<MockExamRunnerProps>(
 // ── Loading Skeleton ───────────────────────────────────────────────────────────
 function LoadingSkeleton() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div className="flex flex-col gap-6">
       <div
         style={{
           width: '180px',
@@ -131,8 +131,8 @@ export default function LevelPage({ params }: LevelPageProps) {
   if (isLoading) {
     return (
       <ProtectedRoute>
-        <div style={{ minHeight: '100vh', background: 'transparent', padding: '40px 20px' }}>
-          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div className="min-h-screen bg-transparent p-10 px-5">
+          <div className="max-w-[1000px] mx-auto">
             <LoadingSkeleton />
           </div>
         </div>
@@ -146,19 +146,19 @@ export default function LevelPage({ params }: LevelPageProps) {
   if (!isLevelUnlocked) {
     return (
       <ProtectedRoute>
-        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', position: 'relative', zIndex: 10 }}>
-          <div className="sahara-card" style={{ borderRadius: '24px', padding: '40px 24px', maxWidth: '480px', width: '100%', textAlign: 'center', border: '1px solid var(--color-outline-variant)' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-              <div style={{ background: 'var(--color-surface-container-low)', border: '1px solid var(--color-outline-variant)', borderRadius: '16px', padding: '16px' }}>
+        <div className="min-h-screen flex items-center justify-center p-5 relative z-10">
+          <div className="sahara-card rounded-3xl p-10 max-w-md w-full text-center border border-[var(--color-outline-variant)] bg-[var(--color-surface)]">
+            <div className="flex justify-center mb-5">
+              <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-4">
                 <Lock size={44} className="text-[var(--color-on-surface-variant)]" />
               </div>
             </div>
-            <h2 className="font-serif font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ fontSize: '24px', margin: '0 0 10px' }}>Level Locked</h2>
-            <p className="font-sans font-medium text-[var(--color-on-surface-variant)]" style={{ fontSize: '15px', margin: '0 0 24px', lineHeight: 1.5 }}>
+            <h2 className="font-serif font-extrabold text-[var(--color-on-surface)] drop-shadow-sm text-2xl mb-2.5">Level Locked</h2>
+            <p className="font-sans font-medium text-[var(--color-on-surface-variant)] text-[15px] mb-6 leading-relaxed">
               Please complete all prerequisite modules in the previous levels before accessing TOPIK Level {targetLevelNum}.
             </p>
-            <Link href="/roadmap" style={{ textDecoration: 'none' }}>
-              <div className="sahara-btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '16px', padding: '12px 24px', fontWeight: 700, fontSize: '14px', textTransform: 'uppercase', cursor: 'pointer' }}>
+            <Link href="/roadmap" className="no-underline">
+              <div className="sahara-btn inline-flex items-center gap-2 rounded-2xl px-6 py-3 font-bold text-sm uppercase tracking-wider cursor-pointer">
                 <ArrowLeft size={16} /> Back to Roadmap
               </div>
             </Link>
@@ -219,8 +219,8 @@ export default function LevelPage({ params }: LevelPageProps) {
 
   return (
     <ProtectedRoute>
-      <div className="relative z-10" style={{ minHeight: '100vh', padding: '32px 20px 80px', fontFamily: 'var(--font-sans)' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div className="relative z-10 min-h-screen p-8 md:p-12 pb-24 font-sans bg-[var(--color-background)]">
+        <div className="max-w-4xl mx-auto flex flex-col gap-8">
           
           {/* Level Tabs Navigation */}
           <LevelTabs 
@@ -231,21 +231,10 @@ export default function LevelPage({ params }: LevelPageProps) {
 
           {/* Top Bar Navigation */}
           <div>
-            <Link href="/roadmap" style={{ textDecoration: 'none' }}>
+            <Link href="/roadmap" className="no-underline">
               <motion.div
                 whileHover={{ x: -4 }}
-                className="sahara-btn"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  borderRadius: '14px',
-                  padding: '10px 18px',
-                  fontWeight: 700,
-                  fontSize: '13px',
-                  textTransform: 'uppercase',
-                  cursor: 'pointer',
-                }}
+                className="sahara-btn inline-flex items-center gap-2 rounded-[14px] px-[18px] py-[10px] font-bold text-[13px] uppercase cursor-pointer"
               >
                 <ArrowLeft size={16} /> Back to Roadmap
               </motion.div>
@@ -253,80 +242,80 @@ export default function LevelPage({ params }: LevelPageProps) {
           </div>
 
           {/* Level Header Card */}
-          <div className="sahara-card" style={{ borderRadius: '24px', padding: '32px', border: '1px solid var(--color-outline-variant)', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-              <div style={{ width: '72px', height: '72px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: isLevelCompleted ? 'var(--color-surface-container)' : '#ffffff', border: '1px solid var(--color-outline-variant)', flexShrink: 0 }}>
+          <div className="sahara-card rounded-[24px] p-8 border border-[var(--color-outline-variant)] flex flex-col gap-6">
+            <div className="flex items-center gap-5 flex-wrap">
+              <div className="w-[72px] h-[72px] rounded-[20px] flex items-center justify-center bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] shrink-0">
                 {isLevelCompleted ? <CheckCircle2 size={32} className="text-[#10B981] drop-shadow-sm" /> : <GraduationCap size={32} className="text-[var(--color-primary)] drop-shadow-sm" />}
               </div>
               <div>
-                <h1 className="font-serif font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ fontSize: '28px', margin: 0, letterSpacing: '-0.02em' }}>{currentLevel!.title}</h1>
-                <p className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '14px', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{currentLevel!.subtitle}</p>
+                <h1 className="font-serif font-extrabold text-[var(--color-on-surface)] text-[28px] m-0 tracking-tighter drop-shadow-sm">{currentLevel!.title}</h1>
+                <p className="font-sans font-bold text-[var(--color-on-surface-variant)] text-[14px] mt-1 uppercase tracking-[0.05em]">{currentLevel!.subtitle}</p>
               </div>
 
               {/* Progress Summary */}
-              <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                <span className="font-sans font-extrabold text-[var(--color-primary)]" style={{ fontSize: '13px', background: 'var(--color-surface-container-low)', border: '1px solid var(--color-outline-variant)', borderRadius: '10px', padding: '6px 12px' }}>
+              <div className="ml-auto text-right">
+                <span className="font-sans font-extrabold text-[var(--color-primary)] text-[13px] bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-[10px] px-3 py-1.5">
                   {completedCount} / {currentLevel!.modules.length} Mastered
                 </span>
               </div>
             </div>
 
             {/* Progress bar */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div className="font-sans text-[var(--color-on-surface)] font-extrabold drop-shadow-sm" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
-                <span>Level Progress</span>
-                <span>{Math.round(progressPercent)}%</span>
+            <div>
+              <div className="font-sans text-[var(--color-on-surface)] font-extrabold drop-shadow-sm flex justify-between text-xs tracking-wider mb-2">
+                <span>PROGRESS</span>
+                <span className="text-[var(--color-primary)]">{Math.round(progressPercent)}%</span>
               </div>
-              <div style={{ background: 'var(--color-surface-container-high)', borderRadius: '999px', height: '14px', overflow: 'hidden' }}>
-                <div style={{ height: '100%', background: 'var(--color-primary)', width: `${progressPercent}%`, transition: 'width 0.5s ease-out' }} />
+              <div className="bg-[var(--color-surface-container-high)] rounded-full h-3.5 overflow-hidden border border-[var(--color-outline-variant)]">
+                <div className="h-full bg-[var(--color-primary)] transition-all duration-500 ease-out" style={{ width: `${progressPercent}%` }} />
               </div>
             </div>
 
             {/* Stats row */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', background: 'var(--color-surface-container-low)', border: '1px solid var(--color-outline-variant)', borderRadius: '16px', padding: '16px' }}>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-4 shadow-sm">
               <div>
-                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Target Vocab</span>
-                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.target_vocab} Words</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)] text-[11px] uppercase tracking-[0.05em]">Target Vocab</span>
+                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm mt-1 text-base">{currentLevel!.target_vocab} Words</p>
               </div>
               <div>
-                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Exam Format</span>
-                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.exam_type}</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)] text-[11px] uppercase tracking-[0.05em]">Exam Format</span>
+                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm mt-1 text-base">{currentLevel!.exam_type}</p>
               </div>
               <div>
-                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pass Score</span>
-                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.pass_score} / {currentLevel!.max_score} pts</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)] text-[11px] uppercase tracking-[0.05em]">Pass Score</span>
+                <p className="font-sans font-extrabold text-[var(--color-on-surface)] drop-shadow-sm mt-1 text-base">{currentLevel!.pass_score} / {currentLevel!.max_score} pts</p>
               </div>
               <div>
-                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>XP Completion Reward</span>
-                <p className="font-sans font-extrabold text-[var(--color-primary)] drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.xp_reward} XP</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)] text-[11px] uppercase tracking-[0.05em]">XP Reward</span>
+                <p className="font-sans font-extrabold text-[var(--color-primary)] drop-shadow-sm mt-1 text-base">{currentLevel!.xp_reward} XP</p>
               </div>
             </div>
 
             {/* TOPIK Exam Buttons */}
             {targetLevelNum <= 2 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <p className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ margin: 0, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>TOPIK-I Practice</p>
-                <button onClick={() => router.push('/exam/topik-i?practice=listening')} className="sahara-btn transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '12px', fontWeight: 700, fontSize: '13px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <div className="flex flex-col gap-2.5">
+                <p className="font-sans font-bold text-[var(--color-on-surface-variant)] m-0 text-[11px] uppercase tracking-[0.05em]">TOPIK-I Practice</p>
+                <button onClick={() => router.push('/exam/topik-i?practice=listening')} className="sahara-btn transition-all hover:-translate-y-1 rounded-[14px] p-3 font-bold text-[13px] flex items-center justify-center gap-2">
                   🎧 Practice Listening (30 Q)
                 </button>
-                <button onClick={() => router.push('/exam/topik-i?practice=reading')} className="sahara-btn transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '12px', fontWeight: 700, fontSize: '13px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <button onClick={() => router.push('/exam/topik-i?practice=reading')} className="sahara-btn transition-all hover:-translate-y-1 rounded-[14px] p-3 font-bold text-[13px] flex items-center justify-center gap-2">
                   📖 Practice Reading (40 Q)
                 </button>
-                <button onClick={() => router.push('/exam/topik-i?mode=full')} className="sahara-btn-secondary text-[var(--color-on-surface)] transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '14px', fontWeight: 700, fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <button onClick={() => router.push('/exam/topik-i?mode=full')} className="sahara-btn-secondary bg-[var(--color-surface)] text-[var(--color-on-surface)] transition-all hover:-translate-y-1 rounded-[14px] p-3.5 font-bold text-[14px] flex items-center justify-center gap-2 border border-[var(--color-outline-variant)]">
                   📋 Full Mock Exam (70 Q · 100 min)
                 </button>
               </div>
             )}
             {targetLevelNum >= 3 && (
-              <button onClick={() => router.push(`/exam/topik-ii?targetLevel=${targetLevelNum}`)} className="sahara-btn-secondary text-[var(--color-on-surface)] transition-all hover:-translate-y-1" style={{ borderRadius: '16px', padding: '16px', fontWeight: 700, fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%' }}>
+              <button onClick={() => router.push(`/exam/topik-ii?targetLevel=${targetLevelNum}`)} className="sahara-btn-secondary bg-[var(--color-surface)] text-[var(--color-on-surface)] transition-all hover:-translate-y-1 rounded-2xl p-4 font-bold text-[14px] flex items-center justify-center gap-2 w-full border border-[var(--color-outline-variant)]">
                 📝 Full Mock Exam (104 Q · 180 min)
               </button>
             )}
           </div>
 
           {/* Curriculum Modules Grid */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <h2 className="font-serif font-extrabold text-[var(--color-on-surface)] drop-shadow-sm" style={{ fontSize: '22px', margin: 0 }}>Curriculum Modules</h2>
+          <div className="flex flex-col gap-4">
+            <h2 className="font-serif font-extrabold text-[var(--color-on-surface)] drop-shadow-sm text-[22px] m-0">Curriculum Modules</h2>
             <ModuleGrid
               modules={currentLevel!.modules}
               progressData={progressData?.modules || []}
@@ -344,17 +333,7 @@ export default function LevelPage({ params }: LevelPageProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              style={{
-                position: 'fixed',
-                inset: 0,
-                background: 'rgba(0,0,0,0.1)',
-                backdropFilter: 'blur(2px)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 100,
-                padding: '20px',
-              }}
+              className="fixed inset-0 bg-black/10 backdrop-blur-[2px] flex items-center justify-center z-[100] p-5"
               onClick={(e) => {
                 if (e.target === e.currentTarget) handleModuleViewerClose();
               }}

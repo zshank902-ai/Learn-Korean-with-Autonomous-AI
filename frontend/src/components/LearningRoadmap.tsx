@@ -39,12 +39,12 @@ export default function LearningRoadmap() {
   const getCardStyle = (status: string) => {
     switch (status) {
       case 'completed':
-        return { bg: 'var(--color-surface)', border: 'var(--color-primary)', icon: <CheckCircle className="text-[var(--color-primary)]" size={32} /> };
+        return { bgClass: 'bg-[var(--color-surface)]', borderClass: 'border-[var(--color-primary)]', icon: <CheckCircle className="text-[var(--color-primary)]" size={32} />, markerBorder: 'border-[var(--color-primary)]', markerBg: 'bg-[var(--color-primary)]' };
       case 'active':
-        return { bg: 'var(--color-primary-container)', border: 'var(--color-primary)', icon: <GraduationCap className="text-[var(--color-primary)]" size={32} /> };
+        return { bgClass: 'bg-[var(--color-primary-container)]', borderClass: 'border-[var(--color-primary)]', icon: <GraduationCap className="text-[var(--color-primary)]" size={32} />, markerBorder: 'border-[var(--color-primary)]', markerBg: 'bg-[var(--color-primary)]' };
       case 'locked':
       default:
-        return { bg: 'var(--color-surface-container-low)', border: 'var(--color-outline-variant)', icon: <Lock className="text-[var(--color-on-surface-variant)]" size={32} /> };
+        return { bgClass: 'bg-[var(--color-surface-container-low)]', borderClass: 'border-[var(--color-outline-variant)]', icon: <Lock className="text-[var(--color-on-surface-variant)]" size={32} />, markerBorder: 'border-[var(--color-outline-variant)]', markerBg: 'bg-[var(--color-outline-variant)]' };
     }
   };
 
@@ -63,12 +63,7 @@ export default function LearningRoadmap() {
               
               <div className="w-full md:w-[45%]">
                 <div 
-                  className={`p-6 rounded-3xl border transition-transform shadow-sm ${lvl.status === 'active' ? 'scale-105 shadow-md' : 'hover:-translate-y-1'}`}
-                  style={{ 
-                    background: style.bg, 
-                    borderColor: style.border,
-                    opacity: lvl.status === 'locked' ? 0.7 : 1
-                  }}
+                  className={`p-6 rounded-3xl border transition-all duration-300 shadow-sm ${lvl.status === 'active' ? 'scale-105 shadow-md' : 'hover:-translate-y-1'} ${style.bgClass} ${style.borderClass} ${lvl.status === 'locked' ? 'opacity-70' : 'opacity-100'}`}
                 >
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-surface)] border border-[var(--color-outline-variant)] shrink-0 shadow-sm">
@@ -111,8 +106,8 @@ export default function LearningRoadmap() {
               </div>
 
               {/* Node Marker */}
-              <div className="hidden md:flex w-12 h-12 absolute left-1/2 transform -translate-x-1/2 rounded-full border bg-[var(--color-surface)] items-center justify-center z-20" style={{ borderColor: style.border }}>
-                <div className="w-4 h-4 rounded-full" style={{ background: style.border }}></div>
+              <div className={`hidden md:flex w-12 h-12 absolute left-1/2 transform -translate-x-1/2 rounded-full border bg-[var(--color-surface)] items-center justify-center z-20 ${style.markerBorder}`}>
+                <div className={`w-4 h-4 rounded-full ${style.markerBg}`}></div>
               </div>
 
               {/* Empty Space for Staggered Look */}

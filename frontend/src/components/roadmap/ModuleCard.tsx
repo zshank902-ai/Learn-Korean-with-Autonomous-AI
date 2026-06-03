@@ -41,7 +41,7 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
   return (
     <motion.div
       onClick={handleCardClick}
-      whileHover={!isLocked ? { y: -4, boxShadow: '0 8px 24px rgba(58, 48, 42, 0.08)' } : {}}
+      whileHover={!isLocked ? { y: -4 } : {}}
       transition={{ type: 'spring', stiffness: 350, damping: 20 }}
       role={isLocked ? 'presentation' : 'button'}
       aria-disabled={isLocked}
@@ -51,7 +51,6 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
         border: `1px solid ${borderColor}`,
         borderRadius: '16px',
         padding: '20px',
-        boxShadow: isLocked ? 'none' : '0 2px 12px rgba(58, 48, 42, 0.04)',
         display: 'flex',
         flexDirection: 'column',
         gap: '12px',
@@ -119,7 +118,6 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 2px 8px rgba(58, 48, 42, 0.05)',
               }}
             >
               <Lock size={18} color="var(--color-on-surface-variant)" />
@@ -163,7 +161,7 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
         {/* XP badge / Completed checkmark */}
         {isCompleted ? (
           <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
-            <div style={{ background: '#10B981', borderRadius: '50%', padding: '4px', border: '2px solid var(--color-surface)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+            <div style={{ background: '#10B981', borderRadius: '50%', padding: '4px', border: '2px solid var(--color-surface)' }}>
               <CheckCircle2 size={16} className="text-white" />
             </div>
           </div>
@@ -229,7 +227,6 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
             fontWeight: 700,
             fontSize: '13px',
             cursor: isLocked ? 'not-allowed' : 'pointer',
-            boxShadow: isLocked || isCompleted ? 'none' : '0 4px 12px rgba(194,101,42,0.25)',
             width: '100%',
           }}
         >

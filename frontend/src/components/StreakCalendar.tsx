@@ -29,14 +29,14 @@ export default function StreakCalendar() {
     return data;
   }, []);
 
-  const getColor = (intensity: number) => {
+  const getColorClass = (intensity: number) => {
     switch(intensity) {
-      case 0: return 'var(--color-surface-container-low)'; // empty
-      case 1: return 'var(--color-primary-container)'; // light
-      case 2: return 'rgba(194,101,42,0.5)'; // medium
-      case 3: return 'rgba(194,101,42,0.8)'; // heavy
-      case 4: return 'var(--color-primary)'; // max
-      default: return 'var(--color-surface-container-low)';
+      case 0: return 'bg-[var(--color-surface-container-low)]'; // empty
+      case 1: return 'bg-[var(--color-primary-container)]'; // light
+      case 2: return 'bg-[rgba(194,101,42,0.5)]'; // medium
+      case 3: return 'bg-[rgba(194,101,42,0.8)]'; // heavy
+      case 4: return 'bg-[var(--color-primary)]'; // max
+      default: return 'bg-[var(--color-surface-container-low)]';
     }
   };
 
@@ -71,8 +71,7 @@ export default function StreakCalendar() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: (wIdx * 7 + dIdx) * 0.005 }}
-                  className={`w-4 h-4 rounded-md border ${day.isToday ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/50' : 'border-[var(--color-outline-variant)]'}`}
-                  style={{ background: getColor(day.intensity) }}
+                  className={`w-4 h-4 rounded-md border ${day.isToday ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/50' : 'border-[var(--color-outline-variant)]'} ${getColorClass(day.intensity)}`}
                   title={`Activity level: ${day.intensity}`}
                 />
               ))}
@@ -85,7 +84,7 @@ export default function StreakCalendar() {
       <div className="flex items-center justify-end gap-2 mt-4 text-xs font-bold text-[var(--color-on-surface-variant)]">
         <span>Less</span>
         {[0, 1, 2, 3, 4].map(i => (
-          <div key={i} className="w-3 h-3 rounded-[4px] border border-[var(--color-outline-variant)]" style={{ background: getColor(i) }} />
+          <div key={i} className={`w-3 h-3 rounded-[4px] border border-[var(--color-outline-variant)] ${getColorClass(i)}`} />
         ))}
         <span>More</span>
       </div>

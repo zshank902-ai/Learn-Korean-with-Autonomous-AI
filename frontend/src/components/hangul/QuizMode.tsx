@@ -92,48 +92,30 @@ export default function QuizMode({ onMasteryUpdate, masteryData, onCheckCompleti
   const accuracy = totalAttempts > 0 ? Math.round((score / totalAttempts) * 100) : 0;
 
   return (
-    <div style={{
-      background: '#ffffff',
-      border: '4px solid #0f0f0f',
-      borderRadius: '24px',
-      padding: '32px',
-      boxShadow: '8px 8px 0px #0f0f0f',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '32px',
-      alignItems: 'center'
-    }}>
+    <div className="sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 flex flex-col gap-8 items-center font-sans shadow-sm">
       {/* Tabs */}
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div className="flex gap-2 flex-wrap justify-center">
         {Object.keys(CATEGORIES).map(tab => (
           <button
             key={tab}
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onClick={() => setActiveTab(tab as any)}
-            style={{
-              padding: '8px 16px',
-              background: activeTab === tab ? '#00E5FF' : '#f3f4f6',
-              border: '3px solid #0f0f0f',
-              borderRadius: '12px',
-              fontWeight: 900,
-              fontSize: '12px',
-              cursor: 'pointer',
-              boxShadow: activeTab === tab ? '4px 4px 0px #0f0f0f' : '0px 0px 0px transparent',
-              transform: activeTab === tab ? 'translateY(-4px)' : 'none',
-              transition: 'all 0.2s',
-              fontFamily: '"Inter", sans-serif'
-            }}
+            className={`px-4 py-2 border border-[var(--color-outline-variant)] rounded-xl font-bold text-[11px] uppercase tracking-widest cursor-pointer transition-all duration-200 ${
+              activeTab === tab 
+                ? 'bg-[var(--color-primary)] text-[var(--color-on-primary)] shadow-sm -translate-y-1' 
+                : 'bg-[var(--color-surface-container)] text-[var(--color-on-surface)] translate-y-0'
+            }`}
           >
             {tab}
           </button>
         ))}
       </div>
 
-      <div style={{ width: '100%', height: '4px', background: '#0f0f0f', borderRadius: '2px' }} />
+      <div className="w-full h-px bg-[var(--color-outline-variant)]" />
 
       {/* Quiz Area */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}>
-        <h2 style={{ fontSize: '18px', fontWeight: 900, textTransform: 'uppercase', color: '#0f0f0f' }}>Find the matching Jamo</h2>
+      <div className="flex flex-col items-center gap-6">
+        <h2 className="text-lg font-black uppercase text-[var(--color-on-surface)] m-0">Find the matching Jamo</h2>
         
         <motion.div
           animate={{
@@ -141,44 +123,34 @@ export default function QuizMode({ onMasteryUpdate, masteryData, onCheckCompleti
             rotate: feedback === 'incorrect' ? [0, -5, 5, -5, 0] : 0
           }}
           transition={{ duration: 0.3 }}
-          style={{
-            width: '180px',
-            height: '180px',
-            background: feedback === 'correct' ? '#10B981' : feedback === 'incorrect' ? '#FF4B4B' : '#f3f4f6',
-            border: '4px solid #0f0f0f',
-            borderRadius: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '4px 4px 0px #0f0f0f',
-            cursor: 'pointer'
-          }}
+          className={`w-[180px] h-[180px] border border-[var(--color-outline-variant)] rounded-3xl flex flex-col items-center justify-center cursor-pointer shadow-sm ${
+            feedback === 'correct' ? 'bg-[#e8f5e9] border-[#4caf50]' : feedback === 'incorrect' ? 'bg-[#ffebee] border-[#ef5350]' : 'bg-[var(--color-surface-container)]'
+          }`}
           onClick={speakCurrent}
         >
           {feedback === 'correct' ? (
-            <span style={{ fontSize: '64px', fontWeight: 900, color: '#ffffff' }}>{targetJamo}</span>
+            <span className="text-[64px] font-black text-white">{targetJamo}</span>
           ) : (
             <>
-              <span style={{ fontSize: '48px' }}>🔊</span>
-              <span style={{ fontSize: '24px', fontWeight: 900, color: '#0f0f0f', marginTop: '12px' }}>
+              <span className="text-[48px]">🔊</span>
+              <span className="text-[24px] font-black text-[var(--color-on-surface)] mt-3">
                 "{ROMANIZATION_MAP[targetJamo]}"
               </span>
             </>
           )}
         </motion.div>
-        <p style={{ fontWeight: 800, color: '#6b7280', fontSize: '14px' }}>Use the keyboard on the left to answer.</p>
+        <p className="font-extrabold text-gray-500 text-sm m-0">Use the keyboard on the left to answer.</p>
       </div>
 
       {/* Stats Area */}
-      <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', padding: '16px', background: '#f8fafc', border: '3px solid #0f0f0f', borderRadius: '16px' }}>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#6b7280' }}>Category Score</span>
-          <span style={{ fontSize: '24px', fontWeight: 900, color: '#0f0f0f' }}>{score}</span>
+      <div className="flex w-full justify-between p-4 bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl shadow-sm">
+        <div className="flex flex-col">
+          <span className="text-[11px] font-extrabold uppercase text-gray-500">Category Score</span>
+          <span className="text-[24px] font-black text-[var(--color-on-surface)]">{score}</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-          <span style={{ fontSize: '11px', fontWeight: 800, textTransform: 'uppercase', color: '#6b7280' }}>Accuracy</span>
-          <span style={{ fontSize: '24px', fontWeight: 900, color: accuracy >= 80 ? '#10B981' : '#f59e0b' }}>{accuracy}%</span>
+        <div className="flex flex-col items-end">
+          <span className="text-[11px] font-extrabold uppercase text-gray-500">Accuracy</span>
+          <span className={`text-[24px] font-black ${accuracy >= 80 ? 'text-[#10B981]' : 'text-amber-500'}`}>{accuracy}%</span>
         </div>
       </div>
     </div>

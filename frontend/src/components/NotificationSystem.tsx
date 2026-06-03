@@ -26,13 +26,13 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
   }, [onExpire]);
 
   const config = {
-    xp:      { icon: <Zap size={20} className="text-[var(--color-primary)]" />,       bg: 'var(--color-primary-container)', label: 'XP Gained' },
-    streak:  { icon: <Flame size={20} className="text-[#c2652a]" />,     bg: 'var(--color-surface-container)', label: 'Streak!' },
-    info:    { icon: <Info size={20} className="text-[var(--color-on-surface)]" />,      bg: 'var(--color-surface-container-low)', label: 'Info' },
-    success: { icon: <CheckCircle size={20} className="text-[#2e7d32]" />, bg: '#e8f5e9', label: 'Nice Work!' },
+    xp:      { icon: <Zap size={20} className="text-[var(--color-primary)]" />,       bgClass: 'bg-[var(--color-primary-container)]', label: 'XP Gained' },
+    streak:  { icon: <Flame size={20} className="text-[#c2652a]" />,     bgClass: 'bg-[var(--color-surface-container)]', label: 'Streak!' },
+    info:    { icon: <Info size={20} className="text-[var(--color-on-surface)]" />,      bgClass: 'bg-[var(--color-surface-container-low)]', label: 'Info' },
+    success: { icon: <CheckCircle size={20} className="text-[#2e7d32]" />, bgClass: 'bg-[#e8f5e9]', label: 'Nice Work!' },
   };
 
-  const { icon, bg, label } = config[notification.type] ?? config.info;
+  const { icon, bgClass, label } = config[notification.type] ?? config.info;
 
   return (
     <motion.div
@@ -43,7 +43,7 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
       className="pointer-events-auto flex items-center gap-4 sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] shadow-sm rounded-2xl px-5 py-3 min-w-[220px] relative overflow-hidden"
     >
       {/* Colored icon bubble */}
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-[var(--color-outline-variant)] shadow-sm" style={{ background: bg }}>
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-[var(--color-outline-variant)] shadow-sm ${bgClass}`}>
         {icon}
       </div>
 
@@ -61,8 +61,7 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
         initial={{ scaleX: 1 }}
         animate={{ scaleX: 0 }}
         transition={{ duration: 4, ease: 'linear' }}
-        className="absolute bottom-0 left-0 right-0 h-1 origin-left rounded-b-xl"
-        style={{ background: notification.type === 'success' ? '#81c784' : 'var(--color-primary)' }}
+        className={`absolute bottom-0 left-0 right-0 h-1 origin-left rounded-b-xl ${notification.type === 'success' ? 'bg-[#81c784]' : 'bg-[var(--color-primary)]'}`}
       />
     </motion.div>
   );

@@ -111,16 +111,7 @@ function AudioPlayer({
   }
 
   return (
-    <div
-      style={{
-        background: 'var(--color-surface)',
-        border: '1px solid var(--color-outline-variant)',
-        borderRadius: '24px',
-        padding: '24px',
-        marginBottom: '24px',
-        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
-      }}
-    >
+    <div className="bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-6 mb-6 shadow-sm">
       {audioUrl && (
         <audio
           ref={audioRef}
@@ -130,63 +121,42 @@ function AudioPlayer({
           onEnded={() => setIsPlaying(false)}
         />
       )}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div className="flex items-center gap-4">
         <button
           onClick={togglePlay}
-          style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            background: 'var(--color-primary)',
-            color: '#ffffff',
-            fontSize: '20px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            opacity: !audioUrl && !ttsSupported ? 0.4 : 1,
-            border: 'none',
-            boxShadow: '0 4px 12px rgba(194, 101, 42, 0.3)',
-            transition: 'transform 0.2s',
-          }}
+          className={`w-14 h-14 rounded-full bg-[var(--color-primary)] text-white text-xl cursor-pointer flex items-center justify-center shrink-0 border-none shadow-sm transition-transform hover:scale-105 ${!audioUrl && !ttsSupported ? 'opacity-40' : 'opacity-100'}`}
           aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
           disabled={!audioUrl && !ttsSupported}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.05)'; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; }}
         >
           {isPlaying ? '⏸' : '▶'}
         </button>
 
         {/* Animated waveform bars */}
-        <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', height: '32px' }}>
+        <div className="flex gap-1 items-end h-8">
           {Array.from({ length: 20 }, (_, i) => (
             <div
               key={i}
+              className="w-1 rounded-sm bg-[var(--color-primary)] opacity-80"
               style={{
-                width: '4px',
-                borderRadius: '2px',
-                background: 'var(--color-primary)',
                 height: isPlaying ? `${8 + Math.sin(i * 0.8) * 12 + 12}px` : '8px',
                 transition: 'height 0.15s ease',
                 animation: isPlaying ? `bar-bounce-${i % 5} 0.6s ease infinite alternate` : 'none',
-                opacity: 0.8,
               }}
             />
           ))}
         </div>
 
-        <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
+        <div className="ml-auto text-right">
           {audioUrl ? (
-            <p style={{ margin: 0, color: 'var(--color-on-surface)', fontSize: '14px', fontWeight: 600, fontFamily: '"Manrope", sans-serif' }}>
+            <p className="m-0 text-[var(--color-on-surface)] text-sm font-semibold font-sans">
               {currentTime} / {duration}
             </p>
           ) : (
-            <p style={{ margin: 0, color: 'var(--color-primary)', fontSize: '13px', fontWeight: 700, fontFamily: '"Manrope", sans-serif' }}>
+            <p className="m-0 text-[var(--color-primary)] text-[13px] font-bold font-sans">
               {isPlaying ? '🔊 읽는 중…' : '🔊 TTS 음성'}
             </p>
           )}
-          <p style={{ margin: '4px 0 0', color: 'var(--color-on-surface-variant)', fontSize: '12px', fontWeight: 500, fontFamily: '"Manrope", sans-serif' }}>
+          <p className="mt-1 mb-0 text-[var(--color-on-surface-variant)] text-xs font-medium font-sans">
             재생 {playCount}회
           </p>
         </div>
@@ -194,19 +164,7 @@ function AudioPlayer({
 
       {/* TTS info banner */}
       {!audioUrl && (
-        <div style={{
-          marginTop: '16px',
-          background: 'var(--color-surface-container)',
-          border: '1px solid var(--color-outline-variant)',
-          borderRadius: '12px',
-          padding: '10px 16px',
-          fontSize: '13px',
-          color: 'var(--color-on-surface-variant)',
-          fontFamily: '"Manrope", sans-serif',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-        }}>
+        <div className="mt-4 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl px-4 py-2.5 text-[13px] text-[var(--color-on-surface-variant)] font-sans flex items-center gap-2">
           <span>💬</span>
           <span>▶ 버튼을 눌러 문제와 보기를 한국어 음성으로 들으세요</span>
         </div>
@@ -234,35 +192,13 @@ export default function ListeningSection({
   if (!q) return null;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontFamily: '"Manrope", sans-serif' }}>
+    <div className="flex flex-col gap-6 font-sans">
       {/* Question header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <div
-          style={{
-            background: 'var(--color-primary)',
-            color: '#ffffff',
-            borderRadius: '12px',
-            padding: '6px 16px',
-            fontWeight: 700,
-            fontSize: '15px',
-            boxShadow: '0 2px 8px rgba(194, 101, 42, 0.2)',
-          }}
-        >
+      <div className="flex items-center gap-3">
+        <div className="bg-[var(--color-primary)] text-white rounded-xl px-4 py-1.5 font-bold text-[15px] shadow-sm">
           Q{q.questionNumber}
         </div>
-        <div
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '10px',
-            padding: '4px 14px',
-            fontSize: '12px',
-            fontWeight: 700,
-            color: 'var(--color-on-surface-variant)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-          }}
-        >
+        <div className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-lg px-3.5 py-1 text-xs font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">
           Listening
         </div>
       </div>
@@ -272,91 +208,65 @@ export default function ListeningSection({
 
       {/* Question text */}
       {q.questionText && (
-        <p
-          style={{
-            margin: 0,
-            fontSize: '18px',
-            fontWeight: 700,
-            color: 'var(--color-on-surface)',
-            lineHeight: 1.6,
-            fontFamily: '"EB Garamond", serif',
-          }}
-        >
+        <p className="m-0 text-lg font-bold text-[var(--color-on-surface)] leading-relaxed font-serif">
           {q.questionText}
         </p>
       )}
 
       {/* MCQ Options */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div className="flex flex-col gap-3">
         {q.options.map((opt, i) => {
           const isSelected = answers[q.id] === i;
           const isCorrect = submitted && q.correctAnswer === i;
           const isWrong = submitted && isSelected && q.correctAnswer !== i;
 
-          let bg = 'var(--color-surface)';
-          let border = 'var(--color-outline-variant)';
-          let color = 'var(--color-on-surface)';
+          let bgClass = 'bg-[var(--color-surface)]';
+          let borderClass = 'border-[var(--color-outline-variant)]';
+          let textClass = 'text-[var(--color-on-surface)]';
+          let indicatorBg = 'bg-[var(--color-surface-container)]';
+          let indicatorText = 'text-[var(--color-on-surface-variant)]';
 
-          if (isCorrect) { bg = '#e8f5e9'; border = '#81c784'; color = '#2e7d32'; }
-          else if (isWrong) { bg = '#fef2f2'; border = '#ef4444'; color = '#b91c1c'; }
-          else if (isSelected) { bg = 'var(--color-surface-container)'; border = 'var(--color-primary)'; color = 'var(--color-primary)'; }
+          if (isCorrect) {
+            bgClass = 'bg-[#e8f5e9]';
+            borderClass = 'border-[#81c784]';
+            textClass = 'text-[#2e7d32]';
+            indicatorBg = 'bg-[#81c784]';
+            indicatorText = 'text-white';
+          } else if (isWrong) {
+            bgClass = 'bg-[#fef2f2]';
+            borderClass = 'border-[#ef4444]';
+            textClass = 'text-[#b91c1c]';
+            indicatorBg = 'bg-[#ef4444]';
+            indicatorText = 'text-white';
+          } else if (isSelected) {
+            bgClass = 'bg-[var(--color-surface-container)]';
+            borderClass = 'border-[var(--color-primary)]';
+            textClass = 'text-[var(--color-primary)]';
+            indicatorBg = 'bg-[var(--color-primary)]';
+            indicatorText = 'text-white';
+          }
 
           return (
             <button
               key={i}
               onClick={() => !submitted && onAnswer(q.id, i)}
               disabled={submitted}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                background: bg,
-                border: `1px solid ${border}`,
-                borderRadius: '16px',
-                padding: '16px 20px',
-                cursor: submitted ? 'default' : 'pointer',
-                textAlign: 'left',
-                width: '100%',
-                transition: 'all 0.2s ease',
-                boxShadow: isSelected ? '0 4px 12px rgba(58, 48, 42, 0.08)' : 'none',
-              }}
-              onMouseEnter={(e) => {
-                if (!submitted) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)';
-                  (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!submitted && !isSelected) {
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)';
-                }
-                (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
-              }}
+              className={`flex items-center gap-3.5 ${bgClass} border ${borderClass} rounded-2xl px-5 py-4 ${
+                submitted ? 'cursor-default' : 'cursor-pointer hover:border-[var(--color-primary)] hover:-translate-y-0.5'
+              } text-left w-full transition-all duration-200 ease-out ${
+                isSelected ? 'shadow-sm' : 'shadow-none'
+              }`}
             >
               <span
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  background: isSelected || isCorrect || isWrong ? border : 'var(--color-surface-container)',
-                  color: isSelected || isCorrect || isWrong ? '#ffffff' : 'var(--color-on-surface-variant)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '14px',
-                  fontWeight: 700,
-                  flexShrink: 0,
-                }}
+                className={`w-8 h-8 rounded-full ${indicatorBg} ${indicatorText} flex items-center justify-center text-sm font-bold shrink-0 transition-colors`}
               >
                 {OPTION_LABELS[i]}
               </span>
-              <span style={{ fontSize: '15px', fontWeight: 600, color, lineHeight: 1.5 }}>{opt}</span>
-              {isCorrect && (
-                <span style={{ marginLeft: 'auto', fontSize: '18px', color: '#2e7d32' }}>✓</span>
-              )}
-              {isWrong && (
-                <span style={{ marginLeft: 'auto', fontSize: '18px', color: '#b91c1c' }}>✗</span>
-              )}
+              <span className={`text-[15px] font-semibold ${textClass} leading-snug transition-colors`}>
+                {opt}
+              </span>
+              {isCorrect && <span className="ml-auto text-lg text-[#2e7d32]">✓</span>}
+              {isWrong && <span className="ml-auto text-lg text-[#b91c1c]">✗</span>}
             </button>
           );
         })}
@@ -364,18 +274,7 @@ export default function ListeningSection({
 
       {/* Explanation after submit */}
       {submitted && q.explanation && (
-        <div
-          style={{
-            background: 'var(--color-surface-container)',
-            border: '1px solid var(--color-outline-variant)',
-            borderRadius: '16px',
-            padding: '16px 20px',
-            fontSize: '14px',
-            fontWeight: 500,
-            lineHeight: 1.6,
-            color: 'var(--color-on-surface)',
-          }}
-        >
+        <div className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-2xl px-5 py-4 text-sm font-medium leading-relaxed text-[var(--color-on-surface)] mt-2">
           💡 {q.explanation}
         </div>
       )}

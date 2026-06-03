@@ -57,6 +57,10 @@ body {
 }
 
 /* Sahara Utilities */
+.shadow-ultra-soft {
+  box-shadow: 0 2px 16px rgba(58, 48, 42, 0.04);
+}
+
 .sahara-card {
   background: #ffffff;
   border-radius: var(--radius-xl);

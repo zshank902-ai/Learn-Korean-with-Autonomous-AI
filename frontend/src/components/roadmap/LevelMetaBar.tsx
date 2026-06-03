@@ -20,11 +20,10 @@ function Chip({ icon, label, value, accentColor = '#6366f1' }: ChipProps) {
         display: 'flex',
         alignItems: 'center',
         gap: '6px',
-        background: '#ffffff',
-        border: '2px solid #0f0f0f',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
         borderRadius: '8px',
         padding: '6px 12px',
-        boxShadow: '2px 2px 0px #0f0f0f',
         whiteSpace: 'nowrap',
       }}
     >
@@ -34,7 +33,7 @@ function Chip({ icon, label, value, accentColor = '#6366f1' }: ChipProps) {
           fontFamily: 'Inter, sans-serif',
           fontWeight: 600,
           fontSize: '11px',
-          color: '#6b7280',
+          color: 'var(--color-on-surface-variant)',
           textTransform: 'uppercase',
           letterSpacing: '0.06em',
         }}
@@ -95,10 +94,9 @@ export default function LevelMetaBar({ level }: LevelMetaBarProps) {
             alignItems: 'center',
             gap: '6px',
             background: level.color,
-            border: '2px solid #0f0f0f',
+            border: '1px solid var(--color-outline-variant)',
             borderRadius: '8px',
             padding: '6px 12px',
-            boxShadow: '2px 2px 0px #0f0f0f',
             whiteSpace: 'nowrap',
           }}
         >
@@ -107,7 +105,7 @@ export default function LevelMetaBar({ level }: LevelMetaBarProps) {
               fontFamily: 'Inter, sans-serif',
               fontWeight: 800,
               fontSize: '12px',
-              color: '#0f0f0f',
+              color: 'var(--color-on-surface)',
             }}
           >
             {section.name}
@@ -117,7 +115,7 @@ export default function LevelMetaBar({ level }: LevelMetaBarProps) {
               fontFamily: 'Inter, sans-serif',
               fontWeight: 600,
               fontSize: '11px',
-              color: '#374151',
+              color: 'var(--color-on-surface-variant)',
             }}
           >
             {section.questions}Q · {section.time_min}min

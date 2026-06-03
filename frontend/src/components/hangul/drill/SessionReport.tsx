@@ -23,16 +23,16 @@ export default function SessionReport({ state, onDrillAgain, onReDrillWeak, onBa
   const weakWords = state.results.filter(r => !r.correct);
 
   let badgeText = "다시 해봐요 🔄";
-  let badgeColor = "#FF4B4B";
+  let badgeColorClass = "bg-[#ffebee] text-[#c62828] border-[#ef5350]";
   if (accuracy >= 90) {
     badgeText = "완벽! 🏆";
-    badgeColor = "#FFD600";
+    badgeColorClass = "bg-[var(--color-primary)] text-[var(--color-on-primary)] border-[var(--color-primary)]";
   } else if (accuracy >= 70) {
     badgeText = "잘했어요! ⭐";
-    badgeColor = "#00E5FF";
+    badgeColorClass = "bg-[var(--color-surface-container)] text-[var(--color-on-surface)] border-[var(--color-outline-variant)]";
   } else if (accuracy >= 50) {
     badgeText = "괜찮아요 💪";
-    badgeColor = "#ffffff";
+    badgeColorClass = "bg-[var(--color-surface)] text-[var(--color-on-surface)] border-[var(--color-outline-variant)]";
   }
 
   useEffect(() => {
@@ -47,33 +47,33 @@ export default function SessionReport({ state, onDrillAgain, onReDrillWeak, onBa
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-      style={{ width: '100%', maxWidth: '800px', margin: '0 auto', padding: '32px' }}
+      className="w-full max-w-4xl mx-auto p-8 font-sans"
     >
       {/* HEADER SECTION */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 900, marginBottom: '16px' }}>Session Complete</h2>
+      <div className="flex flex-col items-center mb-12">
+        <h2 className="text-2xl font-black mb-4">Session Complete</h2>
         
-        <div style={{ padding: '16px 32px', backgroundColor: badgeColor, border: '4px solid #0f0f0f', borderRadius: '16px', boxShadow: '8px 8px 0px #0f0f0f', marginBottom: '32px' }}>
-          <span style={{ fontSize: '32px', fontWeight: 900, color: '#0f0f0f' }}>{badgeText}</span>
+        <div className={`px-8 py-4 border rounded-2xl shadow-sm mb-8 ${badgeColorClass}`}>
+          <span className="text-3xl font-black">{badgeText}</span>
         </div>
 
-        <div style={{ fontSize: '6rem', fontWeight: 900, fontFamily: '"Space Grotesk", sans-serif', color: '#0f0f0f', lineHeight: 1 }}>
-          {correctCount}<span style={{ color: '#9ca3af', fontSize: '4rem' }}>/{total}</span>
+        <div className="text-[6rem] font-black font-sans text-[var(--color-on-surface)] leading-none">
+          {correctCount}<span className="text-gray-400 text-[4rem]">/{total}</span>
         </div>
         
-        <div style={{ display: 'flex', gap: '32px', marginTop: '16px' }}>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ margin: 0, fontWeight: 900, fontSize: '24px', color: '#00C853' }}>{accuracy}%</p>
-            <p style={{ margin: 0, fontWeight: 700, color: '#6b7280' }}>Accuracy</p>
+        <div className="flex gap-8 mt-4">
+          <div className="text-center">
+            <p className="m-0 font-black text-2xl text-[#10B981]">{accuracy}%</p>
+            <p className="m-0 font-bold text-gray-500">Accuracy</p>
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <p style={{ margin: 0, fontWeight: 900, fontSize: '24px', color: '#FFD600' }}>+{state.sessionXP}</p>
-            <p style={{ margin: 0, fontWeight: 700, color: '#6b7280' }}>XP Earned</p>
+          <div className="text-center">
+            <p className="m-0 font-black text-2xl text-[#FFD600]">+{state.sessionXP}</p>
+            <p className="m-0 font-bold text-gray-500">XP Earned</p>
           </div>
         </div>
 
         {isSaved && (
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ color: '#00C853', fontWeight: 900, marginTop: '16px' }}>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[#10B981] font-black mt-4">
             ✓ Progress saved
           </motion.p>
         )}
@@ -81,22 +81,22 @@ export default function SessionReport({ state, onDrillAgain, onReDrillWeak, onBa
 
       {/* WEAK WORDS */}
       {weakWords.length > 0 && (
-        <div style={{ marginBottom: '48px' }}>
-          <h3 style={{ fontSize: '24px', fontWeight: 900, marginBottom: '24px', color: '#FF4B4B' }}>연습이 필요해요 — Needs Practice</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '16px' }}>
+        <div className="mb-12">
+          <h3 className="text-2xl font-black mb-6 text-[#ef4444]">연습이 필요해요 — Needs Practice</h3>
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
             {weakWords.map((r, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                style={{ backgroundColor: '#FAFAFA', border: '3px solid #0f0f0f', borderRadius: '16px', padding: '24px', boxShadow: '4px 4px 0px #0f0f0f', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}
+                className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-6 flex flex-col items-center text-center shadow-sm"
               >
-                <span style={{ fontSize: '32px', fontWeight: 900 }}>{r.word.korean}</span>
-                <span style={{ fontSize: '14px', fontStyle: 'italic', color: '#6b7280', margin: '8px 0 16px' }}>{r.word.meaning}</span>
+                <span className="text-3xl font-black">{r.word.korean}</span>
+                <span className="text-sm italic text-[var(--color-on-surface-variant)] my-2">{r.word.meaning}</span>
                 <button
                   onClick={() => speak(r.word.korean)}
-                  style={{ padding: '8px 16px', backgroundColor: '#00E5FF', border: '2px solid #0f0f0f', borderRadius: '8px', fontWeight: 900, cursor: 'pointer', boxShadow: '2px 2px 0px #0f0f0f' }}
+                  className="px-4 py-2 bg-[var(--color-primary)] text-[var(--color-on-primary)] border border-[var(--color-outline-variant)] rounded-xl font-bold cursor-pointer shadow-sm"
                 >
                   🔊 Hear
                 </button>
@@ -107,23 +107,23 @@ export default function SessionReport({ state, onDrillAgain, onReDrillWeak, onBa
       )}
 
       {/* FULL BREAKDOWN */}
-      <div style={{ marginBottom: '48px' }}>
-        <h3 style={{ fontSize: '24px', fontWeight: 900, marginBottom: '24px' }}>Full Breakdown</h3>
-        <div style={{ border: '3px solid #0f0f0f', borderRadius: '16px', overflow: 'hidden' }}>
+      <div className="mb-12">
+        <h3 className="text-2xl font-black mb-6">Full Breakdown</h3>
+        <div className="border border-[var(--color-outline-variant)] rounded-2xl overflow-hidden shadow-sm">
           {state.results.map((r, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.05 }}
-              style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 1fr 1fr', padding: '16px 24px', borderBottom: i < state.results.length - 1 ? '2px solid #e5e7eb' : 'none', backgroundColor: i % 2 === 0 ? '#ffffff' : '#f9fafb', alignItems: 'center' }}
+              className={`grid grid-cols-[2fr_2fr_1fr_1fr] p-4 px-6 items-center ${i < state.results.length - 1 ? 'border-b border-[var(--color-outline-variant)]' : 'border-none'} ${i % 2 === 0 ? 'bg-[var(--color-surface)]' : 'bg-[var(--color-surface-container-low)]'}`}
             >
-              <span style={{ fontWeight: 900, fontSize: '18px' }}>{r.word.korean}</span>
-              <span style={{ color: '#6b7280' }}>"{r.heard || '-'}"</span>
-              <span style={{ fontWeight: 900, color: r.correct ? '#00C853' : '#FF4B4B' }}>{r.correct ? '✓ Correct' : '✗ Skipped'}</span>
-              <div style={{ display: 'flex', gap: '4px' }}>
+              <span className="font-black text-lg">{r.word.korean}</span>
+              <span className="text-gray-500">"{r.heard || "-"}"</span>
+              <span className={`font-black ${r.correct ? 'text-[#10B981]' : 'text-[#ef4444]'}`}>{r.correct ? '✓ Correct' : '✗ Skipped'}</span>
+              <div className="flex gap-1">
                 {[0, 1, 2].map(dot => (
-                  <div key={dot} style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: dot < r.attemptsUsed ? (r.correct && dot === r.attemptsUsed - 1 ? '#00C853' : '#FF4B4B') : '#e5e7eb' }} />
+                  <div key={dot} className={`w-2.5 h-2.5 rounded-full ${dot < r.attemptsUsed ? (r.correct && dot === r.attemptsUsed - 1 ? 'bg-[#10B981]' : 'bg-[#ef4444]') : 'bg-gray-200'}`} />
                 ))}
               </div>
             </motion.div>
@@ -132,32 +132,32 @@ export default function SessionReport({ state, onDrillAgain, onReDrillWeak, onBa
       </div>
 
       {/* ACTION BUTTONS */}
-      <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div className="flex gap-4 justify-center flex-wrap">
         <motion.button
-          whileHover={{ y: -2, boxShadow: '6px 6px 0px #0f0f0f' }}
-          whileTap={{ y: 2, boxShadow: '0px 0px 0px #0f0f0f' }}
+          whileHover={{ y: -2, scale: 1.02 }}
+          whileTap={{ y: 0, scale: 0.98 }}
           onClick={onDrillAgain}
-          style={{ padding: '16px 32px', backgroundColor: '#FFD600', border: '3px solid #0f0f0f', borderRadius: '16px', fontWeight: 900, fontSize: '18px', cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}
+          className="sahara-btn px-8 py-4 rounded-2xl font-bold text-[15px] uppercase tracking-wider cursor-pointer shadow-sm"
         >
           다시 하기 — Drill Again
         </motion.button>
         
         {weakWords.length > 0 && (
           <motion.button
-            whileHover={{ y: -2, boxShadow: '6px 6px 0px #0f0f0f' }}
-            whileTap={{ y: 2, boxShadow: '0px 0px 0px #0f0f0f' }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ y: 0, scale: 0.98 }}
             onClick={onReDrillWeak}
-            style={{ padding: '16px 32px', backgroundColor: '#FF4B4B', color: '#ffffff', border: '3px solid #0f0f0f', borderRadius: '16px', fontWeight: 900, fontSize: '18px', cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}
+            className="px-8 py-4 bg-[#ffebee] text-[#c62828] border border-[#ef5350] rounded-2xl font-bold text-[15px] uppercase tracking-wider cursor-pointer shadow-sm"
           >
             약한 단어 연습 — Re-drill Weak Words
           </motion.button>
         )}
 
         <motion.button
-          whileHover={{ y: -2, boxShadow: '6px 6px 0px #0f0f0f' }}
-          whileTap={{ y: 2, boxShadow: '0px 0px 0px #0f0f0f' }}
+          whileHover={{ y: -2, scale: 1.02 }}
+          whileTap={{ y: 0, scale: 0.98 }}
           onClick={onBackToPlayground}
-          style={{ padding: '16px 32px', backgroundColor: '#ffffff', border: '3px solid #0f0f0f', borderRadius: '16px', fontWeight: 900, fontSize: '18px', cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f' }}
+          className="px-8 py-4 bg-[var(--color-surface)] text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] rounded-2xl font-bold text-[15px] uppercase tracking-wider cursor-pointer shadow-sm"
         >
           홈으로 — Back to Playground
         </motion.button>
