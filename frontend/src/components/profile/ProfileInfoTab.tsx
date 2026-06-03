@@ -154,20 +154,18 @@ export default function ProfileInfoTab() {
       
       {/* Avatar Upload */}
       <div className="flex flex-col md:flex-row items-center gap-6">
-        <div className="w-24 h-24 rounded-[1rem] border-3 border-[#1E1B4B] bg-[#EEF2FF] flex items-center justify-center overflow-hidden"
-             style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
+        <div className="w-24 h-24 rounded-[1rem] border border-[rgba(255,255,255,0.2)] glass-card bg-[rgba(255,255,255,0.05)] flex items-center justify-center overflow-hidden shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]">
           {avatarPreview ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={avatarPreview} alt="Avatar Preview" className="w-full h-full object-cover" />
           ) : (
-            <User className="text-[#4F46E5]" size={40} />
+            <User className="text-[var(--color-primary-container)] drop-shadow-md" size={40} />
           )}
         </div>
         <div>
-          <h3 className="font-bold text-[#1E1B4B] text-lg mb-2">Profile Picture</h3>
+          <h3 className="font-extrabold text-white text-lg mb-2 drop-shadow-sm font-sans">Profile Picture</h3>
           <div className="flex items-center gap-3">
-            <label className="cursor-pointer px-4 py-2 bg-white border-2 border-[#1E1B4B] rounded-lg font-bold text-[#1E1B4B] hover:bg-[#EEF2FF] transition-colors flex items-center gap-2"
-                   style={{ boxShadow: '2px 2px 0px #1E1B4B' }}>
+            <label className="cursor-pointer px-4 py-2 glass-btn-secondary text-white rounded-lg font-bold flex items-center gap-2">
               <Upload size={16} />
               Change Photo
               <input 
@@ -178,43 +176,41 @@ export default function ProfileInfoTab() {
               />
             </label>
           </div>
-          <p className="text-xs text-[#1E1B4B]/50 font-bold mt-2">JPEG, PNG, or WebP. Max 2MB.</p>
+          <p className="text-xs text-[var(--color-on-surface-variant)] font-bold mt-2">JPEG, PNG, or WebP. Max 2MB.</p>
         </div>
       </div>
 
-      <hr className="border-[#1E1B4B]/10 border-2 rounded-full" />
+      <hr className="border-[rgba(255,255,255,0.1)] rounded-full" />
 
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div>
-          <label className="block text-sm font-black text-[#1E1B4B] mb-2 uppercase tracking-wide">Full Name</label>
+          <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Full Name</label>
           <input 
             {...register('full_name')}
-            className={`w-full p-4 rounded-xl border-3 font-bold bg-white text-[#1E1B4B] placeholder:text-[#1E1B4B]/30 outline-none transition-all ${
-              errors.full_name ? 'border-[#EF4444] focus:border-[#EF4444]' : 'border-[#1E1B4B] focus:border-[#4F46E5]'
+            className={`w-full neumorphic-input rounded-xl py-4 px-4 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
+              errors.full_name ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
             }`}
-            style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)' }}
             placeholder="e.g. John Doe"
           />
           {errors.full_name && <p className="text-[#EF4444] text-sm font-bold mt-1">{errors.full_name.message}</p>}
         </div>
 
         <div>
-          <label className="block text-sm font-black text-[#1E1B4B] mb-2 uppercase tracking-wide">Nickname (Unique)</label>
+          <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Nickname (Unique)</label>
           <div className="relative">
             <input 
               {...register('nickname')}
-              className={`w-full p-4 pr-12 rounded-xl border-3 font-bold bg-white text-[#1E1B4B] placeholder:text-[#1E1B4B]/30 outline-none transition-all ${
-                errors.nickname || nicknameStatus === 'taken' ? 'border-[#EF4444] focus:border-[#EF4444]' : 'border-[#1E1B4B] focus:border-[#4F46E5]'
+              className={`w-full neumorphic-input rounded-xl py-4 px-4 pr-12 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
+                errors.nickname || nicknameStatus === 'taken' ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
               }`}
-              style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)' }}
               placeholder="e.g. jdoe99"
             />
             
             {/* Nickname Status Indicator */}
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
               {isCheckingNickname ? (
-                <Loader2 className="animate-spin text-[#4F46E5]" size={20} />
+                <Loader2 className="animate-spin text-[var(--color-primary-container)]" size={20} />
               ) : nicknameStatus === 'available' ? (
                 <CheckCircle className="text-[#10B981]" size={20} />
               ) : nicknameStatus === 'taken' ? (
@@ -230,7 +226,7 @@ export default function ProfileInfoTab() {
           <button 
             type="submit" 
             disabled={!isFormValidToSubmit || isSubmitting}
-            className="px-8 py-3 bg-[#1E1B4B] text-white font-black rounded-xl border-3 border-transparent hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 shadow-[4px_4px_0px_#4F46E5] flex items-center gap-2"
+            className="px-8 py-3 glass-btn text-white font-extrabold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 flex items-center gap-2"
           >
             {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : "Save Changes"}
           </button>

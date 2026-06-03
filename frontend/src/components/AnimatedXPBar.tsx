@@ -15,26 +15,22 @@ export default function AnimatedXPBar({ currentXP, level }: XPBarProps) {
   return (
     <div className="w-full space-y-1" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
       <div className="flex justify-between items-end">
-        <span className="text-xs font-black text-[#4F46E5]" style={{ fontFamily: 'Fredoka, cursive' }}>
+        <span className="text-xs font-extrabold text-[var(--color-primary-container)] drop-shadow-sm font-sans">
           Lv.{level}
         </span>
-        <span className="text-xs font-bold text-[#1E1B4B]/50">
+        <span className="text-xs font-bold text-[var(--color-on-surface-variant)]">
           {xpInLevel.toLocaleString()} / 5,000 XP
         </span>
       </div>
       {/* Bar track */}
-      <div
-        className="h-4 w-full rounded-full border-3 border-[#1E1B4B] overflow-hidden"
-        style={{ background: '#C7D2FE', border: '3px solid #1E1B4B', boxShadow: 'inset 2px 2px 4px rgba(0,0,0,0.1)' }}
-      >
+      <div className="h-4 w-full rounded-full neumorphic-input overflow-hidden border-none bg-[rgba(0,0,0,0.4)]">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-          className="h-full rounded-full"
+          className="h-full rounded-full bg-[var(--color-primary-container)] shadow-[0_0_10px_var(--color-primary-container)]"
           style={{
-            background: 'linear-gradient(90deg, #F97316, #FBBF24)',
-            boxShadow: 'inset -2px -2px 4px rgba(0,0,0,0.15), inset 2px 2px 4px rgba(255,255,255,0.4)',
+            background: 'linear-gradient(90deg, var(--color-primary-container), var(--color-tertiary-container))',
           }}
         />
       </div>

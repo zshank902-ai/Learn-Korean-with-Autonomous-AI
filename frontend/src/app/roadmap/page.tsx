@@ -37,7 +37,7 @@ export default function RoadmapPage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[#EEF2FF] text-[#1E1B4B]">
+      <div className="min-h-screen text-white relative z-10 pt-24 pb-32">
         {/* Main Roadmap Panel */}
         <TopikRoadmapPanel onStartMockExam={handleStartMockExam} />
 

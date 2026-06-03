@@ -16,28 +16,27 @@ export default function AccountSettings() {
   ] as const;
 
   return (
-    <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] overflow-hidden mt-8"
-         style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
+    <div className="glass-card rounded-3xl border border-[rgba(255,255,255,0.2)] overflow-hidden mt-8 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
       
       {/* Settings Header */}
-      <div className="bg-[#1E1B4B] p-6 md:p-8 text-white">
-        <h2 className="text-3xl font-black mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
+      <div className="bg-[rgba(255,255,255,0.05)] p-6 md:p-8 text-white border-b border-[rgba(255,255,255,0.1)] backdrop-blur-sm">
+        <h2 className="text-3xl font-extrabold mb-2 font-sans drop-shadow-md">
           Account Settings
         </h2>
-        <p className="text-white/60 font-bold">Manage your profile, email, and security preferences.</p>
+        <p className="text-[var(--color-on-surface-variant)] font-bold">Manage your profile, email, and security preferences.</p>
       </div>
 
       <div className="flex flex-col md:flex-row">
         {/* Sidebar Navigation */}
-        <div className="md:w-64 border-b-4 md:border-b-0 md:border-r-4 border-[#1E1B4B] bg-[#EEF2FF] p-4 flex md:flex-col gap-2 overflow-x-auto">
+        <div className="md:w-64 border-b md:border-b-0 md:border-r border-[rgba(255,255,255,0.1)] bg-[rgba(0,0,0,0.2)] p-4 flex md:flex-col gap-2 overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-3 px-4 py-4 rounded-xl font-black uppercase tracking-widest text-sm transition-all whitespace-nowrap ${
+              className={`flex items-center gap-3 px-4 py-4 rounded-xl font-extrabold uppercase tracking-widest text-sm transition-all whitespace-nowrap ${
                 activeTab === tab.id 
-                  ? 'bg-[#4F46E5] text-white border-2 border-[#1E1B4B] shadow-[3px_3px_0px_#1E1B4B]' 
-                  : 'text-[#1E1B4B]/60 hover:bg-[#1E1B4B]/5 border-2 border-transparent'
+                  ? 'glass-card bg-[rgba(255,255,255,0.1)] text-white border border-[rgba(255,255,255,0.2)] shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]' 
+                  : 'text-[var(--color-on-surface-variant)] hover:bg-[rgba(255,255,255,0.05)] border border-transparent'
               }`}
             >
               {tab.icon}

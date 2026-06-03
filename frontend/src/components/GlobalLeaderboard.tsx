@@ -24,7 +24,6 @@ export default function GlobalLeaderboard() {
         const res = await fetch(API_ENDPOINTS.USER_STATS.replace('/stats', '/leaderboard'));
         if (res.ok) {
           const data = await res.json();
-          // Backend returns array; map to our interface
           const mapped = (Array.isArray(data) ? data : []).map((u: {rank?: number; user_id?: number | string; nickname?: string; xp?: number; level?: number}, i: number) => ({
             id: u.user_id ?? i + 1,
             nickname: u.nickname ?? `User ${u.user_id}`,
@@ -60,29 +59,27 @@ export default function GlobalLeaderboard() {
 
   const getRankStyle = (rank: number) => {
     switch(rank) {
-      case 1: return { bg: '#FBBF24', color: 'white', border: '#1E1B4B' }; // Gold
-      case 2: return { bg: '#94A3B8', color: 'white', border: '#1E1B4B' }; // Silver
-      case 3: return { bg: '#B45309', color: 'white', border: '#1E1B4B' }; // Bronze
-      default: return { bg: '#EEF2FF', color: '#1E1B4B', border: '#1E1B4B' };
+      case 1: return { bg: 'bg-yellow-400', text: 'text-yellow-900', shadow: 'shadow-[0_0_12px_rgba(250,204,21,0.5)]' }; // Gold
+      case 2: return { bg: 'bg-gray-300', text: 'text-gray-900', shadow: 'shadow-[0_0_12px_rgba(209,213,219,0.5)]' }; // Silver
+      case 3: return { bg: 'bg-amber-700', text: 'text-amber-100', shadow: 'shadow-[0_0_12px_rgba(180,83,9,0.5)]' }; // Bronze
+      default: return { bg: 'bg-[rgba(255,255,255,0.1)]', text: 'text-[var(--color-on-surface-variant)]', shadow: '' };
     }
   };
 
   return (
-    <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 h-full flex flex-col"
-         style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
-      <div className="flex items-center gap-3 mb-6 border-b-4 border-[#1E1B4B] pb-4">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center border-3 border-[#1E1B4B]"
-             style={{ background: '#FBBF24', border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}>
-          <Trophy className="text-[#1E1B4B]" size={20} />
+    <div className="glass-card p-6 h-full flex flex-col">
+      <div className="flex items-center gap-3 mb-6 border-b border-[rgba(255,255,255,0.1)] pb-4">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-yellow-400/20 border border-yellow-400/50 shadow-[0_0_12px_rgba(250,204,21,0.2)]">
+          <Trophy className="text-yellow-400 drop-shadow-md" size={20} />
         </div>
-        <h2 className="text-2xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>Leaderboard</h2>
+        <h2 className="text-2xl font-extrabold text-white tracking-tight drop-shadow-md font-sans">Leaderboard</h2>
       </div>
 
       <div className="flex-1 overflow-y-auto pr-2 space-y-3">
         {loading ? (
           <div className="animate-pulse space-y-3">
             {[1,2,3,4,5].map(i => (
-              <div key={i} className="h-16 bg-[#EEF2FF] rounded-2xl border-3 border-[#1E1B4B]/20" />
+              <div key={i} className="h-16 bg-[rgba(255,255,255,0.05)] rounded-2xl border border-[rgba(255,255,255,0.1)]" />
             ))}
           </div>
         ) : (
@@ -97,23 +94,21 @@ export default function GlobalLeaderboard() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className={`flex items-center gap-3 p-3 rounded-2xl border-3 border-[#1E1B4B] ${isMe ? 'bg-[#EEF2FF]' : 'bg-white'}`}
-                style={{ border: '3px solid #1E1B4B', boxShadow: isMe ? '3px 3px 0px #4F46E5' : '2px 2px 0px #1E1B4B' }}
+                className={`flex items-center gap-3 p-3 rounded-2xl border transition-all duration-300 ${isMe ? 'bg-[var(--color-primary-container)]/30 border-[var(--color-primary-container)]/50 shadow-[0_0_12px_rgba(79,70,229,0.3)]' : 'bg-[rgba(255,255,255,0.02)] border-[rgba(255,255,255,0.1)] hover:bg-[rgba(255,255,255,0.08)]'}`}
               >
                 <div 
-                  className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-black text-sm border-2"
-                  style={{ background: rankStyle.bg, color: rankStyle.color, borderColor: rankStyle.border }}
+                  className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-black text-sm border border-[rgba(255,255,255,0.2)] ${rankStyle.bg} ${rankStyle.text} ${rankStyle.shadow}`}
                 >
                   {rank <= 3 ? <Medal size={14} /> : rank}
                 </div>
                 
                 <div className="flex-1 min-w-0">
-                  <p className="font-bold text-[#1E1B4B] truncate">{user.nickname || user.full_name || "Anonymous"}</p>
-                  <p className="text-xs font-black text-[#4F46E5]">Lv. {user.level}</p>
+                  <p className="font-bold text-white truncate">{user.nickname || user.full_name || "Anonymous"}</p>
+                  <p className="text-xs font-extrabold text-[var(--color-primary-container)]">Lv. {user.level}</p>
                 </div>
                 
                 <div className="text-right shrink-0">
-                  <p className="font-black text-[#F97316]">{user.xp.toLocaleString()} XP</p>
+                  <p className="font-extrabold text-[var(--color-secondary-container)]">{user.xp.toLocaleString()} XP</p>
                 </div>
               </motion.div>
             );

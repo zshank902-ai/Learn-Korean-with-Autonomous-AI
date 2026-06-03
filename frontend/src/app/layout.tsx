@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/NavbarWrapper";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "K-Mastery | AI-Powered Korean Learning",
@@ -17,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
-      <body suppressHydrationWarning className="bg-[#EEF2FF] text-[#1E1B4B] font-sans selection:bg-[#4F46E5] selection:text-white min-h-screen relative">
+    <html lang="en" className={`${plusJakartaSans.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning className="font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-[var(--color-primary-container)] selection:text-white">
         <NavbarWrapper />
         <div className="pt-24 pb-8">
           {children}

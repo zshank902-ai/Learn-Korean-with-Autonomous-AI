@@ -17,7 +17,7 @@ router = APIRouter()
 
 
 def _get_level_sequence(level: int) -> list[str]:
-    level_data = next((level for level in ROADMAP_STRUCTURE if level["id"] == level), None)
+    level_data = next((l for l in ROADMAP_STRUCTURE if l["id"] == level), None)
     return [m["id"] for m in level_data["modules"]] if level_data else []
 
 

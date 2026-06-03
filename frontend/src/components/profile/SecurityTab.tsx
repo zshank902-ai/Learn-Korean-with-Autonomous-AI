@@ -97,10 +97,10 @@ export default function SecurityTab() {
 
   if (isSocialAuth) {
     return (
-      <div className="p-8 text-center bg-gray-50 rounded-2xl border-2 border-dashed border-[#1E1B4B]/20">
-        <Key className="mx-auto text-[#1E1B4B]/40 mb-4" size={40} />
-        <h3 className="text-lg font-black text-[#1E1B4B] mb-2">Social Login Account</h3>
-        <p className="text-[#1E1B4B]/60 font-bold max-w-md mx-auto">
+      <div className="p-8 text-center glass-card bg-[rgba(255,255,255,0.05)] rounded-2xl border border-[rgba(255,255,255,0.2)] shadow-[0_4px_12px_rgba(0,0,0,0.3)]">
+        <Key className="mx-auto text-[var(--color-on-surface-variant)] mb-4" size={40} />
+        <h3 className="text-lg font-extrabold text-white mb-2 font-sans">Social Login Account</h3>
+        <p className="text-[var(--color-on-surface-variant)] font-bold max-w-md mx-auto">
           You signed in using a social provider ({user.oauth_provider}). Your password is managed securely by them.
         </p>
       </div>
@@ -112,19 +112,19 @@ export default function SecurityTab() {
       
       {/* Current Password */}
       <div>
-        <label className="block text-sm font-black text-[#1E1B4B] mb-2 uppercase tracking-wide">Current Password</label>
+        <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Current Password</label>
         <div className="relative">
           <input 
             type={showCurrent ? "text" : "password"}
             {...register('current_password')}
-            className={`w-full p-4 pr-12 rounded-xl border-3 font-bold bg-white text-[#1E1B4B] outline-none transition-all ${
-              errors.current_password || serverError ? 'border-[#EF4444] focus:border-[#EF4444]' : 'border-[#1E1B4B] focus:border-[#4F46E5]'
+            className={`w-full neumorphic-input rounded-xl py-4 px-4 pr-12 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
+              errors.current_password || serverError ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
             }`}
           />
           <button 
             type="button" 
             onClick={() => setShowCurrent(!showCurrent)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40 hover:text-[#1E1B4B]"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-white"
           >
             {showCurrent ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -133,23 +133,23 @@ export default function SecurityTab() {
         {serverError && <p className="text-[#EF4444] text-sm font-bold mt-1">{serverError}</p>}
       </div>
 
-      <hr className="border-[#1E1B4B]/10 border-2 rounded-full" />
+      <hr className="border-[rgba(255,255,255,0.1)] rounded-full" />
 
       {/* New Password */}
       <div>
-        <label className="block text-sm font-black text-[#1E1B4B] mb-2 uppercase tracking-wide">New Password</label>
+        <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">New Password</label>
         <div className="relative">
           <input 
             type={showNew ? "text" : "password"}
             {...register('new_password')}
-            className={`w-full p-4 pr-12 rounded-xl border-3 font-bold bg-white text-[#1E1B4B] outline-none transition-all ${
-              errors.new_password ? 'border-[#EF4444] focus:border-[#EF4444]' : 'border-[#1E1B4B] focus:border-[#4F46E5]'
+            className={`w-full neumorphic-input rounded-xl py-4 px-4 pr-12 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
+              errors.new_password ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
             }`}
           />
           <button 
             type="button" 
             onClick={() => setShowNew(!showNew)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-[#1E1B4B]/40 hover:text-[#1E1B4B]"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)] hover:text-white"
           >
             {showNew ? <EyeOff size={20} /> : <Eye size={20} />}
           </button>
@@ -158,10 +158,10 @@ export default function SecurityTab() {
         {/* Strength Indicator */}
         {watchNewPassword.length > 0 && (
           <div className="mt-3 flex gap-2 h-2">
-            <div className={`flex-1 rounded-full ${strength >= 1 ? 'bg-[#EF4444]' : 'bg-gray-200'}`} />
-            <div className={`flex-1 rounded-full ${strength >= 2 ? 'bg-[#F59E0B]' : 'bg-gray-200'}`} />
-            <div className={`flex-1 rounded-full ${strength >= 3 ? 'bg-[#10B981]' : 'bg-gray-200'}`} />
-            <div className={`flex-1 rounded-full ${strength >= 4 ? 'bg-[#4F46E5]' : 'bg-gray-200'}`} />
+            <div className={`flex-1 rounded-full ${strength >= 1 ? 'bg-[#EF4444]' : 'bg-[rgba(255,255,255,0.1)]'}`} />
+            <div className={`flex-1 rounded-full ${strength >= 2 ? 'bg-[#F59E0B]' : 'bg-[rgba(255,255,255,0.1)]'}`} />
+            <div className={`flex-1 rounded-full ${strength >= 3 ? 'bg-[#10B981]' : 'bg-[rgba(255,255,255,0.1)]'}`} />
+            <div className={`flex-1 rounded-full ${strength >= 4 ? 'bg-[var(--color-primary-container)]' : 'bg-[rgba(255,255,255,0.1)]'}`} />
           </div>
         )}
         
@@ -170,12 +170,12 @@ export default function SecurityTab() {
 
       {/* Confirm Password */}
       <div>
-        <label className="block text-sm font-black text-[#1E1B4B] mb-2 uppercase tracking-wide">Confirm New Password</label>
+        <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Confirm New Password</label>
         <input 
           type={showNew ? "text" : "password"}
           {...register('confirm_password')}
-          className={`w-full p-4 rounded-xl border-3 font-bold bg-white text-[#1E1B4B] outline-none transition-all ${
-            errors.confirm_password ? 'border-[#EF4444] focus:border-[#EF4444]' : 'border-[#1E1B4B] focus:border-[#4F46E5]'
+          className={`w-full neumorphic-input rounded-xl py-4 px-4 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
+            errors.confirm_password ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
           }`}
         />
         {errors.confirm_password && <p className="text-[#EF4444] text-sm font-bold mt-1">{errors.confirm_password.message}</p>}
@@ -185,7 +185,7 @@ export default function SecurityTab() {
         <button 
           type="submit" 
           disabled={!isDirty || !isValid || isSubmitting}
-          className="px-8 py-3 bg-[#EF4444] text-white font-black rounded-xl border-3 border-transparent hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 shadow-[4px_4px_0px_#B91C1C] flex items-center gap-2"
+          className="px-8 py-3 bg-[rgba(239,68,68,0.2)] text-[#EF4444] border border-[#EF4444] font-extrabold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 flex items-center gap-2 backdrop-blur-md"
         >
           {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : "Update Password"}
         </button>

@@ -48,17 +48,17 @@ export default function DashboardPage() {
   return (
     <ProtectedRoute>
       <OnboardingModal />
-      <div className="min-h-screen bg-[#EEF2FF] p-4 md:p-6 pb-24 lg:pb-6 text-[#1E1B4B]">
+      <div className="min-h-screen p-4 md:p-6 pb-24 lg:pb-6 relative z-10">
         <WelcomePopup />
         <LevelUpModal />
         <NotificationSystem />
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-black mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
-            Learning <span className="text-[#4F46E5]">Dashboard</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 font-sans tracking-tight drop-shadow-md">
+            Learning <span className="text-[var(--color-primary-container)]">Dashboard</span>
           </h1>
-          <p className="text-xl text-[#1E1B4B]/60 font-semibold">
+          <p className="text-xl text-[var(--color-on-surface-variant)] font-medium">
             Your daily mission control. Complete quests and level up!
           </p>
         </div>
@@ -80,23 +80,21 @@ export default function DashboardPage() {
         {/* Center Column (6/12): AI Tutor & Stats */}
         <div className="lg:col-span-6 flex flex-col gap-6 lg:h-full">
           {/* Quick Stats Card */}
-          <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 flex items-center justify-between"
-               style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
+          <div className="glass-card p-6 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center border-4 border-[#1E1B4B]"
-                   style={{ background: '#F97316', boxShadow: '4px 4px 0px #1E1B4B' }}>
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-secondary-container)] shadow-[0_0_12px_rgba(236,106,6,0.4)] border border-[rgba(255,255,255,0.2)]">
                 <Star className="text-white fill-white" size={32} />
               </div>
               <div>
-                <p className="text-sm font-bold text-[#1E1B4B]/50 uppercase tracking-widest">Current Rank</p>
-                <h2 className="text-2xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+                <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Current Rank</p>
+                <h2 className="text-2xl font-extrabold text-white">
                   TOPIK Level {level}
                 </h2>
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm font-bold text-[#1E1B4B]/50 uppercase tracking-widest">Next Level</p>
-              <p className="text-xl font-black text-[#4F46E5]">
+              <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Next Level</p>
+              <p className="text-xl font-extrabold text-[var(--color-primary-container)] drop-shadow-sm">
                 {5000 - (xp % 5000)} XP
               </p>
             </div>

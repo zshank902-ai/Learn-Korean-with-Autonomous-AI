@@ -6,7 +6,7 @@ import { Sparkles, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useAIStore } from '@/store/useAIStore';
 
 /**
- * Principal Architect: Streaming-ready Smart Corrector (Neo-Brutalism).
+ * Principal Architect: Streaming-ready Smart Corrector (Glassmorphic).
  */
 export default function SmartCorrector() {
   const [input, setInput] = useState("");
@@ -47,7 +47,6 @@ export default function SmartCorrector() {
     }
   };
 
-  // Type-safe extraction from Record<string, unknown>
   const aiFeedback = latestPrediction ? {
     corrected: typeof latestPrediction.corrected === 'string' ? latestPrediction.corrected : '',
     explanation: typeof latestPrediction.explanation === 'string' ? latestPrediction.explanation : '',
@@ -58,23 +57,22 @@ export default function SmartCorrector() {
   return (
     <motion.div 
       layout
-      className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-8 relative overflow-hidden group h-full"
-      style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
+      className="glass-card p-8 relative overflow-hidden group h-full"
     >
       <div className="absolute top-0 right-0 p-4">
-        <div className={`w-4 h-4 rounded-full border-2 border-[#1E1B4B] ${
-          status === 'ready' ? 'bg-[#4ADE80]' : 
-          status === 'connecting' ? 'bg-[#FBBF24] animate-pulse' : 'bg-[#EF4444]'
+        <div className={`w-4 h-4 rounded-full border border-[rgba(255,255,255,0.2)] ${
+          status === 'ready' ? 'bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)]' : 
+          status === 'connecting' ? 'bg-yellow-400 animate-pulse shadow-[0_0_8px_rgba(250,204,21,0.5)]' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]'
         }`} />
       </div>
 
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-14 h-14 bg-[#EEF2FF] rounded-2xl flex items-center justify-center border-4 border-[#1E1B4B]" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
-          <Sparkles className={`text-[#4F46E5] ${isAiLoading ? 'animate-spin' : ''}`} size={28} />
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[var(--color-primary-container)]/20 border border-[var(--color-primary-container)]/50 shadow-[0_0_12px_rgba(79,70,229,0.3)]">
+          <Sparkles className={`text-[var(--color-primary-container)] ${isAiLoading ? 'animate-spin' : ''}`} size={28} />
         </div>
         <div>
-          <h2 className="text-3xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>Smart Corrector</h2>
-          <p className="text-[#1E1B4B]/60 font-bold text-sm">Real-time grammar & dialect feedback.</p>
+          <h2 className="text-3xl font-extrabold text-white font-sans tracking-tight drop-shadow-md">Smart Corrector</h2>
+          <p className="text-[var(--color-on-surface-variant)] font-bold text-sm">Real-time grammar & dialect feedback.</p>
         </div>
       </div>
 
@@ -82,8 +80,7 @@ export default function SmartCorrector() {
         value={input}
         onChange={handleInputChange}
         placeholder="Type your Korean sentence here..."
-        className="w-full h-32 bg-[#EEF2FF] border-4 border-[#1E1B4B] rounded-2xl p-6 text-xl font-bold text-[#1E1B4B] focus:outline-none transition-all placeholder:text-[#1E1B4B]/30 resize-none mb-6"
-        style={{ boxShadow: 'inset 4px 4px 0px rgba(30,27,75,0.05)' }}
+        className="w-full h-32 neumorphic-input rounded-2xl p-6 text-xl font-bold text-white focus:outline-none transition-all placeholder:text-[var(--color-on-surface-variant)] resize-none mb-6"
       />
 
       <AnimatePresence mode="wait">
@@ -94,7 +91,7 @@ export default function SmartCorrector() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="flex items-center gap-3 text-[#4F46E5] justify-center py-8 border-4 border-dashed border-[#4F46E5] rounded-2xl bg-[#EEF2FF]"
+            className="flex items-center gap-3 text-[var(--color-primary-container)] justify-center py-8 border border-dashed border-[var(--color-primary-container)]/50 rounded-2xl bg-[var(--color-primary-container)]/10"
           >
             <Sparkles className="animate-spin" size={24} />
             <span className="font-bold">Analyzing your grammar...</span>
@@ -106,17 +103,16 @@ export default function SmartCorrector() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="p-6 bg-[#D1FAE5] border-4 border-[#1E1B4B] rounded-2xl overflow-hidden"
-            style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+            className="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)]"
           >
             <div className="flex items-start gap-4">
-              <CheckCircle2 className="text-[#059669] mt-1 shrink-0" size={24} />
+              <CheckCircle2 className="text-emerald-400 mt-1 shrink-0" size={24} />
               <div>
-                <p className="text-sm uppercase tracking-widest font-black text-[#059669] mb-2">AI Suggestion</p>
-                <p className="text-2xl font-black mb-3 text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>{aiFeedback.corrected}</p>
-                <p className="text-[#1E1B4B]/60 font-bold italic min-h-[1.25rem]">
+                <p className="text-sm uppercase tracking-widest font-black text-emerald-400 mb-2 drop-shadow-sm">AI Suggestion</p>
+                <p className="text-2xl font-extrabold mb-3 text-white">{aiFeedback.corrected}</p>
+                <p className="text-[var(--color-on-surface-variant)] font-bold italic min-h-[1.25rem]">
                   "{streamingText}"
-                  <span className="inline-block w-2 h-5 bg-[#059669] ml-1 animate-pulse" />
+                  <span className="inline-block w-2 h-5 bg-emerald-400 ml-1 animate-pulse" />
                 </p>
               </div>
             </div>
@@ -128,7 +124,7 @@ export default function SmartCorrector() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="flex items-center gap-3 text-[#1E1B4B]/40 justify-center py-8 border-4 border-dashed border-[#1E1B4B]/20 rounded-2xl bg-[#EEF2FF]"
+            className="flex items-center gap-3 text-[var(--color-on-surface-variant)] justify-center py-8 border border-dashed border-[rgba(255,255,255,0.2)] rounded-2xl bg-[rgba(255,255,255,0.02)]"
           >
             <AlertCircle size={24} />
             <span className="font-bold">Start typing to see AI magic...</span>

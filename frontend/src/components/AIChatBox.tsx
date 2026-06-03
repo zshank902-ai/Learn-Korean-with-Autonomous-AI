@@ -203,21 +203,18 @@ export default function AIChatBox() {
   };
 
   return (
-    <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] flex flex-col h-full min-h-[400px] overflow-hidden"
-      style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
-
+    <div className="glass-card flex flex-col h-full min-h-[400px] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b-4 border-[#1E1B4B]">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.1)]">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center border-3 border-[#1E1B4B]"
-            style={{ background: '#818CF8', border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}>
-            <Sparkles className="text-white" size={18} />
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--color-tertiary-container)] shadow-[0_0_8px_rgba(255,182,144,0.3)] border border-[rgba(255,255,255,0.2)]">
+            <Sparkles className="text-[var(--color-primary-container)]" size={18} />
           </div>
           <div className="flex flex-col">
-            <span className="font-black text-[#1E1B4B] text-lg leading-tight" style={{ fontFamily: 'Fredoka, cursive' }}>
+            <span className="font-extrabold text-white text-lg leading-tight font-sans drop-shadow-md">
               AI Korean Tutor
             </span>
-            <span className="text-[10px] font-bold text-[#818CF8] uppercase tracking-wider">🎯 TOPIK Level {level} Active</span>
+            <span className="text-[10px] font-bold text-[var(--color-primary-container)] uppercase tracking-wider">🎯 TOPIK Level {level} Active</span>
           </div>
         </div>
         <div className="flex gap-3 items-center">
@@ -230,28 +227,28 @@ export default function AIChatBox() {
                 }).then(() => setMessages([]));
               }
             }}
-            className="text-xs font-bold text-red-500 hover:bg-red-50 px-2 py-1 rounded-lg transition-colors border-2 border-transparent hover:border-red-200"
+            className="text-xs font-bold text-red-400 hover:text-red-300 px-2 py-1 rounded-lg transition-colors hover:bg-[rgba(255,255,255,0.05)]"
           >
             Clear Chat
           </button>
-          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border-2 ${
-            wsStatus === 'ready' ? 'border-green-400 bg-green-50' : 'border-[#F97316] bg-orange-50'
+          <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border ${
+            wsStatus === 'ready' ? 'border-green-400/50 bg-green-400/10' : 'border-orange-400/50 bg-orange-400/10'
           }`}>
-            {wsStatus === 'ready' ? <Wifi size={12} className="text-green-500" /> : <WifiOff size={12} className="text-[#F97316]" />}
-          <span className="text-[10px] font-black uppercase tracking-wider" style={{
-            color: wsStatus === 'ready' ? '#16A34A' : '#F97316'
+            {wsStatus === 'ready' ? <Wifi size={12} className="text-green-400" /> : <WifiOff size={12} className="text-orange-400" />}
+          <span className="text-[10px] font-extrabold uppercase tracking-wider" style={{
+            color: wsStatus === 'ready' ? '#4ade80' : '#fb923c'
           }}>{wsStatus === 'ready' ? 'Connected' : 'Reconnecting...'}</span>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-5 space-y-3" style={{ background: '#EEF2FF' }}>
+      <div className="flex-1 overflow-y-auto p-5 space-y-3 bg-[rgba(0,0,0,0.1)]">
         {messages.length === 0 && (
-          <div className="flex items-center justify-center h-full text-[#1E1B4B]/40">
+          <div className="flex items-center justify-center h-full text-[var(--color-on-surface-variant)]/60">
             <p className="text-sm font-semibold italic text-center">
               Ask me anything in Korean! <br/>
-              <span className="text-[#818CF8]">예: "이 문장이 맞나요?"</span>
+              <span className="text-[var(--color-primary-container)]">예: "이 문장이 맞나요?"</span>
             </p>
           </div>
         )}
@@ -265,30 +262,28 @@ export default function AIChatBox() {
             >
               <div className={`max-w-[80%] flex flex-col gap-2`}>
                 <div
-                  className={`px-4 py-3 rounded-2xl border-3 border-[#1E1B4B] font-semibold text-sm`}
-                  style={{
-                    background: msg.role === 'user' ? '#4F46E5' : 'white',
-                    color: msg.role === 'user' ? 'white' : '#1E1B4B',
-                    border: '3px solid #1E1B4B',
-                    boxShadow: '3px 3px 0px #1E1B4B',
-                  }}
+                  className={`px-4 py-3 rounded-2xl border font-semibold text-sm transition-all duration-300 ${
+                    msg.role === 'user'
+                      ? 'bg-[var(--color-primary-container)]/80 text-white border-[var(--color-primary-container)] shadow-[0_0_12px_rgba(79,70,229,0.4)]'
+                      : 'glass-card border-[rgba(255,255,255,0.1)] text-white'
+                  }`}
                 >
                   {msg.content}
                 </div>
                 {msg.corrections && msg.corrections.length > 0 && (
-                  <div className="bg-[#FEF3C7] rounded-xl border-3 border-[#1E1B4B] p-3 text-xs flex flex-col gap-2" style={{ boxShadow: '3px 3px 0px #1E1B4B' }}>
-                    <div className="font-black text-[#B45309] uppercase tracking-wider flex items-center gap-1 mb-1">
+                  <div className="bg-yellow-500/10 rounded-xl border border-yellow-500/30 p-3 text-xs flex flex-col gap-2 shadow-[0_0_10px_rgba(234,179,8,0.1)]">
+                    <div className="font-extrabold text-yellow-500 uppercase tracking-wider flex items-center gap-1 mb-1 drop-shadow-sm">
                       <Sparkles size={12} /> Corrections
                     </div>
                     {msg.corrections.map((corr, idx) => (
-                      <div key={idx} className="bg-white rounded-lg border-2 border-[#1E1B4B] p-2 flex flex-col gap-1">
+                      <div key={idx} className="bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] p-2 flex flex-col gap-1">
                         <div className="flex gap-2 items-center">
-                          <span className="line-through text-red-500 font-bold opacity-70">{corr.original}</span>
-                          <span className="text-[#1E1B4B] font-black">→</span>
-                          <span className="text-green-600 font-bold">{corr.corrected}</span>
+                          <span className="line-through text-red-400 font-bold opacity-80">{corr.original}</span>
+                          <span className="text-white font-extrabold">→</span>
+                          <span className="text-green-400 font-bold">{corr.corrected}</span>
                         </div>
-                        <p className="text-[#1E1B4B]/80 font-medium italic mt-1">{corr.explanation}</p>
-                        <span className="self-start px-2 py-0.5 bg-[#E0E7FF] text-[#4F46E5] rounded font-bold text-[10px] mt-1 border border-[#1E1B4B]">
+                        <p className="text-[var(--color-on-surface-variant)] font-medium italic mt-1">{corr.explanation}</p>
+                        <span className="self-start px-2 py-0.5 bg-[var(--color-primary-container)]/20 text-[var(--color-primary-container)] rounded font-bold text-[10px] mt-1 border border-[var(--color-primary-container)]/30">
                           {corr.rule_category}
                         </span>
                       </div>
@@ -301,9 +296,8 @@ export default function AIChatBox() {
         </AnimatePresence>
         {isStreaming && (
           <div className="flex justify-start">
-            <div className="px-4 py-3 rounded-2xl border-3 border-[#1E1B4B] bg-white"
-              style={{ border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}>
-              <Loader2 size={16} className="text-[#818CF8] animate-spin" />
+            <div className="px-4 py-3 rounded-2xl glass-card border border-[rgba(255,255,255,0.1)]">
+              <Loader2 size={16} className="text-[var(--color-primary-container)] animate-spin" />
             </div>
           </div>
         )}
@@ -311,28 +305,25 @@ export default function AIChatBox() {
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t-4 border-[#1E1B4B] flex gap-3 bg-white">
+      <div className="p-4 border-t border-[rgba(255,255,255,0.1)] flex gap-3 bg-[rgba(255,255,255,0.02)] backdrop-blur-md">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="한국어로 입력하세요..."
-          className="flex-1 rounded-xl px-4 py-3 font-semibold text-[#1E1B4B] focus:outline-none border-3 border-[#1E1B4B] text-sm"
-          style={{ background: '#EEF2FF', border: '3px solid #1E1B4B' }}
+          className="flex-1 rounded-xl px-4 py-3 font-semibold text-white focus:outline-none neumorphic-input text-sm placeholder-[var(--color-on-surface-variant)]"
         />
         <button
           onClick={isRecording ? stopRecording : startRecording}
           disabled={isStreaming || isTranscribing}
-          className={`w-12 h-12 rounded-xl flex items-center justify-center border-3 border-[#1E1B4B] disabled:opacity-50 transition-transform ${isRecording ? 'bg-red-500 animate-pulse' : 'bg-gray-100 hover:-translate-y-0.5'}`}
-          style={{ border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}
+          className={`w-12 h-12 rounded-xl flex items-center justify-center border border-[rgba(255,255,255,0.1)] disabled:opacity-50 transition-all duration-300 ${isRecording ? 'bg-red-500/80 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.6)]' : 'bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)]'}`}
         >
-          {isRecording ? <Square size={18} className="text-white fill-current" /> : <Mic size={18} className="text-[#1E1B4B]" />}
+          {isRecording ? <Square size={18} className="text-white fill-current" /> : <Mic size={18} className="text-[var(--color-on-surface-variant)] hover:text-white" />}
         </button>
         <button
           onClick={handleSend}
           disabled={!input.trim() || isStreaming || isTranscribing}
-          className="w-12 h-12 rounded-xl flex items-center justify-center border-3 border-[#1E1B4B] disabled:opacity-50 cursor-pointer transition-transform hover:-translate-y-0.5"
-          style={{ background: '#F97316', border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}
+          className="w-12 h-12 rounded-xl flex items-center justify-center disabled:opacity-50 cursor-pointer transition-all duration-300 glass-btn-secondary"
         >
           {isTranscribing ? <Loader2 size={18} className="text-white animate-spin" /> : <Send size={18} className="text-white" />}
         </button>

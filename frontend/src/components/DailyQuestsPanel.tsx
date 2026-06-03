@@ -32,14 +32,12 @@ export default function DailyQuestsPanel() {
   };
 
   return (
-    <div className="bg-white rounded-3xl border-4 border-[#1E1B4B] p-6 h-full flex flex-col"
-         style={{ boxShadow: '6px 6px 0px #1E1B4B' }}>
-      <div className="flex items-center gap-3 mb-6 border-b-4 border-[#1E1B4B] pb-4">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center border-3 border-[#1E1B4B]"
-             style={{ background: '#F97316', border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}>
+    <div className="glass-card p-6 h-full flex flex-col">
+      <div className="flex items-center gap-3 mb-6 border-b border-[rgba(255,255,255,0.1)] pb-4">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[var(--color-secondary-container)] border border-[rgba(255,255,255,0.2)] shadow-[0_0_12px_rgba(236,106,6,0.3)]">
           <Target className="text-white" size={20} />
         </div>
-        <h2 className="text-2xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>Daily Quests</h2>
+        <h2 className="text-2xl font-extrabold text-white tracking-tight drop-shadow-md font-sans">Daily Quests</h2>
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto pr-2">
@@ -49,37 +47,35 @@ export default function DailyQuestsPanel() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
-            className={`p-4 rounded-2xl border-3 border-[#1E1B4B] ${quest.completed ? 'bg-[#EEF2FF]' : 'bg-white'}`}
-            style={{ border: '3px solid #1E1B4B', boxShadow: '3px 3px 0px #1E1B4B' }}
+            className={`p-4 rounded-2xl border border-[rgba(255,255,255,0.1)] transition-colors ${quest.completed ? 'bg-[var(--color-primary-container)]/20' : 'bg-[rgba(255,255,255,0.05)]'}`}
           >
             <div className="flex items-start justify-between mb-2">
               <div className="flex items-start gap-3">
                 {quest.completed ? (
-                  <CheckCircle2 className="text-green-500 mt-0.5 shrink-0" size={20} />
+                  <CheckCircle2 className="text-[var(--color-primary-container)] mt-0.5 shrink-0" size={20} />
                 ) : (
-                  <Circle className="text-[#1E1B4B]/30 mt-0.5 shrink-0" size={20} />
+                  <Circle className="text-[var(--color-on-surface-variant)] mt-0.5 shrink-0" size={20} />
                 )}
                 <div>
-                  <h3 className={`font-bold ${quest.completed ? 'text-[#1E1B4B]/60 line-through' : 'text-[#1E1B4B]'}`}>
+                  <h3 className={`font-bold ${quest.completed ? 'text-[var(--color-on-surface-variant)] line-through' : 'text-white'}`}>
                     {quest.title}
                   </h3>
-                  <p className="text-xs font-black text-[#F97316] uppercase mt-1">+{quest.reward} XP</p>
+                  <p className="text-xs font-extrabold text-[var(--color-secondary-container)] uppercase mt-1">+{quest.reward} XP</p>
                 </div>
               </div>
             </div>
             
             {/* Progress Bar */}
             <div className="mt-3">
-              <div className="flex justify-between text-xs font-bold mb-1 text-[#1E1B4B]/60">
+              <div className="flex justify-between text-xs font-bold mb-1 text-[var(--color-on-surface-variant)]">
                 <span>Progress</span>
                 <span>{quest.progress} / {quest.target}</span>
               </div>
-              <div className="h-3 w-full rounded-full border-2 border-[#1E1B4B] overflow-hidden bg-white">
+              <div className="h-3 w-full rounded-full overflow-hidden bg-black/40 neumorphic-input border-none">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${(quest.progress / quest.target) * 100}%` }}
-                  className="h-full rounded-full"
-                  style={{ background: quest.completed ? '#16A34A' : '#4F46E5' }}
+                  className="h-full rounded-full bg-[var(--color-primary-container)] shadow-[0_0_8px_var(--color-primary-container)]"
                 />
               </div>
             </div>
@@ -87,8 +83,7 @@ export default function DailyQuestsPanel() {
             {quest.completed && !quest.title.includes('(Claimed)') && (
               <button 
                 onClick={() => claimReward(quest.id, quest.reward)}
-                className="mt-3 w-full py-2 bg-[#F97316] text-white font-bold rounded-xl border-2 border-[#1E1B4B] hover:-translate-y-0.5 transition-transform"
-                style={{ boxShadow: '2px 2px 0px #1E1B4B' }}
+                className="mt-3 w-full py-2 glass-btn-secondary text-white font-bold rounded-xl"
               >
                 Claim Reward
               </button>

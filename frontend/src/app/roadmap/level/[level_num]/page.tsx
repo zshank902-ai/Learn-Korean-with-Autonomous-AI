@@ -146,19 +146,19 @@ export default function LevelPage({ params }: LevelPageProps) {
   if (!isLevelUnlocked) {
     return (
       <ProtectedRoute>
-        <div style={{ minHeight: '100vh', background: '#EEF2FF', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-          <div style={{ background: '#ffffff', border: '4px solid #0f0f0f', borderRadius: '24px', padding: '40px 24px', maxWidth: '480px', width: '100%', textAlign: 'center', boxShadow: '8px 8px 0px #0f0f0f' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px', position: 'relative', zIndex: 10 }}>
+          <div className="glass-card" style={{ borderRadius: '24px', padding: '40px 24px', maxWidth: '480px', width: '100%', textAlign: 'center', border: '1px solid rgba(255,255,255,0.2)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
             <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-              <div style={{ background: '#F3F4F6', border: '3px solid #0f0f0f', borderRadius: '16px', padding: '16px', boxShadow: '3px 3px 0px #0f0f0f' }}>
-                <Lock size={44} color="#6B7280" />
+              <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '16px', padding: '16px', boxShadow: 'inset 0 0 10px rgba(255,255,255,0.1)' }}>
+                <Lock size={44} className="text-[var(--color-on-surface-variant)]" />
               </div>
             </div>
-            <h2 style={{ fontSize: '24px', fontWeight: 900, color: '#0f0f0f', margin: '0 0 10px' }}>Level Locked</h2>
-            <p style={{ fontSize: '15px', color: '#4b5563', margin: '0 0 24px', lineHeight: 1.5 }}>
+            <h2 className="font-sans font-extrabold text-white drop-shadow-md" style={{ fontSize: '24px', margin: '0 0 10px' }}>Level Locked</h2>
+            <p className="font-sans font-medium text-[var(--color-on-surface-variant)]" style={{ fontSize: '15px', margin: '0 0 24px', lineHeight: 1.5 }}>
               Please complete all prerequisite modules in the previous levels before accessing TOPIK Level {targetLevelNum}.
             </p>
             <Link href="/roadmap" style={{ textDecoration: 'none' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#818CF8', color: '#0f0f0f', border: '3px solid #0f0f0f', borderRadius: '16px', padding: '12px 24px', fontWeight: 900, fontSize: '14px', textTransform: 'uppercase', boxShadow: '3px 3px 0px #0f0f0f', cursor: 'pointer' }}>
+              <div className="glass-btn text-white" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '16px', padding: '12px 24px', fontWeight: 900, fontSize: '14px', textTransform: 'uppercase', cursor: 'pointer' }}>
                 <ArrowLeft size={16} /> Back to Roadmap
               </div>
             </Link>
@@ -219,7 +219,7 @@ export default function LevelPage({ params }: LevelPageProps) {
 
   return (
     <ProtectedRoute>
-      <div style={{ minHeight: '100vh', background: '#EEF2FF', padding: '32px 20px 80px', fontFamily: 'Inter, sans-serif' }}>
+      <div className="relative z-10" style={{ minHeight: '100vh', padding: '32px 20px 80px', fontFamily: 'var(--font-plus-jakarta-sans)' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
           
           {/* Level Tabs Navigation */}
@@ -234,19 +234,16 @@ export default function LevelPage({ params }: LevelPageProps) {
             <Link href="/roadmap" style={{ textDecoration: 'none' }}>
               <motion.div
                 whileHover={{ x: -4 }}
+                className="glass-btn text-white"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: '#ffffff',
-                  border: '3px solid #0f0f0f',
                   borderRadius: '14px',
                   padding: '10px 18px',
                   fontWeight: 900,
                   fontSize: '13px',
-                  color: '#0f0f0f',
                   textTransform: 'uppercase',
-                  boxShadow: '3px 3px 0px #0f0f0f',
                   cursor: 'pointer',
                 }}
               >
@@ -256,19 +253,19 @@ export default function LevelPage({ params }: LevelPageProps) {
           </div>
 
           {/* Level Header Card */}
-          <div style={{ background: '#ffffff', border: '4px solid #0f0f0f', borderRadius: '24px', padding: '32px', boxShadow: '8px 8px 0px #0f0f0f', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="glass-card" style={{ borderRadius: '24px', padding: '32px', border: '1px solid rgba(255,255,255,0.2)', boxShadow: '0 8px 32px rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-              <div style={{ width: '72px', height: '72px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: isLevelCompleted ? '#D1FAE5' : '#FEF3C7', border: '4px solid #0f0f0f', boxShadow: '4px 4px 0px #0f0f0f', flexShrink: 0 }}>
-                {isLevelCompleted ? <CheckCircle2 size={32} className="text-[#059669]" /> : <GraduationCap size={32} className="text-[#B45309]" />}
+              <div style={{ width: '72px', height: '72px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: isLevelCompleted ? 'rgba(16,185,129,0.2)' : 'rgba(195,192,255,0.2)', border: '1px solid rgba(255,255,255,0.2)', boxShadow: isLevelCompleted ? '0 0 20px rgba(16,185,129,0.4)' : '0 0 20px rgba(195,192,255,0.4)', flexShrink: 0 }}>
+                {isLevelCompleted ? <CheckCircle2 size={32} className="text-green-400 drop-shadow-sm" /> : <GraduationCap size={32} className="text-[var(--color-primary-container)] drop-shadow-sm" />}
               </div>
               <div>
-                <h1 style={{ fontSize: '28px', fontWeight: 900, color: '#0f0f0f', margin: 0, letterSpacing: '-0.02em' }}>{currentLevel!.title}</h1>
-                <p style={{ fontSize: '14px', fontWeight: 700, color: '#4b5563', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{currentLevel!.subtitle}</p>
+                <h1 className="font-sans font-extrabold text-white drop-shadow-md" style={{ fontSize: '28px', margin: 0, letterSpacing: '-0.02em' }}>{currentLevel!.title}</h1>
+                <p className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '14px', margin: '4px 0 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{currentLevel!.subtitle}</p>
               </div>
 
               {/* Progress Summary */}
               <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                <span style={{ fontSize: '13px', fontWeight: 900, color: '#0f0f0f', background: currentLevel!.color + '30', border: `2.5px solid #0f0f0f`, borderRadius: '10px', padding: '6px 12px', boxShadow: '2px 2px 0px #0f0f0f' }}>
+                <span className="font-sans font-extrabold text-[var(--color-primary-container)]" style={{ fontSize: '13px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', padding: '6px 12px', boxShadow: 'inset 0 0 10px rgba(255,255,255,0.1)' }}>
                   {completedCount} / {currentLevel!.modules.length} Mastered
                 </span>
               </div>
@@ -276,52 +273,52 @@ export default function LevelPage({ params }: LevelPageProps) {
 
             {/* Progress bar */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', fontWeight: 800 }}>
+              <div className="font-sans text-white font-extrabold drop-shadow-sm" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
                 <span>Level Progress</span>
                 <span>{Math.round(progressPercent)}%</span>
               </div>
-              <div style={{ background: '#e5e7eb', border: '2.5px solid #0f0f0f', borderRadius: '999px', height: '18px', overflow: 'hidden' }}>
-                <div style={{ height: '100%', background: currentLevel!.color, width: `${progressPercent}%`, transition: 'width 0.5s ease-out' }} />
+              <div className="neumorphic-input border-none" style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '999px', height: '18px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', background: currentLevel!.color, width: `${progressPercent}%`, transition: 'width 0.5s ease-out', boxShadow: `0 0 10px ${currentLevel!.color}` }} />
               </div>
             </div>
 
             {/* Stats row */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', background: '#F9FAFB', border: '2.5px solid #0f0f0f', borderRadius: '16px', padding: '16px' }}>
+            <div className="backdrop-blur-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '16px' }}>
               <div>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Target Vocab</span>
-                <p style={{ margin: '4px 0 0', fontSize: '16px', fontWeight: 900, color: '#0f0f0f' }}>{currentLevel!.target_vocab} Words</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Target Vocab</span>
+                <p className="font-sans font-extrabold text-white drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.target_vocab} Words</p>
               </div>
               <div>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Exam Format</span>
-                <p style={{ margin: '4px 0 0', fontSize: '16px', fontWeight: 900, color: '#0f0f0f' }}>{currentLevel!.exam_type}</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Exam Format</span>
+                <p className="font-sans font-extrabold text-white drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.exam_type}</p>
               </div>
               <div>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pass Score</span>
-                <p style={{ margin: '4px 0 0', fontSize: '16px', fontWeight: 900, color: '#0f0f0f' }}>{currentLevel!.pass_score} / {currentLevel!.max_score} pts</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Pass Score</span>
+                <p className="font-sans font-extrabold text-white drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.pass_score} / {currentLevel!.max_score} pts</p>
               </div>
               <div>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em' }}>XP Completion Reward</span>
-                <p style={{ margin: '4px 0 0', fontSize: '16px', fontWeight: 900, color: '#0f0f0f' }}>{currentLevel!.xp_reward} XP</p>
+                <span className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>XP Completion Reward</span>
+                <p className="font-sans font-extrabold text-[var(--color-secondary-container)] drop-shadow-sm" style={{ margin: '4px 0 0', fontSize: '16px' }}>{currentLevel!.xp_reward} XP</p>
               </div>
             </div>
 
             {/* TOPIK Exam Buttons */}
             {targetLevelNum <= 2 && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <p style={{ margin: 0, fontSize: '11px', fontWeight: 800, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'Inter, sans-serif' }}>TOPIK-I Practice</p>
-                <button onClick={() => router.push('/exam/topik-i?practice=listening')} style={{ background: '#EEF2FF', color: '#1E1B4B', border: '3px solid #0f0f0f', borderRadius: '14px', padding: '12px', fontWeight: 800, fontSize: '13px', cursor: 'pointer', boxShadow: '3px 3px 0px #0f0f0f', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontFamily: 'Inter, sans-serif' }}>
+                <p className="font-sans font-bold text-[var(--color-on-surface-variant)]" style={{ margin: 0, fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>TOPIK-I Practice</p>
+                <button onClick={() => router.push('/exam/topik-i?practice=listening')} className="glass-btn text-white transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '12px', fontWeight: 800, fontSize: '13px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   🎧 Practice Listening (30 Q)
                 </button>
-                <button onClick={() => router.push('/exam/topik-i?practice=reading')} style={{ background: '#FEF3C7', color: '#1E1B4B', border: '3px solid #0f0f0f', borderRadius: '14px', padding: '12px', fontWeight: 800, fontSize: '13px', cursor: 'pointer', boxShadow: '3px 3px 0px #0f0f0f', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontFamily: 'Inter, sans-serif' }}>
+                <button onClick={() => router.push('/exam/topik-i?practice=reading')} className="glass-btn text-white transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '12px', fontWeight: 800, fontSize: '13px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   📖 Practice Reading (40 Q)
                 </button>
-                <button onClick={() => router.push('/exam/topik-i?mode=full')} style={{ background: '#4F46E5', color: '#ffffff', border: '3px solid #0f0f0f', borderRadius: '14px', padding: '14px', fontWeight: 900, fontSize: '14px', cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontFamily: 'Inter, sans-serif' }}>
+                <button onClick={() => router.push('/exam/topik-i?mode=full')} className="glass-btn-secondary text-white transition-all hover:-translate-y-1" style={{ borderRadius: '14px', padding: '14px', fontWeight: 900, fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                   📋 Full Mock Exam (70 Q · 100 min)
                 </button>
               </div>
             )}
             {targetLevelNum >= 3 && (
-              <button onClick={() => router.push(`/exam/topik-ii?targetLevel=${targetLevelNum}`)} style={{ background: '#1E1B4B', color: '#ffffff', border: '4px solid #0f0f0f', borderRadius: '16px', padding: '16px', fontWeight: 900, fontSize: '14px', cursor: 'pointer', boxShadow: '4px 4px 0px #0f0f0f', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', width: '100%' }}>
+              <button onClick={() => router.push(`/exam/topik-ii?targetLevel=${targetLevelNum}`)} className="glass-btn-secondary text-white transition-all hover:-translate-y-1" style={{ borderRadius: '16px', padding: '16px', fontWeight: 900, fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', width: '100%' }}>
                 📝 Full Mock Exam (104 Q · 180 min)
               </button>
             )}
@@ -329,7 +326,7 @@ export default function LevelPage({ params }: LevelPageProps) {
 
           {/* Curriculum Modules Grid */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <h2 style={{ fontSize: '22px', fontWeight: 900, color: '#0f0f0f', margin: 0 }}>Curriculum Modules</h2>
+            <h2 className="font-sans font-extrabold text-white drop-shadow-md" style={{ fontSize: '22px', margin: 0 }}>Curriculum Modules</h2>
             <ModuleGrid
               modules={currentLevel!.modules}
               progressData={progressData?.modules || []}
