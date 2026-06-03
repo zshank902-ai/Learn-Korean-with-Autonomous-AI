@@ -149,3 +149,28 @@ body {
   border-radius: 50%;
   background: var(--color-primary);
 }
+
+.shadow-warm-soft {
+  box-shadow: 0 2px 16px rgba(58, 48, 42, 0.04);
+}
+
+.hanji-texture {
+  position: relative;
+}
+.hanji-texture::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes drawStroke {
+  from { stroke-dasharray: 200; stroke-dashoffset: 200; }
+  to { stroke-dasharray: 200; stroke-dashoffset: 0; }
+}
+.group:hover .stroke-animated {
+  animation: drawStroke 1.5s ease-out forwards;
+}

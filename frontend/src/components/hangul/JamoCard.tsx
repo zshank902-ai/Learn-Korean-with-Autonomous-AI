@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { JamoData } from '@/data/hangulData';
 import { useSpeechSynthesis } from '@/hooks/useSpeechSynthesis';
+import { useHangulStore } from '@/store/hangulStore';
 
 interface JamoCardProps {
   data: JamoData;
@@ -10,6 +11,7 @@ interface JamoCardProps {
 
 const JamoCardComponent: React.FC<JamoCardProps> = ({ data, showRomanization }) => {
   const { speak } = useSpeechSynthesis();
+  const { setSelectedJamo } = useHangulStore();
 
   // Using Sahara colors
   let bgColorClass = 'bg-[var(--color-secondary-container)] border-[var(--color-outline-variant)] text-[var(--color-on-secondary-container)]'; // Consonant
@@ -18,7 +20,10 @@ const JamoCardComponent: React.FC<JamoCardProps> = ({ data, showRomanization }) 
 
   return (
     <motion.button
-      onClick={() => speak(data.char)}
+      onClick={() => {
+        speak(data.char);
+        setSelectedJamo(data.char);
+      }}
       whileHover={{ y: -4 }}
       whileTap={{ y: 2, scale: 0.98 }}
       className={`sahara-card flex flex-col items-center justify-center p-6 cursor-pointer min-h-[220px] relative overflow-hidden w-full ${bgColorClass}`}

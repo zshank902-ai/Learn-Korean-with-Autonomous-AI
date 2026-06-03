@@ -12,6 +12,9 @@ interface HangulStore {
   currentTab: HangulTab;
   setTab: (tab: HangulTab) => void;
   
+  selectedJamo: string | null;
+  setSelectedJamo: (jamo: string | null) => void;
+  
   composedSyllables: string[];
   addComposedSyllable: (s: string) => void;
   removeSyllable: (index: number) => void;
@@ -34,6 +37,9 @@ interface HangulStore {
 export const useHangulStore = create<HangulStore>((set) => ({
   currentTab: 'jamo',
   setTab: (tab) => set({ currentTab: tab }),
+  
+  selectedJamo: null,
+  setSelectedJamo: (jamo) => set({ selectedJamo: jamo }),
   
   composedSyllables: [],
   addComposedSyllable: (s) => set((state) => ({ composedSyllables: [...state.composedSyllables, s] })),
