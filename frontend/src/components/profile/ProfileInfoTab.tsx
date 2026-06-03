@@ -150,22 +150,22 @@ export default function ProfileInfoTab() {
   const isFormValidToSubmit = (isDirty || !!selectedFile) && isValid && nicknameStatus !== 'taken';
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-300">
+    <div className="space-y-8 animate-in fade-in duration-300 font-sans">
       
       {/* Avatar Upload */}
       <div className="flex flex-col md:flex-row items-center gap-6">
-        <div className="w-24 h-24 rounded-[1rem] border border-[rgba(255,255,255,0.2)] glass-card bg-[rgba(255,255,255,0.05)] flex items-center justify-center overflow-hidden shadow-[inset_0_0_10px_rgba(255,255,255,0.1)]">
+        <div className="w-24 h-24 rounded-[1rem] border border-[var(--color-outline-variant)] bg-[var(--color-surface)] flex items-center justify-center overflow-hidden shadow-sm">
           {avatarPreview ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={avatarPreview} alt="Avatar Preview" className="w-full h-full object-cover" />
           ) : (
-            <User className="text-[var(--color-primary-container)] drop-shadow-md" size={40} />
+            <User className="text-[var(--color-primary)] drop-shadow-sm" size={40} />
           )}
         </div>
         <div>
-          <h3 className="font-extrabold text-white text-lg mb-2 drop-shadow-sm font-sans">Profile Picture</h3>
+          <h3 className="font-bold text-[var(--color-on-surface)] text-lg mb-2 drop-shadow-sm font-sans">Profile Picture</h3>
           <div className="flex items-center gap-3">
-            <label className="cursor-pointer px-4 py-2 glass-btn-secondary text-white rounded-lg font-bold flex items-center gap-2">
+            <label className="cursor-pointer px-4 py-2 bg-[var(--color-surface-container)] hover:bg-[var(--color-surface-container-high)] text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] rounded-lg font-bold flex items-center gap-2 transition-colors">
               <Upload size={16} />
               Change Photo
               <input 
@@ -176,20 +176,20 @@ export default function ProfileInfoTab() {
               />
             </label>
           </div>
-          <p className="text-xs text-[var(--color-on-surface-variant)] font-bold mt-2">JPEG, PNG, or WebP. Max 2MB.</p>
+          <p className="text-xs text-[var(--color-on-surface-variant)] font-semibold mt-2">JPEG, PNG, or WebP. Max 2MB.</p>
         </div>
       </div>
 
-      <hr className="border-[rgba(255,255,255,0.1)] rounded-full" />
+      <hr className="border-[var(--color-outline-variant)] rounded-full" />
 
       {/* Form */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <div>
-          <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Full Name</label>
+          <label className="block text-sm font-bold text-[var(--color-on-surface-variant)] mb-2">Full Name</label>
           <input 
             {...register('full_name')}
-            className={`w-full neumorphic-input rounded-xl py-4 px-4 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
-              errors.full_name ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
+            className={`w-full bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-xl py-4 px-4 font-semibold text-[var(--color-on-surface)] placeholder-[var(--color-on-surface-variant)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all ${
+              errors.full_name ? 'border-[#EF4444] focus:border-[#EF4444] focus:ring-[#EF4444]' : ''
             }`}
             placeholder="e.g. John Doe"
           />
@@ -197,12 +197,12 @@ export default function ProfileInfoTab() {
         </div>
 
         <div>
-          <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Nickname (Unique)</label>
+          <label className="block text-sm font-bold text-[var(--color-on-surface-variant)] mb-2">Nickname (Unique)</label>
           <div className="relative">
             <input 
               {...register('nickname')}
-              className={`w-full neumorphic-input rounded-xl py-4 px-4 pr-12 font-bold text-white placeholder-[rgba(255,255,255,0.4)] ${
-                errors.nickname || nicknameStatus === 'taken' ? 'border-[#EF4444] focus:border-[#EF4444]' : 'focus:border-[var(--color-primary-container)]'
+              className={`w-full bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-xl py-4 px-4 pr-12 font-semibold text-[var(--color-on-surface)] placeholder-[var(--color-on-surface-variant)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] transition-all ${
+                errors.nickname || nicknameStatus === 'taken' ? 'border-[#EF4444] focus:border-[#EF4444] focus:ring-[#EF4444]' : ''
               }`}
               placeholder="e.g. jdoe99"
             />
@@ -210,7 +210,7 @@ export default function ProfileInfoTab() {
             {/* Nickname Status Indicator */}
             <div className="absolute right-4 top-1/2 -translate-y-1/2">
               {isCheckingNickname ? (
-                <Loader2 className="animate-spin text-[var(--color-primary-container)]" size={20} />
+                <Loader2 className="animate-spin text-[var(--color-primary)]" size={20} />
               ) : nicknameStatus === 'available' ? (
                 <CheckCircle className="text-[#10B981]" size={20} />
               ) : nicknameStatus === 'taken' ? (
@@ -226,7 +226,7 @@ export default function ProfileInfoTab() {
           <button 
             type="submit" 
             disabled={!isFormValidToSubmit || isSubmitting}
-            className="px-8 py-3 glass-btn text-white font-extrabold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 flex items-center gap-2"
+            className="px-8 py-3 sahara-btn text-white font-bold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 flex items-center gap-2"
           >
             {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : "Save Changes"}
           </button>

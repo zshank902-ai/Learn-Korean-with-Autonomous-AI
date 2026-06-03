@@ -24,22 +24,22 @@ export default function QuestionNavigator({
   return (
     <div
       style={{
-        background: '#ffffff',
-        border: '3px solid #0f0f0f',
-        borderRadius: '18px',
-        padding: '16px 20px',
-        boxShadow: '4px 4px 0px #0f0f0f',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
+        borderRadius: '24px',
+        padding: '24px',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
       }}
     >
       <p
         style={{
-          margin: '0 0 12px',
-          fontSize: '11px',
-          fontWeight: 800,
+          margin: '0 0 16px',
+          fontSize: '12px',
+          fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
-          color: '#6b7280',
-          fontFamily: 'Inter, sans-serif',
+          color: 'var(--color-on-surface-variant)',
+          fontFamily: '"Manrope", sans-serif',
         }}
       >
         Question Navigator
@@ -48,30 +48,30 @@ export default function QuestionNavigator({
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(36px, 1fr))',
-          gap: '6px',
+          gap: '8px',
         }}
       >
         {Array.from({ length: total }, (_, i) => {
           const qId = questionIds[i];
           const isAnswered = qId !== undefined && answers[qId] !== undefined;
           const isCurrent = i === currentIndex;
-          let bg = '#e5e7eb';       // unanswered gray
-          let border = '#9ca3af';
-          let color = '#4b5563';
+          let bg = 'var(--color-surface-container)'; // unanswered
+          let border = 'var(--color-outline-variant)';
+          let color = 'var(--color-on-surface-variant)';
 
           if (submitted && correctAnswers && qId) {
             const isCorrect = answers[qId] === correctAnswers[qId];
-            bg = isCorrect ? '#D1FAE5' : '#FEE2E2';
-            border = isCorrect ? '#059669' : '#EF4444';
-            color = isCorrect ? '#059669' : '#EF4444';
+            bg = isCorrect ? '#e8f5e9' : '#fef2f2';
+            border = isCorrect ? '#81c784' : '#ef4444';
+            color = isCorrect ? '#2e7d32' : '#b91c1c';
           } else if (isCurrent) {
-            bg = '#1E1B4B';
-            border = '#1E1B4B';
+            bg = 'var(--color-primary)';
+            border = 'var(--color-primary)';
             color = '#ffffff';
           } else if (isAnswered) {
-            bg = '#D1FAE5';
-            border = '#059669';
-            color = '#059669';
+            bg = '#e8f5e9';
+            border = '#81c784';
+            color = '#2e7d32';
           }
 
           return (
@@ -82,15 +82,15 @@ export default function QuestionNavigator({
               style={{
                 width: '36px',
                 height: '36px',
-                borderRadius: '10px',
-                border: `2.5px solid ${border}`,
+                borderRadius: '12px',
+                border: `1px solid ${border}`,
                 background: bg,
                 color,
-                fontSize: '12px',
-                fontWeight: 900,
+                fontSize: '14px',
+                fontWeight: 700,
                 cursor: 'pointer',
-                transition: 'transform 0.1s',
-                fontFamily: 'Inter, sans-serif',
+                transition: 'all 0.2s ease',
+                fontFamily: '"Manrope", sans-serif',
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.1)'; }}
               onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; }}
@@ -100,15 +100,15 @@ export default function QuestionNavigator({
           );
         })}
       </div>
-      <div style={{ display: 'flex', gap: '16px', marginTop: '12px', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '16px', marginTop: '20px', flexWrap: 'wrap' }}>
         {[
-          { color: '#e5e7eb', border: '#9ca3af', label: 'Unanswered' },
-          { color: '#D1FAE5', border: '#059669', label: 'Answered' },
-          { color: '#1E1B4B', border: '#1E1B4B', label: 'Current' },
+          { color: 'var(--color-surface-container)', border: 'var(--color-outline-variant)', label: 'Unanswered' },
+          { color: '#e8f5e9', border: '#81c784', label: 'Answered' },
+          { color: 'var(--color-primary)', border: 'var(--color-primary)', label: 'Current' },
         ].map((l) => (
-          <div key={l.label} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <div style={{ width: '14px', height: '14px', borderRadius: '4px', background: l.color, border: `2px solid ${l.border}` }} />
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>{l.label}</span>
+          <div key={l.label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ width: '12px', height: '12px', borderRadius: '4px', background: l.color, border: `1px solid ${l.border}` }} />
+            <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--color-on-surface-variant)', fontFamily: '"Manrope", sans-serif' }}>{l.label}</span>
           </div>
         ))}
       </div>

@@ -122,43 +122,42 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 font-sans">
       {isPassed && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} numberOfPieces={500} />}
       
       {/* Backdrop */}
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        className="absolute inset-0 bg-[#1E1B4B]/80 backdrop-blur-md"
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
       />
 
       {/* Modal Content */}
       <motion.div 
         initial={{ scale: 0.9, y: 20, opacity: 0 }} 
         animate={{ scale: 1, y: 0, opacity: 1 }}
-        className="relative z-10 w-full max-w-2xl bg-white rounded-3xl border-4 border-[#1E1B4B] flex flex-col h-[600px] overflow-hidden"
-        style={{ boxShadow: '12px 12px 0px #1E1B4B' }}
+        className="relative z-10 w-full max-w-2xl sahara-card bg-[var(--color-surface)] rounded-3xl border border-[var(--color-outline-variant)] flex flex-col h-[600px] overflow-hidden shadow-sm"
       >
-        <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full border-2 border-[#1E1B4B] hover:bg-gray-200">
-          <X size={20} className="text-[#1E1B4B]" />
+        <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-[var(--color-surface-container)] rounded-full hover:bg-[var(--color-surface-container-high)] text-[var(--color-on-surface)] transition-colors">
+          <X size={20} />
         </button>
 
         {/* Header */}
-        <div className="bg-[#EF4444] p-6 border-b-4 border-[#1E1B4B] flex items-center gap-4 text-white">
-          <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center border-4 border-[#1E1B4B]" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
-            <ShieldAlert size={28} className="text-[#EF4444]" />
+        <div className="bg-[var(--color-surface-container-low)] p-6 border-b border-[var(--color-outline-variant)] flex items-center gap-4 text-[var(--color-on-surface)]">
+          <div className="w-12 h-12 bg-[var(--color-surface)] rounded-xl flex items-center justify-center border border-[var(--color-outline-variant)] shadow-sm">
+            <ShieldAlert size={28} className="text-[var(--color-primary)]" />
           </div>
           <div>
-            <h2 className="text-2xl font-black uppercase tracking-widest" style={{ fontFamily: 'Fredoka, cursive' }}>Level {level} Exam</h2>
-            <p className="font-bold opacity-90 text-sm">Pass the strict examiner to unlock the next level.</p>
+            <h2 className="text-2xl font-bold font-serif">Level {level} Exam</h2>
+            <p className="font-semibold text-[var(--color-on-surface-variant)] text-sm">Pass the strict examiner to unlock the next level.</p>
           </div>
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-[#FEE2E2]">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-[var(--color-surface)]">
           {messages.length === 0 && (
-            <div className="flex flex-col items-center justify-center h-full text-[#EF4444]/60 gap-4">
-              <AlertOctagon size={48} />
-              <p className="text-center font-bold max-w-xs">
+            <div className="flex flex-col items-center justify-center h-full text-[var(--color-on-surface-variant)] gap-4">
+              <AlertOctagon size={48} className="opacity-50" />
+              <p className="text-center font-semibold max-w-xs">
                 The Examiner is waiting. Type "안녕하세요" to begin your test.
               </p>
             </div>
@@ -167,12 +166,7 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
           <AnimatePresence>
             {messages.map((msg, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`px-5 py-3 rounded-2xl border-4 border-[#1E1B4B] font-bold max-w-[80%] text-sm`}
-                     style={{ 
-                       background: msg.role === 'user' ? '#EF4444' : 'white',
-                       color: msg.role === 'user' ? 'white' : '#1E1B4B',
-                       boxShadow: '4px 4px 0px #1E1B4B'
-                     }}>
+                <div className={`px-5 py-3 rounded-2xl font-semibold max-w-[80%] text-sm ${msg.role === 'user' ? 'bg-[var(--color-primary)] text-white shadow-sm' : 'bg-[var(--color-surface-container)] text-[var(--color-on-surface)] border border-[var(--color-outline-variant)]'}`}>
                   {msg.content}
                 </div>
               </motion.div>
@@ -180,8 +174,8 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
           </AnimatePresence>
           {isStreaming && (
              <div className="flex justify-start">
-               <div className="px-5 py-3 rounded-2xl border-4 border-[#1E1B4B] bg-white" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
-                 <Loader2 size={20} className="text-[#EF4444] animate-spin" />
+               <div className="px-5 py-3 rounded-2xl bg-[var(--color-surface-container)] text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] flex items-center">
+                 <Loader2 size={16} className="text-[var(--color-primary)] animate-spin" />
                </div>
              </div>
           )}
@@ -189,21 +183,19 @@ export default function ExaminerModal({ level, onClose }: ExaminerModalProps) {
         </div>
 
         {/* Input */}
-        <div className="p-4 bg-white border-t-4 border-[#1E1B4B] flex gap-3">
+        <div className="p-4 bg-[var(--color-surface-container-low)] border-t border-[var(--color-outline-variant)] flex gap-3">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Answer the examiner..."
             disabled={isStreaming || isPassed}
-            className="flex-1 rounded-xl px-4 py-3 font-bold text-[#1E1B4B] focus:outline-none border-4 border-[#1E1B4B] text-sm"
-            style={{ background: '#F3F4F6' }}
+            className="flex-1 rounded-xl px-4 py-3 font-semibold text-[var(--color-on-surface)] bg-[var(--color-surface)] border border-[var(--color-outline-variant)] focus:outline-none focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)] placeholder-[var(--color-on-surface-variant)] text-sm transition-all"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || isStreaming || isPassed}
-            className="w-14 rounded-xl flex items-center justify-center border-4 border-[#1E1B4B] disabled:opacity-50 cursor-pointer transition-transform hover:-translate-y-1"
-            style={{ background: '#EF4444', boxShadow: '4px 4px 0px #1E1B4B' }}
+            className="w-14 rounded-xl flex items-center justify-center sahara-btn disabled:opacity-50 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <Send size={20} className="text-white" />
           </button>

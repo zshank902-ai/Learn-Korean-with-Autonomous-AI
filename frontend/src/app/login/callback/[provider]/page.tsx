@@ -76,25 +76,23 @@ export default function CallbackPage({ params }: CallbackPageProps) {
   }, [provider, searchParams, router, setToken, fetchProfile]);
 
   return (
-    <div className="min-h-screen bg-[#EEF2FF] flex items-center justify-center p-6 text-[#1E1B4B]">
+    <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center p-6 text-[var(--color-on-surface)] font-sans">
       <div 
-        className="w-full max-w-md bg-white border-4 border-[#1E1B4B] rounded-3xl p-8 text-center"
-        style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
+        className="w-full max-w-md sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-3xl p-8 text-center shadow-sm"
       >
-        <div className="w-16 h-16 bg-[#F97316] border-4 border-[#1E1B4B] rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
-          <span className="text-3xl font-black text-white" style={{ fontFamily: 'Fredoka, cursive' }}>K</span>
+        <div className="w-16 h-16 bg-[var(--color-primary)] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-sm">
+          <span className="text-3xl font-bold text-white font-serif">K</span>
         </div>
 
         {errorMsg ? (
           <div className="space-y-4">
-            <div className="bg-[#FEE2E2] text-[#EF4444] border-4 border-[#1E1B4B] p-4 rounded-xl font-bold flex items-center justify-center gap-2" style={{ boxShadow: '4px 4px 0px #1E1B4B' }}>
+            <div className="bg-[#FEE2E2] text-[#EF4444] border border-[#EF4444]/20 p-4 rounded-xl font-semibold flex items-center justify-center gap-2">
               <AlertCircle size={20} />
               <span>{errorMsg}</span>
             </div>
             <button
               onClick={() => router.push('/login')}
-              className="w-full bg-[#4F46E5] text-white border-4 border-[#1E1B4B] py-3 rounded-xl font-black uppercase tracking-wider hover:-translate-y-0.5 transition-transform"
-              style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+              className="w-full sahara-btn text-white py-3 rounded-xl font-bold transition-transform hover:-translate-y-1"
             >
               Back to Sign In
             </button>
@@ -102,12 +100,12 @@ export default function CallbackPage({ params }: CallbackPageProps) {
         ) : (
           <div className="space-y-4">
             <div className="flex justify-center">
-              <Loader2 className="animate-spin text-[#4F46E5]" size={48} />
+              <Loader2 className="animate-spin text-[var(--color-primary)]" size={48} />
             </div>
-            <h2 className="text-2xl font-black uppercase tracking-wide" style={{ fontFamily: 'Fredoka, cursive' }}>
+            <h2 className="text-2xl font-bold text-[var(--color-on-surface)] font-serif">
               Authenticating...
             </h2>
-            <p className="font-bold text-[#1E1B4B]/60">
+            <p className="font-semibold text-[var(--color-on-surface-variant)]">
               Completing secure sign-in with {provider === 'google' ? 'Google' : 'GitHub'}. Please wait.
             </p>
           </div>

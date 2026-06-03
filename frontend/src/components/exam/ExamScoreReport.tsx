@@ -17,37 +17,37 @@ function CertBadge({ level, score }: { level: number; score: number }) {
     return (
       <div
         style={{
-          background: '#FEE2E2',
-          border: '4px solid #EF4444',
-          borderRadius: '20px',
-          padding: '16px 32px',
+          background: '#fef2f2',
+          border: '1px solid #ef4444',
+          borderRadius: '24px',
+          padding: '24px 32px',
           textAlign: 'center',
-          boxShadow: '4px 4px 0px #EF4444',
+          boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)',
         }}
       >
-        <p style={{ margin: 0, fontSize: '28px', fontWeight: 900, color: '#991B1B', fontFamily: 'Fredoka, cursive' }}>불합격</p>
-        <p style={{ margin: '4px 0 0', fontSize: '14px', fontWeight: 600, color: '#EF4444' }}>Not Passed · Score: {score}</p>
+        <p style={{ margin: 0, fontSize: '28px', fontWeight: 700, color: '#991B1B', fontFamily: '"EB Garamond", serif' }}>불합격</p>
+        <p style={{ margin: '8px 0 0', fontSize: '14px', fontWeight: 600, color: '#EF4444', fontFamily: '"Manrope", sans-serif' }}>Not Passed · Score: {score}</p>
       </div>
     );
   }
   return (
     <div
       style={{
-        background: '#D1FAE5',
-        border: '4px solid #059669',
-        borderRadius: '20px',
-        padding: '16px 32px',
+        background: '#e8f5e9',
+        border: '1px solid #81c784',
+        borderRadius: '24px',
+        padding: '24px 32px',
         textAlign: 'center',
-        boxShadow: '4px 4px 0px #059669',
+        boxShadow: '0 4px 12px rgba(129, 199, 132, 0.15)',
       }}
     >
-      <p style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#065F46', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+      <p style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#2e7d32', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: '"Manrope", sans-serif' }}>
         🎓 Certificate Awarded
       </p>
-      <p style={{ margin: '4px 0 0', fontSize: '32px', fontWeight: 900, color: '#064E3B', fontFamily: 'Fredoka, cursive' }}>
+      <p style={{ margin: '8px 0 0', fontSize: '36px', fontWeight: 700, color: '#1b5e20', fontFamily: '"EB Garamond", serif' }}>
         TOPIK Level {level}
       </p>
-      <p style={{ margin: '4px 0 0', fontSize: '14px', fontWeight: 600, color: '#059669' }}>합격 · Score: {score}</p>
+      <p style={{ margin: '8px 0 0', fontSize: '15px', fontWeight: 600, color: '#388e3c', fontFamily: '"Manrope", sans-serif' }}>합격 · Score: {score}</p>
     </div>
   );
 }
@@ -56,18 +56,18 @@ function ScoreBar({ label, score, max }: { label: string; score: number; max: nu
   const pct = Math.round((score / max) * 100);
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 800, color: '#0f0f0f', fontFamily: 'Inter, sans-serif' }}>{label}</span>
-        <span style={{ fontSize: '13px', fontWeight: 900, color: '#4F46E5', fontFamily: 'Inter, sans-serif' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface)', fontFamily: '"Manrope", sans-serif' }}>{label}</span>
+        <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"Manrope", sans-serif' }}>
           {score} / {max}
         </span>
       </div>
-      <div style={{ background: '#e5e7eb', border: '2px solid #0f0f0f', borderRadius: '999px', height: '14px', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--color-surface-container-low)', border: '1px solid var(--color-outline-variant)', borderRadius: '999px', height: '12px', overflow: 'hidden' }}>
         <div
           style={{
             height: '100%',
             width: `${pct}%`,
-            background: pct >= 60 ? '#059669' : '#F97316',
+            background: pct >= 60 ? '#2e7d32' : 'var(--color-primary)',
             borderRadius: '999px',
             transition: 'width 0.6s ease',
           }}
@@ -88,16 +88,17 @@ function RubricBars({ rubric }: { rubric: EssayRubric }) {
   return (
     <div
       style={{
-        background: '#F9FAFB',
-        border: '2.5px solid #0f0f0f',
-        borderRadius: '16px',
-        padding: '20px',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
+        borderRadius: '24px',
+        padding: '24px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '14px',
+        gap: '16px',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)'
       }}
     >
-      <p style={{ margin: '0 0 4px', fontSize: '13px', fontWeight: 800, color: '#0f0f0f', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'Inter, sans-serif' }}>
+      <p style={{ margin: '0 0 4px', fontSize: '14px', fontWeight: 700, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: '"Manrope", sans-serif' }}>
         AI Essay Rubric
       </p>
       {items.map(({ key, label }) => (
@@ -106,13 +107,14 @@ function RubricBars({ rubric }: { rubric: EssayRubric }) {
       {rubric.feedback && (
         <div
           style={{
-            background: '#FFFBEB',
-            border: '2px solid #F59E0B',
-            borderRadius: '12px',
-            padding: '12px 16px',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '16px',
+            padding: '16px',
             fontSize: '14px',
-            color: '#92400E',
-            fontFamily: 'Inter, sans-serif',
+            lineHeight: 1.6,
+            color: 'var(--color-on-surface)',
+            fontFamily: '"Manrope", sans-serif',
           }}
         >
           💡 {rubric.feedback}
@@ -143,34 +145,35 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
         gap: '24px',
         maxWidth: '680px',
         margin: '0 auto',
+        fontFamily: '"Manrope", sans-serif'
       }}
     >
       {/* Total Score Display */}
       <div
         style={{
-          background: '#ffffff',
-          border: '4px solid #0f0f0f',
-          borderRadius: '24px',
-          padding: '32px',
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-outline-variant)',
+          borderRadius: '32px',
+          padding: '40px 32px',
           textAlign: 'center',
-          boxShadow: '8px 8px 0px #0f0f0f',
+          boxShadow: '0 8px 24px rgba(58, 48, 42, 0.08)',
         }}
       >
-        <p style={{ margin: '0 0 4px', fontSize: '13px', fontWeight: 700, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {isTopikI ? 'TOPIK I Final Score' : 'TOPIK II Final Score'}
         </p>
         <div
           style={{
-            fontSize: '80px',
-            fontWeight: 900,
-            color: '#1E1B4B',
+            fontSize: '88px',
+            fontWeight: 700,
+            color: 'var(--color-on-surface)',
             lineHeight: 1,
-            fontFamily: 'Fredoka, cursive',
+            fontFamily: '"EB Garamond", serif',
           }}
         >
           {totalScore}
         </div>
-        <p style={{ margin: '4px 0 16px', fontSize: '16px', fontWeight: 700, color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: '8px 0 24px', fontSize: '16px', fontWeight: 600, color: 'var(--color-on-surface-variant)' }}>
           / {maxScore} points
         </p>
 
@@ -179,19 +182,18 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
         {xp > 0 && (
           <div
             style={{
-              marginTop: '16px',
+              marginTop: '24px',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              background: '#FEF3C7',
-              border: '2.5px solid #F59E0B',
-              borderRadius: '12px',
-              padding: '8px 18px',
-              boxShadow: '2px 2px 0px #F59E0B',
+              background: 'var(--color-surface-container)',
+              border: '1px solid var(--color-outline-variant)',
+              borderRadius: '16px',
+              padding: '10px 20px',
             }}
           >
             <span style={{ fontSize: '18px' }}>⭐</span>
-            <span style={{ fontWeight: 900, fontSize: '16px', color: '#92400E', fontFamily: 'Fredoka, cursive' }}>
+            <span style={{ fontWeight: 700, fontSize: '16px', color: 'var(--color-on-surface)', fontFamily: '"EB Garamond", serif' }}>
               +{xp} XP Earned
             </span>
           </div>
@@ -201,17 +203,17 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
       {/* Section Breakdown */}
       <div
         style={{
-          background: '#ffffff',
-          border: '3px solid #0f0f0f',
-          borderRadius: '20px',
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-outline-variant)',
+          borderRadius: '24px',
           padding: '24px',
-          boxShadow: '5px 5px 0px #0f0f0f',
+          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
+          gap: '20px',
         }}
       >
-        <p style={{ margin: 0, fontSize: '15px', fontWeight: 900, color: '#0f0f0f', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: 0, fontSize: '16px', fontWeight: 700, color: 'var(--color-on-surface)', fontFamily: '"EB Garamond", serif' }}>
           Section Breakdown
         </p>
         {writingScore !== null && <ScoreBar label="쓰기 (Writing)" score={writingScore} max={100} />}
@@ -223,44 +225,38 @@ export default function ExamScoreReport({ examType, result, onReviewMistakes }: 
       {essayRubric && <RubricBars rubric={essayRubric} />}
 
       {/* CTA Buttons */}
-      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
         {onReviewMistakes && (
           <button
             onClick={onReviewMistakes}
+            className="sahara-btn-secondary"
             style={{
               flex: 1,
-              minWidth: '180px',
-              background: '#ffffff',
-              color: '#0f0f0f',
-              border: '3px solid #0f0f0f',
-              borderRadius: '14px',
-              padding: '14px',
-              fontWeight: 900,
-              fontSize: '14px',
-              cursor: 'pointer',
-              boxShadow: '3px 3px 0px #0f0f0f',
-              fontFamily: 'Inter, sans-serif',
+              minWidth: '200px',
+              padding: '16px',
+              fontWeight: 700,
+              fontSize: '15px',
+              borderRadius: '16px',
+              fontFamily: '"Manrope", sans-serif',
               textTransform: 'uppercase',
+              letterSpacing: '0.05em'
             }}
           >
             🔍 Review Mistakes
           </button>
         )}
-        <Link href="/roadmap" style={{ flex: 1, minWidth: '180px', textDecoration: 'none' }}>
+        <Link href="/roadmap" style={{ flex: 1, minWidth: '200px', textDecoration: 'none' }}>
           <button
+            className="sahara-btn"
             style={{
               width: '100%',
-              background: '#4F46E5',
-              color: '#ffffff',
-              border: '3px solid #0f0f0f',
-              borderRadius: '14px',
-              padding: '14px',
-              fontWeight: 900,
-              fontSize: '14px',
-              cursor: 'pointer',
-              boxShadow: '3px 3px 0px #0f0f0f',
-              fontFamily: 'Inter, sans-serif',
+              padding: '16px',
+              fontWeight: 700,
+              fontSize: '15px',
+              borderRadius: '16px',
+              fontFamily: '"Manrope", sans-serif',
               textTransform: 'uppercase',
+              letterSpacing: '0.05em'
             }}
           >
             ← Return to Roadmap

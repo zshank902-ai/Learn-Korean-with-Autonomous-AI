@@ -31,25 +31,25 @@ export default function StreakCalendar() {
 
   const getColor = (intensity: number) => {
     switch(intensity) {
-      case 0: return 'rgba(255,255,255,0.05)'; // empty
-      case 1: return 'rgba(195,192,255,0.3)'; // light indigo
-      case 2: return 'rgba(195,192,255,0.6)'; // medium indigo
-      case 3: return 'rgba(195,192,255,0.9)'; // primary indigo
-      case 4: return 'var(--color-primary-container)'; // dark indigo
-      default: return 'rgba(255,255,255,0.05)';
+      case 0: return 'var(--color-surface-container-low)'; // empty
+      case 1: return 'var(--color-primary-container)'; // light
+      case 2: return 'rgba(194,101,42,0.5)'; // medium
+      case 3: return 'rgba(194,101,42,0.8)'; // heavy
+      case 4: return 'var(--color-primary)'; // max
+      default: return 'var(--color-surface-container-low)';
     }
   };
 
   return (
-    <div className="glass-card rounded-3xl border border-[rgba(255,255,255,0.2)] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+    <div className="sahara-card rounded-3xl border border-[var(--color-outline-variant)] bg-[var(--color-surface)] p-6 shadow-sm font-sans">
       <div className="flex justify-between items-end mb-6">
         <div>
-          <h2 className="text-2xl font-extrabold text-white font-sans drop-shadow-sm">Activity Heatmap</h2>
+          <h2 className="text-2xl font-bold text-[var(--color-on-surface)] font-serif drop-shadow-sm">Activity Heatmap</h2>
           <p className="text-[var(--color-on-surface-variant)] font-semibold text-sm">Your learning consistency</p>
         </div>
         <div className="text-right">
-          <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Longest Streak</p>
-          <p className="text-xl font-extrabold text-[var(--color-secondary-container)] drop-shadow-md">24 Days</p>
+          <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-wide">Longest Streak</p>
+          <p className="text-xl font-bold text-[var(--color-primary)] drop-shadow-sm">24 Days</p>
         </div>
       </div>
 
@@ -71,7 +71,7 @@ export default function StreakCalendar() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: (wIdx * 7 + dIdx) * 0.005 }}
-                  className={`w-4 h-4 rounded-md border ${day.isToday ? 'border-[var(--color-secondary-container)] ring-2 ring-[var(--color-secondary-container)]/50' : 'border-[rgba(255,255,255,0.1)]'}`}
+                  className={`w-4 h-4 rounded-md border ${day.isToday ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/50' : 'border-[var(--color-outline-variant)]'}`}
                   style={{ background: getColor(day.intensity) }}
                   title={`Activity level: ${day.intensity}`}
                 />
@@ -85,7 +85,7 @@ export default function StreakCalendar() {
       <div className="flex items-center justify-end gap-2 mt-4 text-xs font-bold text-[var(--color-on-surface-variant)]">
         <span>Less</span>
         {[0, 1, 2, 3, 4].map(i => (
-          <div key={i} className="w-3 h-3 rounded-[4px] border border-[rgba(255,255,255,0.1)]" style={{ background: getColor(i) }} />
+          <div key={i} className="w-3 h-3 rounded-[4px] border border-[var(--color-outline-variant)]" style={{ background: getColor(i) }} />
         ))}
         <span>More</span>
       </div>

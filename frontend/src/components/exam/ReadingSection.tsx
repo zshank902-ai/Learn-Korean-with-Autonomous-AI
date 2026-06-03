@@ -22,12 +22,12 @@ function renderPassageWithBlanks(text: string) {
           key={i}
           style={{
             display: 'inline-block',
-            background: '#EEF2FF',
-            border: '2px solid #4F46E5',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-primary)',
             borderRadius: '6px',
             padding: '0 12px',
-            color: '#4F46E5',
-            fontWeight: 900,
+            color: 'var(--color-primary)',
+            fontWeight: 700,
             fontSize: '15px',
             margin: '0 4px',
           }}
@@ -51,36 +51,33 @@ export default function ReadingSection({
   if (!q) return null;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontFamily: '"Manrope", sans-serif' }}>
       {/* Question header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div
           style={{
-            background: '#F97316',
+            background: 'var(--color-primary)',
             color: '#ffffff',
             borderRadius: '12px',
-            border: '3px solid #0f0f0f',
-            padding: '6px 14px',
-            fontWeight: 900,
-            fontSize: '14px',
-            boxShadow: '2px 2px 0px #0f0f0f',
-            fontFamily: 'Inter, sans-serif',
+            padding: '6px 16px',
+            fontWeight: 700,
+            fontSize: '15px',
+            boxShadow: '0 2px 8px rgba(194, 101, 42, 0.2)',
           }}
         >
           Q{q.questionNumber}
         </div>
         <div
           style={{
-            background: '#FEF3C7',
-            border: '2px solid #0f0f0f',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
             borderRadius: '10px',
-            padding: '4px 12px',
-            fontSize: '11px',
+            padding: '4px 14px',
+            fontSize: '12px',
             fontWeight: 700,
-            color: '#92400E',
+            color: 'var(--color-on-surface-variant)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            fontFamily: 'Inter, sans-serif',
           }}
         >
           Reading
@@ -91,20 +88,19 @@ export default function ReadingSection({
       {q.passageText && (
         <div
           style={{
-            background: '#FAFAFA',
-            border: '2.5px solid #0f0f0f',
-            borderRadius: '16px',
-            padding: '20px 24px',
-            boxShadow: '3px 3px 0px #e5e7eb',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '20px',
+            padding: '24px',
+            boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
           }}
         >
           <p
             style={{
               margin: 0,
               fontSize: '16px',
-              lineHeight: 2,
-              color: '#0f0f0f',
-              fontFamily: 'Inter, sans-serif',
+              lineHeight: 1.8,
+              color: 'var(--color-on-surface)',
               fontWeight: 500,
             }}
           >
@@ -117,30 +113,30 @@ export default function ReadingSection({
       <p
         style={{
           margin: 0,
-          fontSize: '17px',
+          fontSize: '18px',
           fontWeight: 700,
-          color: '#0f0f0f',
-          lineHeight: 1.7,
-          fontFamily: 'Inter, sans-serif',
+          color: 'var(--color-on-surface)',
+          lineHeight: 1.6,
+          fontFamily: '"EB Garamond", serif',
         }}
       >
         {q.questionText}
       </p>
 
       {/* MCQ Options */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {q.options.map((opt, i) => {
           const isSelected = answers[q.id] === i;
           const isCorrect = submitted && q.correctAnswer === i;
           const isWrong = submitted && isSelected && q.correctAnswer !== i;
 
-          let bg = '#ffffff';
-          let border = '#d1d5db';
-          let color = '#0f0f0f';
+          let bg = 'var(--color-surface)';
+          let border = 'var(--color-outline-variant)';
+          let color = 'var(--color-on-surface)';
 
-          if (isCorrect) { bg = '#D1FAE5'; border = '#059669'; color = '#065F46'; }
-          else if (isWrong) { bg = '#FEE2E2'; border = '#EF4444'; color = '#991B1B'; }
-          else if (isSelected) { bg = '#EEF2FF'; border = '#4F46E5'; color = '#1E1B4B'; }
+          if (isCorrect) { bg = '#e8f5e9'; border = '#81c784'; color = '#2e7d32'; }
+          else if (isWrong) { bg = '#fef2f2'; border = '#ef4444'; color = '#b91c1c'; }
+          else if (isSelected) { bg = 'var(--color-surface-container)'; border = 'var(--color-primary)'; color = 'var(--color-primary)'; }
 
           return (
             <button
@@ -150,45 +146,50 @@ export default function ReadingSection({
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '12px',
+                gap: '14px',
                 background: bg,
-                border: `3px solid ${border}`,
-                borderRadius: '14px',
-                padding: '13px 16px',
+                border: `1px solid ${border}`,
+                borderRadius: '16px',
+                padding: '16px 20px',
                 cursor: submitted ? 'default' : 'pointer',
                 textAlign: 'left',
                 width: '100%',
-                transition: 'all 0.15s ease',
-                boxShadow: isSelected ? `3px 3px 0px ${border}` : '2px 2px 0px #e5e7eb',
-                fontFamily: 'Inter, sans-serif',
+                transition: 'all 0.2s ease',
+                boxShadow: isSelected ? '0 4px 12px rgba(58, 48, 42, 0.08)' : 'none',
               }}
               onMouseEnter={(e) => {
-                if (!submitted) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                if (!submitted) {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)';
+                  (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                }
               }}
               onMouseLeave={(e) => {
+                if (!submitted && !isSelected) {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)';
+                }
                 (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
               }}
             >
               <span
                 style={{
-                  width: '30px',
-                  height: '30px',
+                  width: '32px',
+                  height: '32px',
                   borderRadius: '50%',
-                  background: isSelected || isCorrect ? border : '#e5e7eb',
-                  color: isSelected || isCorrect ? '#ffffff' : '#4b5563',
+                  background: isSelected || isCorrect || isWrong ? border : 'var(--color-surface-container)',
+                  color: isSelected || isCorrect || isWrong ? '#ffffff' : 'var(--color-on-surface-variant)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '15px',
-                  fontWeight: 900,
+                  fontSize: '14px',
+                  fontWeight: 700,
                   flexShrink: 0,
                 }}
               >
                 {OPTION_LABELS[i]}
               </span>
               <span style={{ fontSize: '15px', fontWeight: 600, color, lineHeight: 1.5 }}>{opt}</span>
-              {isCorrect && <span style={{ marginLeft: 'auto', color: '#059669', fontWeight: 900 }}>✓</span>}
-              {isWrong && <span style={{ marginLeft: 'auto', color: '#EF4444', fontWeight: 900 }}>✗</span>}
+              {isCorrect && <span style={{ marginLeft: 'auto', color: '#2e7d32', fontWeight: 700 }}>✓</span>}
+              {isWrong && <span style={{ marginLeft: 'auto', color: '#b91c1c', fontWeight: 700 }}>✗</span>}
             </button>
           );
         })}
@@ -198,14 +199,14 @@ export default function ReadingSection({
       {submitted && q.explanation && (
         <div
           style={{
-            background: '#FFFBEB',
-            border: '2.5px solid #F59E0B',
-            borderRadius: '14px',
-            padding: '14px 18px',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '16px',
+            padding: '16px 20px',
             fontSize: '14px',
-            fontWeight: 600,
-            color: '#92400E',
-            fontFamily: 'Inter, sans-serif',
+            fontWeight: 500,
+            lineHeight: 1.6,
+            color: 'var(--color-on-surface)',
           }}
         >
           💡 {q.explanation}

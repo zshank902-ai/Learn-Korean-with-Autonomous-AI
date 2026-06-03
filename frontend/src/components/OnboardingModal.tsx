@@ -128,19 +128,19 @@ export default function OnboardingModal() {
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm font-sans"
       role="dialog"
       aria-modal="true"
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        className="bg-[#0F0E17] w-full max-w-lg rounded-3xl border-4 border-[#6C63FF] overflow-hidden shadow-[8px_8px_0px_#6C63FF] flex flex-col relative"
+        className="bg-[var(--color-surface)] w-full max-w-lg rounded-3xl border border-[var(--color-outline-variant)] overflow-hidden shadow-sm flex flex-col relative"
       >
         {/* Logout Button for trapped users */}
         <button 
           onClick={() => logout()}
-          className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-10"
+          className="absolute top-4 right-4 text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors z-10 p-2 bg-[var(--color-surface-container)] rounded-full"
           title="Sign out and switch accounts"
         >
           <LogOut size={20} />
@@ -148,27 +148,27 @@ export default function OnboardingModal() {
 
         {isSubmitting ? (
           <div className="p-12 flex flex-col items-center justify-center text-center space-y-6">
-            <Loader2 className="animate-spin text-[#FF6B35]" size={48} />
-            <h2 className="text-2xl font-black text-white">🤖 AI is personalizing your learning path...</h2>
-            <p className="text-white/60">This will only take a moment.</p>
+            <Loader2 className="animate-spin text-[var(--color-primary)]" size={48} />
+            <h2 className="text-2xl font-bold text-[var(--color-on-surface)] font-serif">🤖 AI is personalizing your learning path...</h2>
+            <p className="text-[var(--color-on-surface-variant)] font-semibold">This will only take a moment.</p>
           </div>
         ) : result ? (
           <div className="p-10 flex flex-col items-center justify-center text-center space-y-6">
-            <div className="w-20 h-20 bg-[#6C63FF] rounded-full flex items-center justify-center mb-2 shadow-[0_0_20px_#6C63FF]">
+            <div className="w-20 h-20 bg-[var(--color-primary)] rounded-full flex items-center justify-center mb-2 shadow-sm">
               <CheckCircle className="text-white" size={40} />
             </div>
-            <h2 className="text-3xl font-black text-white">Your learning profile is ready!</h2>
+            <h2 className="text-3xl font-bold text-[var(--color-on-surface)] font-serif">Your learning profile is ready!</h2>
             
-            <div className="bg-[#1E1B4B] border-2 border-[#6C63FF] p-6 rounded-2xl w-full text-left">
-              <span className="inline-block px-3 py-1 bg-[#FF6B35] text-white text-xs font-bold uppercase rounded-full mb-3 tracking-widest">
+            <div className="bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] p-6 rounded-2xl w-full text-left">
+              <span className="inline-block px-3 py-1 bg-[var(--color-primary)] text-white text-xs font-bold uppercase rounded-full mb-3 tracking-wide">
                 Difficulty: {result.difficulty}
               </span>
-              <p className="text-white text-lg font-medium">{result.reasoning}</p>
+              <p className="text-[var(--color-on-surface)] text-lg font-semibold">{result.reasoning}</p>
             </div>
 
             <button
               onClick={closeAndComplete}
-              className="mt-6 w-full py-4 bg-[#6C63FF] text-white font-black text-xl rounded-xl hover:bg-[#5A52D5] transition-colors flex items-center justify-center gap-2"
+              className="mt-6 w-full py-4 sahara-btn text-white font-bold text-xl rounded-xl transition-transform hover:-translate-y-1 flex items-center justify-center gap-2"
             >
               Let's start learning <ArrowRight size={24} />
             </button>
@@ -176,14 +176,14 @@ export default function OnboardingModal() {
         ) : (
           <>
             {/* Progress Bar Header */}
-            <div className="p-6 bg-[#1A1829] border-b-2 border-[#6C63FF]">
-              <div className="flex justify-between items-center text-sm font-bold text-white/50 mb-3">
-                <span className="uppercase tracking-widest">Onboarding</span>
+            <div className="p-6 bg-[var(--color-surface-container-low)] border-b border-[var(--color-outline-variant)]">
+              <div className="flex justify-between items-center text-sm font-bold text-[var(--color-on-surface-variant)] mb-3">
+                <span className="uppercase tracking-wide">Onboarding</span>
                 <span>{currentQuestion + 1} / {QUESTIONS.length}</span>
               </div>
-              <div className="h-2 w-full bg-[#0F0E17] rounded-full overflow-hidden">
+              <div className="h-2 w-full bg-[var(--color-surface)] border border-[var(--color-outline-variant)] rounded-full overflow-hidden">
                 <motion.div 
-                  className="h-full bg-[#FF6B35]"
+                  className="h-full bg-[var(--color-primary)]"
                   initial={{ width: 0 }}
                   animate={{ width: `${((currentQuestion + 1) / QUESTIONS.length) * 100}%` }}
                   transition={{ duration: 0.3 }}
@@ -192,7 +192,7 @@ export default function OnboardingModal() {
             </div>
 
             {/* Question Body */}
-            <div className="p-6 md:p-8 min-h-[320px] relative overflow-hidden flex flex-col justify-center">
+            <div className="p-6 md:p-8 min-h-[320px] relative overflow-hidden flex flex-col justify-center bg-[var(--color-surface)]">
               <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                   key={currentQuestion}
@@ -204,7 +204,7 @@ export default function OnboardingModal() {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   className="w-full"
                 >
-                  <h2 className="text-2xl md:text-3xl font-black text-white mb-6 text-center leading-tight">
+                  <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-on-surface)] mb-6 text-center leading-tight font-serif">
                     {q.title}
                   </h2>
                   <div className="space-y-3">
@@ -212,10 +212,10 @@ export default function OnboardingModal() {
                       <button
                         key={idx}
                         onClick={() => handleSelect(q.key, opt.value)}
-                        className={`w-full p-4 rounded-xl border-2 font-bold flex items-center justify-between transition-all text-left ${
+                        className={`w-full p-4 rounded-xl border font-bold flex items-center justify-between transition-all text-left ${
                           isSelected(opt.value)
-                            ? 'border-[#FF6B35] bg-[#FF6B35]/10 text-[#FF6B35]'
-                            : 'border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/30'
+                            ? 'border-[var(--color-primary)] bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)]'
+                            : 'border-[var(--color-outline-variant)] bg-[var(--color-surface)] text-[var(--color-on-surface)] hover:bg-[var(--color-surface-container-low)]'
                         }`}
                       >
                         {opt.label}
@@ -234,11 +234,11 @@ export default function OnboardingModal() {
             )}
 
             {/* Footer Navigation */}
-            <div className="p-6 border-t-2 border-white/10 flex justify-between gap-4">
+            <div className="p-6 border-t border-[var(--color-outline-variant)] bg-[var(--color-surface-container-low)] flex justify-between gap-4">
               <button
                 onClick={handleBack}
                 disabled={currentQuestion === 0}
-                className="px-6 py-3 rounded-xl font-bold flex items-center gap-2 text-white disabled:opacity-30 hover:bg-white/10 transition-colors"
+                className="px-6 py-3 rounded-xl font-bold flex items-center gap-2 text-[var(--color-on-surface-variant)] disabled:opacity-30 hover:bg-[var(--color-surface-container-high)] hover:text-[var(--color-on-surface)] transition-colors"
               >
                 <ArrowLeft size={18} /> Back
               </button>
@@ -246,7 +246,7 @@ export default function OnboardingModal() {
               <button
                 onClick={handleNext}
                 disabled={!canProceed}
-                className="px-8 py-3 bg-[#6C63FF] text-white rounded-xl font-bold flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#5A52D5] transition-colors shadow-[4px_4px_0px_#1E1B4B]"
+                className="px-8 py-3 sahara-btn text-white rounded-xl font-bold flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-transform hover:-translate-y-1"
               >
                 {currentQuestion === QUESTIONS.length - 1 ? 'Submit' : 'Next'} <ArrowRight size={18} />
               </button>

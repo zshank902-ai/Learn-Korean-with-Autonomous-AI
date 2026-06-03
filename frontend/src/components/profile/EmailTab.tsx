@@ -51,10 +51,10 @@ export default function EmailTab() {
   };
 
   return (
-    <div className="space-y-8 animate-in fade-in duration-300">
+    <div className="space-y-8 animate-in fade-in duration-300 font-sans">
       
       <div>
-        <label className="block text-sm font-extrabold text-[var(--color-on-surface-variant)] mb-2 uppercase tracking-wide">Current Email</label>
+        <label className="block text-sm font-bold text-[var(--color-on-surface-variant)] mb-2">Current Email</label>
         <div className="relative">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-on-surface-variant)]">
             <Mail size={20} />
@@ -63,13 +63,13 @@ export default function EmailTab() {
             type="email"
             readOnly
             value={user?.email || ''}
-            className="w-full pl-12 pr-4 py-4 rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(0,0,0,0.2)] text-white font-bold cursor-not-allowed outline-none"
+            className="w-full pl-12 pr-4 py-4 rounded-xl border border-[var(--color-outline-variant)] bg-[var(--color-surface-container-low)] text-[var(--color-on-surface)] font-bold cursor-not-allowed outline-none"
           />
         </div>
-        <p className="text-xs text-[var(--color-on-surface-variant)] font-bold mt-2">Contact support to change your email address.</p>
+        <p className="text-xs text-[var(--color-on-surface-variant)] font-semibold mt-2">Contact support to change your email address.</p>
       </div>
 
-      <div className="glass-card bg-[rgba(255,255,255,0.05)] rounded-2xl border border-[rgba(255,255,255,0.2)] p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-md">
+      <div className="sahara-card bg-[var(--color-surface)] rounded-2xl border border-[var(--color-outline-variant)] p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
         
         <div className="flex items-center gap-4">
           {user?.email_verified ? (
@@ -83,7 +83,7 @@ export default function EmailTab() {
           )}
           
           <div>
-            <h3 className="font-extrabold text-white text-lg font-sans drop-shadow-sm">Verification Status</h3>
+            <h3 className="font-extrabold text-[var(--color-on-surface)] text-lg font-serif drop-shadow-sm">Verification Status</h3>
             <p className={`font-bold ${user?.email_verified ? 'text-[#10B981]' : 'text-[#F59E0B]'}`}>
               {user?.email_verified ? 'Verified ✓' : 'Not verified'}
             </p>
@@ -94,7 +94,7 @@ export default function EmailTab() {
           <button 
             onClick={handleSendVerification}
             disabled={isSending || cooldown > 0}
-            className="px-6 py-3 w-full sm:w-auto glass-btn text-white font-extrabold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="px-6 py-3 w-full sm:w-auto sahara-btn text-white font-bold rounded-xl hover:-translate-y-1 transition-transform disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSending ? (
               <Loader2 className="animate-spin" size={18} />

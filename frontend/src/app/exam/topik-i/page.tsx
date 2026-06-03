@@ -173,11 +173,11 @@ function TopikIExamInner() {
 
   if (isLoading) {
     return (
-      <div style={{ minHeight: '100vh', background: '#EEF2FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <div style={{ textAlign: 'center', fontFamily: 'Inter, sans-serif' }}>
-          <div style={{ fontSize: '40px', marginBottom: '12px' }}>📋</div>
-          <p style={{ fontWeight: 900, fontSize: '18px', color: '#1E1B4B' }}>Loading Exam…</p>
-          <p style={{ color: '#6b7280', fontSize: '14px', marginTop: '4px' }}>Generating TOPIK-I questions</p>
+      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center', fontFamily: '"Manrope", sans-serif' }}>
+          <div style={{ fontSize: '40px', marginBottom: '16px' }}>📋</div>
+          <p style={{ fontWeight: 700, fontSize: '18px', color: 'var(--color-on-background)' }}>Loading Exam…</p>
+          <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '14px', marginTop: '8px' }}>Generating TOPIK-I questions</p>
         </div>
       </div>
     );
@@ -185,9 +185,9 @@ function TopikIExamInner() {
 
   if (phase === 'results' && result) {
     return (
-      <div style={{ minHeight: '100vh', background: '#EEF2FF', padding: '32px 20px 80px', fontFamily: 'Inter, sans-serif' }}>
+      <div style={{ minHeight: '100vh', background: 'var(--color-background)', padding: '32px 20px 80px', fontFamily: '"Manrope", sans-serif' }}>
         <div style={{ maxWidth: '720px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: 900, color: '#0f0f0f', marginBottom: '24px', fontFamily: 'Fredoka, cursive' }}>
+          <h1 style={{ fontSize: '28px', fontWeight: 700, color: 'var(--color-on-background)', marginBottom: '24px', fontFamily: '"EB Garamond", serif' }}>
             📊 TOPIK I — Exam Results
           </h1>
           <ExamScoreReport
@@ -206,20 +206,20 @@ function TopikIExamInner() {
 
   if (phase === 'transition') {
     return (
-      <div style={{ minHeight: '100vh', background: '#1E1B4B', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ minHeight: '100vh', background: 'var(--color-surface)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          style={{ textAlign: 'center', color: '#ffffff' }}
+          style={{ textAlign: 'center', color: 'var(--color-on-surface)' }}
         >
           <div style={{ fontSize: '48px', marginBottom: '16px' }}>✅</div>
-          <h2 style={{ fontSize: '28px', fontWeight: 900, marginBottom: '8px', fontFamily: 'Fredoka, cursive' }}>
+          <h2 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px', fontFamily: '"EB Garamond", serif' }}>
             Listening Complete!
           </h2>
-          <p style={{ fontSize: '16px', color: '#818CF8', marginBottom: '24px', fontFamily: 'Inter, sans-serif' }}>
+          <p style={{ fontSize: '16px', color: 'var(--color-on-surface-variant)', marginBottom: '24px', fontFamily: '"Manrope", sans-serif' }}>
             Starting Reading section in…
           </p>
-          <div style={{ fontSize: '72px', fontWeight: 900, color: '#F97316', fontFamily: 'Fredoka, cursive' }}>
+          <div style={{ fontSize: '72px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif' }}>
             {transitionCount}
           </div>
         </motion.div>
@@ -228,14 +228,13 @@ function TopikIExamInner() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#EEF2FF', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--color-background)', fontFamily: '"Manrope", sans-serif' }}>
       {/* Exam Header */}
       <div
         style={{
-          background: '#ffffff',
-          border: '0 0 3px #0f0f0f',
-          borderBottom: '3px solid #0f0f0f',
-          padding: '12px 24px',
+          background: 'var(--color-surface)',
+          borderBottom: '1px solid var(--color-outline-variant)',
+          padding: '16px 24px',
           display: 'flex',
           alignItems: 'center',
           gap: '16px',
@@ -243,23 +242,23 @@ function TopikIExamInner() {
           position: 'sticky',
           top: 0,
           zIndex: 50,
-          boxShadow: '0 4px 0px #0f0f0f',
+          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
         }}
       >
         <Link href="/roadmap" style={{ textDecoration: 'none' }}>
-          <div style={{ fontSize: '20px', fontWeight: 900, color: '#1E1B4B', fontFamily: 'Fredoka, cursive', cursor: 'pointer' }}>
+          <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--color-primary)', fontFamily: '"EB Garamond", serif', cursor: 'pointer' }}>
             K-Mastery
           </div>
         </Link>
         <div
           style={{
-            background: phase === 'listening' ? '#EEF2FF' : '#FEF3C7',
-            border: '2.5px solid #0f0f0f',
-            borderRadius: '10px',
-            padding: '4px 14px',
-            fontWeight: 800,
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '12px',
+            padding: '6px 16px',
+            fontWeight: 700,
             fontSize: '13px',
-            color: '#0f0f0f',
+            color: 'var(--color-on-surface)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
           }}
@@ -274,28 +273,31 @@ function TopikIExamInner() {
         />
 
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span style={{ fontSize: '14px', fontWeight: 800, color: '#0f0f0f' }}>
+          <span style={{ fontSize: '15px', fontWeight: 700, color: 'var(--color-on-surface)' }}>
             Q{currentIndex + 1} / {totalQCount}
           </span>
-          <span style={{ fontSize: '12px', color: '#6b7280' }}>
+          <span style={{ fontSize: '13px', color: 'var(--color-on-surface-variant)' }}>
             {answeredCount}/{totalQCount} answered
           </span>
           <button
             onClick={phase === 'listening' ? submitListening : submitReading}
             disabled={sectionSubmitted}
             style={{
-              background: '#4F46E5',
+              background: 'var(--color-primary)',
               color: '#ffffff',
-              border: '2.5px solid #0f0f0f',
-              borderRadius: '12px',
-              padding: '8px 18px',
-              fontWeight: 900,
-              fontSize: '13px',
-              cursor: 'pointer',
-              boxShadow: '2px 2px 0px #0f0f0f',
+              border: 'none',
+              borderRadius: '16px',
+              padding: '10px 20px',
+              fontWeight: 700,
+              fontSize: '14px',
+              cursor: sectionSubmitted ? 'not-allowed' : 'pointer',
+              boxShadow: sectionSubmitted ? 'none' : '0 4px 12px rgba(194, 101, 42, 0.3)',
               textTransform: 'uppercase',
-              opacity: sectionSubmitted ? 0.5 : 1,
+              opacity: sectionSubmitted ? 0.6 : 1,
+              transition: 'transform 0.2s',
             }}
+            onMouseEnter={(e) => { if (!sectionSubmitted) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
           >
             Submit Section →
           </button>
@@ -303,7 +305,7 @@ function TopikIExamInner() {
       </div>
 
       {/* Main Body */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '28px 20px 40px', display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 20px 60px', display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
         {/* Question area */}
         <div style={{ flex: '1', minWidth: '300px' }}>
           <AnimatePresence mode="wait">
@@ -314,11 +316,11 @@ function TopikIExamInner() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.2 }}
               style={{
-                background: '#ffffff',
-                border: '3px solid #0f0f0f',
-                borderRadius: '20px',
-                padding: '28px',
-                boxShadow: '5px 5px 0px #0f0f0f',
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-outline-variant)',
+                borderRadius: '24px',
+                padding: '32px',
+                boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
               }}
             >
               {phase === 'listening' ? (
@@ -342,22 +344,25 @@ function TopikIExamInner() {
           </AnimatePresence>
 
           {/* Prev / Next navigation */}
-          <div style={{ display: 'flex', gap: '12px', marginTop: '16px' }}>
+          <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
             <button
               onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
               disabled={currentIndex === 0}
               style={{
                 flex: 1,
-                background: '#ffffff',
-                border: '2.5px solid #0f0f0f',
-                borderRadius: '12px',
-                padding: '12px',
-                fontWeight: 900,
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-outline-variant)',
+                borderRadius: '16px',
+                padding: '14px',
+                fontWeight: 700,
+                color: 'var(--color-on-surface)',
                 cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
-                opacity: currentIndex === 0 ? 0.4 : 1,
-                boxShadow: '2px 2px 0px #0f0f0f',
-                fontFamily: 'Inter, sans-serif',
+                opacity: currentIndex === 0 ? 0.5 : 1,
+                fontFamily: '"Manrope", sans-serif',
+                transition: 'all 0.2s ease',
               }}
+              onMouseEnter={(e) => { if (currentIndex !== 0) (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)'; }}
             >
               ← Previous
             </button>
@@ -366,17 +371,20 @@ function TopikIExamInner() {
               disabled={currentIndex === totalQCount - 1}
               style={{
                 flex: 1,
-                background: '#1E1B4B',
+                background: 'var(--color-primary)',
                 color: '#ffffff',
-                border: '2.5px solid #0f0f0f',
-                borderRadius: '12px',
-                padding: '12px',
-                fontWeight: 900,
+                border: 'none',
+                borderRadius: '16px',
+                padding: '14px',
+                fontWeight: 700,
                 cursor: currentIndex === totalQCount - 1 ? 'not-allowed' : 'pointer',
-                opacity: currentIndex === totalQCount - 1 ? 0.4 : 1,
-                boxShadow: '2px 2px 0px #0f0f0f',
-                fontFamily: 'Inter, sans-serif',
+                opacity: currentIndex === totalQCount - 1 ? 0.5 : 1,
+                boxShadow: currentIndex === totalQCount - 1 ? 'none' : '0 4px 12px rgba(194, 101, 42, 0.3)',
+                fontFamily: '"Manrope", sans-serif',
+                transition: 'transform 0.2s',
               }}
+              onMouseEnter={(e) => { if (currentIndex !== totalQCount - 1) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
             >
               Next →
             </button>
@@ -402,8 +410,8 @@ function TopikIExamInner() {
 export default function TopikIExamPage() {
   return (
     <Suspense fallback={
-      <div style={{ minHeight: '100vh', background: '#EEF2FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontWeight: 900, color: '#1E1B4B', fontFamily: 'Inter, sans-serif' }}>Loading…</p>
+      <div style={{ minHeight: '100vh', background: 'var(--color-background)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ fontWeight: 700, color: 'var(--color-on-background)', fontFamily: '"Manrope", sans-serif' }}>Loading…</p>
       </div>
     }>
       <TopikIExamInner />

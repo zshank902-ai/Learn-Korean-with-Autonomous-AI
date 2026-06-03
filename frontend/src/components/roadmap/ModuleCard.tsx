@@ -27,8 +27,8 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
   const isActive = status === 'active';
   const isCompleted = status === 'completed';
 
-  const borderColor = isLocked ? '#d1d5db' : isCompleted ? '#16a34a' : levelColor;
-  const bgColor = isLocked ? '#f9fafb' : '#ffffff';
+  const borderColor = isLocked ? 'var(--color-outline-variant)' : isCompleted ? '#10B981' : levelColor;
+  const bgColor = isLocked ? 'var(--color-surface-container-low)' : 'var(--color-surface)';
 
   const handleCardClick = () => {
     if (isLocked) {
@@ -41,17 +41,17 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
   return (
     <motion.div
       onClick={handleCardClick}
-      whileHover={!isLocked ? { y: -4, boxShadow: '5px 5px 0px #0f0f0f' } : {}}
+      whileHover={!isLocked ? { y: -4, boxShadow: '0 8px 24px rgba(58, 48, 42, 0.08)' } : {}}
       transition={{ type: 'spring', stiffness: 350, damping: 20 }}
       role={isLocked ? 'presentation' : 'button'}
       aria-disabled={isLocked}
       style={{
         position: 'relative',
         background: bgColor,
-        border: `2.5px solid ${borderColor}`,
-        borderRadius: '14px',
+        border: `1px solid ${borderColor}`,
+        borderRadius: '16px',
         padding: '20px',
-        boxShadow: isLocked ? '2px 2px 0px #d1d5db' : '3px 3px 0px #0f0f0f',
+        boxShadow: isLocked ? 'none' : '0 2px 12px rgba(58, 48, 42, 0.04)',
         display: 'flex',
         flexDirection: 'column',
         gap: '12px',
@@ -66,18 +66,18 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
       {isActive && (
         <style>{`
           @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+            0% { box-shadow: 0 0 0 0 var(--color-primary-container); }
+            70% { box-shadow: 0 0 0 6px rgba(194,101,42,0); }
+            100% { box-shadow: 0 0 0 0 rgba(194,101,42,0); }
           }
         `}</style>
       )}
       {isActive && (
         <div style={{
           position: 'absolute',
-          inset: '-2.5px',
+          inset: '-1px',
           borderRadius: '16px',
-          border: '2px solid transparent',
+          border: '1px solid transparent',
           animation: 'pulse-border 2s infinite',
           pointerEvents: 'none'
         }} />
@@ -94,7 +94,7 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'rgba(20, 20, 20, 0.4)',
+              background: 'rgba(250, 245, 238, 0.5)',
               backdropFilter: 'blur(2px)',
               display: 'flex',
               flexDirection: 'column',
@@ -114,15 +114,15 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: '#ffffff',
-                border: '2px solid #374151',
+                background: 'var(--color-surface)',
+                border: '1px solid var(--color-outline-variant)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '2px 2px 0px #374151',
+                boxShadow: '0 2px 8px rgba(58, 48, 42, 0.05)',
               }}
             >
-              <Lock size={18} color="#374151" />
+              <Lock size={18} color="var(--color-on-surface-variant)" />
             </div>
           </motion.div>
         )}
@@ -135,10 +135,10 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
           <div>
             <p
               style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'var(--font-sans)',
                 fontWeight: 800,
                 fontSize: '14px',
-                color: '#0f0f0f',
+                color: 'var(--color-on-surface)',
                 margin: 0,
                 lineHeight: 1.2,
               }}
@@ -147,10 +147,10 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
             </p>
             <p
               style={{
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 500,
+                fontFamily: 'var(--font-sans)',
+                fontWeight: 600,
                 fontSize: '11px',
-                color: '#6b7280',
+                color: 'var(--color-on-surface-variant)',
                 margin: '2px 0 0',
                 textTransform: 'capitalize',
               }}
@@ -163,7 +163,7 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
         {/* XP badge / Completed checkmark */}
         {isCompleted ? (
           <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
-            <div className="bg-[#16a34a] rounded-full p-1 border-2 border-[#0f0f0f] shadow-[2px_2px_0px_#0f0f0f]">
+            <div style={{ background: '#10B981', borderRadius: '50%', padding: '4px', border: '2px solid var(--color-surface)', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
               <CheckCircle2 size={16} className="text-white" />
             </div>
           </div>
@@ -173,20 +173,20 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
               display: 'flex',
               alignItems: 'center',
               gap: '3px',
-              background: '#fef9c3',
-              border: `2px solid #ca8a04`,
+              background: 'var(--color-surface-container)',
+              border: `1px solid var(--color-outline-variant)`,
               borderRadius: '6px',
               padding: '3px 8px',
               flexShrink: 0,
             }}
           >
-            <Zap size={11} color={'#ca8a04'} />
+            <Zap size={11} color="var(--color-primary)" />
             <span
               style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'var(--font-sans)',
                 fontWeight: 800,
                 fontSize: '11px',
-                color: '#ca8a04',
+                color: 'var(--color-primary)',
               }}
             >
               {module.xp} XP
@@ -198,10 +198,10 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
       {/* Description */}
       <p
         style={{
-          fontFamily: 'Inter, sans-serif',
-          fontWeight: 400,
+          fontFamily: 'var(--font-sans)',
+          fontWeight: 500,
           fontSize: '12px',
-          color: '#4b5563',
+          color: 'var(--color-on-surface-variant)',
           margin: 0,
           lineHeight: 1.5,
         }}
@@ -221,15 +221,15 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
             justifyContent: 'center',
             gap: '6px',
             padding: '9px 0',
-            borderRadius: '8px',
-            border: '2px solid #0f0f0f',
-            background: isLocked ? '#e5e7eb' : isCompleted ? '#dcfce7' : levelColor,
-            color: isLocked ? '#9ca3af' : '#0f0f0f',
-            fontFamily: 'Inter, sans-serif',
-            fontWeight: 800,
+            borderRadius: '12px',
+            border: 'none',
+            background: isLocked ? 'var(--color-surface-container-high)' : isCompleted ? '#e8f5e9' : 'var(--color-primary)',
+            color: isLocked ? 'var(--color-on-surface-variant)' : isCompleted ? '#2e7d32' : 'white',
+            fontFamily: 'var(--font-sans)',
+            fontWeight: 700,
             fontSize: '13px',
             cursor: isLocked ? 'not-allowed' : 'pointer',
-            boxShadow: isLocked ? 'none' : '2px 2px 0px #0f0f0f',
+            boxShadow: isLocked || isCompleted ? 'none' : '0 4px 12px rgba(194,101,42,0.25)',
             width: '100%',
           }}
         >
@@ -252,11 +252,10 @@ export default function ModuleCard({ module, status, progressPercent, levelColor
         {isActive && progressPercent > 0 && (
           <div
             style={{
-              background: '#e5e7eb',
+              background: 'var(--color-surface-container-high)',
               borderRadius: '999px',
               height: '4px',
               overflow: 'hidden',
-              border: '1px solid #d1d5db',
             }}
           >
             <motion.div

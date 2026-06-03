@@ -32,12 +32,12 @@ export default function DailyQuestsPanel() {
   };
 
   return (
-    <div className="glass-card p-6 h-full flex flex-col">
-      <div className="flex items-center gap-3 mb-6 border-b border-[rgba(255,255,255,0.1)] pb-4">
-        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[var(--color-secondary-container)] border border-[rgba(255,255,255,0.2)] shadow-[0_0_12px_rgba(236,106,6,0.3)]">
-          <Target className="text-white" size={20} />
+    <div className="sahara-card p-6 h-full flex flex-col">
+      <div className="flex items-center gap-3 mb-6 border-b border-[var(--color-outline-variant)] pb-4">
+        <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[var(--color-secondary-container)] border border-[var(--color-outline-variant)]">
+          <Target className="text-[var(--color-on-secondary-container)]" size={20} />
         </div>
-        <h2 className="text-2xl font-extrabold text-white tracking-tight drop-shadow-md font-sans">Daily Quests</h2>
+        <h2 className="text-2xl font-extrabold text-[var(--color-on-surface)] tracking-tight font-serif">Daily Quests</h2>
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto pr-2">
@@ -47,20 +47,20 @@ export default function DailyQuestsPanel() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.1 }}
-            className={`p-4 rounded-2xl border border-[rgba(255,255,255,0.1)] transition-colors ${quest.completed ? 'bg-[var(--color-primary-container)]/20' : 'bg-[rgba(255,255,255,0.05)]'}`}
+            className={`p-4 rounded-2xl border border-[var(--color-outline-variant)] transition-colors ${quest.completed ? 'bg-[var(--color-surface-container)]' : 'bg-[#ffffff]'}`}
           >
             <div className="flex items-start justify-between mb-2">
               <div className="flex items-start gap-3">
                 {quest.completed ? (
-                  <CheckCircle2 className="text-[var(--color-primary-container)] mt-0.5 shrink-0" size={20} />
+                  <CheckCircle2 className="text-[var(--color-primary)] mt-0.5 shrink-0" size={20} />
                 ) : (
                   <Circle className="text-[var(--color-on-surface-variant)] mt-0.5 shrink-0" size={20} />
                 )}
                 <div>
-                  <h3 className={`font-bold ${quest.completed ? 'text-[var(--color-on-surface-variant)] line-through' : 'text-white'}`}>
+                  <h3 className={`font-bold ${quest.completed ? 'text-[var(--color-on-surface-variant)] line-through' : 'text-[var(--color-on-surface)]'}`}>
                     {quest.title}
                   </h3>
-                  <p className="text-xs font-extrabold text-[var(--color-secondary-container)] uppercase mt-1">+{quest.reward} XP</p>
+                  <p className="text-xs font-extrabold text-[var(--color-secondary)] uppercase mt-1">+{quest.reward} XP</p>
                 </div>
               </div>
             </div>
@@ -71,11 +71,11 @@ export default function DailyQuestsPanel() {
                 <span>Progress</span>
                 <span>{quest.progress} / {quest.target}</span>
               </div>
-              <div className="h-3 w-full rounded-full overflow-hidden bg-black/40 neumorphic-input border-none">
+              <div className="h-3 w-full rounded-full overflow-hidden bg-[var(--color-surface-container-high)]">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${(quest.progress / quest.target) * 100}%` }}
-                  className="h-full rounded-full bg-[var(--color-primary-container)] shadow-[0_0_8px_var(--color-primary-container)]"
+                  className="h-full rounded-full bg-[var(--color-primary)]"
                 />
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function DailyQuestsPanel() {
             {quest.completed && !quest.title.includes('(Claimed)') && (
               <button 
                 onClick={() => claimReward(quest.id, quest.reward)}
-                className="mt-3 w-full py-2 glass-btn-secondary text-white font-bold rounded-xl"
+                className="mt-3 w-full py-2 sahara-btn-secondary text-[var(--color-on-surface)] font-bold rounded-xl"
               >
                 Claim Reward
               </button>

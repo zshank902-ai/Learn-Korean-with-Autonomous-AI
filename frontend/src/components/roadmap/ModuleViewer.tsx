@@ -24,7 +24,7 @@ export interface ModuleViewerProps {
 type BannerState = 'idle' | 'loading' | 'success' | 'error';
 
 export default function ModuleViewer({ module, levelColor, onClose, onStartMockExam, onComplete }: ModuleViewerProps) {
-  const resolvedColor = levelColor ?? '#1E1B4B';
+  const resolvedColor = levelColor ?? '#c2652a';
   const [bannerState, setBannerState] = useState<BannerState>('idle');
   const router = useRouter();
 
@@ -65,17 +65,16 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
           <div className="flex flex-col items-center justify-center h-64 gap-6">
             <div className="text-6xl">📝</div>
             <div className="text-center">
-              <p className="text-2xl font-black text-[#1E1B4B] mb-2">Full Mock Exam</p>
-              <p className="text-sm font-bold text-gray-500 max-w-xs">
+              <p className="text-2xl font-serif font-extrabold text-[var(--color-on-surface)] mb-2">Full Mock Exam</p>
+              <p className="text-sm font-medium text-[var(--color-on-surface-variant)] max-w-xs">
                 This is a timed full-length TOPIK exam. Make sure you have enough time before starting.
               </p>
             </div>
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={onStartMockExam}
-              className="flex items-center gap-3 px-8 py-4 bg-[#6366F1] text-white rounded-2xl border-4 border-[#1E1B4B] font-black text-lg"
-              style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+              className="flex items-center gap-3 px-8 py-4 sahara-btn text-white rounded-2xl font-bold text-lg uppercase tracking-wide"
             >
               <Play size={24} className="fill-white" />
               Start Full Exam
@@ -87,22 +86,21 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
           <div className="flex flex-col items-center justify-center h-64 gap-6">
             <div className="text-6xl">🎮</div>
             <div className="text-center">
-              <p className="text-2xl font-black text-[#1E1B4B] mb-2">Interactive Playground</p>
-              <p className="text-sm font-bold text-gray-500 max-w-xs">
+              <p className="text-2xl font-serif font-extrabold text-[var(--color-on-surface)] mb-2">Interactive Playground</p>
+              <p className="text-sm font-medium text-[var(--color-on-surface-variant)] max-w-xs">
                 Master the Korean alphabet with interactive tools, pronunciation drills, and quizzes!
               </p>
             </div>
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={async () => {
                 await handleActivityComplete(100);
                 router.push('/hangul');
               }}
-              className="flex items-center gap-3 px-8 py-4 bg-[#00E5FF] text-[#0f0f0f] rounded-2xl border-4 border-[#1E1B4B] font-black text-lg"
-              style={{ boxShadow: '6px 6px 0px #1E1B4B' }}
+              className="flex items-center gap-3 px-8 py-4 sahara-btn-secondary text-[var(--color-primary)] rounded-2xl font-bold text-lg uppercase tracking-wide"
             >
-              <Play size={24} className="fill-[#0f0f0f]" />
+              <Play size={24} className="fill-[var(--color-primary)] text-[var(--color-primary)]" />
               Launch Playground
             </motion.button>
           </div>
@@ -110,7 +108,7 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
       default:
         return (
           <div className="flex items-center justify-center h-40">
-            <p className="font-bold text-gray-400">Unknown module type.</p>
+            <p className="font-bold text-[var(--color-on-surface-variant)]">Unknown module type.</p>
           </div>
         );
     }
@@ -123,7 +121,7 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm"
+        className="fixed inset-0 bg-black/10 z-40 backdrop-blur-[2px]"
         onClick={onClose}
       />
       <motion.div
@@ -132,29 +130,29 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', stiffness: 300, damping: 32 }}
-        className="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-[#FAFAFA] z-50 flex flex-col overflow-hidden"
-        style={{ boxShadow: '-8px 0px 40px rgba(0,0,0,0.25)' }}
+        className="fixed right-0 top-0 bottom-0 w-full max-w-xl bg-[var(--color-surface)] z-50 flex flex-col overflow-hidden"
+        style={{ boxShadow: '-4px 0px 24px rgba(58, 48, 42, 0.08)' }}
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center gap-4 px-6 py-4 border-b-4 border-[#1E1B4B]" style={{ background: resolvedColor }}>
-          <div className="w-12 h-12 bg-white border-4 border-[#1E1B4B] rounded-2xl flex items-center justify-center text-2xl shrink-0" style={{ boxShadow: '3px 3px 0px rgba(0,0,0,0.3)' }}>
-            {module.icon || <BookOpen size={22} className="text-[#1E1B4B]" />}
+        <div className="flex items-center gap-4 px-6 py-4 border-b border-[var(--color-outline-variant)] bg-[var(--color-surface-container)]">
+          <div className="w-12 h-12 bg-[#ffffff] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center text-2xl shrink-0">
+            {module.icon || <BookOpen size={22} className="text-[var(--color-primary)]" />}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-black uppercase tracking-widest text-white/70 truncate">{module.type.replace('_', ' ')}</p>
-            <p className="text-lg font-black text-white truncate">{module.title}</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-on-surface-variant)] truncate">{module.type.replace('_', ' ')}</p>
+            <p className="text-lg font-serif font-extrabold text-[var(--color-on-surface)] truncate">{module.title}</p>
           </div>
-          <div className="bg-white/20 border-2 border-white/40 rounded-xl px-3 py-1 text-white font-black text-sm shrink-0">
+          <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-xl px-3 py-1 text-[var(--color-primary)] font-bold text-sm shrink-0">
             +{module.xp} XP
           </div>
-          <button onClick={onClose} className="w-10 h-10 bg-white/20 border-2 border-white/40 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors shrink-0">
-            <X size={20} className="text-white" />
+          <button onClick={onClose} className="w-10 h-10 bg-transparent border border-transparent hover:bg-[var(--color-surface-container-low)] hover:border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center transition-colors shrink-0">
+            <X size={20} className="text-[var(--color-on-surface-variant)]" />
           </button>
         </div>
         
         {module.description && (
-          <div className="px-6 py-3 bg-white border-b-2 border-gray-200">
-            <p className="text-sm font-bold text-gray-600">{module.description}</p>
+          <div className="px-6 py-3 bg-[var(--color-surface-container-lowest)] border-b border-[var(--color-outline-variant)]">
+            <p className="text-sm font-medium text-[var(--color-on-surface-variant)]">{module.description}</p>
           </div>
         )}
         
@@ -164,22 +162,22 @@ export default function ModuleViewer({ module, levelColor, onClose, onStartMockE
 
         <AnimatePresence>
           {bannerState === 'loading' && (
-            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-[#1E1B4B] border-t-4 border-[#1E1B4B] flex items-center gap-3">
-              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} className="w-5 h-5 border-2 border-white border-t-transparent rounded-full shrink-0" />
-              <span className="text-white font-bold text-sm">Saving progress…</span>
+            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-[var(--color-surface-container)] border-t border-[var(--color-outline-variant)] flex items-center gap-3">
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} className="w-5 h-5 border-2 border-[var(--color-primary)] border-t-transparent rounded-full shrink-0" />
+              <span className="text-[var(--color-on-surface)] font-bold text-sm">Saving progress…</span>
             </motion.div>
           )}
           {bannerState === 'success' && (
-            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-green-500 border-t-4 border-[#1E1B4B] flex items-center gap-3">
-              <CheckCircle2 size={22} className="text-white shrink-0" />
-              <span className="text-white font-black text-sm">Validating completion...</span>
+            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-[#e8f5e9] border-t border-[#81c784] flex items-center gap-3">
+              <CheckCircle2 size={22} className="text-[#2e7d32] shrink-0" />
+              <span className="text-[#1b5e20] font-bold text-sm">Validating completion...</span>
             </motion.div>
           )}
           {bannerState === 'error' && (
-            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-yellow-100 border-t-4 border-yellow-400 flex items-center gap-3">
-              <AlertTriangle size={20} className="text-yellow-700 shrink-0" />
-              <span className="text-yellow-800 font-bold text-sm">Failed to save progress to server.</span>
-              <button onClick={onClose} className="ml-auto bg-yellow-400 text-yellow-900 px-4 py-1.5 rounded-xl border-2 border-yellow-600 font-black text-xs hover:bg-yellow-500 transition-colors">Close</button>
+            <motion.div initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }} className="px-6 py-4 bg-[#fff3e0] border-t border-[#ffb74d] flex items-center gap-3">
+              <AlertTriangle size={20} className="text-[#e65100] shrink-0" />
+              <span className="text-[#e65100] font-bold text-sm">Failed to save progress to server.</span>
+              <button onClick={onClose} className="ml-auto sahara-btn-secondary px-4 py-1.5 rounded-xl font-bold text-xs">Close</button>
             </motion.div>
           )}
         </AnimatePresence>

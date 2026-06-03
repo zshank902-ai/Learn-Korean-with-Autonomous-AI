@@ -203,18 +203,18 @@ export default function AIChatBox() {
   };
 
   return (
-    <div className="glass-card flex flex-col h-full min-h-[400px] overflow-hidden">
+    <div className="sahara-card flex flex-col h-full min-h-[400px] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[rgba(255,255,255,0.1)]">
+      <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--color-outline-variant)]">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--color-tertiary-container)] shadow-[0_0_8px_rgba(255,182,144,0.3)] border border-[rgba(255,255,255,0.2)]">
-            <Sparkles className="text-[var(--color-primary-container)]" size={18} />
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--color-tertiary-container)] border border-[var(--color-outline-variant)]">
+            <Sparkles className="text-[var(--color-on-tertiary-container)]" size={18} />
           </div>
           <div className="flex flex-col">
-            <span className="font-extrabold text-white text-lg leading-tight font-sans drop-shadow-md">
+            <span className="font-extrabold text-[var(--color-on-surface)] text-lg leading-tight font-serif">
               AI Korean Tutor
             </span>
-            <span className="text-[10px] font-bold text-[var(--color-primary-container)] uppercase tracking-wider">🎯 TOPIK Level {level} Active</span>
+            <span className="text-[10px] font-bold text-[var(--color-primary)] uppercase tracking-wider">🎯 TOPIK Level {level} Active</span>
           </div>
         </div>
         <div className="flex gap-3 items-center">
@@ -227,28 +227,28 @@ export default function AIChatBox() {
                 }).then(() => setMessages([]));
               }
             }}
-            className="text-xs font-bold text-red-400 hover:text-red-300 px-2 py-1 rounded-lg transition-colors hover:bg-[rgba(255,255,255,0.05)]"
+            className="text-xs font-bold text-[var(--color-error)] hover:text-red-600 px-2 py-1 rounded-lg transition-colors hover:bg-[var(--color-surface-container)]"
           >
             Clear Chat
           </button>
           <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full border ${
-            wsStatus === 'ready' ? 'border-green-400/50 bg-green-400/10' : 'border-orange-400/50 bg-orange-400/10'
+            wsStatus === 'ready' ? 'border-green-600/50 bg-green-100' : 'border-orange-600/50 bg-orange-100'
           }`}>
-            {wsStatus === 'ready' ? <Wifi size={12} className="text-green-400" /> : <WifiOff size={12} className="text-orange-400" />}
+            {wsStatus === 'ready' ? <Wifi size={12} className="text-green-600" /> : <WifiOff size={12} className="text-orange-600" />}
           <span className="text-[10px] font-extrabold uppercase tracking-wider" style={{
-            color: wsStatus === 'ready' ? '#4ade80' : '#fb923c'
+            color: wsStatus === 'ready' ? '#16a34a' : '#ea580c'
           }}>{wsStatus === 'ready' ? 'Connected' : 'Reconnecting...'}</span>
           </div>
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-5 space-y-3 bg-[rgba(0,0,0,0.1)]">
+      <div className="flex-1 overflow-y-auto p-5 space-y-3 bg-[var(--color-surface-container-lowest)]">
         {messages.length === 0 && (
-          <div className="flex items-center justify-center h-full text-[var(--color-on-surface-variant)]/60">
+          <div className="flex items-center justify-center h-full text-[var(--color-on-surface-variant)]">
             <p className="text-sm font-semibold italic text-center">
               Ask me anything in Korean! <br/>
-              <span className="text-[var(--color-primary-container)]">예: "이 문장이 맞나요?"</span>
+              <span className="text-[var(--color-primary)]">예: "이 문장이 맞나요?"</span>
             </p>
           </div>
         )}
@@ -264,26 +264,26 @@ export default function AIChatBox() {
                 <div
                   className={`px-4 py-3 rounded-2xl border font-semibold text-sm transition-all duration-300 ${
                     msg.role === 'user'
-                      ? 'bg-[var(--color-primary-container)]/80 text-white border-[var(--color-primary-container)] shadow-[0_0_12px_rgba(79,70,229,0.4)]'
-                      : 'glass-card border-[rgba(255,255,255,0.1)] text-white'
+                      ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
+                      : 'sahara-card border-[var(--color-outline-variant)] text-[var(--color-on-surface)]'
                   }`}
                 >
                   {msg.content}
                 </div>
                 {msg.corrections && msg.corrections.length > 0 && (
-                  <div className="bg-yellow-500/10 rounded-xl border border-yellow-500/30 p-3 text-xs flex flex-col gap-2 shadow-[0_0_10px_rgba(234,179,8,0.1)]">
-                    <div className="font-extrabold text-yellow-500 uppercase tracking-wider flex items-center gap-1 mb-1 drop-shadow-sm">
+                  <div className="bg-[var(--color-secondary-container)] rounded-xl border border-[var(--color-outline-variant)] p-3 text-xs flex flex-col gap-2 shadow-[0_2px_8px_rgba(58,48,42,0.04)]">
+                    <div className="font-extrabold text-[var(--color-on-secondary-container)] uppercase tracking-wider flex items-center gap-1 mb-1 drop-shadow-sm">
                       <Sparkles size={12} /> Corrections
                     </div>
                     {msg.corrections.map((corr, idx) => (
-                      <div key={idx} className="bg-[rgba(255,255,255,0.05)] rounded-lg border border-[rgba(255,255,255,0.1)] p-2 flex flex-col gap-1">
+                      <div key={idx} className="bg-[var(--color-surface-container-lowest)] rounded-lg border border-[var(--color-outline-variant)] p-2 flex flex-col gap-1">
                         <div className="flex gap-2 items-center">
-                          <span className="line-through text-red-400 font-bold opacity-80">{corr.original}</span>
-                          <span className="text-white font-extrabold">→</span>
-                          <span className="text-green-400 font-bold">{corr.corrected}</span>
+                          <span className="line-through text-red-600 font-bold opacity-80">{corr.original}</span>
+                          <span className="text-[var(--color-on-surface)] font-extrabold">→</span>
+                          <span className="text-green-600 font-bold">{corr.corrected}</span>
                         </div>
                         <p className="text-[var(--color-on-surface-variant)] font-medium italic mt-1">{corr.explanation}</p>
-                        <span className="self-start px-2 py-0.5 bg-[var(--color-primary-container)]/20 text-[var(--color-primary-container)] rounded font-bold text-[10px] mt-1 border border-[var(--color-primary-container)]/30">
+                        <span className="self-start px-2 py-0.5 bg-[var(--color-primary-container)] text-[var(--color-on-primary-container)] rounded font-bold text-[10px] mt-1 border border-[var(--color-outline-variant)]">
                           {corr.rule_category}
                         </span>
                       </div>
@@ -296,8 +296,8 @@ export default function AIChatBox() {
         </AnimatePresence>
         {isStreaming && (
           <div className="flex justify-start">
-            <div className="px-4 py-3 rounded-2xl glass-card border border-[rgba(255,255,255,0.1)]">
-              <Loader2 size={16} className="text-[var(--color-primary-container)] animate-spin" />
+            <div className="px-4 py-3 rounded-2xl sahara-card border border-[var(--color-outline-variant)]">
+              <Loader2 size={16} className="text-[var(--color-primary)] animate-spin" />
             </div>
           </div>
         )}
@@ -305,27 +305,27 @@ export default function AIChatBox() {
       </div>
 
       {/* Input */}
-      <div className="p-4 border-t border-[rgba(255,255,255,0.1)] flex gap-3 bg-[rgba(255,255,255,0.02)] backdrop-blur-md">
+      <div className="p-4 border-t border-[var(--color-outline-variant)] flex gap-3 bg-[var(--color-surface-container-low)]">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="한국어로 입력하세요..."
-          className="flex-1 rounded-xl px-4 py-3 font-semibold text-white focus:outline-none neumorphic-input text-sm placeholder-[var(--color-on-surface-variant)]"
+          className="flex-1 rounded-xl px-4 py-3 font-semibold text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] bg-[#ffffff] focus:outline-none text-sm placeholder-[var(--color-on-surface-variant)]"
         />
         <button
           onClick={isRecording ? stopRecording : startRecording}
           disabled={isStreaming || isTranscribing}
-          className={`w-12 h-12 rounded-xl flex items-center justify-center border border-[rgba(255,255,255,0.1)] disabled:opacity-50 transition-all duration-300 ${isRecording ? 'bg-red-500/80 animate-pulse shadow-[0_0_15px_rgba(239,68,68,0.6)]' : 'bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)]'}`}
+          className={`w-12 h-12 rounded-xl flex items-center justify-center border border-[var(--color-outline-variant)] disabled:opacity-50 transition-all duration-300 ${isRecording ? 'bg-red-500 animate-pulse text-white' : 'bg-[#ffffff] hover:bg-[var(--color-surface-container)] text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)]'}`}
         >
-          {isRecording ? <Square size={18} className="text-white fill-current" /> : <Mic size={18} className="text-[var(--color-on-surface-variant)] hover:text-white" />}
+          {isRecording ? <Square size={18} className="fill-current" /> : <Mic size={18} />}
         </button>
         <button
           onClick={handleSend}
           disabled={!input.trim() || isStreaming || isTranscribing}
-          className="w-12 h-12 rounded-xl flex items-center justify-center disabled:opacity-50 cursor-pointer transition-all duration-300 glass-btn-secondary"
+          className="w-12 h-12 rounded-xl flex items-center justify-center disabled:opacity-50 cursor-pointer transition-all duration-300 sahara-btn-secondary"
         >
-          {isTranscribing ? <Loader2 size={18} className="text-white animate-spin" /> : <Send size={18} className="text-white" />}
+          {isTranscribing ? <Loader2 size={18} className="text-[var(--color-on-surface)] animate-spin" /> : <Send size={18} className="text-[var(--color-on-surface)]" />}
         </button>
       </div>
     </div>

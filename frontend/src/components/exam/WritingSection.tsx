@@ -15,35 +15,34 @@ function CharCounter({ count, min, max }: { count: number; min: number; max: num
   const isOver = count > max;
   const isOk = !isUnder && !isOver;
 
-  const color = isOver ? '#EF4444' : isOk && count > 0 ? '#059669' : '#F97316';
+  const color = isOver ? '#ef4444' : isOk && count > 0 ? '#2e7d32' : 'var(--color-primary)';
   const barWidth = Math.min(100, (count / max) * 100);
-  const barColor = isOver ? '#EF4444' : isOk && count > 0 ? '#059669' : '#F97316';
+  const barColor = isOver ? '#ef4444' : isOk && count > 0 ? '#2e7d32' : 'var(--color-primary)';
 
   return (
-    <div style={{ marginTop: '8px' }}>
+    <div style={{ marginTop: '10px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
         <span
           style={{
-            fontSize: '13px',
-            fontWeight: 800,
+            fontSize: '14px',
+            fontWeight: 700,
             color,
-            fontFamily: 'Inter, sans-serif',
           }}
         >
           {count} 자
         </span>
-        <span style={{ fontSize: '12px', fontWeight: 600, color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>
+        <span style={{ fontSize: '13px', fontWeight: 500, color: 'var(--color-on-surface-variant)' }}>
           {min}–{max}자
         </span>
       </div>
-      <div style={{ background: '#e5e7eb', borderRadius: '999px', height: '6px', overflow: 'hidden', border: '1.5px solid #d1d5db' }}>
+      <div style={{ background: 'var(--color-surface-container-high)', borderRadius: '999px', height: '6px', overflow: 'hidden' }}>
         <div
           style={{
             height: '100%',
             width: `${barWidth}%`,
             background: barColor,
             borderRadius: '999px',
-            transition: 'width 0.2s ease, background 0.2s ease',
+            transition: 'width 0.3s ease, background 0.3s ease',
           }}
         />
       </div>
@@ -63,33 +62,31 @@ function SentenceCompletion({
   return (
     <div
       style={{
-        background: '#ffffff',
-        border: '3px solid #0f0f0f',
-        borderRadius: '20px',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
+        borderRadius: '24px',
         padding: '24px',
-        boxShadow: '5px 5px 0px #0f0f0f',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
         display: 'flex',
         flexDirection: 'column',
-        gap: '16px',
+        gap: '20px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div
           style={{
-            background: '#4F46E5',
+            background: 'var(--color-primary)',
             color: '#fff',
-            borderRadius: '10px',
-            border: '2.5px solid #0f0f0f',
-            padding: '4px 14px',
-            fontWeight: 900,
-            fontSize: '14px',
-            boxShadow: '2px 2px 0px #0f0f0f',
-            fontFamily: 'Inter, sans-serif',
+            borderRadius: '12px',
+            padding: '6px 16px',
+            fontWeight: 700,
+            fontSize: '15px',
+            boxShadow: '0 2px 8px rgba(194, 101, 42, 0.2)',
           }}
         >
           Q{q.questionNumber}
         </div>
-        <span style={{ fontSize: '13px', fontWeight: 700, color: '#6b7280', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           문장 완성 (Sentence Completion)
         </span>
       </div>
@@ -98,14 +95,13 @@ function SentenceCompletion({
       {q.passageText && (
         <div
           style={{
-            background: '#F9FAFB',
-            border: '2.5px solid #e5e7eb',
-            borderRadius: '14px',
-            padding: '16px 20px',
+            background: 'var(--color-surface-container-low)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '16px',
+            padding: '20px',
             fontSize: '16px',
-            lineHeight: 2,
-            color: '#0f0f0f',
-            fontFamily: 'Inter, sans-serif',
+            lineHeight: 1.8,
+            color: 'var(--color-on-surface)',
           }}
         >
           {q.passageText.split(q.blankLabel ?? '㉠').map((part, i, arr) =>
@@ -115,12 +111,12 @@ function SentenceCompletion({
                 <span
                   style={{
                     display: 'inline-block',
-                    background: '#EEF2FF',
-                    border: '2px solid #4F46E5',
+                    background: 'var(--color-surface-container)',
+                    border: '1px solid var(--color-primary)',
                     borderRadius: '6px',
                     padding: '0 8px',
-                    color: '#4F46E5',
-                    fontWeight: 900,
+                    color: 'var(--color-primary)',
+                    fontWeight: 700,
                     margin: '0 4px',
                   }}
                 >
@@ -135,7 +131,7 @@ function SentenceCompletion({
       )}
 
       <div>
-        <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: 800, color: '#0f0f0f', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: '0 0 10px', fontSize: '15px', fontWeight: 600, color: 'var(--color-on-surface)' }}>
           {q.blankLabel ?? '㉠'}에 들어갈 말을 쓰시오.
         </p>
         <textarea
@@ -146,17 +142,22 @@ function SentenceCompletion({
           placeholder="답을 쓰세요..."
           style={{
             width: '100%',
-            border: '2.5px solid #0f0f0f',
-            borderRadius: '12px',
-            padding: '12px 16px',
-            fontSize: '15px',
-            fontFamily: 'Inter, sans-serif',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '16px',
+            padding: '16px',
+            fontSize: '16px',
+            fontFamily: 'inherit',
             resize: 'vertical',
             outline: 'none',
             boxSizing: 'border-box',
+            background: 'var(--color-surface)',
+            color: 'var(--color-on-surface)',
+            transition: 'border-color 0.2s',
           }}
+          onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--color-primary)' }}
+          onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--color-outline-variant)' }}
         />
-        <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#6b7280', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: '6px 0 0', fontSize: '13px', color: 'var(--color-on-surface-variant)' }}>
           {value.length} / {q.charMax}자
         </p>
       </div>
@@ -173,36 +174,36 @@ function EssayQuestion({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const borderColor = value.length < q.charMin ? 'var(--color-primary)' : value.length > q.charMax ? '#ef4444' : '#2e7d32';
+
   return (
     <div
       style={{
-        background: '#ffffff',
-        border: '3px solid #0f0f0f',
-        borderRadius: '20px',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
+        borderRadius: '24px',
         padding: '24px',
-        boxShadow: '5px 5px 0px #0f0f0f',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
         display: 'flex',
         flexDirection: 'column',
-        gap: '16px',
+        gap: '20px',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div
           style={{
-            background: '#F97316',
+            background: 'var(--color-primary)',
             color: '#fff',
-            borderRadius: '10px',
-            border: '2.5px solid #0f0f0f',
-            padding: '4px 14px',
-            fontWeight: 900,
-            fontSize: '14px',
-            boxShadow: '2px 2px 0px #0f0f0f',
-            fontFamily: 'Inter, sans-serif',
+            borderRadius: '12px',
+            padding: '6px 16px',
+            fontWeight: 700,
+            fontSize: '15px',
+            boxShadow: '0 2px 8px rgba(194, 101, 42, 0.2)',
           }}
         >
           Q{q.questionNumber}
         </div>
-        <span style={{ fontSize: '13px', fontWeight: 700, color: '#6b7280', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           {q.questionNumber === 53 ? '단문 쓰기 (Short Essay)' : '장문 쓰기 (Long Essay)'}
         </span>
       </div>
@@ -210,26 +211,26 @@ function EssayQuestion({
       {/* Topic card */}
       <div
         style={{
-          background: '#FEF3C7',
-          border: '2.5px solid #F59E0B',
-          borderRadius: '14px',
-          padding: '16px 20px',
+          background: 'var(--color-surface-container-low)',
+          border: '1px solid var(--color-outline-variant)',
+          borderRadius: '16px',
+          padding: '20px',
         }}
       >
-        <p style={{ margin: '0 0 6px', fontSize: '11px', fontWeight: 800, color: '#92400E', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: '0 0 8px', fontSize: '12px', fontWeight: 700, color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
           주제 (Topic)
         </p>
-        <p style={{ margin: 0, fontSize: '17px', fontWeight: 800, color: '#0f0f0f', fontFamily: 'Inter, sans-serif' }}>
+        <p style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: 'var(--color-on-surface)', fontFamily: '"EB Garamond", serif', lineHeight: 1.5 }}>
           {q.topic ?? '주어진 주제에 대해 글을 쓰시오.'}
         </p>
         {q.hints && q.hints.length > 0 && (
-          <div style={{ marginTop: '12px' }}>
-            <p style={{ margin: '0 0 6px', fontSize: '12px', fontWeight: 700, color: '#92400E', fontFamily: 'Inter, sans-serif' }}>
+          <div style={{ marginTop: '16px' }}>
+            <p style={{ margin: '0 0 8px', fontSize: '13px', fontWeight: 600, color: 'var(--color-primary)' }}>
               ※ 아래 내용을 포함하여 쓰시오.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {q.hints.map((hint, i) => (
-                <p key={i} style={{ margin: 0, fontSize: '14px', fontWeight: 600, color: '#78350F', fontFamily: 'Inter, sans-serif' }}>
+                <p key={i} style={{ margin: 0, fontSize: '15px', fontWeight: 500, color: 'var(--color-on-surface)', lineHeight: 1.5 }}>
                   · {hint}
                 </p>
               ))}
@@ -243,20 +244,25 @@ function EssayQuestion({
         <textarea
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          rows={q.questionNumber === 54 ? 12 : 6}
+          rows={q.questionNumber === 54 ? 14 : 8}
           placeholder="여기에 쓰세요..."
           style={{
             width: '100%',
-            border: `2.5px solid ${value.length < q.charMin ? '#F97316' : value.length > q.charMax ? '#EF4444' : '#059669'}`,
-            borderRadius: '12px',
-            padding: '16px',
-            fontSize: '15px',
-            fontFamily: 'Inter, sans-serif',
+            border: `1px solid ${value.length > 0 ? borderColor : 'var(--color-outline-variant)'}`,
+            borderRadius: '16px',
+            padding: '20px',
+            fontSize: '16px',
+            fontFamily: 'inherit',
             lineHeight: 1.8,
             resize: 'vertical',
             outline: 'none',
             boxSizing: 'border-box',
+            background: 'var(--color-surface)',
+            color: 'var(--color-on-surface)',
+            transition: 'border-color 0.2s, box-shadow 0.2s',
           }}
+          onFocus={(e) => { e.currentTarget.style.boxShadow = `0 0 0 2px ${value.length > 0 ? borderColor : 'var(--color-primary)'}20`; e.currentTarget.style.borderColor = value.length > 0 ? borderColor : 'var(--color-primary)'; }}
+          onBlur={(e) => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.borderColor = value.length > 0 ? borderColor : 'var(--color-outline-variant)'; }}
         />
         <CharCounter count={value.length} min={q.charMin} max={q.charMax} />
       </div>
@@ -266,20 +272,20 @@ function EssayQuestion({
 
 export default function WritingSection({ questions, answers, onAnswer, onSubmit }: WritingSectionProps) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', fontFamily: '"Manrope", sans-serif' }}>
       <div
         style={{
-          background: '#EEF2FF',
-          border: '2.5px solid #4F46E5',
-          borderRadius: '14px',
-          padding: '14px 20px',
-          fontFamily: 'Inter, sans-serif',
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-outline-variant)',
+          borderRadius: '20px',
+          padding: '20px',
+          boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
         }}
       >
-        <p style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#1E1B4B' }}>
+        <p style={{ margin: 0, fontSize: '16px', fontWeight: 600, color: 'var(--color-on-surface)' }}>
           📝 <strong>쓰기 시험 (Writing Section)</strong> — 4문항 · 70분 · 100점
         </p>
-        <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#4b5563' }}>
+        <p style={{ margin: '6px 0 0', fontSize: '14px', color: 'var(--color-on-surface-variant)' }}>
           Q51-52: 빈칸에 알맞은 말을 쓰시오 (max 50자) | Q53: 200-300자 | Q54: 600-700자
         </p>
       </div>
@@ -296,22 +302,15 @@ export default function WritingSection({ questions, answers, onAnswer, onSubmit 
 
       <button
         onClick={onSubmit}
+        className="sahara-btn"
         style={{
-          background: '#4F46E5',
-          color: '#ffffff',
-          border: '3px solid #0f0f0f',
-          borderRadius: '16px',
-          padding: '16px',
-          fontWeight: 900,
+          padding: '20px',
+          fontWeight: 700,
           fontSize: '16px',
           textTransform: 'uppercase',
-          cursor: 'pointer',
-          boxShadow: '4px 4px 0px #0f0f0f',
-          fontFamily: 'Inter, sans-serif',
-          transition: 'transform 0.1s',
+          letterSpacing: '0.05em',
+          borderRadius: '16px',
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)'; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)'; }}
       >
         쓰기 제출 → 듣기 시작 (Submit Writing → Start Listening)
       </button>

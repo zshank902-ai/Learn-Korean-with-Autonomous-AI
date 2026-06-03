@@ -26,23 +26,23 @@ export default function LevelTabs({ currentLevel, highestUnlockedLevel, onSelect
   };
 
   return (
-    <div className="flex w-full overflow-x-auto gap-2 pb-2 mb-6 scrollbar-hide">
+    <div className="flex w-full overflow-x-auto gap-3 pb-2 mb-6 scrollbar-hide">
       {levels.map((level) => {
         const isLocked = level > highestUnlockedLevel;
         const isActive = level === currentLevel;
-        const isCompleted = level < highestUnlockedLevel; // basic heuristic: if higher is unlocked, this is completed
+        const isCompleted = level < highestUnlockedLevel;
 
         return (
           <button
             key={level}
             onClick={() => handleTabClick(level)}
             className={`
-              flex items-center gap-2 px-5 py-3 rounded-xl border-3 font-black whitespace-nowrap transition-all uppercase tracking-widest text-sm
+              flex items-center gap-2 px-5 py-3 rounded-xl border font-bold whitespace-nowrap transition-all text-sm
               ${isActive 
-                ? 'bg-[#1E1B4B] border-[#1E1B4B] text-white shadow-[4px_4px_0px_#4F46E5] scale-105' 
+                ? 'bg-[var(--color-primary)] border-[var(--color-primary)] text-white shadow-[0_2px_12px_rgba(194,101,42,0.4)] scale-105' 
                 : isLocked 
-                  ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed opacity-80' 
-                  : 'bg-white border-[#1E1B4B] text-[#1E1B4B] shadow-[2px_2px_0px_#1E1B4B] hover:bg-[#EEF2FF]'
+                  ? 'bg-[var(--color-surface-container-low)] border-[var(--color-outline-variant)] text-[var(--color-on-surface-variant)] cursor-not-allowed opacity-70' 
+                  : 'bg-[var(--color-surface-container)] border-[var(--color-outline-variant)] text-[var(--color-on-surface)] shadow-[0_2px_4px_rgba(58,48,42,0.04)] hover:bg-[var(--color-surface-container-high)]'
               }
             `}
           >

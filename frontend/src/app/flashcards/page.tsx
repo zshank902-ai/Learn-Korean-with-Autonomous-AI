@@ -121,7 +121,7 @@ export default function FlashcardsPage() {
   }, [isComplete, playSound]);
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col pt-8 px-6 relative z-10">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col pt-8 px-6 relative z-10 font-sans">
       
       {isComplete && (
         <div className="fixed inset-0 pointer-events-none z-50">
@@ -132,9 +132,9 @@ export default function FlashcardsPage() {
       {/* Top Header & Filter */}
       <div className="max-w-4xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
         <div className="text-center md:text-left flex-1">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 flex items-center justify-center md:justify-start gap-4 font-sans tracking-tight drop-shadow-md text-white">
-            <div className="w-14 h-14 bg-[var(--color-primary-container)] rounded-2xl flex items-center justify-center border border-[rgba(255,255,255,0.2)] shadow-[0_0_15px_rgba(79,70,229,0.5)]">
-              <Book className="text-white" size={28} />
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 flex items-center justify-center md:justify-start gap-4 font-serif tracking-tight drop-shadow-sm text-[var(--color-on-surface)]">
+            <div className="w-14 h-14 bg-[var(--color-surface-container)] rounded-2xl flex items-center justify-center border border-[var(--color-outline-variant)] shadow-sm">
+              <Book className="text-[var(--color-primary)]" size={28} />
             </div>
             Daily Review
           </h1>
@@ -143,30 +143,30 @@ export default function FlashcardsPage() {
 
         {/* Progress Tracker */}
         {!isComplete && flashcardDeck.length > 0 && (
-          <div className="glass-card px-6 py-4 hidden md:block border border-[rgba(255,255,255,0.1)]">
+          <div className="sahara-card px-6 py-4 hidden md:block">
             <div className="flex justify-between items-end mb-2">
               <span className="font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest text-xs">Session</span>
-              <span className="font-extrabold text-white">
+              <span className="font-extrabold text-[var(--color-on-surface)]">
                 {currentCardIndex} / {flashcardDeck.length}
               </span>
             </div>
-            <div className="h-3 w-40 rounded-full neumorphic-input overflow-hidden border-none bg-[rgba(0,0,0,0.4)]">
+            <div className="h-3 w-40 rounded-full overflow-hidden bg-[var(--color-surface-container-high)]">
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: `${(currentCardIndex / flashcardDeck.length) * 100}%` }}
-                className="h-full bg-[var(--color-secondary-container)] rounded-full shadow-[0_0_8px_var(--color-secondary-container)]"
+                className="h-full bg-[var(--color-primary)] rounded-full shadow-[0_0_8px_rgba(194,101,42,0.4)]"
               />
             </div>
           </div>
         )}
 
         {/* Level Selector UI */}
-        <div className="flex gap-2 glass-card p-2 border border-[rgba(255,255,255,0.1)]">
+        <div className="flex gap-2 sahara-card p-2 border border-[var(--color-outline-variant)]">
           {['All', '1', '2', '3'].map((lvl) => (
             <button
               key={lvl}
               onClick={() => setSelectedLevel(lvl)}
-              className={`px-4 py-2 font-bold uppercase text-sm rounded-xl transition-all duration-300 ${selectedLevel === lvl ? 'bg-[var(--color-primary-container)] text-white shadow-[0_0_10px_rgba(79,70,229,0.4)]' : 'hover:bg-[rgba(255,255,255,0.1)] text-[var(--color-on-surface-variant)] hover:text-white'}`}
+              className={`px-4 py-2 font-bold uppercase text-sm rounded-xl transition-all duration-300 ${selectedLevel === lvl ? 'bg-[var(--color-primary)] text-white shadow-[0_2px_8px_rgba(194,101,42,0.3)]' : 'hover:bg-[var(--color-surface-container)] text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)]'}`}
             >
               {lvl === 'All' ? 'Mix' : `TOPIK ${lvl}`}
             </button>
@@ -182,17 +182,17 @@ export default function FlashcardsPage() {
               key="complete"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1, transition: { type: 'spring', bounce: 0.5 } }}
-              className="glass-card rounded-3xl p-12 text-center max-w-lg w-full border border-[rgba(255,255,255,0.2)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+              className="sahara-card rounded-3xl p-12 text-center max-w-lg w-full"
             >
-              <div className="w-24 h-24 rounded-full border border-[rgba(255,255,255,0.2)] mx-auto mb-6 flex items-center justify-center bg-green-500/80 shadow-[0_0_20px_rgba(34,197,94,0.5)]">
-                <CheckCircle2 size={48} className="text-white drop-shadow-md" />
+              <div className="w-24 h-24 rounded-full border border-[var(--color-outline-variant)] mx-auto mb-6 flex items-center justify-center bg-[#e8f5e9]">
+                <CheckCircle2 size={48} className="text-[#2e7d32]" />
               </div>
-              <h2 className="text-4xl font-extrabold text-white mb-4 font-sans tracking-tight drop-shadow-md">Session Complete!</h2>
+              <h2 className="text-4xl font-extrabold text-[var(--color-on-surface)] mb-4 font-serif tracking-tight drop-shadow-sm">Session Complete!</h2>
               <p className="text-xl font-semibold text-[var(--color-on-surface-variant)] mb-8">You've reviewed all cards for today.</p>
               
               <button 
                 onClick={fetchFlashcards} 
-                className="glass-btn text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all flex items-center justify-center gap-3 w-full hover:-translate-y-1 shadow-[0_0_15px_rgba(79,70,229,0.3)]"
+                className="sahara-btn text-white px-8 py-4 rounded-2xl font-extrabold text-xl transition-all flex items-center justify-center gap-3 w-full hover:-translate-y-1 shadow-[0_4px_12px_rgba(194,101,42,0.3)]"
               >
                 <RefreshCcw size={24} /> Study More Cards
               </button>
@@ -216,21 +216,21 @@ export default function FlashcardsPage() {
                 >
                   {/* Front */}
                   <div 
-                    className="absolute inset-0 backface-hidden glass-card rounded-3xl p-8 flex flex-col items-center justify-center border border-[rgba(255,255,255,0.2)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                    className="absolute inset-0 backface-hidden sahara-card rounded-3xl p-8 flex flex-col items-center justify-center border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)] bg-[var(--color-surface)]"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="absolute top-6 left-6 px-3 py-1 bg-[var(--color-primary-container)]/20 border border-[var(--color-primary-container)]/50 rounded-full text-xs font-extrabold uppercase text-white shadow-[0_0_10px_rgba(79,70,229,0.3)]">
+                    <div className="absolute top-6 left-6 px-3 py-1 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-full text-xs font-bold uppercase text-[var(--color-on-surface-variant)] shadow-sm">
                       Lv. {currentCard.level}
                     </div>
                     
                     <button 
                       onClick={(e) => playAudio(e, currentCard.front, currentCard.audio_path)}
-                      className="absolute top-5 right-5 w-12 h-12 bg-[var(--color-secondary-container)] border border-[rgba(255,255,255,0.2)] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform shadow-[0_0_15px_rgba(236,106,6,0.4)]"
+                      className="absolute top-5 right-5 w-12 h-12 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center text-[var(--color-on-surface)] hover:scale-105 transition-transform shadow-sm"
                     >
-                      <Play size={20} className="ml-1 drop-shadow-sm" />
+                      <Play size={20} className="ml-1" />
                     </button>
 
-                    <h2 className="text-6xl md:text-8xl font-extrabold text-white text-center font-sans tracking-tight drop-shadow-lg">
+                    <h2 className="text-6xl md:text-8xl font-extrabold text-[var(--color-on-surface)] text-center font-serif tracking-tight drop-shadow-sm">
                       {currentCard.front}
                     </h2>
                     {/* Romanization display below Korean text */}
@@ -243,32 +243,32 @@ export default function FlashcardsPage() {
 
                   {/* Back */}
                   <div 
-                    className="absolute inset-0 backface-hidden glass-card bg-[rgba(30,27,75,0.6)] rounded-3xl p-8 flex flex-col items-center justify-center text-white border border-[rgba(255,255,255,0.2)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+                    className="absolute inset-0 backface-hidden sahara-card bg-[var(--color-surface-container-low)] rounded-3xl p-8 flex flex-col items-center justify-center text-[var(--color-on-surface)] border border-[var(--color-outline-variant)] shadow-[0_4px_16px_rgba(58,48,42,0.08)]"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateX(180deg)' }}
                   >
                     <button 
                       onClick={(e) => playAudio(e, currentCard.front, currentCard.audio_path)}
-                      className="absolute top-5 right-5 w-12 h-12 bg-[var(--color-secondary-container)] border border-[rgba(255,255,255,0.2)] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform shadow-[0_0_15px_rgba(236,106,6,0.4)]"
+                      className="absolute top-5 right-5 w-12 h-12 bg-[var(--color-surface-container)] border border-[var(--color-outline-variant)] rounded-xl flex items-center justify-center text-[var(--color-on-surface)] hover:scale-105 transition-transform shadow-sm"
                     >
-                      <Play size={20} className="ml-1 drop-shadow-sm" />
+                      <Play size={20} className="ml-1" />
                     </button>
                     <p className="text-lg font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest mb-2">Translation</p>
-                    <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-8 text-white font-sans tracking-tight drop-shadow-md">
+                    <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-8 text-[var(--color-on-surface)] font-serif tracking-tight drop-shadow-sm">
                       {currentCard.back}
                     </h2>
                     
                     {/* Example Section */}
-                    <div className="w-full max-w-md bg-[rgba(255,255,255,0.05)] rounded-2xl p-6 border border-[rgba(255,255,255,0.1)] mt-4 relative group">
+                    <div className="w-full max-w-md bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-outline-variant)] mt-4 relative group shadow-sm">
                       <div className="flex justify-between items-center mb-2">
-                        <p className="text-sm font-bold text-[var(--color-secondary-container)] uppercase tracking-widest">Example</p>
+                        <p className="text-sm font-bold text-[var(--color-primary)] uppercase tracking-widest">Example</p>
                         <button 
                             onClick={(e) => playAudio(e, currentCard.example?.korean || currentCard.front)}
-                            className="text-[var(--color-on-surface-variant)] hover:text-white transition-colors"
+                            className="text-[var(--color-on-surface-variant)] hover:text-[var(--color-on-surface)] transition-colors"
                         >
                             <Volume2 size={20} />
                         </button>
                       </div>
-                      <p className="text-xl font-medium mb-1 leading-relaxed text-white">
+                      <p className="text-xl font-medium mb-1 leading-relaxed text-[var(--color-on-surface)]">
                         {currentCard.example?.korean || "예문이 아직 없습니다."}
                       </p>
                       <div className="text-sm text-[var(--color-on-surface-variant)] leading-relaxed mt-2">
@@ -278,7 +278,7 @@ export default function FlashcardsPage() {
                           <button 
                             onClick={(e) => handleTranslate(e, currentCard.id)}
                             disabled={isTranslating}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 glass-btn text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all disabled:opacity-50"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 sahara-btn text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all disabled:opacity-50"
                           >
                             {isTranslating ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
                             {isTranslating ? "Translating..." : "Translate with AI"}
@@ -304,31 +304,31 @@ export default function FlashcardsPage() {
                     >
                       <button
                         onClick={() => handleRate('again')}
-                        className="py-4 px-2 rounded-2xl bg-red-500/80 backdrop-blur-md text-white cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[rgba(255,255,255,0.2)] shadow-[0_4px_15px_rgba(239,68,68,0.4)]"
+                        className="py-4 px-2 rounded-2xl bg-[#fef2f2] text-[#991b1b] cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[#fecaca] shadow-[0_2px_8px_rgba(239,68,68,0.1)]"
                       >
-                        <span className="block font-extrabold text-lg drop-shadow-sm font-sans">Again</span>
-                        <span className="block text-xs font-bold opacity-80">&lt; 1m</span>
+                        <span className="block font-bold text-lg font-sans">Again</span>
+                        <span className="block text-xs font-semibold opacity-80">&lt; 1m</span>
                       </button>
                       <button
                         onClick={() => handleRate('hard')}
-                        className="py-4 px-2 rounded-2xl bg-[var(--color-secondary-container)]/80 backdrop-blur-md text-white cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[rgba(255,255,255,0.2)] shadow-[0_4px_15px_rgba(236,106,6,0.4)]"
+                        className="py-4 px-2 rounded-2xl bg-[#fff7ed] text-[#9a3412] cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[#fed7aa] shadow-[0_2px_8px_rgba(249,115,22,0.1)]"
                       >
-                        <span className="block font-extrabold text-lg drop-shadow-sm font-sans">Hard</span>
-                        <span className="block text-xs font-bold opacity-80">2d</span>
+                        <span className="block font-bold text-lg font-sans">Hard</span>
+                        <span className="block text-xs font-semibold opacity-80">2d</span>
                       </button>
                       <button
                         onClick={() => handleRate('good')}
-                        className="py-4 px-2 rounded-2xl bg-green-500/80 backdrop-blur-md text-white cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[rgba(255,255,255,0.2)] shadow-[0_4px_15px_rgba(34,197,94,0.4)]"
+                        className="py-4 px-2 rounded-2xl bg-[#f0fdf4] text-[#166534] cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[#bbf7d0] shadow-[0_2px_8px_rgba(34,197,94,0.1)]"
                       >
-                        <span className="block font-extrabold text-lg drop-shadow-sm font-sans">Good</span>
-                        <span className="block text-xs font-bold opacity-80">+10 XP</span>
+                        <span className="block font-bold text-lg font-sans">Good</span>
+                        <span className="block text-xs font-semibold opacity-80">+10 XP</span>
                       </button>
                       <button
                         onClick={() => handleRate('easy')}
-                        className="py-4 px-2 rounded-2xl bg-[var(--color-primary-container)]/80 backdrop-blur-md text-white cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[rgba(255,255,255,0.2)] shadow-[0_4px_15px_rgba(79,70,229,0.4)]"
+                        className="py-4 px-2 rounded-2xl bg-[var(--color-primary)] text-white cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0.5 border border-[var(--color-primary)] shadow-[0_4px_12px_rgba(194,101,42,0.3)]"
                       >
-                        <span className="block font-extrabold text-lg drop-shadow-sm font-sans">Easy</span>
-                        <span className="block text-xs font-bold opacity-80">+20 XP</span>
+                        <span className="block font-bold text-lg font-sans">Easy</span>
+                        <span className="block text-xs font-semibold opacity-90">+20 XP</span>
                       </button>
                     </motion.div>
                   )}
@@ -340,20 +340,20 @@ export default function FlashcardsPage() {
               key="empty"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="glass-card rounded-3xl p-12 text-center max-w-lg w-full border border-[rgba(255,255,255,0.2)] shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+              className="sahara-card rounded-3xl p-12 text-center max-w-lg w-full border border-[var(--color-outline-variant)] shadow-sm"
             >
-              <div className="w-24 h-24 rounded-full border border-[rgba(255,255,255,0.2)] mx-auto mb-6 flex items-center justify-center bg-[var(--color-secondary-container)] shadow-[0_0_20px_rgba(236,106,6,0.5)]">
-                <Book size={48} className="text-white" />
+              <div className="w-24 h-24 rounded-full border border-[var(--color-outline-variant)] mx-auto mb-6 flex items-center justify-center bg-[var(--color-surface-container)]">
+                <Book size={48} className="text-[var(--color-primary)]" />
               </div>
-              <h2 className="text-4xl font-extrabold text-white mb-4 font-sans drop-shadow-md">No Cards Found</h2>
+              <h2 className="text-4xl font-extrabold text-[var(--color-on-surface)] mb-4 font-serif drop-shadow-sm">No Cards Found</h2>
               <p className="text-xl font-semibold text-[var(--color-on-surface-variant)] mb-8">
                 There are no flashcards available for {selectedLevel === 'All' ? 'any level' : `TOPIK ${selectedLevel}`} yet. Check back later!
               </p>
             </motion.div>
           ) : (
             <motion.div key="loading" className="flex flex-col items-center justify-center h-64 gap-6">
-               <div className="w-16 h-16 border-4 border-[rgba(255,255,255,0.1)] border-t-[var(--color-primary-container)] rounded-full animate-spin shadow-[0_0_15px_var(--color-primary-container)]" />
-               <p className="font-extrabold text-white text-2xl font-sans drop-shadow-md">Loading Cards...</p>
+               <div className="w-16 h-16 border-4 border-[var(--color-surface-container)] border-t-[var(--color-primary)] rounded-full animate-spin shadow-sm" />
+               <p className="font-extrabold text-[var(--color-on-surface)] text-2xl font-serif drop-shadow-sm">Loading Cards...</p>
             </motion.div>
           )}
         </AnimatePresence>

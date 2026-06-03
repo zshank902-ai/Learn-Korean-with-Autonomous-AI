@@ -16,7 +16,7 @@ export default function ProfilePage() {
   const { user } = useAuthStore();
 
   const badges = [
-    { id: 1, name: 'First Word', icon: <Target size={24} />, bg: '#F97316', earned: true },
+    { id: 1, name: 'First Word', icon: <Target size={24} />, bg: '#C2652A', earned: true },
     { id: 2, name: '7-Day Streak', icon: <Flame size={24} />, bg: '#EF4444', earned: true },
     { id: 3, name: 'Perfect Pronunciation', icon: <Award size={24} />, bg: '#818CF8', earned: true },
     { id: 4, name: '10k XP Club', icon: <Zap size={24} />, bg: '#4F46E5', earned: xp >= 10000 },
@@ -25,33 +25,31 @@ export default function ProfilePage() {
 
   const stats = [
     { label: 'Total XP', value: xp.toLocaleString(), color: '#4F46E5' },
-    { label: 'Current Streak', value: `${streak} Days`, color: '#F97316' },
+    { label: 'Current Streak', value: `${streak} Days`, color: '#C2652A' },
     { label: 'K-Coins', value: coins.toLocaleString(), color: '#FBBF24' },
     { label: 'Words Learned', value: '342', color: '#16A34A' },
   ];
 
   return (
-    <div className="min-h-screen bg-transparent p-4 md:p-6 max-w-screen-xl mx-auto text-white pt-8 md:pt-10 relative z-10">
+    <div className="min-h-screen bg-transparent p-4 md:p-6 max-w-screen-xl mx-auto text-[var(--color-on-surface)] pt-8 md:pt-10 relative z-10 font-sans">
       <ToastContainer />
       {/* Header Profile Card */}
-      <div className="glass-card rounded-3xl border border-[rgba(255,255,255,0.2)] p-6 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-        {/* Background decorative blob */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-[var(--color-primary-container)] rounded-full blur-[100px] pointer-events-none opacity-20" />
+      <div className="sahara-card rounded-3xl border border-[var(--color-outline-variant)] p-6 md:p-12 mb-8 flex flex-col md:flex-row items-center gap-6 md:gap-8 relative overflow-hidden">
         
         {/* Avatar */}
         <div className="relative shrink-0">
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] border border-[rgba(255,255,255,0.2)] flex items-center justify-center relative z-10 glass-card bg-[rgba(255,255,255,0.05)] shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]">
-            <User size={64} className="text-[var(--color-primary-container)] drop-shadow-md" />
+          <div className="w-32 h-32 md:w-40 md:h-40 rounded-[2rem] border border-[var(--color-outline-variant)] flex items-center justify-center relative z-10 sahara-card bg-[var(--color-surface)] shadow-sm">
+            <User size={64} className="text-[var(--color-primary)] drop-shadow-sm" />
           </div>
           {/* Level Badge overlapping avatar */}
-          <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-12 h-12 md:w-14 md:h-14 rounded-2xl border border-[rgba(255,255,255,0.3)] flex items-center justify-center font-extrabold text-lg md:text-xl z-20 text-white rotate-12 bg-[rgba(253,186,116,0.2)] backdrop-blur-md shadow-[0_0_15px_rgba(253,186,116,0.3)] font-sans">
+          <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-12 h-12 md:w-14 md:h-14 rounded-2xl border border-[var(--color-outline-variant)] flex items-center justify-center font-extrabold text-lg md:text-xl z-20 text-[var(--color-on-primary)] rotate-12 bg-[var(--color-primary)] shadow-sm font-sans">
             Lv.{level}
           </div>
         </div>
 
         {/* Info */}
         <div className="flex-1 text-center md:text-left z-10">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 text-white font-sans drop-shadow-md">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 text-[var(--color-on-surface)] font-serif drop-shadow-sm">
             {user?.nickname || user?.full_name || 'Student'}
           </h1>
           <p className="text-lg text-[var(--color-on-surface-variant)] font-bold mb-6">Learning Korean</p>
@@ -63,17 +61,17 @@ export default function ProfilePage() {
       </div>
 
       {xp === 0 ? (
-        <div className="glass-card rounded-3xl border border-[rgba(255,255,255,0.2)] p-6 md:p-12 text-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-          <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 glass-card bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.2)] shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]">
-            <Target size={40} className="text-[var(--color-primary-container)] drop-shadow-md" />
+        <div className="sahara-card rounded-3xl border border-[var(--color-outline-variant)] p-6 md:p-12 text-center shadow-sm">
+          <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 bg-[var(--color-surface)] border border-[var(--color-outline-variant)] shadow-sm">
+            <Target size={40} className="text-[var(--color-primary)] drop-shadow-sm" />
           </div>
-          <h2 className="text-3xl font-extrabold text-white mb-4 font-sans drop-shadow-md">
+          <h2 className="text-3xl font-extrabold text-[var(--color-on-surface)] mb-4 font-serif drop-shadow-sm">
             Zero Progress Yet!
           </h2>
           <p className="text-[var(--color-on-surface-variant)] font-bold text-lg max-w-md mx-auto mb-8">
             Your journey begins now. Complete your first lesson to start earning XP, building your streak, and unlocking badges!
           </p>
-          <Link href="/roadmap" className="inline-block px-8 py-4 glass-btn text-white font-extrabold text-xl rounded-xl transition-all hover:-translate-y-1">
+          <Link href="/roadmap" className="inline-block px-8 py-4 sahara-btn text-white font-bold text-xl rounded-xl transition-all hover:-translate-y-1">
             START LEARNING
           </Link>
         </div>
@@ -88,10 +86,10 @@ export default function ProfilePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass-card rounded-2xl border border-[rgba(255,255,255,0.1)] p-5 text-center shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-md"
+                  className="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-outline-variant)] p-5 text-center shadow-sm"
                 >
                   <p className="text-xs font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest mb-2 font-sans">{stat.label}</p>
-                  <p className="text-2xl font-extrabold font-sans drop-shadow-sm" style={{ color: stat.color }}>
+                  <p className="text-2xl font-extrabold font-serif drop-shadow-sm" style={{ color: stat.color }}>
                     {stat.value}
                   </p>
                 </motion.div>
@@ -102,9 +100,9 @@ export default function ProfilePage() {
           </div>
 
           {/* Right Column: Badges */}
-          <div className="glass-card rounded-3xl border border-[rgba(255,255,255,0.2)] p-6 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
-            <h2 className="text-2xl font-extrabold text-white mb-6 flex items-center gap-3 font-sans drop-shadow-sm">
-              <Award className="text-[var(--color-secondary-container)] drop-shadow-md" size={28} /> Badges
+          <div className="sahara-card rounded-3xl border border-[var(--color-outline-variant)] p-6 shadow-sm">
+            <h2 className="text-2xl font-extrabold text-[var(--color-on-surface)] mb-6 flex items-center gap-3 font-serif drop-shadow-sm">
+              <Award className="text-[var(--color-primary)] drop-shadow-sm" size={28} /> Badges
             </h2>
             
             <div className="grid grid-cols-2 gap-4">
@@ -114,15 +112,15 @@ export default function ProfilePage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.1 }}
-                  className={`flex flex-col items-center text-center p-4 rounded-2xl border ${badge.earned ? 'border-[rgba(255,255,255,0.2)] bg-[rgba(255,255,255,0.05)] shadow-[0_4px_12px_rgba(0,0,0,0.2)]' : 'border-[rgba(255,255,255,0.05)] bg-[rgba(0,0,0,0.2)] opacity-60'}`}
+                  className={`flex flex-col items-center text-center p-4 rounded-2xl border ${badge.earned ? 'border-[var(--color-outline-variant)] bg-[var(--color-surface)] shadow-sm' : 'border-[var(--color-outline-variant)] bg-[var(--color-surface-container)] opacity-60'}`}
                 >
                   <div 
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${badge.earned ? 'border border-[rgba(255,255,255,0.3)] shadow-[inset_0_0_10px_rgba(255,255,255,0.2)] text-white' : 'border-[rgba(255,255,255,0.1)] opacity-40 grayscale bg-[rgba(255,255,255,0.1)] text-[var(--color-on-surface-variant)]'}`}
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${badge.earned ? 'border border-[var(--color-outline-variant)] shadow-sm text-white' : 'border-[var(--color-outline-variant)] opacity-40 grayscale bg-[var(--color-surface)] text-[var(--color-on-surface-variant)]'}`}
                     style={badge.earned ? { background: badge.bg } : {}}
                   >
                     {badge.icon}
                   </div>
-                  <p className={`font-bold text-sm ${badge.earned ? 'text-white drop-shadow-sm' : 'text-[var(--color-on-surface-variant)]'}`}>
+                  <p className={`font-bold text-sm ${badge.earned ? 'text-[var(--color-on-surface)] drop-shadow-sm' : 'text-[var(--color-on-surface-variant)]'}`}>
                     {badge.name}
                   </p>
                 </motion.div>

@@ -70,10 +70,10 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
   if (isVerifying) {
     return (
-      <div className="min-h-screen bg-[#EEF2FF] flex items-center justify-center">
-        <div className="bg-white p-8 border-4 border-[#1E1B4B] rounded-3xl flex flex-col items-center gap-4" style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
-          <Loader2 className="animate-spin text-[#4F46E5]" size={48} />
-          <h2 className="text-2xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>Loading Secure Session...</h2>
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center font-sans">
+        <div className="sahara-card bg-[var(--color-surface)] p-8 border border-[var(--color-outline-variant)] rounded-3xl flex flex-col items-center gap-4 shadow-sm">
+          <Loader2 className="animate-spin text-[var(--color-primary)]" size={48} />
+          <h2 className="text-2xl font-bold text-[var(--color-on-surface)] font-serif">Loading Secure Session...</h2>
         </div>
       </div>
     );
@@ -81,18 +81,18 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
 
   if (errorMsg) {
     return (
-      <div className="min-h-screen bg-[#EEF2FF] flex items-center justify-center">
-        <div className="bg-white p-8 border-4 border-[#1E1B4B] rounded-3xl flex flex-col items-center gap-4 text-center max-w-md" style={{ boxShadow: '8px 8px 0px #1E1B4B' }}>
-          <div className="text-red-500 font-black text-xl mb-2 flex items-center gap-2">
+      <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center font-sans">
+        <div className="sahara-card bg-[var(--color-surface)] p-8 border border-[var(--color-outline-variant)] rounded-3xl flex flex-col items-center gap-4 text-center max-w-md shadow-sm">
+          <div className="text-red-500 font-bold text-xl mb-2 flex items-center gap-2">
             ⚠️ Connection Error
           </div>
-          <p className="text-[#1E1B4B]/70 font-semibold mb-4">{errorMsg}</p>
+          <p className="text-[var(--color-on-surface-variant)] font-semibold mb-4">{errorMsg}</p>
           <button 
             onClick={() => {
               useAuthStore.getState().logout();
               router.push('/login');
             }}
-            className="w-full bg-[#1E1B4B] text-white py-3 rounded-xl font-bold hover:bg-[#4F46E5] transition-colors border-2 border-transparent hover:border-[#1E1B4B]"
+            className="sahara-btn w-full text-white py-3 rounded-xl font-bold transition-transform hover:-translate-y-1"
           >
             Return to Login
           </button>
@@ -100,9 +100,6 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
       </div>
     );
   }
-
-  // If token is missing and we finished verifying (e.g., about to redirect), return null to prevent flashing children
-  if (!token) return null;
 
   // If token is missing and we finished verifying (e.g., about to redirect), return null to prevent flashing children
   if (!token) return null;

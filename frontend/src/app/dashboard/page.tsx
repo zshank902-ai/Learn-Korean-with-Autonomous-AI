@@ -55,8 +55,8 @@ export default function DashboardPage() {
 
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 font-sans tracking-tight drop-shadow-md">
-            Learning <span className="text-[var(--color-primary-container)]">Dashboard</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-2 font-serif tracking-tight text-[var(--color-on-background)]">
+            Learning <span className="text-[var(--color-primary)]">Dashboard</span>
           </h1>
           <p className="text-xl text-[var(--color-on-surface-variant)] font-medium">
             Your daily mission control. Complete quests and level up!
@@ -80,21 +80,21 @@ export default function DashboardPage() {
         {/* Center Column (6/12): AI Tutor & Stats */}
         <div className="lg:col-span-6 flex flex-col gap-6 lg:h-full">
           {/* Quick Stats Card */}
-          <div className="glass-card p-6 flex items-center justify-between">
+          <div className="sahara-card p-6 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-secondary-container)] shadow-[0_0_12px_rgba(236,106,6,0.4)] border border-[rgba(255,255,255,0.2)]">
-                <Star className="text-white fill-white" size={32} />
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--color-secondary-container)] border border-[var(--color-outline-variant)]">
+                <Star className="text-[var(--color-on-secondary-container)] fill-current" size={32} />
               </div>
               <div>
                 <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Current Rank</p>
-                <h2 className="text-2xl font-extrabold text-white">
+                <h2 className="text-2xl font-extrabold text-[var(--color-on-surface)]">
                   TOPIK Level {level}
                 </h2>
               </div>
             </div>
             <div className="text-right">
               <p className="text-sm font-bold text-[var(--color-on-surface-variant)] uppercase tracking-widest">Next Level</p>
-              <p className="text-xl font-extrabold text-[var(--color-primary-container)] drop-shadow-sm">
+              <p className="text-xl font-extrabold text-[var(--color-primary)]">
                 {5000 - (xp % 5000)} XP
               </p>
             </div>

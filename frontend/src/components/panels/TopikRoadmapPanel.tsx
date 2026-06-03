@@ -30,10 +30,10 @@ function SkeletonCard() {
       style={{
         height: '240px',
         borderRadius: '24px',
-        background: 'linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%)',
+        background: 'linear-gradient(90deg, var(--color-surface-container-low) 25%, var(--color-surface-container) 50%, var(--color-surface-container-low) 75%)',
         backgroundSize: '200% 100%',
         animation: 'shimmer 1.4s infinite',
-        border: '4px solid #e5e7eb',
+        border: '1px solid var(--color-outline-variant)',
       }}
     />
   );
@@ -47,10 +47,10 @@ function LoadingSkeleton() {
         style={{
           height: '110px',
           borderRadius: '18px',
-          background: 'linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%)',
+          background: 'linear-gradient(90deg, var(--color-surface-container-low) 25%, var(--color-surface-container) 50%, var(--color-surface-container-low) 75%)',
           backgroundSize: '200% 100%',
           animation: 'shimmer 1.4s infinite',
-          border: '2.5px solid #d1d5db',
+          border: '1px solid var(--color-outline-variant)',
         }}
       />
 
@@ -85,7 +85,7 @@ interface SectionHeaderProps {
 function SectionHeader({ title, subtitle }: SectionHeaderProps) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-      <h2 className="m-0 font-sans font-extrabold text-[20px] text-white tracking-tight drop-shadow-sm">
+      <h2 className="m-0 font-serif font-extrabold text-[20px] text-[var(--color-on-surface)] tracking-tight drop-shadow-sm">
         {title}
       </h2>
       {subtitle && (
@@ -144,7 +144,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
 
   function handleStartMockExam(module: TopikModule) {
     const lvl = roadmapLevels.find((l) => l.id === module.level_id);
-    const color = lvl?.color ?? '#1E1B4B';
+    const color = lvl?.color ?? '#c2652a';
     setActiveTopikModule(null);
     onStartMockExam?.(module, color);
   }
@@ -174,25 +174,25 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
     switch (status) {
       case 'completed':
         return {
-          bg: 'rgba(16, 185, 129, 0.1)',
+          bg: 'var(--color-surface-container)',
           border: '#10B981',
-          icon: <CheckCircle2 size={28} className="text-[#10B981] drop-shadow-md" />,
-          shadow: '0 0 20px rgba(16,185,129,0.3)',
+          icon: <CheckCircle2 size={28} className="text-[#10B981] drop-shadow-sm" />,
+          shadow: '0 2px 16px rgba(58, 48, 42, 0.04)',
         };
       case 'active':
         return {
-          bg: 'rgba(195, 192, 255, 0.1)', // primary container with opacity
-          border: levelColor,
-          icon: <GraduationCap size={28} className="text-[var(--color-primary-container)] drop-shadow-md" />,
-          shadow: '0 0 20px rgba(195, 192, 255, 0.3)',
+          bg: '#ffffff',
+          border: 'var(--color-primary)',
+          icon: <GraduationCap size={28} className="text-[var(--color-primary)] drop-shadow-sm" />,
+          shadow: '0 2px 16px rgba(58, 48, 42, 0.08)',
         };
       case 'locked':
       default:
         return {
-          bg: 'rgba(255, 255, 255, 0.02)',
-          border: 'rgba(255, 255, 255, 0.1)',
+          bg: 'var(--color-surface-container-lowest)',
+          border: 'var(--color-outline-variant)',
           icon: <Lock size={28} className="text-[var(--color-on-surface-variant)]" />,
-          shadow: '0 8px 32px rgba(0,0,0,0.3)',
+          shadow: 'none',
         };
     }
   }
@@ -204,7 +204,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
       <div className="max-w-[1200px] mx-auto flex flex-col gap-8 md:gap-9">
         {/* Title / Header */}
         <div>
-          <h1 className="m-0 font-extrabold text-2xl md:text-[32px] text-white tracking-tighter drop-shadow-md">
+          <h1 className="m-0 font-extrabold text-2xl md:text-[32px] text-[var(--color-on-background)] font-serif tracking-tighter drop-shadow-sm">
             📍 TOPIK Curriculum Roadmap
           </h1>
           <p className="mt-1 md:mt-[6px] font-medium text-sm md:text-[15px] text-[var(--color-on-surface-variant)]">
@@ -217,7 +217,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
         ) : (
           <>
             {/* 1. Progress Rail (High-level Summary) */}
-            <section className="glass-card rounded-[18px] p-4 md:p-6 border border-[rgba(255,255,255,0.1)]">
+            <section className="sahara-card rounded-[18px] p-4 md:p-6 border border-[var(--color-outline-variant)]">
               <SectionHeader title="Curriculum Overview" subtitle="Click any level orb to scroll smoothly to its modules" />
               <ProgressRail
                 levels={roadmapLevels}
@@ -237,7 +237,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                   top: '0',
                   bottom: '0',
                   width: '16px',
-                  background: '#1E1B4B',
+                  background: 'var(--color-surface-container-high)',
                   transform: 'translateX(-50%)',
                   borderRadius: '999px',
                   zIndex: 1,
@@ -252,7 +252,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                   top: '0',
                   bottom: '0',
                   width: '8px',
-                  background: '#818CF8',
+                  background: 'var(--color-primary)',
                   opacity: 0.5,
                   transform: 'translateX(-50%)',
                   borderRadius: '999px',
@@ -284,7 +284,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                         <motion.div
                           whileHover={status !== 'locked' ? { y: -4, boxShadow: style.shadow } : {}}
                           transition={{ type: 'spring', stiffness: 350, damping: 20 }}
-                          className={`glass-card rounded-3xl p-4 md:p-6 relative transition-all duration-300 border border-[rgba(255,255,255,0.2)]`}
+                          className={`sahara-card rounded-3xl p-4 md:p-6 relative transition-all duration-300 border border-[var(--color-outline-variant)]`}
                           style={{
                             background: style.bg,
                             boxShadow: style.shadow,
@@ -301,16 +301,15 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                background: 'rgba(255, 255, 255, 0.05)',
-                                border: '1px solid rgba(255, 255, 255, 0.2)',
-                                boxShadow: 'inset 0 0 10px rgba(255,255,255,0.1)',
+                                background: 'var(--color-surface-container)',
+                                border: '1px solid var(--color-outline-variant)',
                                 flexShrink: 0,
                               }}
                             >
                               {style.icon}
                             </div>
                             <div>
-                              <h3 className="m-0 font-sans font-extrabold text-[22px] text-white tracking-tight drop-shadow-sm">
+                              <h3 className="m-0 font-serif font-extrabold text-[22px] text-[var(--color-on-surface)] tracking-tight drop-shadow-sm">
                                 {lvl.title}
                               </h3>
                               <p className="m-[4px_0_0] font-sans font-bold text-[12px] text-[var(--color-on-surface-variant)] uppercase tracking-wider">
@@ -321,14 +320,14 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
 
                           {/* Level Details Bar inside card */}
                           {status !== 'locked' && (
-                            <div className="bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-2xl p-3 md:p-[14px] mb-5 grid grid-cols-2 gap-2 md:gap-4 backdrop-blur-md">
+                            <div className="bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-2xl p-3 md:p-[14px] mb-5 grid grid-cols-2 gap-2 md:gap-4">
                               <div>
                                 <span className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-wider">Target Vocab</span>
-                                <p className="m-0 text-[16px] font-extrabold text-white drop-shadow-sm">{lvl.target_vocab} Words</p>
+                                <p className="m-0 text-[16px] font-extrabold text-[var(--color-on-surface)] drop-shadow-sm">{lvl.target_vocab} Words</p>
                               </div>
                               <div>
                                 <span className="text-[11px] font-bold text-[var(--color-on-surface-variant)] uppercase tracking-wider">Exam Type</span>
-                                <p className="m-0 text-[16px] font-extrabold text-white drop-shadow-sm">{lvl.exam_type}</p>
+                                <p className="m-0 text-[16px] font-extrabold text-[var(--color-on-surface)] drop-shadow-sm">{lvl.exam_type}</p>
                               </div>
                             </div>
                           )}
@@ -337,23 +336,22 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                           {status !== 'locked' && (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '16px' }}>
                               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <span className="font-sans text-[13px] font-extrabold text-white">
+                                <span className="font-sans text-[13px] font-extrabold text-[var(--color-on-surface)]">
                                   Modules Progress
                                 </span>
-                                <span className="font-sans text-[13px] font-bold text-[var(--color-primary-container)]">
+                                <span className="font-sans text-[13px] font-bold text-[var(--color-primary)]">
                                   {lvl.modules.filter((m) => moduleStatuses[m.id] === 'completed').length} / {lvl.modules.length} Completed
                                 </span>
                               </div>
 
                               {/* Progress bar */}
-                              <div className="h-[14px] rounded-full overflow-hidden neumorphic-input border-none bg-[rgba(0,0,0,0.4)]">
+                              <div className="h-[14px] rounded-full overflow-hidden bg-[var(--color-surface-container-high)]">
                                 <div
                                   style={{
                                     height: '100%',
-                                    background: lvl.color,
+                                    background: 'var(--color-primary)',
                                     width: `${(lvl.modules.filter((m) => moduleStatuses[m.id] === 'completed').length / lvl.modules.length) * 100}%`,
                                     transition: 'width 0.5s ease-out',
-                                    boxShadow: `0 0 10px ${lvl.color}`,
                                   }}
                                   className="rounded-full"
                                 />
@@ -367,7 +365,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                                 <motion.div
                                   whileHover={{ scale: 1.02 }}
                                   whileTap={{ scale: 0.98 }}
-                                  className="flex items-center justify-center gap-2 glass-btn text-white rounded-2xl p-3 font-extrabold text-[12px] md:text-[14px] uppercase cursor-pointer"
+                                  className="flex items-center justify-center gap-2 sahara-btn-secondary text-[var(--color-on-surface)] rounded-2xl p-3 font-extrabold text-[12px] md:text-[14px] uppercase cursor-pointer"
                                 >
                                   Enter Level {lvl.level_num} Curriculum
                                 </motion.div>
@@ -376,7 +374,7 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                           )}
 
                           {status === 'locked' && (
-                            <div className="mt-4 bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-xl p-[14px] text-center text-[var(--color-on-surface-variant)] font-bold text-[13px] flex items-center justify-center gap-2 backdrop-blur-md">
+                            <div className="mt-4 bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)] rounded-xl p-[14px] text-center text-[var(--color-on-surface-variant)] font-bold text-[13px] flex items-center justify-center gap-2">
                               <Lock size={16} /> Locked - Complete Level {lvl.level_num - 1} First
                             </div>
                           )}
@@ -394,12 +392,12 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
                           width: '48px',
                           height: '48px',
                           borderRadius: '50%',
-                          border: '4px solid #0f0f0f',
+                          border: '2px solid var(--color-outline-variant)',
                           background: '#ffffff',
                           zIndex: 20,
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '2px 2px 0px #0f0f0f',
+                          boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                         }}
                       >
                         <div
@@ -434,7 +432,8 @@ export function TopikRoadmapPanel({ onStartMockExam }: TopikRoadmapPanelProps) {
             style={{
               position: 'fixed',
               inset: 0,
-              background: 'rgba(0,0,0,0.45)',
+              background: 'rgba(0,0,0,0.1)',
+              backdropFilter: 'blur(4px)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

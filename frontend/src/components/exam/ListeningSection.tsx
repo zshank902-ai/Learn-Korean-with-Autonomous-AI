@@ -113,12 +113,12 @@ function AudioPlayer({
   return (
     <div
       style={{
-        background: '#1E1B4B',
-        border: '3px solid #0f0f0f',
-        borderRadius: '16px',
-        padding: '16px 20px',
-        marginBottom: '20px',
-        boxShadow: '4px 4px 0px #0f0f0f',
+        background: 'var(--color-surface)',
+        border: '1px solid var(--color-outline-variant)',
+        borderRadius: '24px',
+        padding: '24px',
+        marginBottom: '24px',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
       }}
     >
       {audioUrl && (
@@ -130,42 +130,47 @@ function AudioPlayer({
           onEnded={() => setIsPlaying(false)}
         />
       )}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
         <button
           onClick={togglePlay}
           style={{
-            width: '48px',
-            height: '48px',
+            width: '56px',
+            height: '56px',
             borderRadius: '50%',
-            background: '#4F46E5',
-            border: '3px solid #ffffff',
+            background: 'var(--color-primary)',
             color: '#ffffff',
-            fontSize: '18px',
+            fontSize: '20px',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
             opacity: !audioUrl && !ttsSupported ? 0.4 : 1,
+            border: 'none',
+            boxShadow: '0 4px 12px rgba(194, 101, 42, 0.3)',
+            transition: 'transform 0.2s',
           }}
           aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
           disabled={!audioUrl && !ttsSupported}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.05)'; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1)'; }}
         >
           {isPlaying ? '⏸' : '▶'}
         </button>
 
         {/* Animated waveform bars */}
-        <div style={{ display: 'flex', gap: '3px', alignItems: 'flex-end', height: '32px' }}>
+        <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end', height: '32px' }}>
           {Array.from({ length: 20 }, (_, i) => (
             <div
               key={i}
               style={{
                 width: '4px',
                 borderRadius: '2px',
-                background: '#818CF8',
+                background: 'var(--color-primary)',
                 height: isPlaying ? `${8 + Math.sin(i * 0.8) * 12 + 12}px` : '8px',
                 transition: 'height 0.15s ease',
                 animation: isPlaying ? `bar-bounce-${i % 5} 0.6s ease infinite alternate` : 'none',
+                opacity: 0.8,
               }}
             />
           ))}
@@ -173,15 +178,15 @@ function AudioPlayer({
 
         <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
           {audioUrl ? (
-            <p style={{ margin: 0, color: '#ffffff', fontSize: '13px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ margin: 0, color: 'var(--color-on-surface)', fontSize: '14px', fontWeight: 600, fontFamily: '"Manrope", sans-serif' }}>
               {currentTime} / {duration}
             </p>
           ) : (
-            <p style={{ margin: 0, color: '#818CF8', fontSize: '12px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ margin: 0, color: 'var(--color-primary)', fontSize: '13px', fontWeight: 700, fontFamily: '"Manrope", sans-serif' }}>
               {isPlaying ? '🔊 읽는 중…' : '🔊 TTS 음성'}
             </p>
           )}
-          <p style={{ margin: '2px 0 0', color: '#818CF8', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+          <p style={{ margin: '4px 0 0', color: 'var(--color-on-surface-variant)', fontSize: '12px', fontWeight: 500, fontFamily: '"Manrope", sans-serif' }}>
             재생 {playCount}회
           </p>
         </div>
@@ -190,17 +195,17 @@ function AudioPlayer({
       {/* TTS info banner */}
       {!audioUrl && (
         <div style={{
-          marginTop: '10px',
-          background: 'rgba(129,140,248,0.15)',
-          border: '1.5px solid #818CF8',
-          borderRadius: '10px',
-          padding: '8px 12px',
-          fontSize: '12px',
-          color: '#a5b4fc',
-          fontFamily: 'Inter, sans-serif',
+          marginTop: '16px',
+          background: 'var(--color-surface-container)',
+          border: '1px solid var(--color-outline-variant)',
+          borderRadius: '12px',
+          padding: '10px 16px',
+          fontSize: '13px',
+          color: 'var(--color-on-surface-variant)',
+          fontFamily: '"Manrope", sans-serif',
           display: 'flex',
           alignItems: 'center',
-          gap: '6px',
+          gap: '8px',
         }}>
           <span>💬</span>
           <span>▶ 버튼을 눌러 문제와 보기를 한국어 음성으로 들으세요</span>
@@ -229,36 +234,33 @@ export default function ListeningSection({
   if (!q) return null;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', fontFamily: '"Manrope", sans-serif' }}>
       {/* Question header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div
           style={{
-            background: '#4F46E5',
+            background: 'var(--color-primary)',
             color: '#ffffff',
             borderRadius: '12px',
-            border: '3px solid #0f0f0f',
-            padding: '6px 14px',
-            fontWeight: 900,
-            fontSize: '14px',
-            boxShadow: '2px 2px 0px #0f0f0f',
-            fontFamily: 'Inter, sans-serif',
+            padding: '6px 16px',
+            fontWeight: 700,
+            fontSize: '15px',
+            boxShadow: '0 2px 8px rgba(194, 101, 42, 0.2)',
           }}
         >
           Q{q.questionNumber}
         </div>
         <div
           style={{
-            background: '#EEF2FF',
-            border: '2px solid #0f0f0f',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
             borderRadius: '10px',
-            padding: '4px 12px',
-            fontSize: '11px',
+            padding: '4px 14px',
+            fontSize: '12px',
             fontWeight: 700,
-            color: '#4b5563',
+            color: 'var(--color-on-surface-variant)',
             textTransform: 'uppercase',
             letterSpacing: '0.05em',
-            fontFamily: 'Inter, sans-serif',
           }}
         >
           Listening
@@ -275,9 +277,9 @@ export default function ListeningSection({
             margin: 0,
             fontSize: '18px',
             fontWeight: 700,
-            color: '#0f0f0f',
-            lineHeight: 1.7,
-            fontFamily: 'Inter, sans-serif',
+            color: 'var(--color-on-surface)',
+            lineHeight: 1.6,
+            fontFamily: '"EB Garamond", serif',
           }}
         >
           {q.questionText}
@@ -291,13 +293,13 @@ export default function ListeningSection({
           const isCorrect = submitted && q.correctAnswer === i;
           const isWrong = submitted && isSelected && q.correctAnswer !== i;
 
-          let bg = '#ffffff';
-          let border = '#d1d5db';
-          let color = '#0f0f0f';
+          let bg = 'var(--color-surface)';
+          let border = 'var(--color-outline-variant)';
+          let color = 'var(--color-on-surface)';
 
-          if (isCorrect) { bg = '#D1FAE5'; border = '#059669'; color = '#065F46'; }
-          else if (isWrong) { bg = '#FEE2E2'; border = '#EF4444'; color = '#991B1B'; }
-          else if (isSelected) { bg = '#EEF2FF'; border = '#4F46E5'; color = '#1E1B4B'; }
+          if (isCorrect) { bg = '#e8f5e9'; border = '#81c784'; color = '#2e7d32'; }
+          else if (isWrong) { bg = '#fef2f2'; border = '#ef4444'; color = '#b91c1c'; }
+          else if (isSelected) { bg = 'var(--color-surface-container)'; border = 'var(--color-primary)'; color = 'var(--color-primary)'; }
 
           return (
             <button
@@ -309,20 +311,25 @@ export default function ListeningSection({
                 alignItems: 'center',
                 gap: '14px',
                 background: bg,
-                border: `3px solid ${border}`,
-                borderRadius: '14px',
-                padding: '14px 18px',
+                border: `1px solid ${border}`,
+                borderRadius: '16px',
+                padding: '16px 20px',
                 cursor: submitted ? 'default' : 'pointer',
                 textAlign: 'left',
                 width: '100%',
-                transition: 'all 0.15s ease',
-                boxShadow: isSelected ? `3px 3px 0px ${border}` : '2px 2px 0px #e5e7eb',
-                fontFamily: 'Inter, sans-serif',
+                transition: 'all 0.2s ease',
+                boxShadow: isSelected ? '0 4px 12px rgba(58, 48, 42, 0.08)' : 'none',
               }}
               onMouseEnter={(e) => {
-                if (!submitted) (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                if (!submitted) {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-primary)';
+                  (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(-2px)';
+                }
               }}
               onMouseLeave={(e) => {
+                if (!submitted && !isSelected) {
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-outline-variant)';
+                }
                 (e.currentTarget as HTMLButtonElement).style.transform = 'translateY(0)';
               }}
             >
@@ -331,24 +338,24 @@ export default function ListeningSection({
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: isSelected || isCorrect ? border : '#e5e7eb',
-                  color: isSelected || isCorrect ? '#ffffff' : '#4b5563',
+                  background: isSelected || isCorrect || isWrong ? border : 'var(--color-surface-container)',
+                  color: isSelected || isCorrect || isWrong ? '#ffffff' : 'var(--color-on-surface-variant)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '16px',
-                  fontWeight: 900,
+                  fontSize: '14px',
+                  fontWeight: 700,
                   flexShrink: 0,
                 }}
               >
                 {OPTION_LABELS[i]}
               </span>
-              <span style={{ fontSize: '16px', fontWeight: 600, color, lineHeight: 1.5 }}>{opt}</span>
+              <span style={{ fontSize: '15px', fontWeight: 600, color, lineHeight: 1.5 }}>{opt}</span>
               {isCorrect && (
-                <span style={{ marginLeft: 'auto', fontSize: '18px' }}>✓</span>
+                <span style={{ marginLeft: 'auto', fontSize: '18px', color: '#2e7d32' }}>✓</span>
               )}
               {isWrong && (
-                <span style={{ marginLeft: 'auto', fontSize: '18px' }}>✗</span>
+                <span style={{ marginLeft: 'auto', fontSize: '18px', color: '#b91c1c' }}>✗</span>
               )}
             </button>
           );
@@ -359,14 +366,14 @@ export default function ListeningSection({
       {submitted && q.explanation && (
         <div
           style={{
-            background: '#FFFBEB',
-            border: '2.5px solid #F59E0B',
-            borderRadius: '14px',
-            padding: '14px 18px',
+            background: 'var(--color-surface-container)',
+            border: '1px solid var(--color-outline-variant)',
+            borderRadius: '16px',
+            padding: '16px 20px',
             fontSize: '14px',
-            fontWeight: 600,
-            color: '#92400E',
-            fontFamily: 'Inter, sans-serif',
+            fontWeight: 500,
+            lineHeight: 1.6,
+            color: 'var(--color-on-surface)',
           }}
         >
           💡 {q.explanation}

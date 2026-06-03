@@ -26,7 +26,7 @@ const LEVEL_LABELS = [
   'TOPIK II\nLevel 6',
 ];
 
-const LEVEL_COLORS = ['#F97316', '#FBBF24', '#4F46E5', '#818CF8', '#10B981', '#EC4899'];
+const LEVEL_COLORS = ['#e38d58', '#d47a40', '#c2652a', '#a65624', '#8b4a20', '#6f3a18'];
 
 // 3D Roadmap Nodes built inline — no external file dependency
 function TopikRoadmap3D({ currentLevel }: { currentLevel: number }) {
@@ -43,7 +43,7 @@ function TopikRoadmap3D({ currentLevel }: { currentLevel: number }) {
             <mesh>
               <sphereGeometry args={[isActive ? 1.2 : 0.8, 32, 32]} />
               <meshStandardMaterial
-                color={isLocked ? '#94A3B8' : LEVEL_COLORS[i]}
+                color={isLocked ? '#e0d8cc' : LEVEL_COLORS[i]}
                 roughness={0.3}
                 metalness={isActive ? 0.3 : 0.1}
                 emissive={isActive ? LEVEL_COLORS[i] : '#000000'}
@@ -57,15 +57,16 @@ function TopikRoadmap3D({ currentLevel }: { currentLevel: number }) {
               style={{ pointerEvents: 'none', whiteSpace: 'pre-line', textAlign: 'center' }}
             >
               <div style={{
-                background: isActive ? LEVEL_COLORS[i] : 'rgba(255,255,255,0.85)',
-                color: isActive ? 'white' : '#1E1B4B',
-                padding: '4px 10px',
-                borderRadius: '12px',
-                border: '2px solid #1E1B4B',
-                fontWeight: 800,
+                background: isActive ? LEVEL_COLORS[i] : 'rgba(250, 245, 238, 0.95)',
+                color: isActive ? 'white' : '#3a302a',
+                padding: '6px 14px',
+                borderRadius: '16px',
+                border: isActive ? 'none' : '1px solid rgba(58, 48, 42, 0.15)',
+                fontWeight: isActive ? 700 : 600,
                 fontSize: isActive ? '12px' : '10px',
-                boxShadow: isActive ? `4px 4px 0px #1E1B4B` : '2px 2px 0px #1E1B4B',
-                opacity: isLocked ? 0.5 : 1,
+                fontFamily: '"EB Garamond", serif',
+                boxShadow: isActive ? '0px 8px 24px rgba(194, 101, 42, 0.4)' : '0px 4px 12px rgba(58, 48, 42, 0.08)',
+                opacity: isLocked ? 0.6 : 1,
               }}>
                 {isCompleted ? '✓ ' : ''}{LEVEL_LABELS[i].replace('\n', ' ')}
               </div>
@@ -83,7 +84,7 @@ function TopikRoadmap3D({ currentLevel }: { currentLevel: number }) {
                 <mesh position={[mid.x, mid.y, mid.z]} quaternion={quat}>
                   <cylinderGeometry args={[0.08, 0.08, length, 8]} />
                   <meshStandardMaterial
-                    color={isCompleted ? LEVEL_COLORS[i] : '#CBD5E1'}
+                    color={isCompleted ? LEVEL_COLORS[i] : '#e0d8cc'}
                     roughness={0.8}
                   />
                 </mesh>
@@ -138,15 +139,15 @@ function FloatingOrbs() {
     <group ref={meshRef}>
       <mesh position={[-12, 6, -5]}>
         <sphereGeometry args={[1.2, 16, 16]} />
-        <meshStandardMaterial color="#F97316" roughness={0.3} metalness={0.1} />
+        <meshStandardMaterial color="#c2652a" roughness={0.3} metalness={0.1} />
       </mesh>
       <mesh position={[14, 4, -8]}>
         <sphereGeometry args={[0.8, 16, 16]} />
-        <meshStandardMaterial color="#818CF8" roughness={0.3} metalness={0.1} />
+        <meshStandardMaterial color="#d47a40" roughness={0.3} metalness={0.1} />
       </mesh>
       <mesh position={[8, 10, -20]}>
         <sphereGeometry args={[1.0, 16, 16]} />
-        <meshStandardMaterial color="#4F46E5" roughness={0.3} metalness={0.1} />
+        <meshStandardMaterial color="#a65624" roughness={0.3} metalness={0.1} />
       </mesh>
     </group>
   );
@@ -157,7 +158,7 @@ function GroundPlane() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, -15]}>
       <planeGeometry args={[80, 80]} />
-      <meshStandardMaterial color="#C7D2FE" roughness={1} />
+      <meshStandardMaterial color="#eee3d5" roughness={1} />
     </mesh>
   );
 }
@@ -166,20 +167,20 @@ export default function ThreeScene({ children }: { children?: React.ReactNode })
   const { level } = useKMasteryStore();
 
   return (
-    <div className="fixed inset-0 z-0" style={{ background: 'linear-gradient(180deg, #C7D2FE 0%, #EEF2FF 60%, #E0E7FF 100%)' }}>
+    <div className="fixed inset-0 z-0" style={{ background: 'linear-gradient(180deg, #f2eadf 0%, #faf5ee 60%, #eee3d5 100%)' }}>
       <Canvas
         camera={{ position: [0, 5, 10], fov: 60 }}
         gl={{ antialias: true, alpha: false }}
         onCreated={({ gl }) => {
-          gl.setClearColor('#C7D2FE');
+          gl.setClearColor('#eee3d5');
         }}
       >
         {/* Bright warm lighting for claymorphism */}
         <ambientLight intensity={1.2} color="#FFF8F0" />
         <directionalLight position={[10, 20, 10]} intensity={2.0} color="#FFF0D0" castShadow />
-        <pointLight position={[-8, 8, 5]} intensity={0.8} color="#F97316" />
-        <pointLight position={[12, 6, -10]} intensity={0.6} color="#818CF8" />
-        <hemisphereLight args={["#EEF2FF", "#C7D2FE", 0.5]} />
+        <pointLight position={[-8, 8, 5]} intensity={0.8} color="#c2652a" />
+        <pointLight position={[12, 6, -10]} intensity={0.6} color="#e38d58" />
+        <hemisphereLight args={["#faf5ee", "#eee3d5", 0.5]} />
 
         <GroundPlane />
         <FloatingOrbs />

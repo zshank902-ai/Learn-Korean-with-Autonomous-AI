@@ -56,22 +56,22 @@ export default function ExamTimer({ startSeconds, onExpire, paused = false }: Ex
         display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
-        background: isWarning ? '#FEF2F2' : '#F0FDF4',
-        border: `3px solid ${isWarning ? '#EF4444' : '#0f0f0f'}`,
-        borderRadius: '14px',
-        padding: '8px 16px',
-        boxShadow: `3px 3px 0px ${isWarning ? '#EF4444' : '#0f0f0f'}`,
+        background: isWarning ? '#fef2f2' : 'var(--color-surface-container)',
+        border: `1px solid ${isWarning ? '#ef4444' : 'var(--color-outline-variant)'}`,
+        borderRadius: '16px',
+        padding: '10px 16px',
+        boxShadow: '0 4px 12px rgba(58, 48, 42, 0.05)',
         animation: isCritical ? 'pulse 1s infinite' : 'none',
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: '"Manrope", sans-serif',
       }}
     >
       <span
         style={{
-          fontSize: '11px',
-          fontWeight: 800,
+          fontSize: '14px',
+          fontWeight: 700,
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
-          color: isWarning ? '#EF4444' : '#059669',
+          color: isWarning ? '#ef4444' : 'var(--color-on-surface-variant)',
         }}
       >
         ⏱
@@ -79,9 +79,9 @@ export default function ExamTimer({ startSeconds, onExpire, paused = false }: Ex
       <span
         style={{
           fontSize: '20px',
-          fontWeight: 900,
+          fontWeight: 700,
           fontVariantNumeric: 'tabular-nums',
-          color: isWarning ? '#EF4444' : '#0f0f0f',
+          color: isWarning ? '#ef4444' : 'var(--color-on-surface)',
           letterSpacing: '0.04em',
         }}
       >

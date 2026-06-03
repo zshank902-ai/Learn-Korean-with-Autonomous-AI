@@ -13,9 +13,9 @@ export default function AnimatedXPBar({ currentXP, level }: XPBarProps) {
   const progress = Math.min(100, Math.max(0, (xpInLevel / 5000) * 100));
 
   return (
-    <div className="w-full space-y-1" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
+    <div className="w-full space-y-1 font-sans" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
       <div className="flex justify-between items-end">
-        <span className="text-xs font-extrabold text-[var(--color-primary-container)] drop-shadow-sm font-sans">
+        <span className="text-xs font-bold text-[var(--color-primary)] drop-shadow-sm font-sans">
           Lv.{level}
         </span>
         <span className="text-xs font-bold text-[var(--color-on-surface-variant)]">
@@ -23,14 +23,14 @@ export default function AnimatedXPBar({ currentXP, level }: XPBarProps) {
         </span>
       </div>
       {/* Bar track */}
-      <div className="h-4 w-full rounded-full neumorphic-input overflow-hidden border-none bg-[rgba(0,0,0,0.4)]">
+      <div className="h-4 w-full rounded-full overflow-hidden bg-[var(--color-surface-container-low)] border border-[var(--color-outline-variant)]">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-          className="h-full rounded-full bg-[var(--color-primary-container)] shadow-[0_0_10px_var(--color-primary-container)]"
+          className="h-full rounded-full bg-[var(--color-primary)]"
           style={{
-            background: 'linear-gradient(90deg, var(--color-primary-container), var(--color-tertiary-container))',
+            background: 'linear-gradient(90deg, var(--color-primary), var(--color-tertiary, #e38d58))',
           }}
         />
       </div>

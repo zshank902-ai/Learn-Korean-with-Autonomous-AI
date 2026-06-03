@@ -25,7 +25,7 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm pointer-events-auto">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm pointer-events-auto font-sans">
         
         {/* Celebration Particles */}
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -48,7 +48,7 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="absolute w-4 h-4 rounded-full"
                 style={{
-                  backgroundColor: ['#F97316', '#4F46E5', '#10B981', '#FBBF24'][i % 4]
+                  backgroundColor: ['#c2652a', '#e38d58', '#faf5ee', '#1E1B4B'][i % 4]
                 }}
               />
             );
@@ -61,40 +61,39 @@ export default function CompletionModal({ isOpen, type, xpAwarded, nextModuleNam
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.8, opacity: 0, y: 20 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="bg-white max-w-sm w-full rounded-3xl border-4 border-[#1E1B4B] p-6 sm:p-8 text-center relative z-10"
-          style={{ boxShadow: '8px 8px 0px #1E1B4B' }}
+          className="sahara-card bg-[var(--color-surface)] max-w-sm w-full rounded-3xl border border-[var(--color-outline-variant)] p-6 sm:p-8 text-center relative z-10 shadow-sm"
         >
           {type === 'level' ? (
-            <div className="mx-auto w-24 h-24 bg-[#F59E0B] rounded-full border-4 border-[#1E1B4B] flex items-center justify-center mb-6 shadow-[4px_4px_0px_#1E1B4B]">
-              <Award size={48} className="text-white" />
+            <div className="mx-auto w-24 h-24 bg-[var(--color-surface-container)] rounded-full border border-[var(--color-outline-variant)] flex items-center justify-center mb-6 shadow-sm">
+              <Award size={48} className="text-[var(--color-primary)]" />
             </div>
           ) : (
-            <div className="mx-auto w-20 h-20 bg-[#10B981] rounded-2xl border-4 border-[#1E1B4B] flex items-center justify-center mb-6 shadow-[4px_4px_0px_#1E1B4B] rotate-3">
-              <Star size={40} className="text-white" />
+            <div className="mx-auto w-20 h-20 bg-[var(--color-surface-container)] rounded-2xl border border-[var(--color-outline-variant)] flex items-center justify-center mb-6 shadow-sm rotate-3">
+              <Star size={40} className="text-[var(--color-primary)]" />
             </div>
           )}
 
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1E1B4B] mb-2" style={{ fontFamily: 'Fredoka, cursive' }}>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--color-on-surface)] mb-2 font-serif">
             {type === 'level' ? 'Level Complete!' : 'Module Complete!'}
           </h2>
           
-          <div className="inline-flex items-center gap-2 bg-[#FEF9C3] border-2 border-[#CA8A04] text-[#CA8A04] px-4 py-2 rounded-xl font-black text-lg mb-6">
+          <div className="inline-flex items-center gap-2 bg-[var(--color-surface-container-low)] border border-[var(--color-primary-container)] text-[var(--color-primary)] px-4 py-2 rounded-xl font-bold text-lg mb-6">
             <Zap size={20} /> +{xpAwarded} XP
           </div>
 
           {type === 'level' ? (
-            <p className="text-[#1E1B4B]/70 font-bold mb-8">
+            <p className="text-[var(--color-on-surface-variant)] font-semibold mb-8">
               Incredible work! You have mastered TOPIK {levelNum} and unlocked the next phase of your journey.
             </p>
           ) : (
-            <p className="text-[#1E1B4B]/70 font-bold mb-8">
+            <p className="text-[var(--color-on-surface-variant)] font-semibold mb-8">
               {nextModuleName ? `Next up: ${nextModuleName}` : "You've finished this section!"}
             </p>
           )}
 
           <button
             onClick={onClose}
-            className="w-full py-4 bg-[#1E1B4B] text-white font-black uppercase tracking-widest rounded-xl hover:-translate-y-1 transition-transform border-4 border-transparent shadow-[4px_4px_0px_#4F46E5] flex items-center justify-center gap-2"
+            className="w-full py-4 sahara-btn text-white font-bold rounded-xl hover:-translate-y-1 transition-transform flex items-center justify-center gap-2"
           >
             Continue <ArrowRight size={20} />
           </button>

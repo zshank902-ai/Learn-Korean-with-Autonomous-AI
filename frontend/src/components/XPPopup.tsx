@@ -27,19 +27,19 @@ export default function XPPopup({ amount, isVisible, onComplete }: XPPopupProps)
             scale: [0.5, 1.2, 1, 0.8]
           }}
           transition={{ duration: 1.5, times: [0, 0.2, 0.8, 1] }}
-          className="fixed pointer-events-none z-[300] flex items-center gap-2 px-6 py-3 rounded-2xl border-4 border-[#1E1B4B]"
+          className="fixed pointer-events-none z-[300] flex items-center gap-2 px-6 py-3 rounded-2xl border border-[var(--color-outline-variant)] font-sans"
           style={{
             left: '50%',
             top: '50%',
             transform: 'translate(-50%, -50%)',
-            background: '#4F46E5',
-            boxShadow: '6px 6px 0px #1E1B4B',
+            background: 'var(--color-surface)',
+            boxShadow: '0px 8px 24px rgba(58, 48, 42, 0.12)',
           }}
         >
-          <div className="w-8 h-8 bg-[#F97316] rounded-lg flex items-center justify-center border-2 border-[#1E1B4B]">
-            <Zap className="text-white" size={18} fill="currentColor" />
+          <div className="w-8 h-8 bg-[var(--color-primary-container)] rounded-lg flex items-center justify-center border border-[var(--color-outline-variant)] shadow-sm">
+            <Zap className="text-[var(--color-primary)]" size={18} fill="currentColor" />
           </div>
-          <span className="text-2xl font-black text-white" style={{ fontFamily: 'Fredoka, cursive' }}>
+          <span className="text-2xl font-bold text-[var(--color-primary)] font-serif">
             +{amount} XP
           </span>
         </motion.div>

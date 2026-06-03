@@ -79,7 +79,7 @@ export default function ProgressRail({
                       position: 'absolute',
                       inset: '-10px',
                       borderRadius: '50%',
-                      border: `3px solid ${level.color}`,
+                      border: `2px solid var(--color-primary)`,
                       pointerEvents: 'none',
                     }}
                   />
@@ -95,31 +95,31 @@ export default function ProgressRail({
                     width: orbSize,
                     height: orbSize,
                     borderRadius: '50%',
-                    border: `3px solid ${locked ? '#9ca3af' : '#0f0f0f'}`,
-                    background: locked ? '#e5e7eb' : completed ? level.color : isActive ? level.color : '#ffffff',
+                    border: `1.5px solid ${locked ? 'var(--color-outline-variant)' : 'var(--color-primary)'}`,
+                    background: locked ? 'var(--color-surface-container-low)' : completed ? 'var(--color-surface-container)' : isActive ? 'var(--color-surface-container)' : '#ffffff',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: locked ? 'not-allowed' : 'pointer',
                     boxShadow: isActive
-                      ? `0 0 0 4px ${level.color}40, 3px 3px 0px #0f0f0f`
+                      ? `0 0 0 4px var(--color-primary-container), 0 2px 12px rgba(58, 48, 42, 0.08)`
                       : locked
                       ? 'none'
-                      : '2px 2px 0px #0f0f0f',
+                      : '0 2px 12px rgba(58, 48, 42, 0.04)',
                     transition: 'box-shadow 0.2s ease',
                     position: 'relative',
                     flexShrink: 0,
                   }}
                 >
                   {completed ? (
-                    <CheckCircle2 size={isActive ? 24 : 18} color="#0f0f0f" />
+                    <CheckCircle2 size={isActive ? 24 : 18} color="var(--color-primary)" />
                   ) : (
                     <span
                       style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: 900,
+                        fontFamily: 'var(--font-sans)',
+                        fontWeight: 700,
                         fontSize: isActive ? '18px' : '14px',
-                        color: locked ? '#9ca3af' : '#0f0f0f',
+                        color: locked ? 'var(--color-on-surface-variant)' : 'var(--color-primary)',
                         lineHeight: 1,
                       }}
                     >
@@ -137,10 +137,10 @@ export default function ProgressRail({
                     transform: 'translateX(-50%)',
                     marginTop: '6px',
                     whiteSpace: 'nowrap',
-                    fontFamily: 'Inter, sans-serif',
-                    fontWeight: isActive ? 800 : 600,
-                    fontSize: '10px',
-                    color: locked ? '#9ca3af' : isActive ? '#0f0f0f' : '#4b5563',
+                    fontFamily: 'var(--font-sans)',
+                    fontWeight: isActive ? 700 : 500,
+                    fontSize: '11px',
+                    color: locked ? 'var(--color-on-surface-variant)' : isActive ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   }}
                 >
                   L{level.level_num}
@@ -152,12 +152,11 @@ export default function ProgressRail({
                 <div
                   style={{
                     flex: 1,
-                    height: '6px',
-                    background: '#e5e7eb',
-                    borderRadius: '3px',
+                    height: '4px',
+                    background: 'var(--color-surface-container-high)',
+                    borderRadius: '2px',
                     overflow: 'hidden',
-                    margin: '0 4px',
-                    border: '1.5px solid #d1d5db',
+                    margin: '0 8px',
                   }}
                 >
                   <motion.div
@@ -166,8 +165,8 @@ export default function ProgressRail({
                     transition={{ duration: 0.8, ease: 'easeOut' }}
                     style={{
                       height: '100%',
-                      background: level.color,
-                      borderRadius: '3px',
+                      background: 'var(--color-primary)',
+                      borderRadius: '2px',
                     }}
                   />
                 </div>

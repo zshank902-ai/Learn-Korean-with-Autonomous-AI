@@ -9,7 +9,7 @@ export default function NotificationSystem() {
   const { notifications, removeNotification } = useKMasteryStore();
 
   return (
-    <div className="fixed top-24 right-6 z-[200] flex flex-col gap-3 pointer-events-none">
+    <div className="fixed top-24 right-6 z-[200] flex flex-col gap-3 pointer-events-none font-sans">
       <AnimatePresence mode="popLayout">
         {notifications.map((n) => (
           <NotificationToast key={n.id} notification={n} onExpire={() => removeNotification(n.id)} />
@@ -26,10 +26,10 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
   }, [onExpire]);
 
   const config = {
-    xp:      { icon: <Zap size={20} className="text-white" />,       bg: '#4F46E5', label: 'XP Gained' },
-    streak:  { icon: <Flame size={20} className="text-white" />,     bg: '#F97316', label: 'Streak!' },
-    info:    { icon: <Info size={20} className="text-white" />,      bg: '#818CF8', label: 'Info' },
-    success: { icon: <CheckCircle size={20} className="text-white" />, bg: '#16A34A', label: 'Nice Work!' },
+    xp:      { icon: <Zap size={20} className="text-[var(--color-primary)]" />,       bg: 'var(--color-primary-container)', label: 'XP Gained' },
+    streak:  { icon: <Flame size={20} className="text-[#c2652a]" />,     bg: 'var(--color-surface-container)', label: 'Streak!' },
+    info:    { icon: <Info size={20} className="text-[var(--color-on-surface)]" />,      bg: 'var(--color-surface-container-low)', label: 'Info' },
+    success: { icon: <CheckCircle size={20} className="text-[#2e7d32]" />, bg: '#e8f5e9', label: 'Nice Work!' },
   };
 
   const { icon, bg, label } = config[notification.type] ?? config.info;
@@ -40,19 +40,18 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
       initial={{ opacity: 0, x: 60, scale: 0.9 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 60, scale: 0.8, transition: { duration: 0.2 } }}
-      className="pointer-events-auto flex items-center gap-4 bg-white border-4 border-[#1E1B4B] rounded-2xl px-5 py-3 min-w-[220px] relative overflow-hidden"
-      style={{ boxShadow: '4px 4px 0px #1E1B4B' }}
+      className="pointer-events-auto flex items-center gap-4 sahara-card bg-[var(--color-surface)] border border-[var(--color-outline-variant)] shadow-sm rounded-2xl px-5 py-3 min-w-[220px] relative overflow-hidden"
     >
       {/* Colored icon bubble */}
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border-2 border-[#1E1B4B]" style={{ background: bg }}>
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-[var(--color-outline-variant)] shadow-sm" style={{ background: bg }}>
         {icon}
       </div>
 
       <div>
-        <div className="text-[10px] uppercase tracking-widest font-black text-[#1E1B4B]/50">
+        <div className="text-[10px] uppercase tracking-widest font-bold text-[var(--color-on-surface-variant)]">
           {notification.message || label}
         </div>
-        <div className="text-xl font-black text-[#1E1B4B]" style={{ fontFamily: 'Fredoka, cursive' }}>
+        <div className="text-xl font-bold text-[var(--color-on-surface)] font-serif">
           {notification.value}
         </div>
       </div>
@@ -63,7 +62,7 @@ function NotificationToast({ notification, onExpire }: { notification: Notificat
         animate={{ scaleX: 0 }}
         transition={{ duration: 4, ease: 'linear' }}
         className="absolute bottom-0 left-0 right-0 h-1 origin-left rounded-b-xl"
-        style={{ background: bg }}
+        style={{ background: notification.type === 'success' ? '#81c784' : 'var(--color-primary)' }}
       />
     </motion.div>
   );
